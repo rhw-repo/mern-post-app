@@ -1,0 +1,48 @@
+server.js 
+
+// continue MERN Stack #2 13.31
+
+// ! MUST add .env file to gitignore before push to github to keep environment details securely hidden
+// to install env package - that loads .env variables into the process.env object, available globally in
+// a node environment - command line: npm install dotenv 
+
+require('dotenv').config()
+
+const express = require('express')
+const mongoose = require('mongoose')
+const workoutRoutes = require('./routes/workouts')
+
+const app = express()
+
+
+// middleware, checks body of request passes it to request object 
+app.use(express.json())
+
+// global middleware, function fires for every request that comes in, allows log of path and method then 
+// forces moving onto next function
+app.use((req, res, next) => {
+  console.log(req.path, req.method)
+  next()
+})
+
+// routes, / means go to root of domain, port 4000 / technically function is middleware
+app.use('/api/workouts', workoutRoutes)
+
+// connect to db
+mongoose.connect(process.env.MONGO_URI)
+  .then(() => {
+    console.log('connected to database')
+    // listen to port
+    app.listen(process.env.PORT, () => {
+      console.log('listening for requests on port', process.env.PORT)
+    })
+  })
+  .catch((err) => {
+    console.log(err)
+  }) 
+
+
+
+
+
+
