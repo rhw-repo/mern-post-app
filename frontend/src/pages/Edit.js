@@ -61,14 +61,29 @@ const Edit = ({ material }) => {
         </div>
         <div>
           <label htmlFor="tags">Edit Tags:</label>
-          <input className="tags"
+          { /* <input className="tags"
             type="text"
             id="tags"
             value={tags}
             onChange={(e) => setTags(e.target.value)}
-          />
-        </div>
-        <button type="submit">Save</button>
+          />  */ }
+
+          <div className="input-tags-container">
+            {tags.map((tag, index) => (
+              <span key={index} className="input-tags-chip">
+                {tag}
+              </span>
+            ))}
+            <input
+              className="edit_tags"
+              type="text"
+              id="tags"
+              value={tags.join(", ")} // Convert the array back to a string for display
+              onChange={(e) => setTags(e.target.value.split(", ").map((tag) => tag.trim()))}
+            />
+          </div>
+          </div>
+          <button type="submit">Save</button>
       </form>
     </div>
   )
