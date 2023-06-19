@@ -1,7 +1,10 @@
 /* TODO 
-1. Create a feature/chips branch (user needs to apply labels to their documents)
+1. Complete feature/chip_tags branch (user needs to apply labels to documents)-
+1.1 Add spacing between displayed chip rows, review CSS field labels
+1.2 Realign cancel button to right hand side of save button
+1.3 Design a select / other component letting user choose pre-existing tags 
 2. research (& implement or reccomend) input validation, sanitisation
-3. create modal confirming user changes saved*/
+3. Create modal confirming user changes saved*/
 
 import { useState, useEffect } from "react";
 import { useAuthContext } from "../hooks/useAuthContext";
@@ -54,19 +57,13 @@ const Edit = ({ material }) => {
           <label htmlFor="body">Edit Body:</label>
           <textarea
             id="body"
-            rows={8}
+            rows={3}
             value={body}
             onChange={(e) => setBody(e.target.value)}
           ></textarea>
         </div>
         <div>
           <label htmlFor="tags">Edit Tags:</label>
-          { /* <input className="tags"
-            type="text"
-            id="tags"
-            value={tags}
-            onChange={(e) => setTags(e.target.value)}
-          />  */ }
 
           <div className="input-tags-container">
             {tags.map((tag, index) => (
@@ -82,8 +79,8 @@ const Edit = ({ material }) => {
               onChange={(e) => setTags(e.target.value.split(", ").map((tag) => tag.trim()))}
             />
           </div>
-          </div>
-          <button type="submit">Save</button>
+        </div>
+        <button type="submit">Save</button>
       </form>
     </div>
   )
