@@ -232,6 +232,13 @@ inappropriate for user's filtering needs*/
 
  .tags {
    margin-bottom: 2rem;
+   background-color: #435362;
+   color:#ffffff;
+   font-weight: bold;
+   border: 0.125rem solid #435362;
+   border-radius: 1.875rem;
+   padding: 0.625rem;
+   width: auto;
  }
 
  .read button,
