@@ -39,12 +39,10 @@ const Read = () => {
                                 <div className="read_title">{material.title}</div>
                                 <div className="read_form_headings">Contents:</div>
                                 <div>{material.body}</div>
-                                <div className="read_form_headings">Tags Will Be Chips:</div>
-                                { /* <div><span className="tags">{material.tags}</span></div> */}
-                                { /* <div><span className="tags">{material.tags.join(", ")}</span></div> */}
+                                <div className="read_form_headings">Tags:</div>
                                 <div>
                                     {material.tags.map((tag, index) => (
-                                        <span key={index} className="tags">{tag}</span>
+                                        <span key={index} className="tags tag-chip">{tag}</span>
                                     ))}
                                 </div>
                             </article>
