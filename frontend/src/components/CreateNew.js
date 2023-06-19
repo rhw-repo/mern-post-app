@@ -16,7 +16,8 @@ const CreateNew = () => {
 
     const [title, setTitle] = useState("")
     const [body, setBody] = useState("")
-    const [tags, setTags] = useState("")
+    // EXPERIMENT removed quotes to set empty array
+    const [tags, setTags] = useState([])
     const [error, setError] = useState(null)
     const [emptyFields, setEmptyFields] = useState([])
 
@@ -44,14 +45,21 @@ const CreateNew = () => {
         if (!response.ok) {
             setError(json.error)
             setEmptyFields(json.emptyFields)
-        }
+        } 
+        // EXPERIMENT added array to setTags()
         if (response.ok) {
             setTitle("")
             setBody("")
-            setTags("")
+            setTags("[]")
             setError(null)
             setEmptyFields([])
             // console.log("new material added", json)
+               // Log the data being sent to the backend
+            console.log("Data sent to backend:", {
+             title,
+                body,
+                tags,
+             })
             dispatch({ type: "CREATE_MATERIAL", payload: json })
             navigate("/");
         }
@@ -79,8 +87,11 @@ const CreateNew = () => {
                 <label>Paste or type tags here:</label>
                 <input
                     type="text"
-                    onChange={(e) => setTags(e.target.value)}
-                    value={tags}
+                    placeholder="Enter tags separated by commas"
+                    //onChange={(e) => setTags(e.target.value)}
+                    onChange={(e) => setTags(e.target.value.split(/,\s*/))}
+                    //value={tags}
+                    value={Array.isArray(tags) ? tags.join(", ") : ""}
                     className={emptyFields.includes("tags") ? "error" : ""}
                 />
                 <button>Save</button>
