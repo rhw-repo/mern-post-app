@@ -11,8 +11,9 @@ const materialSchema = new Schema({
         type: String,
         required: true
     },
+    // EXPERIMENT String changed to [String] to pass array not single string
     tags: {
-        type: String,
+        type: [String],
         required: true
     },
     user_id: {
