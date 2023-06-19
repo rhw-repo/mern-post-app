@@ -61,7 +61,7 @@ const Edit = ({ material }) => {
         </div>
         <div>
           <label htmlFor="tags">Edit Tags:</label>
-          <input
+          <input className="tags"
             type="text"
             id="tags"
             value={tags}
