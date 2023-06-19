@@ -1,5 +1,5 @@
- /* TODO 1. 
- brief: deskop/ laptop/ tablet version,meet client re add media queries */
+ /* TODO  
+ 1. brief: deskop/ laptop/ tablet version,meet client re add media queries */
 
  @import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@400;500;600;700&family=Open+Sans:wght@300;400&display=swap');
 
@@ -235,15 +235,6 @@ inappropriate for user's filtering needs*/
   border: 0.125rem solid #778DA5;
  }
 
-/* .tag-chip {
-  background-color: #435362;
-  color: #ffffff;
-  font-weight: bold;
-  border-radius: 1.875rem;
-  padding: 0.625rem;
-  margin-right: 0.5rem;
-}*/
-
 .tag-chip {
   background-color: #778DA5;
   color: #ffffff;
@@ -331,7 +322,6 @@ inappropriate for user's filtering needs*/
   background-color: transparent;
   flex-grow: 1;
 }
-
 
  /* temporary auth forms */
  form.signup,
