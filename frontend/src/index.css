@@ -224,7 +224,7 @@ inappropriate for user's filtering needs*/
  }
 
  .read_title {
-   color: var(--primary);
+   color: #435362;
    font-size: 1.5rem;
    font-weight: bold;
    margin: 1.6rem auto;
@@ -232,14 +232,28 @@ inappropriate for user's filtering needs*/
 
  .tags {
   margin-bottom: 2rem;
+  border: 0.125rem solid #778DA5;
+ }
+
+/* .tag-chip {
   background-color: #435362;
   color: #ffffff;
   font-weight: bold;
-  border: 0.125rem solid #435362;
   border-radius: 1.875rem;
   padding: 0.625rem;
-  width: auto;
-  margin-right: 0.5rem; /* Add right margin to create space between chips */
+  margin-right: 0.5rem;
+}*/
+
+.tag-chip {
+  background-color: #778DA5;
+  color: #ffffff;
+  font-weight: bold;
+  border-radius: 1.875rem;
+  padding: 0.625rem;
+  margin-right: 0.5rem;
+  min-width: 4em; /* Set a minimum width for the tag */
+  display: inline-flex; /* Make the tag an inline-flex container */
+  justify-content: center; /* Center the content horizontally */
 }
 
 
@@ -306,13 +320,7 @@ inappropriate for user's filtering needs*/
 }
 
 .input-tags-chip {
-  background-color: #435362;
-  color: #ffffff;
-  font-weight: bold;
-  border-radius: 1.875rem;
-  padding: 0.625rem;
   margin-right: 0.5rem;
-  margin-bottom: 0.25rem;
 }
 
 .edit_tags {
