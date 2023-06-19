@@ -245,12 +245,16 @@ inappropriate for user's filtering needs*/
 
  .read button,
  .cancel_btn {
-   margin: 1rem auto;
    padding: 0.625rem;
  }
 
+ .read button {
+  margin: 2rem auto 0 auto;
+ }
+
  .cancel_btn {
-   width: 10rem;
+  /* margin: 1rem auto; */
+  width: 10rem;
  }
 
  /* create new material form & edit page form */
@@ -291,6 +295,35 @@ inappropriate for user's filtering needs*/
  input.error {
    border: 0.125rem solid var(--error);
  }
+
+ .input-tags-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  border: 1px solid #ccc;
+  padding: 0.25rem;
+  border-radius: 4px;
+}
+
+.input-tags-chip {
+  background-color: #435362;
+  color: #ffffff;
+  font-weight: bold;
+  border-radius: 1.875rem;
+  padding: 0.625rem;
+  margin-right: 0.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.edit_tags {
+  border: none;
+  outline: none;
+  padding: 0.625rem;
+  margin-right: 0.5rem;
+  background-color: transparent;
+  flex-grow: 1;
+}
+
 
  /* temporary auth forms */
  form.signup,
