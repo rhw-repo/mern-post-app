@@ -1,6 +1,6 @@
 /* uncommenting line 33 allows check document _id
 TODO 
-1. integrate with feature/chips branch */
+1. Complete feature/chips_tags branch realign cancel btn to right of edit btn*/
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import useFetch from "../hooks/useFetch";
