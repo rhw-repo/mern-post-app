@@ -40,7 +40,7 @@ const Read = () => {
                                 <div className="read_form_headings">Contents:</div>
                                 <div>{material.body}</div>
                                 <div className="read_form_headings">Tags Will Be Chips:</div>
-                                <div className="tags">{material.tags}</div>
+                                <div><span className="tags">{material.tags}</span></div>
                             </article>
                         )}
                         <span>
