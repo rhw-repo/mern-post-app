@@ -70,7 +70,7 @@ const Edit = ({ material }) => {
 
           <div className="input-tags-container">
             {tags.map((tag, index) => (
-              <span key={index} className="input-tags-chip">
+              <span key={index} className="input-tags-chip tag-chip">
                 {tag}
               </span>
             ))}
