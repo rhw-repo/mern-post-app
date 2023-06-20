@@ -2,6 +2,7 @@
 temporary log in, replace with SSO & avoid user details in local storage */
 
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useLogin } from "../hooks/useLogin";
 
 const Login = () => {
@@ -15,29 +16,41 @@ const Login = () => {
         await login(email, password)
     }
 
-    return (
-        <form className="login" onSubmit={handleSubmit}>
-            <h1>Welcome. Log in here</h1>
-            <label>Email*</label>
-            <input
-                type="email"
-                onChange={(e) => setEmail(e.target.value)}
-                value={email}
-            />
-            <label>Password*</label>
-            <input
-                type="password"
-                onChange={(e) => setPassword(e.target.value)}
-                value={password}
-            />
+    const navigate = useNavigate()
 
-            <div className="btn">
-                <button disabled={isLoading}>
-                    Login
-                </button>
-                {error && <div className="error">{error}</div>}
+    const goToSignup = () => {
+        navigate("/Signup")
+    }
+
+    return (
+        <>
+            <form className="login" onSubmit={handleSubmit}>
+                <h1>Welcome. Login here:</h1>
+                <label>Email*</label>
+                <input
+                    type="email"
+                    onChange={(e) => setEmail(e.target.value)}
+                    value={email}
+                />
+                <label>Password*</label>
+                <input
+                    type="password"
+                    onChange={(e) => setPassword(e.target.value)}
+                    value={password}
+                />
+
+                <div >
+                    <button className="login_btn" disabled={isLoading}>
+                        Login
+                    </button>
+                    {error && <div className="error">{error}</div>}
+                </div>
+            </form>
+            <div className="switch_form_btns">
+                <h3>No account yet? Create one now:</h3>
+                <button className="switch_form_btn" onClick={goToSignup}>Signup</button>
             </div>
-        </form>
+        </>
     )
 }
 

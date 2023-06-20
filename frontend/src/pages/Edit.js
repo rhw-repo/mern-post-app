@@ -81,9 +81,9 @@ const Edit = ({ material }) => {
             />
           </div>
         </div>
-        <div className="read_edit_cancel_btns">
+        <div className="read_edit_create_btns">
           <CancelButton />
-        <button type="submit">Save</button>
+        <button className="save_btn" type="submit">Save</button>
         </div>
       </form>
     </div>
