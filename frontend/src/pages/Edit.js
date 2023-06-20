@@ -9,6 +9,7 @@
 import { useState, useEffect } from "react";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { useNavigate } from "react-router-dom";
+import CancelButton from "../components/CancelButton";
 
 const Edit = ({ material }) => {
   const [title, setTitle] = useState(material.title)
@@ -80,7 +81,10 @@ const Edit = ({ material }) => {
             />
           </div>
         </div>
+        <div className="read_edit_cancel_btns">
+          <CancelButton />
         <button type="submit">Save</button>
+        </div>
       </form>
     </div>
   )
