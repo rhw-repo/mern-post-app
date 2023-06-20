@@ -251,15 +251,16 @@ inappropriate for user's filtering needs*/
  .read button,
  .cancel_btn {
    padding: 0.625rem;
- }
-
- .read button {
-  margin: 2rem auto 0 auto;
+   margin-top: 2rem;
  }
 
  .cancel_btn {
-  /* margin: 1rem auto; */
-  width: 10rem;
+  width: 6rem;
+ }
+
+ .read_edit_cancel_btns {
+  display: flex;
+  justify-content: space-between;
  }
 
  /* create new material form & edit page form */
