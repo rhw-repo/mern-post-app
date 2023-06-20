@@ -30,9 +30,11 @@
  }
 
  /* primary buttons */
- form button,
+ .login_btn,
+ .signup_btn,
  .create_new_btn,
- .update-btn {
+ .go-to-edit-btn,
+ .save_btn {
    background: var(--primary);
    border: 0;
    color: #fff;
@@ -53,7 +55,8 @@
  .select_box,
  .date_range_btn,
  .close_date_range,
- .cancel_btn {
+ .cancel_btn,
+ .switch_form_btn {
    background: #fff;
    color: var(--primary);
    border: 0.125rem solid var(--primary);
@@ -84,15 +87,16 @@
    height: 3rem;
  }
 
+ /* colors text logout button, removes links underline*/
  header a {
-   color: #435362;
+   color: #BD7374;
    text-decoration: none;
  }
 
  nav button {
-   padding: 0.375rem 0.625rem;
-   font-size: 1em;
-   margin-left: 0.625rem;
+   margin-left: 1rem;
+   padding: 0.625rem;
+   width: 6rem;
  }
 
  /* footer */
@@ -200,8 +204,10 @@ inappropriate for user's filtering needs*/
    font-size: 1rem;
    padding: 0.625rem;
    margin: 1rem;
+   min-width: 6em;
  }
 
+ /* read, edit, create new pages */
  /* read page */
  .read {
    height: 31.25rem;
@@ -231,35 +237,39 @@ inappropriate for user's filtering needs*/
  }
 
  .tags {
-  margin-bottom: 2rem;
-  border: 0.125rem solid #778DA5;
+   margin-bottom: 2rem;
+   border: 0.125rem solid #778DA5;
  }
 
-.tag-chip {
-  background-color: #778DA5;
-  color: #ffffff;
-  font-weight: bold;
-  border-radius: 1.875rem;
-  padding: 0.625rem;
-  margin-right: 0.5rem;
-  min-width: 4em; /* Set a minimum width for the tag */
-  display: inline-flex; /* Make the tag an inline-flex container */
-  justify-content: center; /* Center the content horizontally */
-}
+ .tag-chip {
+   background-color: #778DA5;
+   color: #ffffff;
+   font-weight: bold;
+   border-radius: 1.875rem;
+   padding: 0.625rem;
+   margin-right: 0.5rem;
+   min-width: 4em;
+   /* Set a minimum width for the tag */
+   display: inline-flex;
+   /* Make the tag an inline-flex container */
+   justify-content: center;
+   /* Center the content horizontally */
+ }
 
  .read button,
  .cancel_btn {
    padding: 0.625rem;
-   margin-top: 2rem;
  }
 
  .cancel_btn {
-  width: 6rem;
+   width: 6rem;
  }
 
- .read_edit_cancel_btns {
-  display: flex;
-  justify-content: space-between;
+ .read_edit_create_btns {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   margin-top: 2rem;
  }
 
  /* create new material form & edit page form */
@@ -302,39 +312,57 @@ inappropriate for user's filtering needs*/
  }
 
  .input-tags-container {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  border: 1px solid #ccc;
-  padding: 0.25rem;
-  border-radius: 4px;
-}
+   display: flex;
+   flex-wrap: wrap;
+   align-items: center;
+   border: 1px solid #ccc;
+   padding: 0.25rem;
+   border-radius: 4px;
+ }
 
-.input-tags-chip {
-  margin-right: 0.5rem;
-}
+ .input-tags-chip {
+   margin-right: 0.5rem;
+ }
 
-.edit_tags {
-  border: none;
-  outline: none;
-  padding: 0.625rem;
-  margin-right: 0.5rem;
-  background-color: transparent;
-  flex-grow: 1;
-}
+ .edit_tags {
+   border: none;
+   outline: none;
+   padding: 0.625rem;
+   margin-right: 0.5rem;
+   background-color: transparent;
+   flex-grow: 1;
+ }
 
  /* temporary auth forms */
  form.signup,
  form.login {
-   max-width: 25rem;
-   margin: 2.5rem auto;
-   padding: 1.25rem;
+   max-width: 30rem;
+   margin: 5rem auto 3rem auto;
+   padding: 3rem;
    background: #fff;
+   padding: 0.625rem;
    border-radius: 0.625rem;
+   box-shadow:
+     0rem 0.125rem 0.25rem 0rem rgba(0, 0, 0, 0.2),
+     0rem 0.25rem 0.3125rem 0rem rgba(0, 0, 0, 0.14),
+     0rem 0.0625rem 0.625rem 0rem rgba(0, 0, 0, 0.12),
+     0.3125rem 0.3125rem 0.3125rem 0.3125rem #778DA5;
  }
 
- .btn {
+ .login_btn,
+ .signup_btn {
    display: flex;
    justify-content: center;
    align-items: center;
+   margin: 1.5rem auto 1rem auto;
+ }
+
+ .switch_form_btns {
+   text-align: center;
+   color: #435362;
+ }
+
+ .switch_form_btn {
+   padding: 0.625rem;
+   width: 6rem;
  }
