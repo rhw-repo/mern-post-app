@@ -47,16 +47,18 @@ const Read = () => {
                                 </div>
                             </article>
                         )}
-                        <span>
+                        <div className="read_edit_cancel_btns">
+                            <CancelButton />
                             <button
                                 className="update-btn"
                                 onClick={handleUpdateClick}>
                                 Edit
-                            </button>
-                        </span>
+                            </button>  
+                            
+                        </div>
                     </div>
                 )}
-                <CancelButton />
+              
             </div>
             <div>
                 <Footer />
