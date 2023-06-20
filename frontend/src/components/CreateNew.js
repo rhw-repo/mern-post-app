@@ -94,10 +94,13 @@ const CreateNew = () => {
                     value={Array.isArray(tags) ? tags.join(", ") : ""}
                     className={emptyFields.includes("tags") ? "error" : ""}
                 />
-                <button>Save</button>
-                {error && <div className="error">{error}</div>}
+                <div className="read_edit_create_btns">
+                    <CancelButton />
+                    <button className="save_btn">Save</button>
+                    {error && <div className="error">{error}</div>}
+                </div>
             </form>
-            <CancelButton />
+           
         </>
     )
 }
