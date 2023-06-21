@@ -236,6 +236,7 @@ inappropriate for user's filtering needs*/
    margin: 1.6rem auto;
  }
 
+ /* tags */
  .tags {
    margin-bottom: 2rem;
    border: 0.125rem solid #778DA5;
@@ -249,11 +250,8 @@ inappropriate for user's filtering needs*/
    padding: 0.625rem;
    margin-right: 0.5rem;
    min-width: 4em;
-   /* Set a minimum width for the tag */
    display: inline-flex;
-   /* Make the tag an inline-flex container */
    justify-content: center;
-   /* Center the content horizontally */
  }
 
  .read button,
@@ -265,6 +263,7 @@ inappropriate for user's filtering needs*/
    width: 6rem;
  }
 
+ /* read, edit and create new pages */
  .read_edit_create_btns {
    display: flex;
    justify-content: space-between;
@@ -272,7 +271,7 @@ inappropriate for user's filtering needs*/
    margin-top: 2rem;
  }
 
- /* create new material form & edit page form */
+ /* create new form & edit page form */
  h1 {
    color: #435362;
    font-weight: 900;
@@ -322,6 +321,7 @@ inappropriate for user's filtering needs*/
 
  .input-tags-chip {
    margin-right: 0.5rem;
+   margin-top: 0.625rem;
  }
 
  .edit_tags {
@@ -331,6 +331,7 @@ inappropriate for user's filtering needs*/
    margin-right: 0.5rem;
    background-color: transparent;
    flex-grow: 1;
+   margin: 1rem;
  }
 
  /* temporary auth forms */
