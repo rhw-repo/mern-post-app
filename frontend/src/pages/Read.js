@@ -1,6 +1,4 @@
-/* uncommenting line 33 allows check document _id
-TODO 
-1. Complete feature/chips_tags branch realign cancel btn to right of edit btn*/
+/* uncommenting line 31 allows check document _id*/
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import useFetch from "../hooks/useFetch";
@@ -53,12 +51,12 @@ const Read = () => {
                                 className="go-to-edit-btn"
                                 onClick={handleUpdateClick}>
                                 Edit
-                            </button>  
-                            
+                            </button>
+
                         </div>
                     </div>
                 )}
-              
+
             </div>
             <div>
                 <Footer />
