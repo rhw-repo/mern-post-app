@@ -1,7 +1,8 @@
 /* TODO:
-1. research (& implement or reccomend) input validation, sanitisation
-2. integrate with a feature/chips branch handling tags (allows user to 
-apply 'labels' (tags) to their individual database documents) */
+1. Research (& implement or reccomend) input validation, sanitisation
+2. Complete feature/chip_tags branch (user needs to apply labels to documents)-
+2.1 Create functions to display chips after comma key pressed in tags field
+2.2  Design a select / other component letting user choose pre-existing tags */
 
 import { useState } from "react";
 import { useMaterialsContext } from "../hooks/useMaterialsContext";
@@ -16,7 +17,6 @@ const CreateNew = () => {
 
     const [title, setTitle] = useState("")
     const [body, setBody] = useState("")
-    // EXPERIMENT removed quotes to set empty array
     const [tags, setTags] = useState([])
     const [error, setError] = useState(null)
     const [emptyFields, setEmptyFields] = useState([])
@@ -45,21 +45,19 @@ const CreateNew = () => {
         if (!response.ok) {
             setError(json.error)
             setEmptyFields(json.emptyFields)
-        } 
-        // EXPERIMENT added array to setTags()
+        }
+
         if (response.ok) {
             setTitle("")
             setBody("")
             setTags("[]")
             setError(null)
             setEmptyFields([])
-            // console.log("new material added", json)
-               // Log the data being sent to the backend
-            console.log("Data sent to backend:", {
-             title,
-                body,
-                tags,
-             })
+            /*  console.log("Data sent to backend:", {
+               title,
+                  body,
+                  tags,
+               })*/
             dispatch({ type: "CREATE_MATERIAL", payload: json })
             navigate("/");
         }
@@ -88,9 +86,7 @@ const CreateNew = () => {
                 <input
                     type="text"
                     placeholder="Enter tags separated by commas"
-                    //onChange={(e) => setTags(e.target.value)}
                     onChange={(e) => setTags(e.target.value.split(/,\s*/))}
-                    //value={tags}
                     value={Array.isArray(tags) ? tags.join(", ") : ""}
                     className={emptyFields.includes("tags") ? "error" : ""}
                 />
@@ -100,7 +96,7 @@ const CreateNew = () => {
                     {error && <div className="error">{error}</div>}
                 </div>
             </form>
-           
+
         </>
     )
 }
