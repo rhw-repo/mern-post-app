@@ -8,7 +8,7 @@ const Navbar = () => {
     const { user } = useAuthContext()
     const navigate = useNavigate()
     const handleClick = () => {
-        logout() 
+        logout()
         // navigate to login page on logout from any page
         navigate("/login")
     }
@@ -17,7 +17,7 @@ const Navbar = () => {
         <header>
             <div className="container">
                 <Link to="/">
-                    <h1>CONTENT MANAGEMENT APP</h1>
+                    <h1>ONLINE POST MANAGER</h1>
                 </Link>
                 <nav>
                     {user && (
