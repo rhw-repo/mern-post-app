@@ -1,9 +1,8 @@
 /* TODO 
 1. Complete feature/chip_tags branch (user needs to apply labels to documents)-
-1.1 Add spacing between displayed chip rows, review CSS field labels
-1.2 Realign cancel button to right hand side of save button
-1.3 Design a select / other component letting user choose pre-existing tags 
-2. research (& implement or reccomend) input validation, sanitisation
+1.1 Create functions to display chips after comma key pressed in tags field
+1.2  Design a select / other component letting user choose pre-existing tags 
+2. Research (& implement or reccomend) input validation, sanitisation
 3. Create modal confirming user changes saved*/
 
 import { useState, useEffect } from "react";
@@ -76,14 +75,16 @@ const Edit = ({ material }) => {
               className="edit_tags"
               type="text"
               id="tags"
-              value={tags.join(", ")} // Convert the array back to a string for display
-              onChange={(e) => setTags(e.target.value.split(", ").map((tag) => tag.trim()))}
+              value={tags.join(", ")}
+              onChange={(e) => setTags(
+                e.target.value.split(", ").map((tag) => tag.trim())
+              )}
             />
           </div>
         </div>
         <div className="read_edit_create_btns">
           <CancelButton />
-        <button className="save_btn" type="submit">Save</button>
+          <button className="save_btn" type="submit">Save</button>
         </div>
       </form>
     </div>
