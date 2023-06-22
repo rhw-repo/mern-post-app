@@ -23,6 +23,11 @@ const Edit = ({ material }) => {
     setTags(material.tags)
   }, [material])
 
+  /* EXPERIMENT TO DELETE TAG FROM CURRENT STATE 
+  const handleDeleteTag = (index) => {
+    setTags(tags.filter((_, i) => i !== index));
+  }*/
+
   /* temporary auth to replace with SSO local storage insecure for user */
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -41,6 +46,10 @@ const Edit = ({ material }) => {
     }
   }
 
+  const deleteTag = (index) => {
+    setTags(prevState => prevState.filter((tag, i) => i !== index))
+  }
+
   return (
     <div className="edit">
       <form onSubmit={handleSubmit}>
@@ -54,6 +63,7 @@ const Edit = ({ material }) => {
           />
         </div>
         <div>
+
           <label htmlFor="body">Edit Body:</label>
           <textarea
             id="body"
@@ -63,13 +73,17 @@ const Edit = ({ material }) => {
           ></textarea>
         </div>
         <div>
-          <label htmlFor="tags">Edit Tags:</label>
 
+          <label htmlFor="tags">Edit Tags:</label>
           <div className="input-tags-container">
             {tags.map((tag, index) => (
-              <span key={index} className="input-tags-chip tag-chip">
+              
+                 <span key={index} className="tag-chip">
                 {tag}
+                <button onClick={() => deleteTag(index)}>x</button>
               </span>
+
+             
             ))}
             <input
               className="edit_tags"
