@@ -23,11 +23,6 @@ const Edit = ({ material }) => {
     setTags(material.tags)
   }, [material])
 
-  /* EXPERIMENT TO DELETE TAG FROM CURRENT STATE 
-  const handleDeleteTag = (index) => {
-    setTags(tags.filter((_, i) => i !== index));
-  }*/
-
   /* temporary auth to replace with SSO local storage insecure for user */
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -80,7 +75,7 @@ const Edit = ({ material }) => {
               
                  <span key={index} className="tag-chip">
                 {tag}
-                <button onClick={() => deleteTag(index)}>x</button>
+                <button onClick={() => deleteTag(index)}>X</button>
               </span>
 
              
