@@ -207,7 +207,7 @@ inappropriate for user's filtering needs*/
    min-width: 6em;
  }
 
- /* read, edit, create new pages */
+ /* other pages and tags */
  /* read page */
  .read {
    height: 31.25rem;
@@ -243,6 +243,9 @@ inappropriate for user's filtering needs*/
  }
 
  .tag-chip {
+   display: flex;
+   align-items: center;
+   justify-content: center;
    background-color: #778DA5;
    color: #ffffff;
    font-weight: bold;
@@ -250,10 +253,49 @@ inappropriate for user's filtering needs*/
    padding: 0.625rem;
    margin-right: 0.5rem;
    min-width: 4em;
-   display: inline-flex;
-   justify-content: center;
  }
 
+ .read-tags-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+ }
+ 
+ .tag-chip button {
+  display: flex;
+  padding: 6px;
+  border: none;
+  background-color: unset;
+  cursor: pointer;
+  color: #ffffff;
+  /*font-weight: 800;*/
+ }
+
+ .input-tags-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  border: 1px solid #ccc;
+  padding: 0.25rem;
+  border-radius: 4px;
+}
+
+.input-tags-chip {
+  margin-right: 0.5rem;
+  margin-top: 0.625rem;
+}
+
+.edit_tags {
+  border: none;
+  outline: none;
+  padding: 0.625rem;
+  margin-right: 0.5rem;
+  background-color: transparent;
+  flex-grow: 1;
+  margin: 1rem;
+}
+
+/* buttons specific to read, edit & create new pages */
  .read button,
  .cancel_btn {
    padding: 0.625rem;
@@ -263,7 +305,6 @@ inappropriate for user's filtering needs*/
    width: 6rem;
  }
 
- /* read, edit and create new pages */
  .read_edit_create_btns {
    display: flex;
    justify-content: space-between;
@@ -308,30 +349,6 @@ inappropriate for user's filtering needs*/
 
  input.error {
    border: 0.125rem solid var(--error);
- }
-
- .input-tags-container {
-   display: flex;
-   flex-wrap: wrap;
-   align-items: center;
-   border: 1px solid #ccc;
-   padding: 0.25rem;
-   border-radius: 4px;
- }
-
- .input-tags-chip {
-   margin-right: 0.5rem;
-   margin-top: 0.625rem;
- }
-
- .edit_tags {
-   border: none;
-   outline: none;
-   padding: 0.625rem;
-   margin-right: 0.5rem;
-   background-color: transparent;
-   flex-grow: 1;
-   margin: 1rem;
  }
 
  /* temporary auth forms */
