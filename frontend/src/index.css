@@ -360,7 +360,7 @@ inappropriate for user's filtering needs*/
  form.signup,
  form.login {
    max-width: 30rem;
-   margin: 5rem auto 3rem auto;
+   margin: 2rem auto 2rem auto;
    padding: 3rem;
    background: #fff;
    padding: 0.625rem;

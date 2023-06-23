@@ -47,7 +47,7 @@ const Login = () => {
                 </div>
             </form>
             <div className="switch_form_btns">
-                <h3>No account yet? Create one now:</h3>
+                <h3>Need an account?</h3>
                 <button className="switch_form_btn" onClick={goToSignup}>Signup</button>
             </div>
         </>
