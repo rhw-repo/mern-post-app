@@ -246,6 +246,8 @@ inappropriate for user's filtering needs*/
    display: flex;
    align-items: center;
    justify-content: center;
+   height: 2rem;
+   line-height: 2rem;
    background-color: #778DA5;
    color: #ffffff;
    font-weight: bold;
@@ -261,6 +263,7 @@ inappropriate for user's filtering needs*/
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  flex-wrap: wrap;
  }
  
  .tag-chip button {
@@ -293,7 +296,7 @@ inappropriate for user's filtering needs*/
   padding: 0.625rem;
   margin-right: 0.5rem;
   background-color: transparent;
-  flex-grow: 1;
+  /*flex-grow: 1;*/
   margin: 1rem;
 }
 

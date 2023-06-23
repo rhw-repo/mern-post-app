@@ -1,6 +1,6 @@
 /* TODO 
 1. Complete feature/chip_tags branch (user needs to apply labels to documents)-
-1.1 Create functions to display chips after comma key pressed in tags field
+1.1 Create custom scroll bar for tags container
 1.2  Design a select / other component letting user choose pre-existing tags 
 2. Research (& implement or reccomend) input validation, sanitisation
 3. Create modal confirming user changes saved*/
