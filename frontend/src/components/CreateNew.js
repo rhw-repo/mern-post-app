@@ -1,8 +1,8 @@
 /* TODO:
 1. Research (& implement or reccomend) input validation, sanitisation
 2. Complete feature/chip_tags branch (user needs to apply labels to documents)-
-2.1 Create functions to display chips after comma key pressed in tags field
-2.2  Design a select / other component letting user choose pre-existing tags */
+2.1  Create custom scroll bar for tags container
+2.2 Design a select / other component letting user apply pre-existing tags */
 
 import { useState } from "react";
 import { useMaterialsContext } from "../hooks/useMaterialsContext";
@@ -63,6 +63,10 @@ const CreateNew = () => {
         }
     }
 
+    const deleteTag = (index) => {
+        setTags(prevState => prevState.filter((tag, i) => i !== index))
+    }
+
     return (
         <>
             <form className="create" onSubmit={handleSubmit}>
@@ -76,20 +80,39 @@ const CreateNew = () => {
                 />
                 <label>Paste content here:</label>
                 <textarea
-                    rows={8}
+                    rows={4}
                     cols={40}
                     onChange={(e) => setBody(e.target.value)}
                     value={body}
                     className={emptyFields.includes("body") ? "error" : ""}
                 />
                 <label>Paste or type tags here:</label>
-                <input
-                    type="text"
-                    placeholder="Enter tags separated by commas"
-                    onChange={(e) => setTags(e.target.value.split(/,\s*/))}
-                    value={Array.isArray(tags) ? tags.join(", ") : ""}
-                    className={emptyFields.includes("tags") ? "error" : ""}
-                />
+
+                <div className="input-tags-container">
+                    {tags.map((tag, index) => (
+                        <span key={index} className="tag-chip">
+                            {tag}
+                            <button onClick={() => deleteTag(index)}>X</button>
+                        </span>
+                    ))}
+                    <input
+                        type="text"
+                        placeholder="Enter tags separated by commas"
+                        onChange={(e) => setTags(e.target.value.split(/,\s*/))}
+                        value={Array.isArray(tags) ? tags.join(", ") : ""}
+                        className={`${emptyFields.includes("tags") ? "error" : ""}`}
+                    />
+                    <input
+                        className="edit_tags tag-chip"
+                        type="text"
+                        id="tags"
+                        value={tags.join(", ")}
+                        onChange={(e) => setTags(
+                            e.target.value.split(", ").map((tag) => tag.trim())
+                        )}
+                    />
+                </div>
+
                 <div className="read_edit_create_btns">
                     <CancelButton />
                     <button className="save_btn">Save</button>

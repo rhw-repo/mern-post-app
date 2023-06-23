@@ -72,7 +72,6 @@ const Edit = ({ material }) => {
           <label htmlFor="tags">Edit Tags:</label>
           <div className="input-tags-container">
             {tags.map((tag, index) => (
-              
                  <span key={index} className="tag-chip">
                 {tag}
                 <button onClick={() => deleteTag(index)}>X</button>
