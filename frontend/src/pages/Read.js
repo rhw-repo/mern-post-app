@@ -5,7 +5,6 @@ import useFetch from "../hooks/useFetch";
 import Edit from "./Edit";
 import Footer from "../components/Footer";
 import CancelButton from "../components/CancelButton";
-import TempSelect from "../components/TempSelect";
 
 const Read = () => {
     const { _id } = useParams();
@@ -24,9 +23,8 @@ const Read = () => {
 
     return (
         <>
-        <div>
-        <TempSelect />
-        </div>
+            <div>
+            </div>
             <div className="read">
                 {isEditing ? (
                     <Edit material={material} onUpdateComplete={handleUpdateComplete} />

@@ -35,6 +35,8 @@ const Home = () => {
   // Array of objects to pass to table (Tanstack Table v7) 
   const data = materials
   // console.log(data)
+const allTags = materials.map(material => material.tags)
+console.log(allTags)
 
   if (!data) {
     return

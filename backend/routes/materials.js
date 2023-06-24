@@ -7,8 +7,7 @@ const {
   getMaterials,
   getMaterial,
   deleteMaterial,
-  updateMaterial,
-  getAllTags
+  updateMaterial
 } = require("../controllers/materialController")
 
 const requireAuth = require("../middleware/requireAuth")
@@ -34,9 +33,6 @@ router.delete('/:id', deleteMaterial)
 
 // UPDATE a material
 router.patch('/:id', updateMaterial)
-
-// GET all tags
-router.get('/tags', getAllTags)
 
 //exports the router
 module.exports = router

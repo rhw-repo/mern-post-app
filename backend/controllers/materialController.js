@@ -100,17 +100,6 @@ const updateMaterial = async (req, res) => {
     res.status(200).json(material)
 
 }
-//experiment to try to fetch all tags 
-const getAllTags = async (req, res) => {
-  try {
-    const materials = await Material.find({}, { tags: 1, _id: 0 })
-    const tags = materials.flatMap((material) => material.tags)
-    const uniqueTags = [...new Set(tags)]
-    res.status(200).json(uniqueTags)
-  } catch (error) {
-    res.status(500).json({ message: 'Error fetching tags' })
-  }
-}
 
 module.exports = {
     getMaterials,
@@ -118,5 +107,4 @@ module.exports = {
     createMaterial,
     deleteMaterial,
     updateMaterial,
-    getAllTags
 }

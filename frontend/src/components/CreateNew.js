@@ -10,7 +10,7 @@ import { useAuthContext } from "../hooks/useAuthContext";
 import { useNavigate } from "react-router-dom";
 import CancelButton from "./CancelButton";
 
-const CreateNew = () => {
+const CreateNew = ({ allTags }) => {
     const { dispatch } = useMaterialsContext()
     const { user } = useAuthContext()
     const navigate = useNavigate()
@@ -67,8 +67,12 @@ const CreateNew = () => {
         setTags(prevState => prevState.filter((tag, i) => i !== index))
     }
 
+    console.log(allTags)
+    
     return (
         <>
+        <h1>{allTags}</h1>
+        <h1>dummy text</h1>
             <form className="create" onSubmit={handleSubmit}>
                 <h3>Add A New Piece Of Content Here:</h3>
                 <label>Title:</label>
