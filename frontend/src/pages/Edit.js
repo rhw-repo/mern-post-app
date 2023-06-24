@@ -45,6 +45,8 @@ const Edit = ({ material }) => {
     setTags(prevState => prevState.filter((tag, i) => i !== index))
   }
 
+ // const [existingTags, setExistingTags] = useState([]);
+
   return (
     <div className="edit">
       <form onSubmit={handleSubmit}>
