@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { useAuthContext } from './hooks/useAuthContext';
+import { AllTagsProvider } from './context/AllTagsContext';
 
 // pages and components
 import Home from "./pages/Home";
@@ -16,6 +17,7 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
+      <AllTagsProvider>
         <Navbar />
         <div className='pages'>
           <Routes>
@@ -42,6 +44,7 @@ function App() {
           </Routes>
         </div>
         <Footer />
+        </AllTagsProvider>
       </BrowserRouter>
     </div>
   );

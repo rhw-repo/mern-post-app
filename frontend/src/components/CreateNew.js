@@ -4,13 +4,14 @@
 2.1  Create custom scroll bar for tags container
 2.2 Design a select / other component letting user apply pre-existing tags */
 
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useMaterialsContext } from "../hooks/useMaterialsContext";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { useNavigate } from "react-router-dom";
 import CancelButton from "./CancelButton";
+import { AllTagsContext} from "../context/AllTagsContext";
 
-const CreateNew = ({ allTags }) => {
+const CreateNew = () => {
     const { dispatch } = useMaterialsContext()
     const { user } = useAuthContext()
     const navigate = useNavigate()
@@ -20,6 +21,9 @@ const CreateNew = ({ allTags }) => {
     const [tags, setTags] = useState([])
     const [error, setError] = useState(null)
     const [emptyFields, setEmptyFields] = useState([])
+    const { allTags } = useContext(AllTagsContext)
+
+    console.log(allTags)
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -67,12 +71,11 @@ const CreateNew = ({ allTags }) => {
         setTags(prevState => prevState.filter((tag, i) => i !== index))
     }
 
-    console.log(allTags)
-    
+   console.log("All tags from DB:", {allTags})
+
     return (
         <>
-        <h1>{allTags}</h1>
-        <h1>dummy text</h1>
+        <h6>{allTags}</h6>
             <form className="create" onSubmit={handleSubmit}>
                 <h3>Add A New Piece Of Content Here:</h3>
                 <label>Title:</label>

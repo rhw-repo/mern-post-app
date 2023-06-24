@@ -2,9 +2,10 @@
 add chip component for data.tags property (allow user to tag table 'entries') */
 
 // hooks
-import { useEffect } from "react";
+import { useEffect, useContext } from "react";
 import { useMaterialsContext } from "../hooks/useMaterialsContext";
 import { useAuthContext } from "../hooks/useAuthContext";
+import { AllTagsContext } from "../context/AllTagsContext";
 
 // components
 import Table from "../components/Table";
@@ -12,6 +13,7 @@ import Table from "../components/Table";
 const Home = () => {
   const { materials, dispatch } = useMaterialsContext()
   const { user } = useAuthContext()
+  const { setAllTags } = useContext(AllTagsContext)
 
   // see line 2 package.json in frontend - for dev phase only, for build, point every req to endpoint 
   useEffect(() => {
@@ -23,6 +25,9 @@ const Home = () => {
 
       if (response.ok) {
         dispatch({ type: "SET_MATERIALS", payload: json })
+        // SUCCESSFUL EXPERIMENT TO DESTRUCTURE TAGS FOR USE IN ALLTAGSCONTEXT
+        const tags = json.map((material) => material.tags.flat())
+        setAllTags(tags)
       }
     }
 
@@ -30,13 +35,11 @@ const Home = () => {
       fetchMaterials()
     }
 
-  }, [dispatch, user])
+  }, [dispatch, user, setAllTags])
 
   // Array of objects to pass to table (Tanstack Table v7) 
   const data = materials
   // console.log(data)
-const allTags = materials.map(material => material.tags)
-console.log(allTags)
 
   if (!data) {
     return
