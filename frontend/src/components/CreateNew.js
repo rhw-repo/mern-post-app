@@ -10,6 +10,7 @@ import { useAuthContext } from "../hooks/useAuthContext";
 import { useNavigate } from "react-router-dom";
 import CancelButton from "./CancelButton";
 import { AllTagsContext} from "../context/AllTagsContext";
+import TempSelect from "./TempSelect";
 
 const CreateNew = () => {
     const { dispatch } = useMaterialsContext()
@@ -22,6 +23,7 @@ const CreateNew = () => {
     const [error, setError] = useState(null)
     const [emptyFields, setEmptyFields] = useState([])
     const { allTags } = useContext(AllTagsContext)
+    const [selectedDatabaseTags, setSelectedDatabaseTags] = useState([])
 
     console.log(allTags)
 
@@ -33,7 +35,7 @@ const CreateNew = () => {
             return
         }
 
-        const material = { title, body, tags }
+        const material = { title, body, tags: [...tags, ...selectedDatabaseTags]}
 
         const response = await fetch("/api/materials", {
             method: "POST",
@@ -73,6 +75,10 @@ const CreateNew = () => {
 
    console.log("All tags from DB:", {allTags})
 
+   const updateTags = (newTags) => {
+    setTags(newTags)
+  }
+
     return (
         <>
         <h6>{allTags}</h6>
@@ -95,6 +101,7 @@ const CreateNew = () => {
                 />
                 <label>Paste or type tags here:</label>
 
+<div className="tags_section_container">
                 <div className="input-tags-container">
                     {tags.map((tag, index) => (
                         <span key={index} className="tag-chip">
@@ -118,6 +125,10 @@ const CreateNew = () => {
                             e.target.value.split(", ").map((tag) => tag.trim())
                         )}
                     />
+                </div>
+                <div className="existing_tags_container">
+                  <TempSelect onTagsChange={setSelectedDatabaseTags} />
+                </div>
                 </div>
 
                 <div className="read_edit_create_btns">

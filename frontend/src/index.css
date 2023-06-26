@@ -274,6 +274,13 @@ inappropriate for user's filtering needs*/
   /*font-weight: 800;*/
  }
 
+ .tags_section_container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: pink;
+ }
+
  .input-tags-container {
   display: flex;
   flex-wrap: wrap;

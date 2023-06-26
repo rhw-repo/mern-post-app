@@ -1,41 +1,31 @@
-// rubber duck excercise to make a select for all tags from db
-import { useState, useEffect } from "react";
-import { useMaterialsContext } from "../hooks/useMaterialsContext";
-import { useAuthContext } from "../hooks/useAuthContext";
+import { useContext, useState } from "react";
+import { AllTagsContext } from "../context/AllTagsContext";
 
+// TempSelect.js
+function TempSelect({ onTagsChange }) {
+    const { allTags } = useContext(AllTagsContext)
+    const [selectedTags, setSelectedTags] = useState([])
 
-const TempSelect = () => {
-
-  const { materials, dispatch } = useMaterialsContext()
-  const { user } = useAuthContext()
-
-    const [existingTags, setExistingTags] = useState([])
-
-    useEffect(() => {
-        fetchTags();
-    }, [])
-
-    const fetchTags = async () => {
-        try {
-          const response = await fetch('/api/materials/tags')
-          if (response.ok) {
-            const fetchedTags = await response.json()
-            console.log('Fetched tags:', fetchedTags)
-            setExistingTags(fetchedTags)
-          } else {
-            throw new Error('Error fetching tags')
-          }
-        } catch (error) {
-          console.error(error);
+    const handleChange = (e) => {
+        const selectedOptions = Array.from(e.target.selectedOptions, (option) => option.value);
+        setSelectedTags(selectedOptions)
+        if (onTagsChange) {
+            onTagsChange(selectedOptions)
         }
-      }
+    }
 
-return (
-  <>
-  <h1>Dummy text</h1>
-    <h1>{existingTags}</h1>
-    </>
-)
+    return (
+        <label>
+            Pick tags:
+            <select multiple={true} value={selectedTags} onChange={handleChange}>
+                {allTags.map((tag, index) => (
+                    <option key={index} value={tag}>
+                        {tag}
+                    </option>
+                ))}
+            </select>
+        </label>
+    )
 }
 
-export default TempSelect;
+export default TempSelect
