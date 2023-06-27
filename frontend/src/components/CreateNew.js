@@ -4,12 +4,12 @@
 2.1  Create custom scroll bar for tags container
 2.2 Design a select / other component letting user apply pre-existing tags */
 
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { useMaterialsContext } from "../hooks/useMaterialsContext";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { useNavigate } from "react-router-dom";
 import CancelButton from "./CancelButton";
-import { AllTagsContext} from "../context/AllTagsContext";
+import { AllTagsContext } from "../context/AllTagsContext";
 import TempSelect from "./TempSelect";
 
 const CreateNew = () => {
@@ -35,7 +35,7 @@ const CreateNew = () => {
             return
         }
 
-        const material = { title, body, tags: [...tags, ...selectedDatabaseTags]}
+        const material = { title, body, tags: [...tags, ...selectedDatabaseTags] }
 
         const response = await fetch("/api/materials", {
             method: "POST",
@@ -73,15 +73,24 @@ const CreateNew = () => {
         setTags(prevState => prevState.filter((tag, i) => i !== index))
     }
 
-   console.log("All tags from DB:", {allTags})
+    console.log("All tags from DB:", { allTags })
 
-   const updateTags = (newTags) => {
-    setTags(newTags)
-  }
+    useEffect(() => {
+        if (allTags) {
+          setIsLoading(false)
+        }
+      }, [allTags])
+      
 
+    const [isLoading, setIsLoading] = useState(true)
+
+    if (isLoading) {
+        return <div>Loading tags...</div>
+      }
+      
     return (
         <>
-        <h6>{allTags}</h6>
+            <h6>{allTags}</h6>
             <form className="create" onSubmit={handleSubmit}>
                 <h3>Add A New Piece Of Content Here:</h3>
                 <label>Title:</label>
@@ -101,34 +110,34 @@ const CreateNew = () => {
                 />
                 <label>Paste or type tags here:</label>
 
-<div className="tags_section_container">
-                <div className="input-tags-container">
-                    {tags.map((tag, index) => (
-                        <span key={index} className="tag-chip">
-                            {tag}
-                            <button onClick={() => deleteTag(index)}>X</button>
-                        </span>
-                    ))}
-                    <input
-                        type="text"
-                        placeholder="Enter tags separated by commas"
-                        onChange={(e) => setTags(e.target.value.split(/,\s*/))}
-                        value={Array.isArray(tags) ? tags.join(", ") : ""}
-                        className={`${emptyFields.includes("tags") ? "error" : ""}`}
-                    />
-                    <input
-                        className="edit_tags tag-chip"
-                        type="text"
-                        id="tags"
-                        value={tags.join(", ")}
-                        onChange={(e) => setTags(
-                            e.target.value.split(", ").map((tag) => tag.trim())
-                        )}
-                    />
-                </div>
-                <div className="existing_tags_container">
-                  <TempSelect onTagsChange={setSelectedDatabaseTags} />
-                </div>
+                <div className="tags_section_container">
+                    <div className="input-tags-container">
+                        {tags.map((tag, index) => (
+                            <span key={index} className="tag-chip">
+                                {tag}
+                                <button onClick={() => deleteTag(index)}>X</button>
+                            </span>
+                        ))}
+                        <input
+                            type="text"
+                            placeholder="Enter tags separated by commas"
+                            onChange={(e) => setTags(e.target.value.split(/,\s*/))}
+                            value={Array.isArray(tags) ? tags.join(", ") : ""}
+                            className={`${emptyFields.includes("tags") ? "error" : ""}`}
+                        />
+                        <input
+                            className="edit_tags tag-chip"
+                            type="text"
+                            id="tags"
+                            value={tags.join(", ")}
+                            onChange={(e) => setTags(
+                                e.target.value.split(", ").map((tag) => tag.trim())
+                            )}
+                        />
+                    </div>
+                    <div className="existing_tags_container">
+                        <TempSelect onTagsChange={setSelectedDatabaseTags} />
+                    </div>
                 </div>
 
                 <div className="read_edit_create_btns">
