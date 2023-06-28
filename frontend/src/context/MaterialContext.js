@@ -5,6 +5,7 @@ export const MaterialsContext = createContext()
 // keeps local state in sync with database 
 
 export const materialsReducer = (state, action) => {
+
     switch (action.type) {
         case "SET_MATERIALS":
             return {

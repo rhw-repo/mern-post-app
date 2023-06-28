@@ -2,7 +2,7 @@
 add chip component for data.tags property (allow user to tag table 'entries') */
 
 // hooks
-import { useEffect, useContext, useState } from "react";
+import { useEffect, useContext } from "react";
 import { useMaterialsContext } from "../hooks/useMaterialsContext";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { AllTagsContext } from "../context/AllTagsContext";
@@ -14,9 +14,6 @@ const Home = () => {
   const { materials, dispatch } = useMaterialsContext()
   const { user } = useAuthContext()
   const { setAllTags } = useContext(AllTagsContext)
-  // experiment to debug tags select
-  const [isLoading, setIsLoading] = useState(true)
-
 
   // see line 2 package.json in frontend - for dev phase only, for build, point every req to endpoint 
   useEffect(() => {
@@ -31,14 +28,11 @@ const Home = () => {
         // SUCCESSFUL EXPERIMENT TO DESTRUCTURE TAGS FOR USE IN ALLTAGSCONTEXT
         const tags = json.map((material) => material.tags.flat())
         setAllTags(tags)
-        setIsLoading(false)
       }
     }
 
     if (user) {
       fetchMaterials()
-    } else {
-      setIsLoading(false)
     }
 
   }, [dispatch, user, setAllTags])
@@ -51,9 +45,6 @@ const Home = () => {
     return
   }
 
-  if (isLoading) {
-  return <div>Spinning up your posts...</div> 
-  }
 
   return (
     <>
