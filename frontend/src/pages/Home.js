@@ -39,7 +39,7 @@ const Home = () => {
 
   // Array of objects to pass to table (Tanstack Table v7) 
   const data = materials
-  // console.log(data)
+  console.log(data)
 
   if (!data) {
     return

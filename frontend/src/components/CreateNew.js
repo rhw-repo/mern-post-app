@@ -120,7 +120,8 @@ const CreateNew = () => {
                         />
                     </div>
                     <div className="existing_tags_container">
-                    <AllTagsSelect onTagsChange={setSelectedDatabaseTags} />
+                 <AllTagsSelect onTagsChange={setSelectedDatabaseTags} />    
+                 { /*<AllTagsSelect onTagsChange={setTags} />*/ }
                     </div>
 
                 </div>
