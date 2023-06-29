@@ -18,6 +18,7 @@ const Home = () => {
   // see line 2 package.json in frontend - for dev phase only, for build, point every req to endpoint 
   useEffect(() => {
     const fetchMaterials = async () => {
+      console.log('fetchMaterials called')
       const response = await fetch('/api/materials', {
         headers: { "Authorization": `Bearer ${user.token}` },
       })

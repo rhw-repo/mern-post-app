@@ -6,10 +6,11 @@ function AllTagsSelect({ onTagsChange }) {
   const [selectedTags, setSelectedTags] = useState([])
 
   const handleChange = (e) => {
-    const options = Array.from(e.target.selectedOptions, (option) => option.value)
+    const options = Array.from(e.target.selectedOptions, (option) => option.value);
     setSelectedTags(options);
     onTagsChange(options);
-  };
+  }
+  
 
   useEffect(() => {
     if (allTags) {
@@ -29,10 +30,12 @@ function AllTagsSelect({ onTagsChange }) {
       <div className="select-container">
         {flattenedTags.length > 0 ? (
          <select className="all-tags-select" multiple={true} value={selectedTags} onChange={handleChange}>
-         {flattenedTags.map((tag, index) => (
-           <option key={index} value={tag}>
+         
+         {flattenedTags.map((tag) => (
+           <option key={tag} value={tag}>
              {tag}
            </option>
+           
          ))}
        </select>
        

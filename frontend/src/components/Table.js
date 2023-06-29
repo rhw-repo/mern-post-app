@@ -11,7 +11,7 @@ import DateRangeFilter, { filterByDateRange } from './DateRangeFilter';
 import ModalDateRangeFilter from './ModalDateRangeFilter';
 import 'react-date-range/dist/styles.css';
 import 'react-date-range/dist/theme/default.css';
-import { useMemo, useState } from 'react';
+import { useMemo, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuthContext } from '../hooks/useAuthContext';
 import { useMaterialsContext } from '../hooks/useMaterialsContext';
@@ -30,6 +30,11 @@ function Table({ data }) {
         }),
         []
     )
+
+    useEffect(() => {
+        console.log('Component updated')
+      }, [])
+      
 
     // useMemo prevents unnecessary recalculations (better performance)
     const columns = useMemo(
