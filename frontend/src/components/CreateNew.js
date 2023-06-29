@@ -59,16 +59,19 @@ const CreateNew = () => {
             setTags("[]")
             setError(null)
             setEmptyFields([])
-            console.log("Data sent to backend:", {
+            
+            /*console.log("Data sent to backend:", {
                title,
                   body,
                   tags,
-               })
+               })*/
             dispatch({ type: "CREATE_MATERIAL", payload: json })
+            setIsNewMaterial(true)
             navigate("/");
         }
     }
 
+    
     const deleteTag = (index) => {
         setTags(prevState => prevState.filter((tag, i) => i !== index))
     }
