@@ -1,8 +1,7 @@
 import { useContext, useState } from "react";
 import { AllTagsContext } from "../context/AllTagsContext";
 
-// TempSelect.js
-function TempSelect({ onTagsChange }) {
+function AllTagsSelect({ onTagsChange }) {
     const { allTags } = useContext(AllTagsContext)
     const [selectedTags, setSelectedTags] = useState([])
 
@@ -18,23 +17,26 @@ function TempSelect({ onTagsChange }) {
 
     const flattenedTags = allTags.flat()
 
-      // Check if allTags is empty
-  if (allTags.length === 0) {
-    return <div>Loading...</div>;
-  }
+    // Checks if allTags is empty
+    if (allTags.length === 0) {
+        return <div>Loading...</div>;
+    }
 
     return (
         <label>
             Click on tags:
-            <select multiple={true} value={selectedTags} onChange={handleChange}>
-                {flattenedTags.map((tag, index) => (
-                    <option key={index} value={tag}>
-                        {tag}
-                    </option>
-                ))}
-            </select>
+            <div className="select-container">
+                <select className="all-tags-select"
+                    multiple={true} value={selectedTags} onChange={handleChange}>
+                    {flattenedTags.map((tag, index) => (
+                        <option key={index} value={tag}>
+                            {tag}
+                        </option>
+                    ))}
+                </select>
+            </div>
         </label>
     )
 }
 
-export default TempSelect
+export default AllTagsSelect

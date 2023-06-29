@@ -278,7 +278,17 @@ inappropriate for user's filtering needs*/
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: pink;
+ }
+
+ .select-container {
+   border-radius: 0.625rem;
+   overflow: hidden;
+ }
+
+ .all-tags-select {
+  height: 8rem;
+  /*overflow-y: auto;*/
+  border: 1px solid #ffffff;
  }
 
  .input-tags-container {

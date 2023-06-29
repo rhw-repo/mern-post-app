@@ -1,8 +1,8 @@
 /* TODO:
 1. Research (& implement or reccomend) input validation, sanitisation
 2. Complete feature/chip_tags branch (user needs to apply labels to documents)-
-2.1  Create custom scroll bar for tags container
-2.2 Design a select / other component letting user apply pre-existing tags */
+2.1  Create custom scroll bar for input-tags-container section
+2.2 Complete select letting user apply pre-existing tags */
 
 import { useContext, useState } from "react";
 import { useMaterialsContext } from "../hooks/useMaterialsContext";
@@ -10,8 +10,7 @@ import { useAuthContext } from "../hooks/useAuthContext";
 import { useNavigate } from "react-router-dom";
 import CancelButton from "./CancelButton";
 import { AllTagsContext } from "../context/AllTagsContext";
-//import TempSelect from "./TempSelect";
-
+import AllTagsSelect from "./AllTagsSelect";
 
 const CreateNew = () => {
     const { dispatch } = useMaterialsContext()
@@ -24,13 +23,9 @@ const CreateNew = () => {
     const [error, setError] = useState(null)
     const [emptyFields, setEmptyFields] = useState([])
     const { allTags } = useContext(AllTagsContext)
-    const [selectedTags, setSelectedTags] = useState([])
+    const [selectedDatabaseTags, setSelectedDatabaseTags] = useState([])
 
-
-    // tracks visibility of checkbox
-    const [checkboxVisible, setCheckboxVisible] = useState(false)
-
-    console.log(allTags)
+    //console.log(allTags)
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -40,9 +35,7 @@ const CreateNew = () => {
             return
         }
 
-        //const material = { title, body, tags: [...tags, ...selectedDatabaseTags] }
-      const material = { title, body, tags: [...selectedTags] };
-
+        const material = { title, body, tags: [...tags, ...selectedDatabaseTags] }
 
         const response = await fetch("/api/materials", {
             method: "POST",
@@ -66,11 +59,11 @@ const CreateNew = () => {
             setTags("[]")
             setError(null)
             setEmptyFields([])
-            /*  console.log("Data sent to backend:", {
+            console.log("Data sent to backend:", {
                title,
                   body,
                   tags,
-               })*/
+               })
             dispatch({ type: "CREATE_MATERIAL", payload: json })
             navigate("/");
         }
@@ -80,35 +73,8 @@ const CreateNew = () => {
         setTags(prevState => prevState.filter((tag, i) => i !== index))
     }
 
-    console.log("All tags from DB:", { allTags })
-
-    const handleCheckboxChange = (e) => {
-        const tag = e.target.name;
-        if (e.target.checked) {
-            setSelectedTags(prevState => [...prevState, tag])
-        } else {
-            setSelectedTags(prevState => prevState.filter(t => t !== tag))
-        }
-    }
-
-
-
-    /* useEffect(() => {
-         if (allTags) {
-           setIsLoading(false)
-         }
-       }, [allTags])
-       
- 
-     const [isLoading, setIsLoading] = useState(true)
- 
-     if (isLoading) {
-         return <div>Loading tags...</div>
-       }*/
-
     return (
         <>
-            <h6>{allTags}</h6>
             <form className="create" onSubmit={handleSubmit}>
                 <h3>Add A New Piece Of Content Here:</h3>
                 <label>Title:</label>
@@ -120,7 +86,7 @@ const CreateNew = () => {
                 />
                 <label>Paste content here:</label>
                 <textarea
-                    rows={4}
+                    rows={3}
                     cols={40}
                     onChange={(e) => setBody(e.target.value)}
                     value={body}
@@ -154,26 +120,7 @@ const CreateNew = () => {
                         />
                     </div>
                     <div className="existing_tags_container">
-                        <div>
-                            <button onClick={() => setCheckboxVisible(!checkboxVisible)}>
-                                Toggle Checkbox
-                            </button>
-                            {checkboxVisible && allTags.map((tag, index) => (
-                                <div key={index}>
-                                    <label>
-                                        <input
-                                            type="checkbox"
-                                            name={tag}
-                                            onChange={handleCheckboxChange}
-                                        />
-                                        {tag}
-                                    </label>
-                                </div>
-                            ))}
-                            <button onClick={() => setCheckboxVisible(false)}>
-                                Hide Checkbox
-                            </button>
-                        </div>
+                    <AllTagsSelect onTagsChange={setSelectedDatabaseTags} />
                     </div>
 
                 </div>
@@ -184,7 +131,7 @@ const CreateNew = () => {
                     {error && <div className="error">{error}</div>}
                 </div>
             </form>
-
+            <h6>{allTags}</h6>
         </>
     )
 }
