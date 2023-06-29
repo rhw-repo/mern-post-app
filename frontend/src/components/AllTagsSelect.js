@@ -7,12 +7,42 @@ function AllTagsSelect({ onTagsChange }) {
 
     console.log("allTags:", allTags)
 
-    const handleChange = (e) => {
+    /*const handleChange = (e) => {
         const selectedOptions = Array.from(e.target.selectedOptions, (option) => option.value);
         setSelectedTags(selectedOptions)
         if (onTagsChange) {
             onTagsChange(selectedOptions)
         }
+    }*/
+    const handleChange = (e) => {
+        const selectedOptions = Array.from(e.target.selectedOptions, (option) => option.value)
+
+        setSelectedTags(prevSelectedTags => {
+            const newSelectedTags = [...prevSelectedTags]
+
+            // Add newly selected options.
+            for (const option of selectedOptions) {
+                if (!newSelectedTags.includes(option)) {
+                    newSelectedTags.push(option)
+                }
+
+                console.log(newSelectedTags);
+                setSelectedTags(newSelectedTags);
+            }
+
+            // Remove deselected options.
+            for (const tag of newSelectedTags) {
+                if (!selectedOptions.includes(tag)) {
+                    newSelectedTags.splice(newSelectedTags.indexOf(tag), 1)
+                }
+            }
+
+            if (onTagsChange) {
+                onTagsChange(newSelectedTags)
+            }
+
+            return newSelectedTags
+        })
     }
 
     const flattenedTags = allTags.flat()
