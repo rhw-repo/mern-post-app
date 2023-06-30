@@ -72,6 +72,7 @@ function Table({ data }) {
                 Header: "Delete?",
                 accessor: "_id",
                 disableSortBy: true,
+                disableFilters: true,
                 // TODO refactor into component, pass in, avoid code smell
                 Cell: ({ value }) => <DeleteButton _id={value} />,
             }
