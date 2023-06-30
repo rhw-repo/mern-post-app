@@ -1,11 +1,12 @@
 /* TODO 
-add chip component for data.tags property (allow user to tag table 'entries') */
+1. Debug AllTagsSelect feature imported in CreateNew.js */
 
 // hooks
-import { useEffect, useContext, useState } from "react";
+import { useEffect, useContext } from "react";
 import { useMaterialsContext } from "../hooks/useMaterialsContext";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { AllTagsContext } from "../context/AllTagsContext";
+import { IsNewMaterialContext } from "../context/IsNewMaterialContext";
 
 // components
 import Table from "../components/Table";
@@ -15,10 +16,9 @@ const Home = () => {
   const { user } = useAuthContext()
   const { setAllTags } = useContext(AllTagsContext)
   // EXPERIMENT TO DEBUG RE-RENDER ON SUBMIT CREATENEW.JS
-  const [isNewMaterial, setIsNewMaterial] = useState(false)
+  const { isNewMaterial, setIsNewMaterial } = useContext(IsNewMaterialContext)
 
-
-  // see line 2 package.json in frontend - for dev phase only, for build, point every req to endpoint 
+  // see ln 2 frontend package.json - for dev phase only, for build, point every req to endpoint 
   useEffect(() => {
     const fetchMaterials = async () => {
       console.log('fetchMaterials called')
@@ -40,7 +40,7 @@ const Home = () => {
       setIsNewMaterial(false)
     }
 
-  }, [dispatch, user, setAllTags, isNewMaterial])
+  }, [dispatch, user, setAllTags, isNewMaterial, setIsNewMaterial])
 
   // Array of objects to pass to table (Tanstack Table v7) 
   const data = materials
@@ -49,7 +49,6 @@ const Home = () => {
   if (!data) {
     return
   }
-
 
   return (
     <>

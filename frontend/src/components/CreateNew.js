@@ -2,7 +2,7 @@
 1. Research (& implement or reccomend) input validation, sanitisation
 2. Complete feature/chip_tags branch (user needs to apply labels to documents)-
 2.1  Create custom scroll bar for input-tags-container section
-2.2 Complete select letting user apply pre-existing tags */
+2.2 Debug select to reload on refresh (handles selecting pre-existing tags) */
 
 import { useContext, useState } from "react";
 import { useMaterialsContext } from "../hooks/useMaterialsContext";
@@ -10,6 +10,7 @@ import { useAuthContext } from "../hooks/useAuthContext";
 import { useNavigate } from "react-router-dom";
 import CancelButton from "./CancelButton";
 import { AllTagsContext } from "../context/AllTagsContext";
+import { IsNewMaterialContext } from "../context/IsNewMaterialContext";
 import AllTagsSelect from "./AllTagsSelect";
 
 const CreateNew = () => {
@@ -24,6 +25,7 @@ const CreateNew = () => {
     const [emptyFields, setEmptyFields] = useState([])
     const { allTags } = useContext(AllTagsContext)
     const [selectedDatabaseTags, setSelectedDatabaseTags] = useState([])
+    const { setIsNewMaterial } = useContext(IsNewMaterialContext)
 
     //console.log(allTags)
 
@@ -59,7 +61,7 @@ const CreateNew = () => {
             setTags("[]")
             setError(null)
             setEmptyFields([])
-            
+
             /*console.log("Data sent to backend:", {
                title,
                   body,
@@ -71,10 +73,10 @@ const CreateNew = () => {
         }
     }
 
-    
     const deleteTag = (index) => {
         setTags(prevState => prevState.filter((tag, i) => i !== index))
     }
+
 
     return (
         <>
@@ -123,8 +125,7 @@ const CreateNew = () => {
                         />
                     </div>
                     <div className="existing_tags_container">
-                 <AllTagsSelect onTagsChange={setSelectedDatabaseTags} />    
-                 { /*<AllTagsSelect onTagsChange={setTags} />*/ }
+                        <AllTagsSelect onTagsChange={setSelectedDatabaseTags} />
                     </div>
 
                 </div>
