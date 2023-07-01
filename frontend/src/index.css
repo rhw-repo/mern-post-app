@@ -1,5 +1,6 @@
  /* TODO  
- 1. brief: deskop/ laptop/ tablet version,meet client re add media queries */
+ 1. Review all-tags-select for redundancy on complete select 
+ 2. brief: deskop/ laptop/ tablet version,meet client re add media queries */
 
  @import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@400;500;600;700&family=Open+Sans:wght@300;400&display=swap');
 
@@ -285,11 +286,19 @@ inappropriate for user's filtering needs*/
    overflow: hidden;
  }
 
+
  .all-tags-select {
   height: 8rem;
   /*overflow-y: auto;*/
   border: 1px solid #ffffff;
+  background-color: palevioletred;
  }
+
+ .all-tags-select:focus {
+  outline: none;
+  border: 1px solid #ffffff;
+ }
+ 
 
  .input-tags-container {
   display: flex;
