@@ -283,7 +283,7 @@ inappropriate for user's filtering needs*/
 
  .select-container {
    border-radius: 0.625rem;
-   overflow: hidden;
+   /*overflow: hidden;*/
  }
 
 
