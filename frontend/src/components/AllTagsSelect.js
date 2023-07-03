@@ -9,9 +9,10 @@ function AllTagsSelect({ onTagsChange }) {
 
   useEffect(() => {
     if (allTags) {
+      const flattenedTags = allTags.flat(); // Flatten the nested array structure
       setSelectedTags((prevSelectedTags) => {
         const newSelectedTags = prevSelectedTags.filter((tag) =>
-          allTags.includes(tag)
+          flattenedTags.includes(tag)
         );
         return newSelectedTags;
       });
@@ -34,7 +35,7 @@ function AllTagsSelect({ onTagsChange }) {
         ) : allTags ? (
           <Select
             isMulti
-            options={allTags.map((tag) => ({
+            options={allTags.flat().map((tag) => ({
               value: tag,
               label: tag,
             }))}
