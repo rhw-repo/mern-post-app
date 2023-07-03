@@ -37,6 +37,13 @@ const CreateNew = () => {
             return
         }
 
+          // Combine the tags and selectedDatabaseTags arrays
+  const combinedTags = [...tags, ...selectedDatabaseTags]
+
+  // Remove duplicate tags
+  const uniqueTagsSet = new Set(combinedTags);
+  const uniqueTags = Array.from(uniqueTagsSet);
+
         const material = { title, body, tags: [...tags, ...selectedDatabaseTags] }
 
         const response = await fetch("/api/materials", {

@@ -13,18 +13,18 @@ function AllTagsSelect({ onTagsChange }) {
       setSelectedTags((prevSelectedTags) => {
         const newSelectedTags = prevSelectedTags.filter((tag) =>
           flattenedTags.includes(tag)
-        );
-        return newSelectedTags;
-      });
-      setLoading(false);
+        )
+        return newSelectedTags
+      })
+      setLoading(false)
     }
-  }, [allTags]);
+  }, [allTags])
 
   const handleChange = (selectedOptions) => {
-    const options = selectedOptions ? selectedOptions.map((option) => option.value) : [];
-    setSelectedTags(options);
-    onTagsChange(options);
-  };
+    const options = selectedOptions ? selectedOptions.map((option) => option.value) : []
+    setSelectedTags(options)
+    onTagsChange(options)
+  }
 
   return (
     <label>
@@ -47,7 +47,7 @@ function AllTagsSelect({ onTagsChange }) {
         )}
       </div>
     </label>
-  );
+  )
 }
 
 export default AllTagsSelect;
