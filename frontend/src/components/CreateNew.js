@@ -1,9 +1,3 @@
-/* TODO:
-1. Research (& implement or reccomend) input validation, sanitisation
-2. Complete feature/chip_tags branch (user needs to apply labels to documents)-
-2.1  Create custom scroll bar for input-tags-container section
-2.2 Debug select to reload on refresh (handles selecting pre-existing tags) */
-
 import { useContext, useState } from "react";
 import { useMaterialsContext } from "../hooks/useMaterialsContext";
 import { useAuthContext } from "../hooks/useAuthContext";
@@ -20,14 +14,11 @@ const CreateNew = () => {
 
     const [title, setTitle] = useState("")
     const [body, setBody] = useState("")
-    const [tags, setTags] = useState([])
     const [error, setError] = useState(null)
     const [emptyFields, setEmptyFields] = useState([])
     const { allTags } = useContext(AllTagsContext)
     const [selectedDatabaseTags, setSelectedDatabaseTags] = useState([])
     const { setIsNewMaterial } = useContext(IsNewMaterialContext)
-
-    //console.log(allTags)
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -37,14 +28,7 @@ const CreateNew = () => {
             return
         }
 
-          // Combine the tags and selectedDatabaseTags arrays
-  const combinedTags = [...tags, ...selectedDatabaseTags]
-
-  // Remove duplicate tags
-  const uniqueTagsSet = new Set(combinedTags);
-  const uniqueTags = Array.from(uniqueTagsSet);
-
-        const material = { title, body, tags: [...tags, ...selectedDatabaseTags] }
+        const material = { title, body, tags: selectedDatabaseTags }
 
         const response = await fetch("/api/materials", {
             method: "POST",
@@ -65,25 +49,13 @@ const CreateNew = () => {
         if (response.ok) {
             setTitle("")
             setBody("")
-            setTags("[]")
             setError(null)
             setEmptyFields([])
-
-            /*console.log("Data sent to backend:", {
-               title,
-                  body,
-                  tags,
-               })*/
             dispatch({ type: "CREATE_MATERIAL", payload: json })
             setIsNewMaterial(true)
             navigate("/");
         }
     }
-
-    const deleteTag = (index) => {
-        setTags(prevState => prevState.filter((tag, i) => i !== index))
-    }
-
 
     return (
         <>
@@ -104,37 +76,12 @@ const CreateNew = () => {
                     value={body}
                     className={emptyFields.includes("body") ? "error" : ""}
                 />
-                <label>Paste or type tags here:</label>
+                <label>Add tags here:</label>
 
                 <div className="tags_section_container">
-                    <div className="input-tags-container">
-                        {tags.map((tag, index) => (
-                            <span key={index} className="tag-chip">
-                                {tag}
-                                <button onClick={() => deleteTag(index)}>X</button>
-                            </span>
-                        ))}
-                        <input
-                            type="text"
-                            placeholder="Enter tags separated by commas"
-                            onChange={(e) => setTags(e.target.value.split(/,\s*/))}
-                            value={Array.isArray(tags) ? tags.join(", ") : ""}
-                            className={`${emptyFields.includes("tags") ? "error" : ""}`}
-                        />
-                        <input
-                            className="edit_tags tag-chip"
-                            type="text"
-                            id="tags"
-                            value={tags.join(", ")}
-                            onChange={(e) => setTags(
-                                e.target.value.split(", ").map((tag) => tag.trim())
-                            )}
-                        />
-                    </div>
                     <div className="existing_tags_container">
                         <AllTagsSelect onTagsChange={setSelectedDatabaseTags} />
                     </div>
-
                 </div>
 
                 <div className="read_edit_create_btns">

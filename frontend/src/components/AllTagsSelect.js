@@ -1,7 +1,8 @@
 import { useContext, useState, useEffect } from "react";
 import { AllTagsContext } from "../context/AllTagsContext";
-import Select from "react-select";
+import Creatable from "react-select/creatable";
 
+// flat() converts nested array into single level array
 function AllTagsSelect({ onTagsChange }) {
   const { allTags } = useContext(AllTagsContext);
   const [selectedTags, setSelectedTags] = useState([]);
@@ -9,7 +10,7 @@ function AllTagsSelect({ onTagsChange }) {
 
   useEffect(() => {
     if (allTags) {
-      const flattenedTags = allTags.flat(); // Flatten the nested array structure
+      const flattenedTags = allTags.flat(); 
       setSelectedTags((prevSelectedTags) => {
         const newSelectedTags = prevSelectedTags.filter((tag) =>
           flattenedTags.includes(tag)
@@ -28,12 +29,12 @@ function AllTagsSelect({ onTagsChange }) {
 
   return (
     <label>
-      Click on tags:
+      Click on tags or type in new tags:
       <div className="select-container">
         {loading ? (
           <div>Loading...</div>
         ) : allTags ? (
-          <Select
+          <Creatable
             isMulti
             options={allTags.flat().map((tag) => ({
               value: tag,
