@@ -1,12 +1,12 @@
 /* TODO 
-1. Debug AllTagsSelect feature imported in CreateNew.js */
+1. Debug AllTagsSelect feature imported in CreateNew.js 
+2. Add Reset Table buttons after column select*/
 
 // hooks
 import { useEffect, useContext } from "react";
 import { useMaterialsContext } from "../hooks/useMaterialsContext";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { AllTagsContext } from "../context/AllTagsContext";
-import { IsNewMaterialContext } from "../context/IsNewMaterialContext";
 
 // components
 import Table from "../components/Table";
@@ -15,8 +15,6 @@ const Home = () => {
   const { materials, dispatch } = useMaterialsContext()
   const { user } = useAuthContext()
   const { setAllTags } = useContext(AllTagsContext)
-  // EXPERIMENT TO DEBUG RE-RENDER ON SUBMIT CREATENEW.JS
-  const { isNewMaterial, setIsNewMaterial } = useContext(IsNewMaterialContext)
 
   // see ln 2 frontend package.json - for dev phase only, for build, point every req to endpoint 
   useEffect(() => {
@@ -29,18 +27,17 @@ const Home = () => {
 
       if (response.ok) {
         dispatch({ type: "SET_MATERIALS", payload: json })
-        // SUCCESSFUL EXPERIMENT TO DESTRUCTURE TAGS FOR USE IN ALLTAGSCONTEXT
+        // destructure tags for use in allTagsContext
         const tags = json.map((material) => material.tags.flat())
         setAllTags(tags)
       }
     }
-// EXPERIMENT TO DEBUG RE-RENDER ON SUBMIT CREATENEW.JS
-    if (user && !isNewMaterial) {
+
+    if (user) {
       fetchMaterials()
-      setIsNewMaterial(false)
     }
 
-  }, [dispatch, user, setAllTags, isNewMaterial, setIsNewMaterial])
+}, [dispatch, user, setAllTags])
 
   // Array of objects to pass to table (Tanstack Table v7) 
   const data = materials

@@ -4,7 +4,6 @@ import { useAuthContext } from "../hooks/useAuthContext";
 import { useNavigate } from "react-router-dom";
 import CancelButton from "./CancelButton";
 import { AllTagsContext } from "../context/AllTagsContext";
-import { IsNewMaterialContext } from "../context/IsNewMaterialContext";
 import AllTagsSelect from "./AllTagsSelect";
 
 const CreateNew = () => {
@@ -18,7 +17,6 @@ const CreateNew = () => {
     const [emptyFields, setEmptyFields] = useState([])
     const { allTags } = useContext(AllTagsContext)
     const [selectedDatabaseTags, setSelectedDatabaseTags] = useState([])
-    const { setIsNewMaterial } = useContext(IsNewMaterialContext)
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -52,7 +50,6 @@ const CreateNew = () => {
             setError(null)
             setEmptyFields([])
             dispatch({ type: "CREATE_MATERIAL", payload: json })
-            setIsNewMaterial(true)
             navigate("/");
         }
     }

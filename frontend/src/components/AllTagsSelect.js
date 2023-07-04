@@ -8,6 +8,8 @@ function AllTagsSelect({ onTagsChange }) {
   const [selectedTags, setSelectedTags] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  
+
   useEffect(() => {
     if (allTags) {
       const flattenedTags = allTags.flat(); 
@@ -18,8 +20,10 @@ function AllTagsSelect({ onTagsChange }) {
         return newSelectedTags
       })
       setLoading(false)
+    } else {
+      setLoading(true)
     }
-  }, [allTags])
+  }, [allTags, loading])
 
   const handleChange = (selectedOptions) => {
     const options = selectedOptions ? selectedOptions.map((option) => option.value) : []

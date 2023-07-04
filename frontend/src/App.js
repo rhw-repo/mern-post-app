@@ -1,7 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { useAuthContext } from './hooks/useAuthContext';
 import { AllTagsProvider } from './context/AllTagsContext';
-import { IsNewMaterialProvider } from './context/IsNewMaterialContext';
 
 // pages and components
 import Home from "./pages/Home";
@@ -19,7 +18,6 @@ function App() {
     <div className="App">
       <BrowserRouter>
       <AllTagsProvider>
-        <IsNewMaterialProvider >
         <Navbar />
         <div className='pages'>
           <Routes>
@@ -46,11 +44,10 @@ function App() {
           </Routes>
         </div>
         <Footer />
-        </IsNewMaterialProvider >
         </AllTagsProvider>
       </BrowserRouter>
     </div>
-  );
+  )
 }
 
 export default App;
