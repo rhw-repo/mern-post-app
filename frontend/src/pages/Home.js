@@ -1,6 +1,5 @@
-/* TODO 
-1. Debug AllTagsSelect feature imported in CreateNew.js 
-2. Add Reset Table buttons after column select*/
+/* TODO: 
+1. Write then import & render a separate component that allows search tags */
 
 // hooks
 import { useEffect, useContext } from "react";

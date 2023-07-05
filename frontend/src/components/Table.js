@@ -1,7 +1,6 @@
 /* TODO:
-1. Add 'confirm' modal for delete button, add highlight input boxes
-2. Integrate feature/chips branch user needs to apply labels to their documents
-3. Create a reset button for filters 
+1. Add 'confirm' modal for delete button
+2. Create a reset button for filters 
 */
 
 import { useTable, usePagination, useSortBy, useGlobalFilter, useFilters } from 'react-table';

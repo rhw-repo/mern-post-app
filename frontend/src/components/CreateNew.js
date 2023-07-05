@@ -1,3 +1,6 @@
+/* TODO:
+1. Create confirmation modal for successful save */
+
 import { useContext, useState } from "react";
 import { useMaterialsContext } from "../hooks/useMaterialsContext";
 import { useAuthContext } from "../hooks/useAuthContext";
@@ -28,6 +31,9 @@ const CreateNew = () => {
 
         const material = { title, body, tags: selectedDatabaseTags }
 
+          // Log material object being sent to the backend
+        console.log('Material sent to the backend:', material);
+
         const response = await fetch("/api/materials", {
             method: "POST",
             body: JSON.stringify(material),
@@ -38,6 +44,9 @@ const CreateNew = () => {
         })
 
         const json = await response.json()
+
+          // Log the response received from the backend
+  console.log('Response received from the backend:', json)
 
         if (!response.ok) {
             setError(json.error)
