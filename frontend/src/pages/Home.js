@@ -28,6 +28,8 @@ const Home = () => {
         dispatch({ type: "SET_MATERIALS", payload: json })
         // destructure tags for use in allTagsContext
         const tags = json.map((material) => material.tags.flat())
+        console.log("Here are the tags:")
+        console.log(tags)
         setAllTags(tags)
       }
     }
