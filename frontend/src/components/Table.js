@@ -1,7 +1,4 @@
-/* TODO:
-1. Add 'confirm' modal for delete button
-2. Create a reset button for filters 
-*/
+// TODO: 1. Create a reset button for filters 
 
 import { useTable, usePagination, useSortBy, useGlobalFilter, useFilters } from 'react-table';
 import GlobalFilter from './GlobalFilter';
@@ -12,16 +9,14 @@ import 'react-date-range/dist/styles.css';
 import 'react-date-range/dist/theme/default.css';
 import { useMemo, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { useAuthContext } from '../hooks/useAuthContext';
-import { useMaterialsContext } from '../hooks/useMaterialsContext';
+
+import DeleteButton from "./DeleteButton";
+
 // function formats date fields 
 import { format } from "date-fns";
 
 // returns an object with properties to apply to every column in table  
 function Table({ data }) {
-
-    const { dispatch } = useMaterialsContext()
-    const { user } = useAuthContext()
 
     const defaultColumn = useMemo(
         () => ({
@@ -77,35 +72,6 @@ function Table({ data }) {
             }
         ],
         []
-    )
-
-    // fires when delete button clicked, sends DELETE request passes to backend
-    const handleClick = async (_id) => {
-        if (!user) {
-            return
-        }
-
-        const response = await fetch(`api/materials/${_id}`, {
-            method: "DELETE",
-            headers: {
-                "Authorization": `Bearer ${user.token}`
-            }
-        })
-        const json = await response.json()
-
-        if (response.ok) {
-            dispatch({ type: "DELETE_MATERIAL", payload: json })
-        }
-    }
-    // TODO refactor into component, avoid code smell
-    // creates a delete button with a trashcan icon
-    const DeleteButton = ({ _id }) => (
-        <span
-            className="material-symbols-outlined"
-            onClick={() => handleClick(_id)}
-        >
-            delete
-        </span>
     )
 
     /* destructure from the table instance 
