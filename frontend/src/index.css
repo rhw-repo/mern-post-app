@@ -163,7 +163,7 @@
    justify-self: end;
  }
 
- /* modal toggle buttons */
+ /* date-range-picker modal & modal toggle buttons */
  .date_range_btn,
  .close_date_range {
    width: 9rem;
@@ -184,6 +184,7 @@
      0.3125rem 0.3125rem 0.3125rem 0.3125rem #778DA5;
  }
 
+ 
  /* hides DateRangePicker 'days until' & 'days from' today div: 
 inappropriate for user's filtering needs*/
  .rdrInputRange {
@@ -197,6 +198,42 @@ inappropriate for user's filtering needs*/
      flex-direction: column;
      align-items: flex-start;
    }
+ }
+
+ /* dialog box to confirm delete button action */
+ .dialog_confirm_delete {
+  border: 1px solid #BD7374;
+  border-radius: 0.625rem;
+  padding: 1rem 2rem 2rem 2rem;
+ }
+ 
+ .confirm_delete {
+  color:#BD7374;
+  font-weight: bold;
+ }
+
+ .confirm_delete_buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+ }
+
+ .yes_delete {
+  border: 1px solid var(--error);
+  border-radius: 0.625rem;
+  background-color: var(--error);
+  color: #ffffff;
+  font-weight: bold;
+  padding: 1rem;
+ }
+
+ .no_cancel_delete {
+  border: 1px solid var(--primary);
+  border-radius: 0.625rem;
+  background-color: var(--primary);
+  color: #ffffff;
+  font-weight: bold;
+  padding: 1rem;
  }
 
  /* pagination options buttons */

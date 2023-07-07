@@ -54,10 +54,14 @@ const DeleteButton = ({ _id }) => {
             </span>
 
             {showDialog && (
-                <dialog open>
-                    <p>Are you sure you want to delete this?</p>
-                    <button onClick={handleConfirmDelete}>Yes, delete</button>
-                    <button onClick={handleCancelDelete}>Cancel</button>
+                <dialog open className="dialog_confirm_delete">
+                    <h2 className="confirm_delete">Just checking - </h2>
+                    <p><strong>Did you want to click on DELETE?</strong></p>
+                    <p>If you delete it, it will be gone forever.</p>
+                    <div className="confirm_delete_buttons">
+                        <button className="yes_delete" onClick={handleConfirmDelete}>Yes, delete</button>
+                    <button className="no_cancel_delete" onClick={handleCancelDelete}>No! Keep it!</button>
+                        </div>
                 </dialog>
             )}
         </div>
