@@ -1,13 +1,10 @@
-/* TODO:
-1. Create confirmation modal for successful save */
-
-import { useContext, useState } from "react";
-import { useMaterialsContext } from "../hooks/useMaterialsContext";
-import { useAuthContext } from "../hooks/useAuthContext";
-import { useNavigate } from "react-router-dom";
-import CancelButton from "./CancelButton";
-import { AllTagsContext } from "../context/AllTagsContext";
-import AllTagsSelect from "./AllTagsSelect";
+import { useContext, useState, useEffect } from "react"
+import { useMaterialsContext } from "../hooks/useMaterialsContext"
+import { useAuthContext} from "../hooks/useAuthContext"
+import { AllTagsContext } from "../context/AllTagsContext"
+import { useNavigate } from "react-router-dom"
+import CancelButton from "./CancelButton"
+import AllTagsSelect from "./AllTagsSelect"
 
 const CreateNew = () => {
     const { dispatch } = useMaterialsContext()
@@ -21,6 +18,24 @@ const CreateNew = () => {
     const { allTags } = useContext(AllTagsContext)
     const [selectedDatabaseTags, setSelectedDatabaseTags] = useState([])
 
+    // Snackbar state and function
+    const [isOpen, setIsOpen] = useState(false)
+    const [message, setMessage] = useState('')
+
+    const showSnackbar = (msg) => {
+        setMessage(msg)
+        setIsOpen(true)
+    }
+
+    useEffect(() => {
+        if (isOpen) {
+            const timer = setTimeout(() => {
+                setIsOpen(false)
+            }, 3000)
+            return () => clearTimeout(timer)
+        }
+    }, [isOpen])
+
     const handleSubmit = async (e) => {
         e.preventDefault()
 
@@ -31,7 +46,7 @@ const CreateNew = () => {
 
         const material = { title, body, tags: selectedDatabaseTags }
 
-          // Log material object being sent to the backend
+        // Log material object being sent to the backend
         console.log('Material sent to the backend:', material);
 
         const response = await fetch("/api/materials", {
@@ -45,8 +60,8 @@ const CreateNew = () => {
 
         const json = await response.json()
 
-          // Log the response received from the backend
-  console.log('Response received from the backend:', json)
+        // Log the response received from the backend
+        console.log('Response received from the backend:', json)
 
         if (!response.ok) {
             setError(json.error)
@@ -59,7 +74,9 @@ const CreateNew = () => {
             setError(null)
             setEmptyFields([])
             dispatch({ type: "CREATE_MATERIAL", payload: json })
-            navigate("/");
+            navigate("/")
+            // Show Snackbar
+            showSnackbar("Material created successfully!")
         }
     }
 
@@ -96,6 +113,7 @@ const CreateNew = () => {
                     {error && <div className="error">{error}</div>}
                 </div>
             </form>
+            {isOpen && <div>{message}</div>}
             <h6>{allTags}</h6>
         </>
     )
