@@ -13,6 +13,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
     faCalendarDays,
     faPen,
+    faFilter,
     faUndo,
     faSortUp,
     faSortDown,
@@ -133,8 +134,10 @@ function Table({ data }) {
         gotoPage(0)
     }
 
-    // Toggle visbility DateRangeFilter using date_range_btn, is too large for UI
+    // Toggle visbility DateRangeFilter & AllTagsFilter, both too large for UI
     const [isOpen, setIsOpen] = useState(false)
+    const [showAllTagsFilter, setShowAllTagsFilter] = useState(false)
+
 
     const calendarIcon = <FontAwesomeIcon icon={faCalendarDays} />
     const createNewIcon = <FontAwesomeIcon icon={faPen} />
@@ -143,6 +146,7 @@ function Table({ data }) {
     const sortDownIcon = <FontAwesomeIcon icon={faSortDown} />
     const forwardsIcon = <FontAwesomeIcon icon={faForward} />
     const backwardsIcon = <FontAwesomeIcon icon={faBackward} />
+    const filterIcon = <FontAwesomeIcon icon={faFilter} />
 
     // rendering options_container before table aims for easy user experience
     return (
@@ -159,7 +163,23 @@ function Table({ data }) {
                         {resetIcon} RESET
                     </button>
                 </span>
-               
+
+                <span className="tags_modal">
+                    <span >
+                        <button className="open_modal_btn"
+                            onClick={() => setShowAllTagsFilter(true)}
+                        >
+                            {filterIcon} Filter by Tags
+                        </button>
+                    </span>
+                    <AllTagsFilterModal
+                        open={showAllTagsFilter}
+                        onClose={() => setShowAllTagsFilter(false)}>
+                        <AllTagsAsyncSelect data={data}
+                        />
+                    </ AllTagsFilterModal >
+                </span>
+
                 <span className="item2">
                     <button
                         className="date_range_btn"
