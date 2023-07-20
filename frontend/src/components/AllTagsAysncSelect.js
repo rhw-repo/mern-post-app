@@ -5,7 +5,8 @@ const AllTagsAsyncSelect = ({ data }) => {
    console.log("This is data onload for AllTagsAsyncSelect")
    console.log({ data })
    const loadOptions = (inputValue, callback) => {
-      // Flatten all tags arrays into a single array
+      // flatMap() maps all array elements & creates new flat array
+      // flatten all tags arrays into a single array
       const allTags = data.flatMap(item => item.tags)
       // Remove duplicates
       const uniqueTags = [...new Set(allTags)]
@@ -16,7 +17,7 @@ const AllTagsAsyncSelect = ({ data }) => {
             value: tag,
             label: tag,
          }))
-
+// simulation of async - prevent no options loading? replace with skeleton loading ? 
       setTimeout(() => {
          callback(options)
       }, 1000)
@@ -34,5 +35,6 @@ const AllTagsAsyncSelect = ({ data }) => {
       </>
    )
 }
+
 
 export default AllTagsAsyncSelect

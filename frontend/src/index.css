@@ -163,29 +163,7 @@
   align-items: center;
   margin-top: 2rem;
   margin-bottom: 2rem;
-  box-shadow: 
 }
-
- 
- /*.options_container {
-   display: grid;
-   grid-template-columns: 50% auto;
-   align-items: center;
-   margin-bottom: 1rem;
- }*/
-
- /*.item1 {
-   grid-column: 1 / 2;
- }
-
- .item2 {
-   grid-column: 2 / 3;
- }
-
- .item3 {
-   grid-column: 3 / 4;
-   justify-self: end;
- }*/
 
   /* date-range-picker modal & modal toggle buttons */
   .open_modal_btn,
@@ -255,6 +233,7 @@ inappropriate for user's filtering needs*/
 
  /* dialog box to confirm delete button action */
  .dialog_confirm_delete {
+   text-align: center;
    border: 1px solid #BD7374;
    border-radius: 0.625rem;
    padding: 1rem 2rem 2rem 2rem;
