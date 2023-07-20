@@ -1,10 +1,11 @@
 import { useContext, useState, useEffect } from "react"
 import { useMaterialsContext } from "../hooks/useMaterialsContext"
-import { useAuthContext} from "../hooks/useAuthContext"
+import { useAuthContext } from "../hooks/useAuthContext"
 import { AllTagsContext } from "../context/AllTagsContext"
 import { useNavigate } from "react-router-dom"
 import CancelButton from "./CancelButton"
 import AllTagsSelect from "./AllTagsSelect"
+import toast from 'react-hot-toast';
 
 const CreateNew = () => {
     const { dispatch } = useMaterialsContext()
@@ -17,24 +18,6 @@ const CreateNew = () => {
     const [emptyFields, setEmptyFields] = useState([])
     const { allTags } = useContext(AllTagsContext)
     const [selectedDatabaseTags, setSelectedDatabaseTags] = useState([])
-
-    // Snackbar state and function
-    const [isOpen, setIsOpen] = useState(false)
-    const [message, setMessage] = useState('')
-
-    const showSnackbar = (msg) => {
-        setMessage(msg)
-        setIsOpen(true)
-    }
-
-    useEffect(() => {
-        if (isOpen) {
-            const timer = setTimeout(() => {
-                setIsOpen(false)
-            }, 3000)
-            return () => clearTimeout(timer)
-        }
-    }, [isOpen])
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -75,8 +58,9 @@ const CreateNew = () => {
             setEmptyFields([])
             dispatch({ type: "CREATE_MATERIAL", payload: json })
             navigate("/")
-            // Show Snackbar
-            showSnackbar("Material created successfully!")
+            toast.success("Your work is safely saved!")
+        } else {
+            toast.error("Sorry, that save did not go so well, please try again")
         }
     }
 
@@ -113,8 +97,6 @@ const CreateNew = () => {
                     {error && <div className="error">{error}</div>}
                 </div>
             </form>
-            {isOpen && <div>{message}</div>}
-            <h6>{allTags}</h6>
         </>
     )
 }

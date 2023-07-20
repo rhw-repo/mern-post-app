@@ -7,6 +7,7 @@ import { useState, useEffect } from "react";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { useNavigate } from "react-router-dom";
 import CancelButton from "../components/CancelButton";
+import toast from "react-hot-toast"
 
 const Edit = ({ material }) => {
   const [title, setTitle] = useState(material.title)
@@ -36,6 +37,9 @@ const Edit = ({ material }) => {
     });
     if (response.ok) {
       navigate("/")
+      toast.success("Your work is safely saved!")
+    } else {
+      toast.error("Sorry, that save did not go so well, please try again")
     }
   }
 

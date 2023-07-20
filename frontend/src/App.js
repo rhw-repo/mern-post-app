@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { useAuthContext } from './hooks/useAuthContext';
 import { AllTagsProvider } from './context/AllTagsContext';
+import { Toaster } from 'react-hot-toast';
 
 // pages and components
 import Home from "./pages/Home";
@@ -11,6 +12,7 @@ import Navbar from './components/Navbar';
 import CreateNew from './components/CreateNew';
 import Footer from './components/Footer';
 
+
 function App() {
   const { user } = useAuthContext()
 
@@ -18,6 +20,25 @@ function App() {
     <div className="App">
       <BrowserRouter>
       <AllTagsProvider>
+      <Toaster 
+        position='top-center'
+        toastOptions={{
+          duration: 3000,
+          style: {
+            color: '#fffffff',
+          },
+          success: {
+            duration: 3000,
+            style: {
+              color: "#435362",
+              fontFamily: "Lexend Deca, Helvetica, Arial, sans-serif",
+              fontWeight: "bold"
+            },
+            iconTheme: {
+              primary: "#BD7374",
+            }
+          },
+        }}/>
         <Navbar />
         <div className='pages'>
           <Routes>
