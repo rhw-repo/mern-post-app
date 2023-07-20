@@ -1,6 +1,7 @@
 import { useTable, usePagination, useSortBy, useGlobalFilter, useFilters } from 'react-table';
 import GlobalFilter from './GlobalFilter';
 import ColumnFilter from './ColumnFilter';
+import AllTagsFilterModal from './AllTagsFilterModal';
 import DateRangeFilter, { filterByDateRange } from './DateRangeFilter';
 import ModalDateRangeFilter from './ModalDateRangeFilter';
 import 'react-date-range/dist/styles.css';
@@ -158,9 +159,7 @@ function Table({ data }) {
                         {resetIcon} RESET
                     </button>
                 </span>
-
-                <AllTagsAsyncSelect data={data} />
-
+               
                 <span className="item2">
                     <button
                         className="date_range_btn"
