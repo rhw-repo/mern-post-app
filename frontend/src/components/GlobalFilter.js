@@ -9,12 +9,17 @@ import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons"
 const SearchBox = styled.div`
     border: 1px solid #ddd;
     border-radius: 0.5rem;
+    box-shadow: 
+    0rem 0.125rem 0.25rem 0rem rgba(0, 0, 0, 0.2),
+    0rem 0.25rem 0.3125rem 0rem rgba(0, 0, 0, 0.14),
+    0rem 0.0625rem 0.625rem 0rem rgba(0, 0, 0, 0.12),
+    0.3125rem 0.3125rem 0.3125rem 0.3125rem #778DA5;
     margin: 0.312rem auto;
     padding: 0.625rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    
+    width: 100%;
     & input {
         border: none;
         flex-grow: 1;
@@ -43,13 +48,12 @@ const GlobalFilter = ({ filter, setFilter }) => {
                 fontWeight: "bold",
                 fontSize: "1.25rem",
                 padding: "0.625rem",
-                width: "60%"
             }}>
                 <SearchBox>
                     <FontAwesomeIcon icon={faMagnifyingGlass} />
                     <input
                         type="text"
-                        placeholder="Search across all the rows & columns..."
+                        placeholder="Search all the table..."
                         value={value || ""}
                         onChange={(e) => {
                             setValue(e.target.value)

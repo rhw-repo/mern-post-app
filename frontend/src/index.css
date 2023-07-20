@@ -1,6 +1,7 @@
  /* TODO  
  1. Review all-tags-select for redundancy on complete select 
- 2. brief: deskop/ laptop/ tablet version,meet client re add media queries */
+2. add rules for another item class to be created in "options_container"
+ 3. brief: deskop/ laptop/ tablet version,meet client re add media queries */
 
  @import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@400;500;600;700&family=Open+Sans:wght@300;400&display=swap');
 
@@ -48,6 +49,11 @@
    font-weight: bold;
    border-radius: 1.875rem;
    cursor: pointer;
+   box-shadow: 
+   0rem 0.125rem 0.25rem 0rem rgba(0, 0, 0, 0.2),
+   0rem 0.25rem 0.3125rem 0rem rgba(0, 0, 0, 0.14),
+   0rem 0.0625rem 0.625rem 0rem rgba(0, 0, 0, 0.12),
+   0.3125rem 0.3125rem 0.3125rem 0.3125rem #778DA5;
  }
 
  /* secondary buttons */
@@ -65,6 +71,11 @@
    border-radius: 1.875rem;
    font-family: "Lexend Deca", Helvetica, Arial, sans-serif;
    cursor: pointer;
+   box-shadow: 
+   0rem 0.125rem 0.25rem 0rem rgba(0, 0, 0, 0.2),
+   0rem 0.25rem 0.3125rem 0rem rgba(0, 0, 0, 0.14),
+   0rem 0.0625rem 0.625rem 0rem rgba(0, 0, 0, 0.12),
+   0.3125rem 0.3125rem 0.3125rem 0.3125rem #778DA5;
  }
 
  /* navbar */
@@ -145,13 +156,23 @@
  /* table */
  /* container for global filter, date range picker, create new button */
  .options_container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 
+}
+
+ 
+ /*.options_container {
    display: grid;
    grid-template-columns: 50% auto;
    align-items: center;
    margin-bottom: 1rem;
- }
+ }*/
 
- .item1 {
+ /*.item1 {
    grid-column: 1 / 2;
  }
 
@@ -162,7 +183,36 @@
  .item3 {
    grid-column: 3 / 4;
    justify-self: end;
- }
+ }*/
+
+  /* date-range-picker modal & modal toggle buttons */
+  .open_modal_btn,
+  .close_modal_btn,
+  .reset_table_btn {
+    width: 9rem;
+    padding: 0.625rem;
+    margin: 1rem;
+  }
+ 
+  .modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: solid 1px #778DA5;
+    border-radius: 1rem;
+    box-shadow:
+      0rem 0.125rem 0.25rem 0rem rgba(0, 0, 0, 0.2),
+      0rem 0.25rem 0.3125rem 0rem rgba(0, 0, 0, 0.14),
+      0rem 0.0625rem 0.625rem 0rem rgba(0, 0, 0, 0.12),
+      0.3125rem 0.3125rem 0.3125rem 0.3125rem #778DA5;
+  }
+ 
+  .tags_modal {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+  }
 
  /* date-range-picker modal & modal toggle buttons */
  .date_range_btn,
@@ -237,6 +287,10 @@ inappropriate for user's filtering needs*/
    padding: 1rem;
  }
 
+ .create_new_btn {
+  width: 12rem;
+ }
+
  /* pagination options buttons */
  .table_pagination,
  .select_box {
@@ -280,7 +334,7 @@ inappropriate for user's filtering needs*/
    margin-bottom: 2rem;
    border: 0.125rem solid #778DA5;
  }
-
+/* will be redundant after react-select Creatable replaces this*/
  .tag-chip {
    display: flex;
    align-items: center;
@@ -336,7 +390,6 @@ inappropriate for user's filtering needs*/
    outline: none;
    border: 1px solid #ffffff;
  }
-
 
  .input-tags-container {
    display: flex;
@@ -437,7 +490,7 @@ inappropriate for user's filtering needs*/
  .login_btn,
  .signup_btn {
    display: flex;
-   justify-content: center;
+   justify-content: space-evenly;
    align-items: center;
    margin: 1.5rem auto 1rem auto;
  }
