@@ -30,7 +30,7 @@ const Home = () => {
         const tags = json.map((material) => material.tags.flat())
         console.log("Here are the tags:")
         console.log(tags)
-        setAllTags(tags)
+        //setAllTags(tags)
       }
     }
 

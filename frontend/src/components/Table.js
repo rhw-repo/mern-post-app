@@ -21,10 +21,10 @@ import {
 
 // function formats date fields 
 import { format } from "date-fns";
+import AllTagsAsyncSelect from './AllTagsAysncSelect';
 
 // returns an object with properties to apply to every column in table  
 function Table({ data }) {
-
     const defaultColumn = useMemo(
         () => ({
             Filter: ColumnFilter,
@@ -119,11 +119,6 @@ function Table({ data }) {
         setFilter("createdAt", selectedRange)
     }
 
-    /*const resetTable = () => {
-        setPageSize(3);
-        gotoPage(0);
-    }*/
-
     // Clear pagination selections or global/column/date/tags filters
     const resetTable = () => {
         setGlobalFilter('');
@@ -161,6 +156,8 @@ function Table({ data }) {
                         {resetIcon} RESET
                         </button>
                 </span>
+
+                <AllTagsAsyncSelect data={data} />
 
                 <span className="item2">
                     <button 
