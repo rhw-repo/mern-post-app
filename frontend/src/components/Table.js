@@ -25,6 +25,8 @@ import AllTagsAsyncSelect from './AllTagsAysncSelect';
 
 // returns an object with properties to apply to every column in table  
 function Table({ data }) {
+
+
     const defaultColumn = useMemo(
         () => ({
             Filter: ColumnFilter,
@@ -34,8 +36,8 @@ function Table({ data }) {
 
     useEffect(() => {
         console.log('Component updated')
-      }, [])
-      
+    }, [])
+
 
     // useMemo prevents unnecessary recalculations (better performance)
     const columns = useMemo(
@@ -149,24 +151,24 @@ function Table({ data }) {
                     <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
                 </span>
                 <span>
-                    <button 
-                    className="reset_table_btn" 
-                    onClick={resetTable}
+                    <button
+                        className="reset_table_btn"
+                        onClick={resetTable}
                     >
                         {resetIcon} RESET
-                        </button>
+                    </button>
                 </span>
 
                 <AllTagsAsyncSelect data={data} />
 
                 <span className="item2">
-                    <button 
-                    className="date_range_btn"
-                    onClick={() => setIsOpen(true)}
+                    <button
+                        className="date_range_btn"
+                        onClick={() => setIsOpen(true)}
                     >
-                    {calendarIcon} Filter by Dates
+                        {calendarIcon} Filter by Dates
                     </button>
-                    </span>
+                </span>
                 <ModalDateRangeFilter
                     open={isOpen}
                     onClose={() => setIsOpen(false)}>
@@ -175,10 +177,10 @@ function Table({ data }) {
 
                 <span className="item3">
                     <Link to="/create_new">
-                        <button 
-                        className="create_new_btn"
+                        <button
+                            className="create_new_btn"
                         >
-                        {createNewIcon} Create New
+                            {createNewIcon} Create New
                         </button>
                     </Link>
                 </span>
@@ -297,29 +299,29 @@ function Table({ data }) {
                     </span>
 
 
-                    <button 
-                    className="table_pagination button"
-                    onClick={() => gotoPage(0)} disabled={!canPreviousPage}
+                    <button
+                        className="table_pagination button"
+                        onClick={() => gotoPage(0)} disabled={!canPreviousPage}
                     >
-                    {backwardsIcon}
+                        {backwardsIcon}
                     </button>
-                    <button 
-                    className="table_pagination button"
-                    onClick={() => previousPage()} disabled={!canPreviousPage}
+                    <button
+                        className="table_pagination button"
+                        onClick={() => previousPage()} disabled={!canPreviousPage}
                     >
-                    Previous
+                        Previous
                     </button>
-                    <button 
-                    className="table_pagination button"
-                    onClick={() => nextPage()} disabled={!canNextPage}
+                    <button
+                        className="table_pagination button"
+                        onClick={() => nextPage()} disabled={!canNextPage}
                     >
-                    Next
+                        Next
                     </button>
-                    <button 
-                    className="table_pagination button"
-                    onClick={() => gotoPage(pageCount - 1)} disabled={!canNextPage} 
+                    <button
+                        className="table_pagination button"
+                        onClick={() => gotoPage(pageCount - 1)} disabled={!canNextPage}
                     >
-                    {forwardsIcon}
+                        {forwardsIcon}
                     </button>
                 </div>
             </div>
