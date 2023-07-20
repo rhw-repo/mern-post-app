@@ -1,7 +1,6 @@
-import { useContext, useState, useEffect } from "react"
+import { useState } from "react"
 import { useMaterialsContext } from "../hooks/useMaterialsContext"
 import { useAuthContext } from "../hooks/useAuthContext"
-import { AllTagsContext } from "../context/AllTagsContext"
 import { useNavigate } from "react-router-dom"
 import CancelButton from "./CancelButton"
 import AllTagsSelect from "./AllTagsSelect"
@@ -16,7 +15,7 @@ const CreateNew = () => {
     const [body, setBody] = useState("")
     const [error, setError] = useState(null)
     const [emptyFields, setEmptyFields] = useState([])
-    const { allTags } = useContext(AllTagsContext)
+    //const { allTags } = useContext(AllTagsContext)
     const [selectedDatabaseTags, setSelectedDatabaseTags] = useState([])
 
     const handleSubmit = async (e) => {

@@ -52,6 +52,7 @@
 
  /* secondary buttons */
  nav button,
+ .reset_table_btn,
  .table_pagination,
  .select_box,
  .date_range_btn,
@@ -184,7 +185,7 @@
      0.3125rem 0.3125rem 0.3125rem 0.3125rem #778DA5;
  }
 
- 
+
  /* hides DateRangePicker 'days until' & 'days from' today div: 
 inappropriate for user's filtering needs*/
  .rdrInputRange {
@@ -202,38 +203,38 @@ inappropriate for user's filtering needs*/
 
  /* dialog box to confirm delete button action */
  .dialog_confirm_delete {
-  border: 1px solid #BD7374;
-  border-radius: 0.625rem;
-  padding: 1rem 2rem 2rem 2rem;
+   border: 1px solid #BD7374;
+   border-radius: 0.625rem;
+   padding: 1rem 2rem 2rem 2rem;
  }
- 
+
  .confirm_delete {
-  color:#BD7374;
-  font-weight: bold;
+   color: #BD7374;
+   font-weight: bold;
  }
 
  .confirm_delete_buttons {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
  }
 
  .yes_delete {
-  border: 1px solid var(--error);
-  border-radius: 0.625rem;
-  background-color: var(--error);
-  color: #ffffff;
-  font-weight: bold;
-  padding: 1rem;
+   border: 1px solid var(--error);
+   border-radius: 0.625rem;
+   background-color: var(--error);
+   color: #ffffff;
+   font-weight: bold;
+   padding: 1rem;
  }
 
  .no_cancel_delete {
-  border: 1px solid var(--primary);
-  border-radius: 0.625rem;
-  background-color: var(--primary);
-  color: #ffffff;
-  font-weight: bold;
-  padding: 1rem;
+   border: 1px solid var(--primary);
+   border-radius: 0.625rem;
+   background-color: var(--primary);
+   color: #ffffff;
+   font-weight: bold;
+   padding: 1rem;
  }
 
  /* pagination options buttons */
@@ -296,26 +297,26 @@ inappropriate for user's filtering needs*/
  }
 
  .read-tags-container {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  flex-wrap: wrap;
+   display: flex;
+   align-items: center;
+   justify-content: flex-start;
+   flex-wrap: wrap;
  }
- 
+
  .tag-chip button {
-  display: flex;
-  padding: 6px;
-  border: none;
-  background-color: unset;
-  cursor: pointer;
-  color: #ffffff;
-  /*font-weight: 800;*/
+   display: flex;
+   padding: 6px;
+   border: none;
+   background-color: unset;
+   cursor: pointer;
+   color: #ffffff;
+   /*font-weight: 800;*/
  }
 
  .tags_section_container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
  }
 
  .select-container {
@@ -325,43 +326,43 @@ inappropriate for user's filtering needs*/
 
 
  .all-tags-select {
-  height: 8rem;
-  /*overflow-y: auto;*/
-  border: 1px solid #ffffff;
-  background-color: palevioletred;
+   height: 8rem;
+   /*overflow-y: auto;*/
+   border: 1px solid #ffffff;
+   background-color: palevioletred;
  }
 
  .all-tags-select:focus {
-  outline: none;
-  border: 1px solid #ffffff;
+   outline: none;
+   border: 1px solid #ffffff;
  }
- 
+
 
  .input-tags-container {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  border: 1px solid #ccc;
-  padding: 0.25rem;
-  border-radius: 4px;
-}
+   display: flex;
+   flex-wrap: wrap;
+   align-items: center;
+   border: 1px solid #ccc;
+   padding: 0.25rem;
+   border-radius: 4px;
+ }
 
-.input-tags-chip {
-  margin-right: 0.5rem;
-  margin-top: 0.625rem;
-}
+ .input-tags-chip {
+   margin-right: 0.5rem;
+   margin-top: 0.625rem;
+ }
 
-.edit_tags {
-  border: none;
-  outline: none;
-  padding: 0.625rem;
-  margin-right: 0.5rem;
-  background-color: transparent;
-  /*flex-grow: 1;*/
-  margin: 1rem;
-}
+ .edit_tags {
+   border: none;
+   outline: none;
+   padding: 0.625rem;
+   margin-right: 0.5rem;
+   background-color: transparent;
+   /*flex-grow: 1;*/
+   margin: 1rem;
+ }
 
-/* buttons specific to read, edit & create new pages */
+ /* buttons specific to read, edit & create new pages */
  .read button,
  .cancel_btn {
    padding: 0.625rem;

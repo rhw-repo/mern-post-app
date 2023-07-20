@@ -5,6 +5,8 @@ import useFetch from "../hooks/useFetch";
 import Edit from "./Edit";
 import Footer from "../components/Footer";
 import CancelButton from "../components/CancelButton";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPenToSquare } from "@fortawesome/free-solid-svg-icons"
 
 const Read = () => {
     const { _id } = useParams();
@@ -20,6 +22,8 @@ const Read = () => {
     function handleUpdateComplete() {
         setIsEditing(false)
     }
+
+    const editIcon = <FontAwesomeIcon icon={faPenToSquare} />
 
     return (
         <>
@@ -52,7 +56,7 @@ const Read = () => {
                             <button
                                 className="go-to-edit-btn"
                                 onClick={handleUpdateClick}>
-                                Edit
+                                {editIcon} Edit
                             </button>
 
                         </div>

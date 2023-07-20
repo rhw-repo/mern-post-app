@@ -1,6 +1,8 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { useLogout } from "../hooks/useLogout";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faRightFromBracket } from "@fortawesome/free-solid-svg-icons"
 
 const Navbar = () => {
 
@@ -13,6 +15,8 @@ const Navbar = () => {
         navigate("/login")
     }
 
+    const logoutIcon = <FontAwesomeIcon icon={faRightFromBracket} />
+
     return (
         <header>
             <div className="container">
@@ -23,7 +27,10 @@ const Navbar = () => {
                     {user && (
                         <div>
                             <span>{user.email}</span>
-                            <button onClick={handleClick}>Log Out</button>
+                            <button
+                                onClick={handleClick}
+                            >
+                                {logoutIcon} Log Out</button>
                         </div>
                     )}
                 </nav>

@@ -3,6 +3,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSignup } from "../hooks/useSignup";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faUserPlus, faRightToBracket } from "@fortawesome/free-solid-svg-icons"
 
 const Signup = () => {
     const [email, setEmail] = useState("")
@@ -20,6 +22,10 @@ const Signup = () => {
     const goToLogin = () => {
         navigate("/Login")
     }
+
+    const signupIcon = <FontAwesomeIcon icon={faUserPlus} />
+    const loginIcon = <FontAwesomeIcon icon={faRightToBracket} />
+
     return (
         <>
             <form className="signup" onSubmit={handleSubmit}>
@@ -38,15 +44,23 @@ const Signup = () => {
                 />
 
                 <div >
-                    <button className="signup_btn" disabled={isLoading}>
-                        Signup
+                    <button
+                        className="signup_btn"
+                        disabled={isLoading}
+                    >
+                        {signupIcon} Signup
                     </button>
                     {error && <div className="error">{error}</div>}
                 </div>
             </form>
             <div className="switch_form_btns">
                 <h3>Click below if you already have an account:</h3>
-                <button className="switch_form_btn" onClick={goToLogin}>Login</button>
+                <button
+                    className="switch_form_btn"
+                    onClick={goToLogin}
+                >
+                    {loginIcon} Login
+                </button>
             </div>
         </>
     )

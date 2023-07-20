@@ -4,6 +4,8 @@ temporary log in, replace with SSO & avoid user details in local storage */
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useLogin } from "../hooks/useLogin";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faRightToBracket, faUserPlus } from "@fortawesome/free-solid-svg-icons"
 
 const Login = () => {
     const [email, setEmail] = useState("")
@@ -21,6 +23,9 @@ const Login = () => {
     const goToSignup = () => {
         navigate("/Signup")
     }
+
+    const loginIcon = <FontAwesomeIcon icon={faRightToBracket} />
+    const signupIcon = <FontAwesomeIcon icon={faUserPlus} />
 
     return (
         <>
@@ -40,15 +45,23 @@ const Login = () => {
                 />
 
                 <div >
-                    <button className="login_btn" disabled={isLoading}>
-                        Login
+                    <button
+                        className="login_btn"
+                        disabled={isLoading}
+                    >
+                        {loginIcon} Login
                     </button>
                     {error && <div className="error">{error}</div>}
                 </div>
             </form>
             <div className="switch_form_btns">
                 <h3>Need an account?</h3>
-                <button className="switch_form_btn" onClick={goToSignup}>Signup</button>
+                <button
+                    className="switch_form_btn"
+                    onClick={goToSignup}
+                >
+                    {signupIcon} Signup
+                </button>
             </div>
         </>
     )

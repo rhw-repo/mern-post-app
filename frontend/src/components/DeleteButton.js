@@ -1,10 +1,9 @@
 import { useState } from "react"
-// TODO 1. Style this dialog box (confirms delete)
-
 import { useMaterialsContext } from "../hooks/useMaterialsContext"
 import { useAuthContext } from "../hooks/useAuthContext"
 import { useNavigate } from "react-router-dom"
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTrashCan, faFloppyDisk } from "@fortawesome/free-solid-svg-icons"
 
 const DeleteButton = ({ _id }) => {
     const [showDialog, setShowDialog] = useState(false)
@@ -44,6 +43,9 @@ const DeleteButton = ({ _id }) => {
         setShowDialog(false)
     }
 
+    const deleteIcon = <FontAwesomeIcon icon={faTrashCan} />
+    const saveIcon = <FontAwesomeIcon icon={faFloppyDisk} />
+
     return (
         <div>
             <span
@@ -59,9 +61,19 @@ const DeleteButton = ({ _id }) => {
                     <p><strong>Did you want to click on DELETE?</strong></p>
                     <p>If you delete it, it will be gone forever.</p>
                     <div className="confirm_delete_buttons">
-                        <button className="yes_delete" onClick={handleConfirmDelete}>Yes, delete</button>
-                    <button className="no_cancel_delete" onClick={handleCancelDelete}>No! Keep it!</button>
-                        </div>
+                        <button
+                            className="yes_delete"
+                            onClick={handleConfirmDelete}
+                        >
+                            {deleteIcon} Yes, delete
+                        </button>
+                        <button
+                            className="no_cancel_delete"
+                            onClick={handleCancelDelete}
+                        >
+                            {saveIcon} No! Keep it!
+                        </button>
+                    </div>
                 </dialog>
             )}
         </div>

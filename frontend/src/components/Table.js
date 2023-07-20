@@ -1,5 +1,3 @@
-// TODO: 1. Create a reset button for filters 
-
 import { useTable, usePagination, useSortBy, useGlobalFilter, useFilters } from 'react-table';
 import GlobalFilter from './GlobalFilter';
 import ColumnFilter from './ColumnFilter';
@@ -9,8 +7,17 @@ import 'react-date-range/dist/styles.css';
 import 'react-date-range/dist/theme/default.css';
 import { useMemo, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-
 import DeleteButton from "./DeleteButton";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {
+    faCalendarDays,
+    faPen,
+    faUndo,
+    faSortUp,
+    faSortDown,
+    faForward,
+    faBackward,
+} from "@fortawesome/free-solid-svg-icons"
 
 // function formats date fields 
 import { format } from "date-fns";
@@ -98,7 +105,7 @@ function Table({ data }) {
             columns,
             data,
             defaultColumn,
-            initialState: { pageIndex: 0, pageSize: 3 },
+            initialState: { pageIndex: 0, pageSize: 4 },
         },
         useFilters,
         useGlobalFilter,
@@ -112,13 +119,32 @@ function Table({ data }) {
         setFilter("createdAt", selectedRange)
     }
 
-    const resetTable = () => {
+    /*const resetTable = () => {
         setPageSize(3);
         gotoPage(0);
+    }*/
+
+    // Clear pagination selections or global/column/date/tags filters
+    const resetTable = () => {
+        setGlobalFilter('');
+        setPageSize(4);
+        columns.forEach(column => {
+            setFilter(column.accessor, undefined)
+
+        })
+        gotoPage(0)
     }
 
     // Toggle visbility DateRangeFilter using date_range_btn, is too large for UI
     const [isOpen, setIsOpen] = useState(false)
+
+    const calendarIcon = <FontAwesomeIcon icon={faCalendarDays} />
+    const createNewIcon = <FontAwesomeIcon icon={faPen} />
+    const resetIcon = <FontAwesomeIcon icon={faUndo} />
+    const sortUpIcon = <FontAwesomeIcon icon={faSortUp} />
+    const sortDownIcon = <FontAwesomeIcon icon={faSortDown} />
+    const forwardsIcon = <FontAwesomeIcon icon={faForward} />
+    const backwardsIcon = <FontAwesomeIcon icon={faBackward} />
 
     // rendering options_container before table aims for easy user experience
     return (
@@ -127,13 +153,23 @@ function Table({ data }) {
                 <span className="item1">
                     <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
                 </span>
+                <span>
+                    <button 
+                    className="reset_table_btn" 
+                    onClick={resetTable}
+                    >
+                        {resetIcon} RESET
+                        </button>
+                </span>
 
                 <span className="item2">
-                    <button className="date_range_btn"
-                        onClick={() => setIsOpen(true)}
+                    <button 
+                    className="date_range_btn"
+                    onClick={() => setIsOpen(true)}
                     >
-                        Filter by Dates
-                    </button></span>
+                    {calendarIcon} Filter by Dates
+                    </button>
+                    </span>
                 <ModalDateRangeFilter
                     open={isOpen}
                     onClose={() => setIsOpen(false)}>
@@ -142,7 +178,11 @@ function Table({ data }) {
 
                 <span className="item3">
                     <Link to="/create_new">
-                        <button className="create_new_btn">Create New</button>
+                        <button 
+                        className="create_new_btn"
+                        >
+                        {createNewIcon} Create New
+                        </button>
                     </Link>
                 </span>
             </div>
@@ -177,14 +217,16 @@ function Table({ data }) {
                                     >
                                         {column.render("Header")}
                                         <div>{column.canFilter ? column.render("Filter") : null}</div>
-                                        {<span
-                                            role="img"
-                                            aria-label={column.isSorted
-                                                ? (column.isSortedDesc
-                                                    ? "Ascending order" : "Descending order") : ""}
-                                        >
-                                            {column.isSorted ? (column.isSortedDesc ? "   🔼" : "   🔽") : ""}
-                                        </span>}
+                                        {
+                                            column.canSort
+                                                ? (
+                                                    column.isSorted
+                                                        ? (column.isSortedDesc ? sortDownIcon : sortUpIcon)
+                                                        : sortDownIcon
+                                                )
+                                                : null
+                                        }
+
                                     </th>
                                 ))}
                             </tr>
@@ -236,7 +278,7 @@ function Table({ data }) {
                     <button
                         className="table_pagination"
                         onClick={resetTable}>
-                        Reset To 3 Rows
+                        {resetIcon} RESET
                     </button>
                     <span>
                         Page{" "}
@@ -258,22 +300,29 @@ function Table({ data }) {
                     </span>
 
 
-                    <button className="table_pagination button"
-                        onClick={() => gotoPage(0)} disabled={!canPreviousPage}
+                    <button 
+                    className="table_pagination button"
+                    onClick={() => gotoPage(0)} disabled={!canPreviousPage}
                     >
-                        {"<<"}
+                    {backwardsIcon}
                     </button>
-                    <button className="table_pagination button"
-                        onClick={() => previousPage()} disabled={!canPreviousPage}>
-                        Previous
+                    <button 
+                    className="table_pagination button"
+                    onClick={() => previousPage()} disabled={!canPreviousPage}
+                    >
+                    Previous
                     </button>
-                    <button className="table_pagination button"
-                        onClick={() => nextPage()} disabled={!canNextPage}>
-                        Next
+                    <button 
+                    className="table_pagination button"
+                    onClick={() => nextPage()} disabled={!canNextPage}
+                    >
+                    Next
                     </button>
-                    <button className="table_pagination button"
-                        onClick={() => gotoPage(pageCount - 1)} disabled={!canNextPage} >
-                        {">>"}
+                    <button 
+                    className="table_pagination button"
+                    onClick={() => gotoPage(pageCount - 1)} disabled={!canNextPage} 
+                    >
+                    {forwardsIcon}
                     </button>
                 </div>
             </div>
