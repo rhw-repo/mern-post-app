@@ -69,7 +69,6 @@ function Table({ data }) {
     const filterTypes = useMemo(
         function () {
             return {
-               
                 contains: (rows, id, filterValue) => {
                     console.log(rows, id , filterValue)
                    
@@ -83,20 +82,18 @@ function Table({ data }) {
                             mutualItems.push(tag)
                           }
                         }
-                      
+    
                         if (mutualItems.length === filterValue.length){
                            return true;
                         }
                       
                         return false
-                      
-                      
-                      })
-                      
+                      })  
                   }
             }
         }
     )
+    
     const defaultColumn = useMemo(
         () => ({
             Filter: ColumnFilter,
