@@ -8,6 +8,8 @@ import { useAuthContext } from "../hooks/useAuthContext";
 import { useNavigate } from "react-router-dom";
 import CancelButton from "../components/CancelButton";
 import toast from "react-hot-toast"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faFloppyDisk } from "@fortawesome/free-solid-svg-icons"
 
 const Edit = ({ material }) => {
   const [title, setTitle] = useState(material.title)
@@ -43,12 +45,14 @@ const Edit = ({ material }) => {
     }
   }
 
-  const deleteTag = (index) => {
+  /*const deleteTag = (index) => {
     setTags(prevState => prevState.filter((tag, i) => i !== index))
-  }
+  }*/
 
  // const [existingTags, setExistingTags] = useState([]);
 
+ const saveIcon = <FontAwesomeIcon icon={faFloppyDisk} />
+ 
   return (
     <div className="edit">
       <form onSubmit={handleSubmit}>
@@ -75,7 +79,9 @@ const Edit = ({ material }) => {
 
           <label htmlFor="tags">Edit Tags:</label>
           <div className="input-tags-container">
-            {tags.map((tag, index) => (
+            All Tags Select Goes Here
+            { /*   
+ {tags.map((tag, index) => (
                  <span key={index} className="tag-chip">
                 {tag}
                 <button onClick={() => deleteTag(index)}>X</button>
@@ -90,13 +96,15 @@ const Edit = ({ material }) => {
               value={tags.join(", ")}
               onChange={(e) => setTags(
                 e.target.value.split(", ").map((tag) => tag.trim())
-              )}
-            />
+              )} 
+ 
+           
+            />  */ }
           </div>
         </div>
         <div className="read_edit_create_btns">
           <CancelButton />
-          <button className="save_btn" type="submit">Save</button>
+          <button className="save_btn" type="submit">{saveIcon} Save</button>
         </div>
       </form>
     </div>

@@ -3,8 +3,10 @@ import { useMaterialsContext } from "../hooks/useMaterialsContext"
 import { useAuthContext } from "../hooks/useAuthContext"
 import { useNavigate } from "react-router-dom"
 import CancelButton from "./CancelButton"
-import AllTagsSelect from "./AllTagsSelect"
+//import AllTagsSelect from "./AllTagsSelect"
 import toast from 'react-hot-toast';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faFloppyDisk } from "@fortawesome/free-solid-svg-icons"
 
 const CreateNew = () => {
     const { dispatch } = useMaterialsContext()
@@ -16,7 +18,7 @@ const CreateNew = () => {
     const [error, setError] = useState(null)
     const [emptyFields, setEmptyFields] = useState([])
     //const { allTags } = useContext(AllTagsContext)
-    const [selectedDatabaseTags, setSelectedDatabaseTags] = useState([])
+   // const [selectedDatabaseTags, setSelectedDatabaseTags] = useState([])
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -26,7 +28,8 @@ const CreateNew = () => {
             return
         }
 
-        const material = { title, body, tags: selectedDatabaseTags }
+       // const material = { title, body, tags: selectedDatabaseTags }
+       const material = { title, body }
 
         // Log material object being sent to the backend
         console.log('Material sent to the backend:', material);
@@ -63,6 +66,9 @@ const CreateNew = () => {
         }
     }
 
+
+ const saveIcon = <FontAwesomeIcon icon={faFloppyDisk} />
+
     return (
         <>
             <form className="create" onSubmit={handleSubmit}>
@@ -86,13 +92,13 @@ const CreateNew = () => {
 
                 <div className="tags_section_container">
                     <div className="existing_tags_container">
-                        <AllTagsSelect onTagsChange={setSelectedDatabaseTags} />
+                        All Tags Select Goes Here
                     </div>
                 </div>
 
                 <div className="read_edit_create_btns">
                     <CancelButton />
-                    <button className="save_btn">Save</button>
+                    <button className="save_btn"> {saveIcon} Save</button>
                     {error && <div className="error">{error}</div>}
                 </div>
             </form>

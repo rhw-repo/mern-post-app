@@ -1,3 +1,5 @@
+/* REDUNDANT experimental component to filter tags, abandoned 
+
 // need: clarity and a filter function for table rows
 // data passed following async fetch() call in Home.js 
 import AsyncSelect from "react-select/async"
@@ -40,4 +42,4 @@ const AllTagsAsyncSelect = ({ data }) => {
    )
 }
 
-export default AllTagsAsyncSelect
+export default AllTagsAsyncSelect*/

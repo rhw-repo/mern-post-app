@@ -1,31 +1,29 @@
 import { useTable, usePagination, useSortBy, useGlobalFilter, useFilters } from 'react-table';
 import GlobalFilter from './GlobalFilter';
 import ColumnFilter from './ColumnFilter';
-import AllTagsFilterModal from './AllTagsFilterModal';
 import DateRangeFilter, { filterByDateRange } from './DateRangeFilter';
 import ModalDateRangeFilter from './ModalDateRangeFilter';
 import 'react-date-range/dist/styles.css';
 import 'react-date-range/dist/theme/default.css';
 import { useMemo, useState, useEffect } from 'react';
+import Select from 'react-select';
 import { Link } from 'react-router-dom';
 import DeleteButton from "./DeleteButton";
+// icons
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
     faCalendarDays,
     faPen,
-    faFilter,
     faUndo,
     faSortUp,
     faSortDown,
     faForward,
     faBackward,
 } from "@fortawesome/free-solid-svg-icons"
-
 // function formats date fields 
 import { format } from "date-fns";
-import AllTagsAsyncSelect from './AllTagsAysncSelect';
-import Select from 'react-select';
 
+// filter table rows according to selected options (all the tags in document collection)
 function TagsSelect({
     column: { filterValue, setFilter, preFilteredRows, id }
 }) {
@@ -216,9 +214,7 @@ function Table({ data }) {
 
     // Toggle visbility DateRangeFilter & AllTagsFilter, both too large for UI
     const [isOpen, setIsOpen] = useState(false)
-    const [showAllTagsFilter, setShowAllTagsFilter] = useState(false)
-
-
+    
     const calendarIcon = <FontAwesomeIcon icon={faCalendarDays} />
     const createNewIcon = <FontAwesomeIcon icon={faPen} />
     const resetIcon = <FontAwesomeIcon icon={faUndo} />
@@ -226,7 +222,6 @@ function Table({ data }) {
     const sortDownIcon = <FontAwesomeIcon icon={faSortDown} />
     const forwardsIcon = <FontAwesomeIcon icon={faForward} />
     const backwardsIcon = <FontAwesomeIcon icon={faBackward} />
-    const filterIcon = <FontAwesomeIcon icon={faFilter} />
 
     // rendering options_container before table aims for easy user experience
     return (
@@ -244,21 +239,7 @@ function Table({ data }) {
                     </button>
                 </span>
 
-                <span className="tags_modal">
-                    <span >
-                        <button className="open_modal_btn"
-                            onClick={() => setShowAllTagsFilter(true)}
-                        >
-                            {filterIcon} Filter by Tags
-                        </button>
-                    </span>
-                    <AllTagsFilterModal
-                        open={showAllTagsFilter}
-                        onClose={() => setShowAllTagsFilter(false)}>
-                        <AllTagsAsyncSelect data={data}
-                        />
-                    </ AllTagsFilterModal >
-                </span>
+                
 
                 <span className="item2">
                     <button

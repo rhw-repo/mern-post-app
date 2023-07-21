@@ -3,7 +3,7 @@ TODO: 1. create function sanitise to prevent XSS attacks */
 import { useEffect } from "react";
 import styled from "styled-components"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons"
+import { faFilter } from "@fortawesome/free-solid-svg-icons"
 
 // icon is SVG not CSS: styled component allows icon in placeholder
 const SearchBox = styled.div`
@@ -25,6 +25,8 @@ const SearchBox = styled.div`
     }
 `
 
+const filterIcon = <FontAwesomeIcon icon={faFilter} />
+
 const ColumnFilter = ({ column }) => {
     // console.log(column)
     useEffect(() => {
@@ -38,7 +40,7 @@ const ColumnFilter = ({ column }) => {
             <div>
                 <span>
                     <SearchBox>
-                        <FontAwesomeIcon icon={faMagnifyingGlass} />
+                        {filterIcon}
                         <input
                             type="text"
                             placeholder="Search this column..."

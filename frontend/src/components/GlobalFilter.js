@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useAsyncDebounce } from "react-table";
 import styled from "styled-components"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons"
+import { faFilter } from "@fortawesome/free-solid-svg-icons"
 
 // icon is SVG not CSS: styled component allows icon in placeholder
 const SearchBox = styled.div`
@@ -38,6 +38,8 @@ const GlobalFilter = ({ filter, setFilter }) => {
         setFilter(value || undefined)
     }, 300)
 
+    const filterIcon = <FontAwesomeIcon icon={faFilter} />
+
     return (
         <div style={{
             display: "flex",
@@ -50,7 +52,7 @@ const GlobalFilter = ({ filter, setFilter }) => {
                 padding: "0.625rem",
             }}>
                 <SearchBox>
-                    <FontAwesomeIcon icon={faMagnifyingGlass} />
+                    {filterIcon}
                     <input
                         type="text"
                         placeholder="Search all the table..."
