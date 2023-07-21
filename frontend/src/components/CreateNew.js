@@ -7,6 +7,7 @@ import CancelButton from "./CancelButton"
 import toast from 'react-hot-toast';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFloppyDisk } from "@fortawesome/free-solid-svg-icons"
+import SelectAddEditTags from "./SelectAddEditTags"
 
 const CreateNew = () => {
     const { dispatch } = useMaterialsContext()
@@ -93,6 +94,7 @@ const CreateNew = () => {
                 <div className="tags_section_container">
                     <div className="existing_tags_container">
                         All Tags Select Goes Here
+                        <SelectAddEditTags />
                     </div>
                 </div>
 
