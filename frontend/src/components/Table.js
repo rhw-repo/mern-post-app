@@ -24,11 +24,81 @@ import {
 // function formats date fields 
 import { format } from "date-fns";
 import AllTagsAsyncSelect from './AllTagsAysncSelect';
+import Select from 'react-select';
+
+function TagsSelect({
+    column: { filterValue, setFilter, preFilteredRows, id }
+}) {
+    // Calculate the options for filtering
+    // using the preFilteredRows
+    const options = useMemo(() => {
+        const options = new Set();
+        preFilteredRows.forEach((row) => {
+            console.log("line 36", row)
+            let tagsArray = row.values[id]
+            console.log(id)
+            for (const tag of tagsArray) {
+            console.log(tag)
+
+                options.add(tag);
+            }
+        });
+        return [...options.values()];
+    }, [id, preFilteredRows]);
+
+    const changeHandler = (newValue, action) => {
+        console.log(newValue, action)
+        let filterValue = newValue.map(nv => nv.value)
+         setFilter(filterValue)
+    }
+
+    // Render a multi-select box
+    let selectOptions = options.map(option => ({value: option , label: option}) )
+    
+    return (
+        <Select 
+        onChange={changeHandler}
+        options = {selectOptions}
+        isMulti
+        />
+    )
+   
+}
 
 // returns an object with properties to apply to every column in table  
 function Table({ data }) {
 
-
+    const filterTypes = useMemo(
+        function () {
+            return {
+               
+                contains: (rows, id, filterValue) => {
+                    console.log(rows, id , filterValue)
+                   
+                    return rows.filter(row => {
+                        let mutualItems = []
+                     let rowTags = row.values[id]
+                        for(const tag of filterValue ){
+                          if( rowTags.includes(tag)){
+                             //as soon as you find something return true
+                            // return true 
+                            mutualItems.push(tag)
+                          }
+                        }
+                      
+                        if (mutualItems.length === filterValue.length){
+                           return true;
+                        }
+                      
+                        return false
+                      
+                      
+                      })
+                      
+                  }
+            }
+        }
+    )
     const defaultColumn = useMemo(
         () => ({
             Filter: ColumnFilter,
@@ -63,6 +133,13 @@ function Table({ data }) {
                 ),
             },
             {
+                Header: "Tags",
+                accessor: "tags",
+                disableSortBy: true,
+                filter: "contains",
+                Filter: TagsSelect,
+            },
+            {
                 Header: "Created At",
                 accessor: "createdAt",
                 Cell: ({ value }) => format(new Date(value), "dd/MM/yyyy"),
@@ -84,6 +161,8 @@ function Table({ data }) {
         ],
         []
     )
+   
+
 
     /* destructure from the table instance 
     access props & functions, simplify managing state */
@@ -109,6 +188,7 @@ function Table({ data }) {
             columns,
             data,
             defaultColumn,
+            filterTypes,
             initialState: { pageIndex: 0, pageSize: 4 },
         },
         useFilters,
