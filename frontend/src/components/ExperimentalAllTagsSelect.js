@@ -51,9 +51,9 @@ function ExperimentalAllTagsSelect({ onTagsChange }) {
   if (loading) {
     return <div>Loading...</div>;
   }
-
+  // could return loading spinner / message 
   if (!dataLoaded) {
-    return null; // You can choose to return a loading spinner or message here
+    return null;
   }
 
   return (
