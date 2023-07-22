@@ -1,13 +1,11 @@
-import { useState } from "react"
-import { useMaterialsContext } from "../hooks/useMaterialsContext"
-import { useAuthContext } from "../hooks/useAuthContext"
-import { useNavigate } from "react-router-dom"
-import CancelButton from "./CancelButton"
-//import AllTagsSelect from "./AllTagsSelect"
-import toast from 'react-hot-toast';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faFloppyDisk } from "@fortawesome/free-solid-svg-icons"
-import SelectAddEditTags from "./SelectAddEditTags"
+import { useState } from "react";
+import { useMaterialsContext } from "../hooks/useMaterialsContext";
+import { useAuthContext } from "../hooks/useAuthContext";
+import { useNavigate } from "react-router-dom";
+import CancelButton from "./CancelButton";
+//import { AllTagsContext } from "../context/AllTagsContext";
+//import AllTagsSelect from "./AllTagsSelect";
+import ExperimentalAllTagsSelect from "./ExperimentalAllTagsSelect";
 
 const CreateNew = () => {
     const { dispatch } = useMaterialsContext()
@@ -21,6 +19,13 @@ const CreateNew = () => {
     //const { allTags } = useContext(AllTagsContext)
    // const [selectedDatabaseTags, setSelectedDatabaseTags] = useState([])
 
+   const [selectedTags, setSelectedTags] = useState([]);
+
+   // Assuming you have a function to handle changes to the selected tags
+   const handleTagsChange = (tags) => {
+     setSelectedTags(tags);
+   }
+
     const handleSubmit = async (e) => {
         e.preventDefault()
 
@@ -29,10 +34,9 @@ const CreateNew = () => {
             return
         }
 
-       // const material = { title, body, tags: selectedDatabaseTags }
-       const material = { title, body }
+        const material = { title, body, tags: selectedTags }
 
-        // Log material object being sent to the backend
+          // Log material object being sent to the backend
         console.log('Material sent to the backend:', material);
 
         const response = await fetch("/api/materials", {
@@ -46,8 +50,8 @@ const CreateNew = () => {
 
         const json = await response.json()
 
-        // Log the response received from the backend
-        console.log('Response received from the backend:', json)
+          // Log the response received from the backend
+  console.log('Response received from the backend:', json)
 
         if (!response.ok) {
             setError(json.error)
@@ -60,15 +64,9 @@ const CreateNew = () => {
             setError(null)
             setEmptyFields([])
             dispatch({ type: "CREATE_MATERIAL", payload: json })
-            navigate("/")
-            toast.success("Your work is safely saved!")
-        } else {
-            toast.error("Sorry, that save did not go so well, please try again")
+            navigate("/");
         }
     }
-
-
- const saveIcon = <FontAwesomeIcon icon={faFloppyDisk} />
 
     return (
         <>
@@ -93,19 +91,20 @@ const CreateNew = () => {
 
                 <div className="tags_section_container">
                     <div className="existing_tags_container">
-                        All Tags Select Goes Here
-                        <SelectAddEditTags />
+                       { /* <AllTagsSelect onTagsChange={setSelectedDatabaseTags} />*/ } 
+                       <ExperimentalAllTagsSelect onTagsChange={handleTagsChange}/>
                     </div>
                 </div>
 
                 <div className="read_edit_create_btns">
                     <CancelButton />
-                    <button className="save_btn"> {saveIcon} Save</button>
+                    <button className="save_btn">Save</button>
                     {error && <div className="error">{error}</div>}
                 </div>
             </form>
+            
         </>
     )
 }
 
-export default CreateNew
+export default CreateNew;

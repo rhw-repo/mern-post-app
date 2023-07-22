@@ -1,4 +1,6 @@
-// AllTagsFilter needs visibility toggle else too large for page
+/* REDUNDANT
+
+ AllTagsFilter needs visibility toggle else too large for page
 function AllTagsFilterModal({ open, children, onClose }) {
     if(!open) return null
 
@@ -11,3 +13,4 @@ function AllTagsFilterModal({ open, children, onClose }) {
 }
 
 export default AllTagsFilterModal;
+*/

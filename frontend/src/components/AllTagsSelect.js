@@ -1,4 +1,5 @@
 /* TODO REDUNDANT REPLACE WITHOUT USING USECONTEXT ALLTAGSCONTEXT 
+
 1.1 debug form cancels on multiple presses enter if creating new tags
 1.2 debug prevent dupes in 'tags' and allTags options list
 1.3 debug persist state on page refresh to load options again
