@@ -1,22 +1,27 @@
 /* TODO 
-1. Import & render AllTagsSelect (user needs to apply labels to documents)
-2. Research (& implement or reccomend) input validation, sanitisation
-3. Create modal confirming user changes saved*/
+1.Research (& implement or reccomend) input validation, sanitisation
+*/
 
 import { useState, useEffect } from "react";
 import { useAuthContext } from "../hooks/useAuthContext";
-import { useNavigate } from "react-router-dom";
+import { json, useNavigate } from "react-router-dom";
 import CancelButton from "../components/CancelButton";
 import toast from "react-hot-toast"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFloppyDisk } from "@fortawesome/free-solid-svg-icons"
+import ExperimentalAllTagsSelect from "../components/ExperimentalAllTagsSelect";
 
 const Edit = ({ material }) => {
   const [title, setTitle] = useState(material.title)
   const [body, setBody] = useState(material.body)
-  const [tags, setTags] = useState(material.tags)
+  const [error, setError] = useState(null)
+  const [emptyFields, setEmptyFields] = useState([])
+  // maintain state selected options (other tags from user's doc collection)
+  const [selectedTags, setSelectedTags] = useState([]);
   const { user } = useAuthContext()
   const navigate = useNavigate()
+  // maintain  state for existing tags 
+  const [tags, setTags] = useState(material.tags)
 
   useEffect(() => {
     setTitle(material.title)
@@ -24,10 +29,20 @@ const Edit = ({ material }) => {
     setTags(material.tags)
   }, [material])
 
+  const deleteTag = (index) => {
+    setTags(prevState => prevState.filter((tag, i) => i !== index))
+  }
+
+  const handleTagsChange = (newTags) => {
+    setSelectedTags(newTags);
+  }
+
   /* temporary auth to replace with SSO local storage insecure for user */
   const handleSubmit = async (e) => {
     e.preventDefault()
-    const updatedMaterial = { title, body, tags }
+    // merge existing and new tags
+    const everyTag = Array.from(new Set([...tags, ...selectedTags]))
+    const updatedMaterial = { title, body, tags: everyTag }
     const response = await fetch(`/api/materials/${material._id}`, {
       method: "PATCH",
       headers:
@@ -37,6 +52,13 @@ const Edit = ({ material }) => {
       },
       body: JSON.stringify(updatedMaterial),
     });
+
+    if (!response.ok) {
+      setError(json.error)
+      setEmptyFields(json.emptyFields)
+
+    }
+
     if (response.ok) {
       navigate("/")
       toast.success("Your work is safely saved!")
@@ -45,14 +67,8 @@ const Edit = ({ material }) => {
     }
   }
 
-  /*const deleteTag = (index) => {
-    setTags(prevState => prevState.filter((tag, i) => i !== index))
-  }*/
+  const saveIcon = <FontAwesomeIcon icon={faFloppyDisk} />
 
- // const [existingTags, setExistingTags] = useState([]);
-
- const saveIcon = <FontAwesomeIcon icon={faFloppyDisk} />
- 
   return (
     <div className="edit">
       <form onSubmit={handleSubmit}>
@@ -63,6 +79,7 @@ const Edit = ({ material }) => {
             id="title"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
+            className={emptyFields.includes("title") ? "error" : ""}
           />
         </div>
         <div>
@@ -73,33 +90,23 @@ const Edit = ({ material }) => {
             rows={3}
             value={body}
             onChange={(e) => setBody(e.target.value)}
+            className={emptyFields.includes("body") ? "error" : ""}
           ></textarea>
         </div>
         <div>
 
           <label htmlFor="tags">Edit Tags:</label>
           <div className="input-tags-container">
-            All Tags Select Goes Here
-            { /*   
- {tags.map((tag, index) => (
-                 <span key={index} className="tag-chip">
-                {tag}
-                <button onClick={() => deleteTag(index)}>X</button>
-              </span>
+            <ExperimentalAllTagsSelect onTagsChange={handleTagsChange} />
+            <span className="document-tags">
+              {tags.map((tag, index) => (
+                <span key={index} className="tag-chip">
+                  {tag}
+                  <button onClick={() => deleteTag(index)}>X</button>
+                </span>
+              ))}
+            </span>
 
-             
-            ))}
-            <input
-              className="edit_tags"
-              type="text"
-              id="tags"
-              value={tags.join(", ")}
-              onChange={(e) => setTags(
-                e.target.value.split(", ").map((tag) => tag.trim())
-              )} 
- 
-           
-            />  */ }
           </div>
         </div>
         <div className="read_edit_create_btns">

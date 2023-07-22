@@ -315,19 +315,21 @@ inappropriate for user's filtering needs*/
    margin-bottom: 2rem;
    border: 0.125rem solid #778DA5;
  }
-/* will be redundant after react-select Creatable replaces this*/
+
  .tag-chip {
    display: flex;
    align-items: center;
    justify-content: center;
    height: 1rem;
    line-height: 2rem;
-   background-color: #778DA5;
-   color: #ffffff;
+   /*background-color: #778DA5;*/
+   background-color: #e6e6e6;
+   /*color: #ffffff;*/
+   color: black;
    font-weight: bold;
-   border-radius: 1.875rem;
+   border-radius: 0.3rem;
    padding: 0.625rem;
-   margin: 0.5rem 0.5rem 0 0;
+   margin: 0.5rem 0.5rem 0 1rem;
    min-width: 4em;
  }
 
@@ -344,7 +346,8 @@ inappropriate for user's filtering needs*/
    border: none;
    background-color: unset;
    cursor: pointer;
-   color: #ffffff;
+   /*color: #ffffff;*/
+   color: black;
    /*font-weight: 800;*/
  }
 
@@ -375,6 +378,7 @@ inappropriate for user's filtering needs*/
  .input-tags-container {
    display: flex;
    flex-wrap: wrap;
+   justify-content: flex-start;
    align-items: center;
    border: 1px solid #ccc;
    padding: 0.25rem;
@@ -384,6 +388,12 @@ inappropriate for user's filtering needs*/
  .input-tags-chip {
    margin-right: 0.5rem;
    margin-top: 0.625rem;
+ }
+
+ .document-tags {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
  }
 
  .edit_tags {
