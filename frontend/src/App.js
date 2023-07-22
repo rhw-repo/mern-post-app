@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { useAuthContext } from './hooks/useAuthContext';
-import { AllTagsProvider } from './context/AllTagsContext';
+//import { AllTagsProvider } from './context/AllTagsContext';
 import { Toaster } from 'react-hot-toast';
 
 // pages and components
@@ -19,7 +19,7 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-      <AllTagsProvider>
+      {/* <AllTagsProvider> */ }
       <Toaster 
         position='top-center'
         toastOptions={{
@@ -65,7 +65,7 @@ function App() {
           </Routes>
         </div>
         <Footer />
-        </AllTagsProvider>
+        { /* </AllTagsProvider> */ }
       </BrowserRouter>
     </div>
   )

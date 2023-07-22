@@ -209,7 +209,7 @@ function Table({ data }) {
         gotoPage(0)
     }
 
-    // Toggle visbility DateRangeFilter & AllTagsFilter, both too large for UI
+    // Toggle visbility DateRangeFilter, too large for UI
     const [isOpen, setIsOpen] = useState(false)
     
     const calendarIcon = <FontAwesomeIcon icon={faCalendarDays} />

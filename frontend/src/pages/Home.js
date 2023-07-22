@@ -2,10 +2,10 @@
 1. Write then import & render a separate component that allows search tags */
 
 // hooks
-import { useEffect, useContext } from "react";
+import { useEffect } from "react";
 import { useMaterialsContext } from "../hooks/useMaterialsContext";
 import { useAuthContext } from "../hooks/useAuthContext";
-import { AllTagsContext } from "../context/AllTagsContext";
+//import { AllTagsContext } from "../context/AllTagsContext";
 
 // components
 import Table from "../components/Table";
@@ -13,7 +13,7 @@ import Table from "../components/Table";
 const Home = () => {
   const { materials, dispatch } = useMaterialsContext()
   const { user } = useAuthContext()
-  const { setAllTags } = useContext(AllTagsContext)
+  //const { setAllTags } = useContext(AllTagsContext)
 
   // see ln 2 frontend package.json - for dev phase only, for build, point every req to endpoint 
   useEffect(() => {
@@ -26,12 +26,12 @@ const Home = () => {
 
       if (response.ok) {
         dispatch({ type: "SET_MATERIALS", payload: json })
-        // destructure tags for use in allTagsContext
+        /* destructure tags for use in allTagsContext
         const tags = json.map((material) => material.tags.flat())
         console.log(json)
         console.log("Here are the tags:")
         console.log(tags)
-        //setAllTags(tags)
+        //setAllTags(tags)*/
       }
     }
    
@@ -39,7 +39,7 @@ const Home = () => {
       fetchMaterials()
     }
 
-}, [dispatch, user, setAllTags])
+}, [dispatch, user])
 
   // Array of objects to pass to table (Tanstack Table v7) 
   const data = materials

@@ -28,10 +28,11 @@ export const materialsReducer = (state, action) => {
     }
 }
 
+// experiment initialised materials to array replacing materials: null in reducer
 // use Reducer() hook invokes materialsReducer()
 export const MaterialsContextProvider = ({ children }) => {
     const [state, dispatch] = useReducer(materialsReducer, {
-        materials: null
+        materials: []
     })
 
     /* object describes desired state change (type property) and any data needed to 

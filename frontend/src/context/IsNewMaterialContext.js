@@ -1,3 +1,4 @@
+/* REDUNDANT
 import { createContext, useState } from 'react';
 
 export const IsNewMaterialContext = createContext();
@@ -11,3 +12,4 @@ export const IsNewMaterialProvider = ({ children }) => {
     </IsNewMaterialContext.Provider>
   )
 }
+*/

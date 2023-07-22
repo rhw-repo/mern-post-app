@@ -1,3 +1,5 @@
+/* REDUNDANT
+
 import { createContext, useState } from "react"
 
 const AllTagsContext = createContext()
@@ -13,3 +15,5 @@ export const AllTagsProvider = ({ children }) => {
 }
 
 export { AllTagsContext }
+
+*/
