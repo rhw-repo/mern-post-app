@@ -1,9 +1,11 @@
 /* TODO 
 1.Research (& implement or reccomend) input validation, sanitisation
+2. debug emptyfields prevent form save without complete boxes
 */
 
 import { useState, useEffect } from "react";
 import { useAuthContext } from "../hooks/useAuthContext";
+import { useMaterialsContext } from "../hooks/useMaterialsContext";
 import { json, useNavigate } from "react-router-dom";
 import CancelButton from "../components/CancelButton";
 import toast from "react-hot-toast"
@@ -18,6 +20,7 @@ const Edit = ({ material }) => {
   const [emptyFields, setEmptyFields] = useState([])
   // maintain state selected options (other tags from user's doc collection)
   const [selectedTags, setSelectedTags] = useState([]);
+  const { dispatch } = useMaterialsContext()
   const { user } = useAuthContext()
   const navigate = useNavigate()
   // maintain  state for existing tags 
@@ -40,6 +43,8 @@ const Edit = ({ material }) => {
   /* temporary auth to replace with SSO local storage insecure for user */
   const handleSubmit = async (e) => {
     e.preventDefault()
+
+
     // merge existing and new tags
     const everyTag = Array.from(new Set([...tags, ...selectedTags]))
     const updatedMaterial = { title, body, tags: everyTag }
@@ -53,13 +58,18 @@ const Edit = ({ material }) => {
       body: JSON.stringify(updatedMaterial),
     });
 
+
+  const json = await response.json()
+
     if (!response.ok) {
       setError(json.error)
       setEmptyFields(json.emptyFields)
-
     }
 
     if (response.ok) {
+      setError(null)
+      setEmptyFields([])
+      dispatch({ type: "UPDATE_MATERIAL", payload: json })
       navigate("/")
       toast.success("Your work is safely saved!")
     } else {
@@ -91,7 +101,8 @@ const Edit = ({ material }) => {
             value={body}
             onChange={(e) => setBody(e.target.value)}
             className={emptyFields.includes("body") ? "error" : ""}
-          ></textarea>
+          >
+          </textarea>
         </div>
         <div>
 
@@ -102,7 +113,7 @@ const Edit = ({ material }) => {
               {tags.map((tag, index) => (
                 <span key={index} className="tag-chip">
                   {tag}
-                  <button onClick={() => deleteTag(index)}>X</button>
+                  <button type="button" onClick={() => deleteTag(index)}>X</button>
                 </span>
               ))}
             </span>
