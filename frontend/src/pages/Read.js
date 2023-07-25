@@ -27,8 +27,6 @@ const Read = () => {
 
     return (
         <>
-            <div>
-            </div>
             <div className="read">
                 {isEditing ? (
                     <Edit material={material} onUpdateComplete={handleUpdateComplete} />
@@ -39,11 +37,13 @@ const Read = () => {
                         {error && <div>{error}</div>}
                         {material && (
                             <article>
-                                <div className="read_form_headings">Title:</div>
+                                <div className="read_form_headings">TITLE:</div>
                                 <div className="read_title">{material.title}</div>
-                                <div className="read_form_headings">Contents:</div>
-                                <div>{material.body}</div>
-                                <div className="read_form_headings">Tags:</div>
+                                <div className="read_form_headings">CONTENTS:</div>
+                                <div className="read_body_container">
+                                    <div className="read_body">{material.body}</div>
+                                </div>
+                                <div className="read_form_headings read_tags_heading">TAGS:</div>
                                 <div className="read-tags-container">
                                     {material.tags.map((tag, index) => (
                                         <span key={index} className=" tags tag-chip">{tag}</span>
@@ -65,8 +65,8 @@ const Read = () => {
 
             </div>
             <div>
-                <Footer />
             </div>
+                <Footer />
         </>
     )
 }

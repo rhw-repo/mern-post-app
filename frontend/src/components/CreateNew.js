@@ -15,11 +15,13 @@ const CreateNew = () => {
 
     const [title, setTitle] = useState("")
     const [body, setBody] = useState("")
+    const [selectedTags, setSelectedTags] = useState([]);
+    /* set state to null for error property defined in 
+       materialController.js in backend */
     const [error, setError] = useState(null)
+    // tracks if any fields are not completed 
     const [emptyFields, setEmptyFields] = useState([])
-
-
-   const [selectedTags, setSelectedTags] = useState([]);
+   
 
    const handleTagsChange = (tags) => {
      setSelectedTags(tags);
@@ -55,6 +57,7 @@ const CreateNew = () => {
         if (!response.ok) {
             setError(json.error)
             setEmptyFields(json.emptyFields)
+           // toast.error("Sorry, that save did not go so well, please try again")
         }
 
         if (response.ok) {
@@ -64,14 +67,13 @@ const CreateNew = () => {
             setEmptyFields([])
             dispatch({ type: "CREATE_MATERIAL", payload: json })
             navigate("/");
-			 toast.success("Your work is safely saved!")
-        } else {
-            toast.error("Sorry, that save did not go so well, please try again")
-        }
+			toast.success("Your work is safely saved!")
+        } 
     }
 	
 	 const saveIcon = <FontAwesomeIcon icon={faFloppyDisk} />
 
+// css class 'errror' only applies if emptyFields is true
     return (
         <>
             <form className="create" onSubmit={handleSubmit}>
@@ -102,6 +104,7 @@ const CreateNew = () => {
                 <div className="read_edit_create_btns">
                     <CancelButton />
                     <button className="save_btn">{saveIcon} Save</button>
+                    { /*  // evaluate if error exists, if so, output a div which outputs the error state   */ }
                     {error && <div className="error">{error}</div>}
                 </div>
             </form>

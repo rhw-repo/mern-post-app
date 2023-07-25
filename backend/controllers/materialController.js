@@ -31,8 +31,10 @@ const getMaterial = async (req, res) => {
 const createMaterial = async (req, res) => {
     const { title, body, tags } = req.body
 
+    // detect which fields are empty on form submit 
     let emptyFields = []
 
+    // if field empty push name of field to emptyFields array
     if (!title) {
         emptyFields.push("title")
     }
@@ -42,6 +44,7 @@ const createMaterial = async (req, res) => {
     if (!tags) {
         emptyFields.push("tags")
     }
+    // if greater than zero, send error to client & array of empty fields
     if (emptyFields.length > 0) {
         return res.status(400).json({
             error: "Please complete all boxes.", emptyFields

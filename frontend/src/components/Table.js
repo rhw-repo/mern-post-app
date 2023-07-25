@@ -130,6 +130,7 @@ function Table({ data }) {
             {
                 Header: "Tags",
                 accessor: "tags",
+                maxWidth: 200,
                 disableSortBy: true,
                 filter: "contains",
                 Filter: TagsSelect,
@@ -288,7 +289,8 @@ function Table({ data }) {
                                             fontWeight: "bold",
                                             fontSize: "1rem",
                                             padding: "1.5rem",
-                                            margin: "0.625rem"
+                                            margin: "0.625rem",
+                                            
                                         }}
                                     >
                                         {column.render("Header")}
@@ -315,6 +317,7 @@ function Table({ data }) {
                                 <tr {...row.getRowProps()}
                                     style={{
                                         backgroundColor: row.index % 2 === 0 ? "white" : "#E0E0E0",
+                                        maxHeight: "4rem"
                                     }}>
                                     {row.cells.map(cell => {
                                         return (

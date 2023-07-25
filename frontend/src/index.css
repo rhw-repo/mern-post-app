@@ -138,16 +138,18 @@
    text-decoration: none;
  }
 
+ /* all pages */
  .pages {
    max-width: 87.5rem;
+   max-height: 75vh;
    padding: 1.25rem;
    margin: 0 auto;
  }
 
+ 
  /* homepage */
  .home {
    display: block;
-
  }
 
  .home a {
@@ -165,15 +167,15 @@
   margin-bottom: 2rem;
 }
 
-  /* date-range-picker modal & modal toggle buttons */
-  .open_modal_btn,
-  .close_modal_btn,
-  .reset_table_btn {
+/* Reset table button */ 
+.reset_table_btn {
     width: 9rem;
     padding: 0.625rem;
     margin: 1rem;
   }
  
+  
+  /* styles DateRangePicker div in DateRangeFilter */
   .modal {
     position: absolute;
     top: 50%;
@@ -188,31 +190,11 @@
       0.3125rem 0.3125rem 0.3125rem 0.3125rem #778DA5;
   }
  
-  .tags_modal {
-   display: flex;
-   justify-content: space-between;
-   align-items: center;
-  }
-
- /* date-range-picker modal & modal toggle buttons */
+ /* DateRangeFilter modal & modal toggle buttons */
  .date_range_btn,
  .close_date_range {
    width: 9rem;
    padding: 0.625rem;
- }
-
- .modal {
-   position: absolute;
-   top: 50%;
-   left: 50%;
-   transform: translate(-50%, -50%);
-   border: solid 1px #778DA5;
-   border-radius: 1rem;
-   box-shadow:
-     0rem 0.125rem 0.25rem 0rem rgba(0, 0, 0, 0.2),
-     0rem 0.25rem 0.3125rem 0rem rgba(0, 0, 0, 0.14),
-     0rem 0.0625rem 0.625rem 0rem rgba(0, 0, 0, 0.12),
-     0.3125rem 0.3125rem 0.3125rem 0.3125rem #778DA5;
  }
 
 
@@ -284,7 +266,6 @@ inappropriate for user's filtering needs*/
  /* other pages and tags */
  /* read page */
  .read {
-   height: 31.25rem;
    background: #fff;
    border-radius: 0.625rem;
    padding: 1.25rem;
@@ -295,12 +276,19 @@ inappropriate for user's filtering needs*/
      0rem 0.25rem 0.3125rem 0rem rgba(0, 0, 0, 0.14),
      0rem 0.0625rem 0.625rem 0rem rgba(0, 0, 0, 0.12),
      0.3125rem 0.3125rem 0.3125rem 0.3125rem #778DA5;
-
  }
 
+
  .read_form_headings {
+   font-size: 1.5rem;
    font-weight: bold;
    margin: 1.6rem 0;
+   padding: 1rem;
+   color: var(--primary);
+ }
+
+ .read_tags_heading {
+  margin: 0;
  }
 
  .read_title {
@@ -308,73 +296,76 @@ inappropriate for user's filtering needs*/
    font-size: 1.5rem;
    font-weight: bold;
    margin: 1.6rem auto;
+   max-height: 2rem;
+   max-width: 100%;
+   overflow: hidden;
+   text-overflow: ellipsis;
+   white-space: nowrap;
  }
 
- /* tags */
- .tags {
-   margin-bottom: 2rem;
-   border: 0.125rem solid #778DA5;
+ .read_body_container {
+  max-height: 2rem;
+  overflow-y: auto;
  }
 
+ .read_body {
+  font-size: 1.25rem;
+  font-weight: bold;
+   max-width: 100%;
+   white-space: normal;
+ }
+
+ /* tags display matches default from react-select Creatable */
  .tag-chip {
    display: flex;
    align-items: center;
    justify-content: center;
    height: 1rem;
    line-height: 2rem;
-   /*background-color: #778DA5;*/
    background-color: #e6e6e6;
-   /*color: #ffffff;*/
    color: black;
    font-weight: bold;
    border-radius: 0.3rem;
    padding: 0.625rem;
-   margin: 0.5rem 0.5rem 0 1rem;
+   margin: 0rem 0.5rem 0 1rem;
    min-width: 4em;
  }
 
- .read-tags-container {
-   display: flex;
-   align-items: center;
-   justify-content: flex-start;
-   flex-wrap: wrap;
- }
-
- .tag-chip button {
+.tag-chip button {
    display: flex;
    padding: 6px;
    border: none;
    background-color: unset;
    cursor: pointer;
-   /*color: #ffffff;*/
    color: black;
-   /*font-weight: 800;*/
  }
 
+ /* display tags in Read */
+ .read-tags-container {
+   display: flex;
+   align-items: center;
+   justify-content: flex-start;
+   flex-wrap: wrap;
+   row-gap: 1rem;
+   max-height: 4rem;
+   overflow-x: hidden;
+   overflow-y: auto;
+ }
+
+ /* CreateNew */
  .tags_section_container {
    display: flex;
    justify-content: space-between;
    align-items: center;
  }
 
+ /* ExperimentalAllTagsSelect*/
  .select-container {
    border-radius: 0.625rem;
    /*overflow: hidden;*/
  }
 
-
- .all-tags-select {
-   height: 8rem;
-   /*overflow-y: auto;*/
-   border: 1px solid #ffffff;
-   background-color: palevioletred;
- }
-
- .all-tags-select:focus {
-   outline: none;
-   border: 1px solid #ffffff;
- }
-
+/* handles display of Creatable & existing tags in Edit */
  .input-tags-container {
    display: flex;
    flex-wrap: wrap;
@@ -385,34 +376,15 @@ inappropriate for user's filtering needs*/
    border-radius: 4px;
  }
 
- .input-tags-chip {
-   margin-right: 0.5rem;
-   margin-top: 0.625rem;
- }
-
  .document-tags {
   display: flex;
   justify-content: space-around;
   align-items: center;
  }
 
- .edit_tags {
-   border: none;
-   outline: none;
-   padding: 0.625rem;
-   margin-right: 0.5rem;
-   background-color: transparent;
-   /*flex-grow: 1;*/
-   margin: 1rem;
- }
-
  /* buttons specific to read, edit & create new pages */
- .read button,
  .cancel_btn {
    padding: 0.625rem;
- }
-
- .cancel_btn {
    width: 6rem;
  }
 
@@ -423,7 +395,7 @@ inappropriate for user's filtering needs*/
    margin-top: 2rem;
  }
 
- /* create new form & edit page form */
+ /* create new form  */
  h1 {
    color: #435362;
    font-weight: 900;
@@ -431,6 +403,7 @@ inappropriate for user's filtering needs*/
    font-family: "Lexend Deca", Helvetica, Arial, sans-serif;
  }
 
+ /* create new and edit forms  */
  label,
  input,
  textarea {
@@ -447,8 +420,10 @@ inappropriate for user's filtering needs*/
    border: 1px solid #ddd;
    border-radius: 0.5rem;
    box-sizing: border-box;
+   max-height: 2rem;
  }
 
+ /* error styling */
  div.error {
    padding: 0.625rem;
    background: #ffefef;
@@ -458,7 +433,8 @@ inappropriate for user's filtering needs*/
    margin: 1.25rem 0;
  }
 
- input.error {
+ input.error,
+ textarea.error {
    border: 0.125rem solid var(--error);
  }
 
