@@ -1,3 +1,5 @@
+/*TODO debug is not adding new tags to select */
+
 import { useState, useEffect } from "react";
 import Creatable from "react-select/creatable";
 import { useMaterialsContext } from "../hooks/useMaterialsContext";

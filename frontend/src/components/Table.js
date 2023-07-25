@@ -36,7 +36,7 @@ function TagsSelect({
             let tagsArray = row.values[id]
             console.log(id)
             for (const tag of tagsArray) {
-            console.log(tag)
+                console.log(tag)
 
                 options.add(tag);
             }
@@ -47,20 +47,30 @@ function TagsSelect({
     const changeHandler = (newValue, action) => {
         console.log(newValue, action)
         let filterValue = newValue.map(nv => nv.value)
-         setFilter(filterValue)
+        setFilter(filterValue)
+    }
+
+    const customStyles = {
+        control: (baseStyles) => ({
+            ...baseStyles,
+            width: "200px",
+            maxWidth: "300px",
+            border: "1px solid #e6e6e6",
+        })
     }
 
     // Render a multi-select box
-    let selectOptions = options.map(option => ({value: option , label: option}) )
-    
+    let selectOptions = options.map(option => ({ value: option, label: option }))
+
     return (
-        <Select 
-        onChange={changeHandler}
-        options = {selectOptions}
-        isMulti
+        <Select
+            onChange={changeHandler}
+            options={selectOptions}
+            isMulti
+            styles={customStyles}
         />
     )
-   
+
 }
 
 // returns an object with properties to apply to every column in table  
@@ -70,33 +80,35 @@ function Table({ data }) {
         function () {
             return {
                 contains: (rows, id, filterValue) => {
-                    console.log(rows, id , filterValue)
-                   
+                    console.log(rows, id, filterValue)
+
                     return rows.filter(row => {
                         let mutualItems = []
-                     let rowTags = row.values[id]
-                        for(const tag of filterValue ){
-                          if( rowTags.includes(tag)){
-                             //as soon as you find something return true
-                            // return true 
-                            mutualItems.push(tag)
-                          }
+                        let rowTags = row.values[id]
+                        for (const tag of filterValue) {
+                            if (rowTags.includes(tag)) {
+                                //as soon as you find something return true
+                                // return true 
+                                mutualItems.push(tag)
+                            }
                         }
-    
-                        if (mutualItems.length === filterValue.length){
-                           return true;
+
+                        if (mutualItems.length === filterValue.length) {
+                            return true;
                         }
-                      
+
                         return false
-                      })  
-                  }
+                    })
+                }
             }
         }
     )
-    
+
     const defaultColumn = useMemo(
         () => ({
             Filter: ColumnFilter,
+            width: 60,
+            maxWidth: 50,
         }),
         []
     )
@@ -130,7 +142,19 @@ function Table({ data }) {
             {
                 Header: "Tags",
                 accessor: "tags",
-                maxWidth: 200,
+                width: 100,
+                /*   Cell: ({ value }) => {
+                     return value.length > 4 ? `${value[0]}, ${value[1]}, ...` : value.join(', ');
+                 },*/
+
+                Cell: ({ value }) => {
+                    if (value.length > 3) {
+                        const slicedTags = value.slice(0, 4);
+                        return `${slicedTags.join(", ")}, ...`;
+                    } else {
+                        return value.join(", ");
+                    }
+                },
                 disableSortBy: true,
                 filter: "contains",
                 Filter: TagsSelect,
@@ -157,7 +181,7 @@ function Table({ data }) {
         ],
         []
     )
-   
+
 
 
     /* destructure from the table instance 
@@ -212,7 +236,7 @@ function Table({ data }) {
 
     // Toggle visbility DateRangeFilter, too large for UI
     const [isOpen, setIsOpen] = useState(false)
-    
+
     const calendarIcon = <FontAwesomeIcon icon={faCalendarDays} />
     const createNewIcon = <FontAwesomeIcon icon={faPen} />
     const resetIcon = <FontAwesomeIcon icon={faUndo} />
@@ -237,7 +261,7 @@ function Table({ data }) {
                     </button>
                 </span>
 
-                
+
 
                 <span className="item2">
                     <button
@@ -290,7 +314,7 @@ function Table({ data }) {
                                             fontSize: "1rem",
                                             padding: "1.5rem",
                                             margin: "0.625rem",
-                                            
+
                                         }}
                                     >
                                         {column.render("Header")}
