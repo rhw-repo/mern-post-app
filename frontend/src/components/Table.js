@@ -32,11 +32,11 @@ function TagsSelect({
     const options = useMemo(() => {
         const options = new Set();
         preFilteredRows.forEach((row) => {
-            console.log("line 36", row)
+           // console.log("line 36", row)
             let tagsArray = row.values[id]
-            console.log(id)
+         //   console.log(id)
             for (const tag of tagsArray) {
-                console.log(tag)
+              //  console.log(tag)
 
                 options.add(tag);
             }

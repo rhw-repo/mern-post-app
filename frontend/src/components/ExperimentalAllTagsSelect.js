@@ -18,16 +18,20 @@ function ExperimentalAllTagsSelect({ onTagsChange }) {
       setAllTags(savedAllTags);
       setLoading(false);
       setDataLoaded(true);
-    } else if (materials !== null) {
-      const tagsSet = new Set(materials.flatMap((material) => material.tags));
-      const tagsArray = Array.from(tagsSet);
-      setAllTags(tagsArray);
-      setLoading(false);
-      localStorage.setItem("allTags", JSON.stringify(tagsArray));
-      setDataLoaded(true);
+    } else if (materials.length > 0 ) {
+      const tagsSet = new Set(materials.flatMap((material) => material.tags))
+      const tagsArray = Array.from(tagsSet)
+      setAllTags(tagsArray)
+      setLoading(false)
+      localStorage.setItem("allTags", JSON.stringify(tagsArray))
+      setDataLoaded(true)
     }
-  }, [materials]);
+  }, [materials])
 
+  useEffect(() => {
+    console.log("allTags updated:", allTags)
+  }, [allTags])
+  
   // Effect to handle onTagsChange whenever selectedTags changes
   useEffect(() => {
     onTagsChange(selectedTags);
@@ -36,28 +40,34 @@ function ExperimentalAllTagsSelect({ onTagsChange }) {
   const handleChange = (selectedOptions) => {
     const options = selectedOptions
       ? Array.from(new Set(selectedOptions.map((option) => option.value)))
-      : [];
-    setSelectedTags(options);
+      : []
+    setSelectedTags(options)
+    setAllTags(prevTags => Array.from(new Set([...prevTags, ...options])))
   };
+
+  // update allTags in localStorage to include any new tags created
+  useEffect(() => {
+    localStorage.setItem("allTags", JSON.stringify(allTags))
+  }, [allTags])
 
   const isValidNewOption = (inputValue, selectValue, selectOptions) => {
     if (
       inputValue.trim().length === 0 ||
-      selectOptions.find((option) => option.value === inputValue)
+      allTags.find((option) => option.value === inputValue)
     ) {
-      return false;
+      return false
     }
-    return true;
-  };
+    return true
+  }
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <div>Loading...</div>
   }
   // could return loading spinner / message 
   if (!dataLoaded) {
-    return null;
+    return null
   }
-
+  
   return (
     <label>
       Click on tags or type in new tags:
