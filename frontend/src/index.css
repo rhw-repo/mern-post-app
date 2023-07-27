@@ -61,10 +61,10 @@
  .reset_table_btn,
  .table_pagination,
  .select_box,
- .open_modal_btn,
- .close_modal_btn,
+ /*.open_modal_btn,
+ .close_modal_btn,*/
  .date_range_btn,
- .close_date_range,
+ /*.close_date_range,*/
  .cancel_btn,
  .switch_form_btn {
    background: #fff;
@@ -188,16 +188,19 @@
       0rem 0.25rem 0.3125rem 0rem rgba(0, 0, 0, 0.14),
       0rem 0.0625rem 0.625rem 0rem rgba(0, 0, 0, 0.12),
       0.3125rem 0.3125rem 0.3125rem 0.3125rem #778DA5;
-      z-index: 1;
+    z-index: 1;
   }
  
  /* DateRangeFilter modal & modal toggle buttons */
- .date_range_btn,
- .close_date_range {
+ .date_range_btn {
    width: 9rem;
    padding: 0.625rem;
  }
 
+ .close_date_range {
+  border: none;
+  background-color: #fff;
+ }
 
  /* hides DateRangePicker 'days until' & 'days from' today div: 
 inappropriate for user's filtering needs*/

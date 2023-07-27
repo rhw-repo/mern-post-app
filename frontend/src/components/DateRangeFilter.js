@@ -1,6 +1,3 @@
-/* TODO: 1.  see resetTable() in Table.js
-user needs Reset Table button in DateRangeFilter after filtering by date(s) */
-
 import { useState } from "react";
 import { DateRangePicker } from "react-date-range";
 // function required for filtering by selected date range

@@ -52,10 +52,8 @@ const Home = () => {
   return (
     <>
       <div className="home">
-        <div className="materials">
           <Table data={data} />
-        </div>
-      </div>
+        </div>      
       <div>
       </div>
     </>
