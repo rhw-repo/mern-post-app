@@ -34,6 +34,11 @@ const ColumnFilter = ({ column }) => {
     }, [])
 
     const { filterValue, setFilter } = column
+
+    const customStyles = {
+        outline: "none"
+    }
+
     // hides input in date columns (DateRangeFilter used instead or no filter)
     if (column.Header !== "Created At" && column.Header !== "Updated At" && column.Header !== "Delete") {
         return (
@@ -46,6 +51,7 @@ const ColumnFilter = ({ column }) => {
                             placeholder="Search this column..."
                             value={filterValue || ""}
                             onChange={e => setFilter(e.target.value)}
+                            style={customStyles}
                         />
                     </SearchBox>
                 </span>

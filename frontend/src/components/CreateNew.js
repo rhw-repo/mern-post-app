@@ -66,6 +66,10 @@ const CreateNew = () => {
         }
     }
 
+    const customStyles = {
+        outline: "none",
+    }
+
     return (
         <>
             <form className="create" onSubmit={handleSubmit}>
@@ -75,7 +79,8 @@ const CreateNew = () => {
                     type="text"
                     onChange={(e) => setTitle(e.target.value)}
                     value={title}
-                    className={emptyFields.includes("title") ? "error" : ""}
+                    className={emptyFields.includes("title") ? "error" : "primary"}
+                    style={customStyles}
                 />
                 <label>Paste content here:</label>
                 <textarea
@@ -84,6 +89,7 @@ const CreateNew = () => {
                     onChange={(e) => setBody(e.target.value)}
                     value={body}
                     className={emptyFields.includes("body") ? "error" : ""}
+                    style={customStyles}
                 />
                 <label>Add tags here:</label>
                 <div className="tags_section_container">

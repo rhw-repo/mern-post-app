@@ -79,6 +79,10 @@ const Edit = ({ material }) => {
 
   const saveIcon = <FontAwesomeIcon icon={faFloppyDisk} />
 
+const customStyles = {
+        outline: "none",
+    }
+
   return (
     <div className="edit">
       <form onSubmit={handleSubmit}>
@@ -90,6 +94,7 @@ const Edit = ({ material }) => {
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             className={emptyFields.includes("title") ? "error" : ""}
+            style={customStyles}
           />
         </div>
         <div>
@@ -101,6 +106,7 @@ const Edit = ({ material }) => {
             value={body}
             onChange={(e) => setBody(e.target.value)}
             className={emptyFields.includes("body") ? "error" : ""}
+            style={customStyles}
           >
           </textarea>
         </div>

@@ -40,6 +40,11 @@ const GlobalFilter = ({ filter, setFilter }) => {
 
     const filterIcon = <FontAwesomeIcon icon={faFilter} />
 
+    const customStyles = {
+        outline: "none", 
+        width: "20rem",
+    }
+
     return (
         <div style={{
             display: "flex",
@@ -61,6 +66,7 @@ const GlobalFilter = ({ filter, setFilter }) => {
                             setValue(e.target.value)
                             onChange(e.target.value)
                         }}
+                        style={customStyles}
                     />
                 </SearchBox>
             </span>

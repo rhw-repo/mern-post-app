@@ -26,7 +26,7 @@ const Login = () => {
 
     const loginIcon = <FontAwesomeIcon icon={faRightToBracket} />
     const signupIcon = <FontAwesomeIcon icon={faUserPlus} />
-
+ 
     return (
         <>
             <form className="login" onSubmit={handleSubmit}>

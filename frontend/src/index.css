@@ -49,10 +49,10 @@
    font-weight: bold;
    border-radius: 1.875rem;
    cursor: pointer;
-   box-shadow: 
-   0rem 0.125rem 0.25rem 0rem rgba(0, 0, 0, 0.2),
-   0rem 0.25rem 0.3125rem 0rem rgba(0, 0, 0, 0.14),
-   0rem 0.0625rem 0.625rem 0rem rgba(0, 0, 0, 0.12),
+   box-shadow:
+   0rem 0.125rem 0.25rem 0rem rgba(0, 0, 0, 0.15),
+   0rem 0.25rem 0.3125rem 0rem rgba(0, 0, 0, 0.09),
+   0rem 0.0625rem 0.625rem 0rem rgba(0, 0, 0, 0.07),
    0.3125rem 0.3125rem 0.3125rem 0.3125rem #778DA5;
  }
 
@@ -74,9 +74,9 @@
    font-family: "Lexend Deca", Helvetica, Arial, sans-serif;
    cursor: pointer;
    box-shadow: 
-   0rem 0.125rem 0.25rem 0rem rgba(0, 0, 0, 0.2),
-   0rem 0.25rem 0.3125rem 0rem rgba(0, 0, 0, 0.14),
-   0rem 0.0625rem 0.625rem 0rem rgba(0, 0, 0, 0.12),
+   0rem 0.125rem 0.25rem 0rem rgba(0, 0, 0, 0.15),
+   0rem 0.25rem 0.3125rem 0rem rgba(0, 0, 0, 0.09),
+   0rem 0.0625rem 0.625rem 0rem rgba(0, 0, 0, 0.07),
    0.3125rem 0.3125rem 0.3125rem 0.3125rem #778DA5;
  }
 
@@ -178,8 +178,8 @@
   /* DateRangePicker div in DateRangeFilter, z index simple positioning */
   .modal {
     position: absolute;
-    top: 50%;
-    left: 50%;
+    top: 53%;
+    left: 38%;
     transform: translate(-50%, -50%);
     border: solid 1px #778DA5;
     border-radius: 1rem;
@@ -199,7 +199,13 @@
 
  .close_date_range {
   border: none;
-  background-color: #fff;
+  background-color: none; 
+  margin: 0.5rem 0;
+  cursor: pointer;
+  padding: 0;
+  height: 2rem;
+  width: 2rem;
+  border-radius: 50%;
  }
 
  /* hides DateRangePicker 'days until' & 'days from' today div: 

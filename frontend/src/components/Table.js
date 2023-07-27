@@ -70,7 +70,6 @@ function TagsSelect({
             styles={customStyles}
         />
     )
-
 }
 
 // returns an object with properties to apply to every column in table  
@@ -182,8 +181,6 @@ function Table({ data }) {
         []
     )
 
-
-
     /* destructure from the table instance 
     access props & functions, simplify managing state */
     const {
@@ -249,18 +246,15 @@ function Table({ data }) {
     return (
         <>
             <div className="options_container">
-                <span className="item1">
-                    <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
+                 <span className="item3">
+                    <Link to="/create_new">
+                        <button
+                            className="create_new_btn"
+                        >
+                            {createNewIcon} Create New
+                        </button>
+                    </Link>
                 </span>
-                <span>
-                    <button
-                        className="reset_table_btn"
-                        onClick={resetTable}
-                    >
-                        {resetIcon} RESET
-                    </button>
-                </span>
-
 
 
                 <span className="item2">
@@ -276,16 +270,23 @@ function Table({ data }) {
                     onClose={() => setIsOpen(false)}>
                     <DateRangeFilter handleFilter={handleDateFilter} />
                 </ModalDateRangeFilter>
-
-                <span className="item3">
-                    <Link to="/create_new">
-                        <button
-                            className="create_new_btn"
-                        >
-                            {createNewIcon} Create New
-                        </button>
-                    </Link>
+                
+                <span className="item1">
+                    <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
                 </span>
+               
+                
+
+                <span>
+                    <button
+                        className="reset_table_btn"
+                        onClick={resetTable}
+                    >
+                        {resetIcon} RESET
+                    </button>
+                </span>
+
+               
             </div>
 
             <div style={{
