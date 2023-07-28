@@ -56,6 +56,7 @@ function TagsSelect({
             width: "90%",
             maxWidth: "300px",
             border: "1px solid #e6e6e6",
+            margin: "1rem auto;",
         })
     }
 
