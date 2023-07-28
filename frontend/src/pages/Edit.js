@@ -1,6 +1,5 @@
 /* TODO 
 1.Research (& implement or reccomend) input validation, sanitisation
-2. debug emptyfields prevent form save without complete boxes
 */
 
 import { useState, useEffect } from "react";
@@ -44,7 +43,6 @@ const Edit = ({ material }) => {
   const handleSubmit = async (e) => {
     e.preventDefault()
 
-
     // merge existing and new tags
     const everyTag = Array.from(new Set([...tags, ...selectedTags]))
     const updatedMaterial = { title, body, tags: everyTag }
@@ -58,8 +56,7 @@ const Edit = ({ material }) => {
       body: JSON.stringify(updatedMaterial),
     });
 
-
-  const json = await response.json()
+    const json = await response.json()
 
     if (!response.ok) {
       setError(json.error)
@@ -79,30 +76,32 @@ const Edit = ({ material }) => {
 
   const saveIcon = <FontAwesomeIcon icon={faFloppyDisk} />
 
-const customStyles = {
-        outline: "none",
-    }
+  const customStyles = {
+    outline: "none",
+    fontSize: "1rem",
+    maxHeight: "8rem",
+  }
 
   return (
     <div className="edit">
       <form onSubmit={handleSubmit}>
         <div>
-          <label htmlFor="title">Edit Title:</label>
-          <input
-            type="text"
+          <label htmlFor="title" className="document_form_headings">Edit Title:</label>
+          <textarea
             id="title"
+            rows={2}
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             className={emptyFields.includes("title") ? "error" : ""}
             style={customStyles}
           />
         </div>
-        <div>
 
-          <label htmlFor="body">Edit Body:</label>
+        <div>
+          <label htmlFor="body" className="document_form_headings">Edit Body:</label>
           <textarea
             id="body"
-            rows={3}
+            rows={5}
             value={body}
             onChange={(e) => setBody(e.target.value)}
             className={emptyFields.includes("body") ? "error" : ""}
@@ -110,22 +109,20 @@ const customStyles = {
           >
           </textarea>
         </div>
-        <div>
 
-          <label htmlFor="tags">Edit Tags:</label>
-          <div className="input-tags-container">
-            <ExperimentalAllTagsSelect onTagsChange={handleTagsChange} />
-            <span className="document-tags">
-              {tags.map((tag, index) => (
-                <span key={index} className="tag-chip">
-                  {tag}
-                  <button type="button" onClick={() => deleteTag(index)}>X</button>
-                </span>
-              ))}
-            </span>
-
-          </div>
+        <label htmlFor="tags" className="document_form_headings">Edit Tags:</label>
+        <div className="input-tags-container">
+          <ExperimentalAllTagsSelect onTagsChange={handleTagsChange} />
+          <span className="document-tags">
+            {tags.map((tag, index) => (
+              <span key={index} className="tag-chip">
+                {tag}
+                <button type="button" onClick={() => deleteTag(index)}>X</button>
+              </span>
+            ))}
+          </span>
         </div>
+
         <div className="read_edit_create_btns">
           <CancelButton />
           <button className="save_btn" type="submit">{saveIcon} Save</button>

@@ -24,7 +24,7 @@ const SearchBox = styled.div`
     }
 `
 
-const filterIcon = <FontAwesomeIcon icon={faFilter} size="2xl" />
+const filterIcon = <FontAwesomeIcon icon={faFilter} size="1xl" />
 
 const ColumnFilter = ({ column }) => {
     // console.log(column)

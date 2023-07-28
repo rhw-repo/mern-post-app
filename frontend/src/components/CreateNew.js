@@ -75,8 +75,8 @@ const CreateNew = () => {
             <form className="create" onSubmit={handleSubmit}>
                 <h3>Add A New Piece Of Content Here:</h3>
                 <label>Title:</label>
-                <input
-                    type="text"
+                <textarea
+                    rows={3}
                     onChange={(e) => setTitle(e.target.value)}
                     value={title}
                     className={emptyFields.includes("title") ? "error" : "primary"}
@@ -84,7 +84,7 @@ const CreateNew = () => {
                 />
                 <label>Paste content here:</label>
                 <textarea
-                    rows={3}
+                    rows={8}
                     cols={40}
                     onChange={(e) => setBody(e.target.value)}
                     value={body}

@@ -1,7 +1,6 @@
  /* TODO  
  1. Review all-tags-select for redundancy on complete select 
-2. add rules for another item class to be created in "options_container"
- 3. brief: deskop/ laptop/ tablet version,meet client re add media queries */
+ 2. brief: deskop/ laptop/ tablet version,meet client re add media queries */
 
  @import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@400;500;600;700&family=Open+Sans:wght@300;400&display=swap');
 
@@ -61,10 +60,7 @@
  .reset_table_btn,
  .table_pagination,
  .select_box,
- /*.open_modal_btn,
- .close_modal_btn,*/
  .date_range_btn,
- /*.close_date_range,*/
  .cancel_btn,
  .switch_form_btn {
    background: #fff;
@@ -73,11 +69,6 @@
    border-radius: 1.875rem;
    font-family: "Lexend Deca", Helvetica, Arial, sans-serif;
    cursor: pointer;
-   /*box-shadow: 
-   0rem 0.125rem 0.25rem 0rem rgba(0, 0, 0, 0.15),
-   0rem 0.25rem 0.3125rem 0rem rgba(0, 0, 0, 0.09),
-   0rem 0.0625rem 0.625rem 0rem rgba(0, 0, 0, 0.07),
-   0.3125rem 0.3125rem 0.3125rem 0.3125rem #778DA5;*/
  }
 
  /* navbar */
@@ -173,7 +164,6 @@
     padding: 0.625rem;
     margin: 1rem;
   }
- 
   
   /* DateRangePicker div in DateRangeFilter, z index simple positioning */
   .modal {
@@ -298,24 +288,18 @@ inappropriate for user's filtering needs*/
      0.3125rem 0.3125rem 0.3125rem 0.3125rem #778DA5;
  }
 
-
- .read_form_headings {
+ .document_form_headings {
    font-size: 1.5rem;
    font-weight: bold;
-   margin: 1.6rem 0;
    padding: 1rem;
-   color: var(--primary);
- }
-
- .read_tags_heading {
-  margin: 0;
+   color: #435362;
+   font-family: "Lexend Deca", Helvetica, Arial, sans-serif;
  }
 
  .read_title {
-   color: #435362;
    font-size: 1.5rem;
    font-weight: bold;
-   margin: 1.6rem auto;
+   margin: 1.3rem;
    max-height: 2rem;
    max-width: 100%;
    overflow: hidden;
@@ -324,15 +308,15 @@ inappropriate for user's filtering needs*/
  }
 
  .read_body_container {
-  max-height: 2rem;
+  max-height: 6rem;
   overflow-y: auto;
  }
 
  .read_body {
   font-size: 1.25rem;
-  font-weight: bold;
    max-width: 100%;
    white-space: normal;
+   margin: 1.3rem;
  }
 
  /* tags display matches default from react-select Creatable */
@@ -370,6 +354,7 @@ inappropriate for user's filtering needs*/
    max-height: 4rem;
    overflow-x: hidden;
    overflow-y: auto;
+   margin: 1.6rem;
  }
 
  /* CreateNew */
@@ -391,7 +376,7 @@ inappropriate for user's filtering needs*/
    flex-wrap: wrap;
    justify-content: flex-start;
    align-items: center;
-   border: 1px solid #ccc;
+   border: none;
    padding: 0.25rem;
    border-radius: 4px;
  }
@@ -441,6 +426,10 @@ inappropriate for user's filtering needs*/
    border-radius: 0.5rem;
    box-sizing: border-box;
    max-height: 2rem;
+ }
+
+ label {
+  font-family: "Lexend Deca", Helvetica, Arial, sans-serif;
  }
 
  /* error styling */

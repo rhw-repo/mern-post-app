@@ -15,8 +15,7 @@ import {
     faCalendarDays,
     faPlus,
     faUndo,
-    faSortUp,
-    faSortDown,
+    faSort,
     faForward,
     faBackward,
 } from "@fortawesome/free-solid-svg-icons"
@@ -143,10 +142,6 @@ function Table({ data }) {
                 Header: "Tags",
                 accessor: "tags",
                 width: 100,
-                /*   Cell: ({ value }) => {
-                     return value.length > 4 ? `${value[0]}, ${value[1]}, ...` : value.join(', ');
-                 },*/
-
                 Cell: ({ value }) => {
                     if (value.length > 3) {
                         const slicedTags = value.slice(0, 4);
@@ -238,8 +233,7 @@ function Table({ data }) {
     const calendarIcon = <FontAwesomeIcon icon={faCalendarDays} />
     const createNewIcon = <FontAwesomeIcon icon={faPlus} />
     const resetIcon = <FontAwesomeIcon icon={faUndo} />
-    const sortUpIcon = <FontAwesomeIcon icon={faSortUp} size="xl" style={{color: "#E0E0E0",}} />
-    const sortDownIcon = <FontAwesomeIcon icon={faSortDown} size="xl" style={{color: "#E0E0E0",}} />
+    const sortIcon = <FontAwesomeIcon icon={faSort} size="2xl" style={{ color: "#E0E0E0", }} />
     const forwardsIcon = <FontAwesomeIcon icon={faForward} />
     const backwardsIcon = <FontAwesomeIcon icon={faBackward} />
 
@@ -307,9 +301,10 @@ function Table({ data }) {
                                             whiteSpace: 'nowrap',
                                             borderBottom: "solid 3px #BD7374",
                                             background: "white",
-                                            color: "black",
+                                            color: "#435362",
                                             fontWeight: "bold",
-                                            fontSize: "1rem",
+                                            fontSize: "1.25rem",
+                                            fontFamily: "Lexend Deca, Helvetica, Arial, Lucida, sans-serif",
                                             padding: "1.5rem",
                                             margin: "0.625rem",
                                             textAlign: "center",
@@ -322,8 +317,8 @@ function Table({ data }) {
                                             column.canSort
                                                 ? (
                                                     column.isSorted
-                                                        ? (column.isSortedDesc ? sortDownIcon : sortUpIcon)
-                                                        : sortDownIcon
+                                                        ? (column.isSortedDesc ? sortIcon : sortIcon)
+                                                        : sortIcon
                                                 )
                                                 : null
                                         }
@@ -400,8 +395,6 @@ function Table({ data }) {
                             style={{ width: "3.125rem", marginLeft: "0.5rem" }}
                         />
                     </span>
-
-
                     <button
                         className="table_pagination button"
                         onClick={() => gotoPage(0)} disabled={!canPreviousPage}
