@@ -73,11 +73,11 @@
    border-radius: 1.875rem;
    font-family: "Lexend Deca", Helvetica, Arial, sans-serif;
    cursor: pointer;
-   box-shadow: 
+   /*box-shadow: 
    0rem 0.125rem 0.25rem 0rem rgba(0, 0, 0, 0.15),
    0rem 0.25rem 0.3125rem 0rem rgba(0, 0, 0, 0.09),
    0rem 0.0625rem 0.625rem 0rem rgba(0, 0, 0, 0.07),
-   0.3125rem 0.3125rem 0.3125rem 0.3125rem #778DA5;
+   0.3125rem 0.3125rem 0.3125rem 0.3125rem #778DA5;*/
  }
 
  /* navbar */
@@ -163,8 +163,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
+  margin-top: 0.3rem;
+  margin-bottom: 0.625rem;
 }
 
 /* Reset table button */ 
@@ -221,6 +221,12 @@ inappropriate for user's filtering needs*/
      flex-direction: column;
      align-items: flex-start;
    }
+ }
+
+ .material-symbols-outlined {
+  display: flex;
+  justify-content: center;
+  align-items: center;
  }
 
  /* dialog box to confirm delete button action */

@@ -13,19 +13,18 @@ const SearchBox = styled.div`
     padding: 0.625rem;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    
+   
     & input {
         border: none;
         flex-grow: 1;
     }
 
     & svg {
-        color: gray;
+        color: #E0E0E0;
     }
 `
 
-const filterIcon = <FontAwesomeIcon icon={faFilter} />
+const filterIcon = <FontAwesomeIcon icon={faFilter} size="2xl" />
 
 const ColumnFilter = ({ column }) => {
     // console.log(column)
@@ -36,7 +35,9 @@ const ColumnFilter = ({ column }) => {
     const { filterValue, setFilter } = column
 
     const customStyles = {
-        outline: "none"
+        outline: "none", 
+        fontSize: "1rem",
+        marginLeft: "0.625rem",
     }
 
     // hides input in date columns (DateRangeFilter used instead or no filter)

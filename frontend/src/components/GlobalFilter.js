@@ -9,11 +9,6 @@ import { faFilter } from "@fortawesome/free-solid-svg-icons"
 const SearchBox = styled.div`
     border: 1px solid #ddd;
     border-radius: 0.5rem;
-    box-shadow: 
-    0rem 0.125rem 0.25rem 0rem rgba(0, 0, 0, 0.2),
-    0rem 0.25rem 0.3125rem 0rem rgba(0, 0, 0, 0.14),
-    0rem 0.0625rem 0.625rem 0rem rgba(0, 0, 0, 0.12),
-    0.3125rem 0.3125rem 0.3125rem 0.3125rem #778DA5;
     margin: 0.312rem auto;
     padding: 0.625rem;
     display: flex;
@@ -26,7 +21,7 @@ const SearchBox = styled.div`
     }
 
     & svg {
-        color: gray;
+        color: #E0E0E0;
     }
 `
 
@@ -38,11 +33,13 @@ const GlobalFilter = ({ filter, setFilter }) => {
         setFilter(value || undefined)
     }, 300)
 
-    const filterIcon = <FontAwesomeIcon icon={faFilter} />
+    const filterIcon = <FontAwesomeIcon icon={faFilter} size="xl"/>
 
     const customStyles = {
         outline: "none", 
         width: "20rem",
+        fontSize: "1rem",
+        marginLeft: "0.625rem",
     }
 
     return (
@@ -58,9 +55,9 @@ const GlobalFilter = ({ filter, setFilter }) => {
             }}>
                 <SearchBox>
                     {filterIcon}
-                    <input
+                    <input 
                         type="text"
-                        placeholder="Search all the table..."
+                        placeholder="Search in all columns..."
                         value={value || ""}
                         onChange={(e) => {
                             setValue(e.target.value)

@@ -13,7 +13,7 @@ import DeleteButton from "./DeleteButton";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
     faCalendarDays,
-    faPen,
+    faPlus,
     faUndo,
     faSortUp,
     faSortDown,
@@ -32,11 +32,11 @@ function TagsSelect({
     const options = useMemo(() => {
         const options = new Set();
         preFilteredRows.forEach((row) => {
-           // console.log("line 36", row)
+            // console.log("line 36", row)
             let tagsArray = row.values[id]
-         //   console.log(id)
+            //   console.log(id)
             for (const tag of tagsArray) {
-              //  console.log(tag)
+                //  console.log(tag)
 
                 options.add(tag);
             }
@@ -53,7 +53,7 @@ function TagsSelect({
     const customStyles = {
         control: (baseStyles) => ({
             ...baseStyles,
-            width: "200px",
+            width: "90%",
             maxWidth: "300px",
             border: "1px solid #e6e6e6",
         })
@@ -170,7 +170,7 @@ function Table({ data }) {
                 Cell: ({ value }) => { return format(new Date(value), "dd/MM/yyyy") },
             },
             {
-                Header: "Delete?",
+                Header: "",
                 accessor: "_id",
                 disableSortBy: true,
                 disableFilters: true,
@@ -235,10 +235,10 @@ function Table({ data }) {
     const [isOpen, setIsOpen] = useState(false)
 
     const calendarIcon = <FontAwesomeIcon icon={faCalendarDays} />
-    const createNewIcon = <FontAwesomeIcon icon={faPen} />
+    const createNewIcon = <FontAwesomeIcon icon={faPlus} />
     const resetIcon = <FontAwesomeIcon icon={faUndo} />
-    const sortUpIcon = <FontAwesomeIcon icon={faSortUp} />
-    const sortDownIcon = <FontAwesomeIcon icon={faSortDown} />
+    const sortUpIcon = <FontAwesomeIcon icon={faSortUp} size="xl" style={{color: "#E0E0E0",}} />
+    const sortDownIcon = <FontAwesomeIcon icon={faSortDown} size="xl" style={{color: "#E0E0E0",}} />
     const forwardsIcon = <FontAwesomeIcon icon={faForward} />
     const backwardsIcon = <FontAwesomeIcon icon={faBackward} />
 
@@ -246,18 +246,7 @@ function Table({ data }) {
     return (
         <>
             <div className="options_container">
-                 <span className="item3">
-                    <Link to="/create_new">
-                        <button
-                            className="create_new_btn"
-                        >
-                            {createNewIcon} Create New
-                        </button>
-                    </Link>
-                </span>
-
-
-                <span className="item2">
+                <span>
                     <button
                         className="date_range_btn"
                         onClick={() => setIsOpen(true)}
@@ -270,12 +259,10 @@ function Table({ data }) {
                     onClose={() => setIsOpen(false)}>
                     <DateRangeFilter handleFilter={handleDateFilter} />
                 </ModalDateRangeFilter>
-                
-                <span className="item1">
+
+                <span>
                     <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
                 </span>
-               
-                
 
                 <span>
                     <button
@@ -286,7 +273,15 @@ function Table({ data }) {
                     </button>
                 </span>
 
-               
+                <span>
+                    <Link to="/create_new">
+                        <button
+                            className="create_new_btn"
+                        >
+                            {createNewIcon} Create New
+                        </button>
+                    </Link>
+                </span>
             </div>
 
             <div style={{
@@ -308,6 +303,7 @@ function Table({ data }) {
                                     <th
                                         {...column.getHeaderProps(column.getSortByToggleProps())}
                                         style={{
+                                            whiteSpace: 'nowrap',
                                             borderBottom: "solid 3px #BD7374",
                                             background: "white",
                                             color: "black",
@@ -315,6 +311,7 @@ function Table({ data }) {
                                             fontSize: "1rem",
                                             padding: "1.5rem",
                                             margin: "0.625rem",
+                                            textAlign: "center",
 
                                         }}
                                     >
