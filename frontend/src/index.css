@@ -127,6 +127,7 @@
    align-items: center;
    color: #ffffff;
    text-decoration: none;
+   
  }
 
  /* all pages */
@@ -135,6 +136,9 @@
    max-height: 75vh;
    padding: 1.25rem;
    margin: 0 auto;
+  /* experiment */
+   overflow-x: hidden;
+   overflow-y: auto;
  }
 
  
@@ -291,9 +295,13 @@ inappropriate for user's filtering needs*/
  .document_form_headings {
    font-size: 1.5rem;
    font-weight: bold;
-   padding: 1rem;
    color: #435362;
    font-family: "Lexend Deca", Helvetica, Arial, sans-serif;
+  /* margin: 1rem 0;*/
+ }
+
+ .read_tags_label {
+  margin: 1rem 0 1rem 1.3rem;
  }
 
  .read_title {
@@ -307,16 +315,11 @@ inappropriate for user's filtering needs*/
    white-space: nowrap;
  }
 
- .read_body_container {
-  max-height: 6rem;
-  overflow-y: auto;
- }
-
  .read_body {
   font-size: 1.25rem;
    max-width: 100%;
    white-space: normal;
-   margin: 1.3rem;
+   margin: 1.3rem; 
  }
 
  /* tags display matches default from react-select Creatable */
@@ -344,17 +347,14 @@ inappropriate for user's filtering needs*/
    color: black;
  }
 
- /* display tags in Read */
- .read-tags-container {
+ /* display tags in Read experimenting with adding edit's document-tags*/
+ .read-tags-container, 
+ .document-tags {
    display: flex;
    align-items: center;
    justify-content: flex-start;
    flex-wrap: wrap;
    row-gap: 1rem;
-   max-height: 4rem;
-   overflow-x: hidden;
-   overflow-y: auto;
-   margin: 1.6rem;
  }
 
  /* CreateNew */
@@ -367,24 +367,27 @@ inappropriate for user's filtering needs*/
  /* ExperimentalAllTagsSelect*/
  .select-container {
    border-radius: 0.625rem;
+   margin: 1rem 0;
    /*overflow: hidden;*/
  }
 
 /* handles display of Creatable & existing tags in Edit */
  .input-tags-container {
    display: flex;
+   flex-direction: column;
    flex-wrap: wrap;
-   justify-content: flex-start;
-   align-items: center;
+   justify-content: center;
+   align-items: flex-start;
    border: none;
    padding: 0.25rem;
    border-radius: 4px;
+   /*margin: 0.5rem auto;*/
  }
 
  .document-tags {
   display: flex;
   justify-content: space-around;
-  align-items: center;
+  align-items: center; 
  }
 
  /* buttons specific to read, edit & create new pages */
@@ -411,9 +414,14 @@ inappropriate for user's filtering needs*/
  /* create new and edit forms  */
  label,
  input,
- textarea {
+ textarea,
+ p {
    display: block;
    font-weight: bold;
+ }
+
+ label {
+  margin-top: 1rem;
  }
 
  input,
@@ -425,11 +433,13 @@ inappropriate for user's filtering needs*/
    border: 1px solid #ddd;
    border-radius: 0.5rem;
    box-sizing: border-box;
-   max-height: 2rem;
+   /*max-height: 2rem;*/
  }
 
- label {
+ label,
+ p {
   font-family: "Lexend Deca", Helvetica, Arial, sans-serif;
+  color:#435362;
  }
 
  /* error styling */

@@ -11,6 +11,7 @@ import toast from "react-hot-toast"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFloppyDisk } from "@fortawesome/free-solid-svg-icons"
 import ExperimentalAllTagsSelect from "../components/ExperimentalAllTagsSelect";
+import { text } from "@fortawesome/fontawesome-svg-core";
 
 const Edit = ({ material }) => {
   const [title, setTitle] = useState(material.title)
@@ -79,7 +80,6 @@ const Edit = ({ material }) => {
   const customStyles = {
     outline: "none",
     fontSize: "1rem",
-    maxHeight: "8rem",
   }
 
   return (
@@ -101,7 +101,7 @@ const Edit = ({ material }) => {
           <label htmlFor="body" className="document_form_headings">Edit Body:</label>
           <textarea
             id="body"
-            rows={5}
+            rows={10}
             value={body}
             onChange={(e) => setBody(e.target.value)}
             className={emptyFields.includes("body") ? "error" : ""}
@@ -112,7 +112,8 @@ const Edit = ({ material }) => {
 
         <label htmlFor="tags" className="document_form_headings">Edit Tags:</label>
         <div className="input-tags-container">
-          <ExperimentalAllTagsSelect onTagsChange={handleTagsChange} />
+     
+          <p>Tags you already have here - click on the x to delete any you don't want:</p>
           <span className="document-tags">
             {tags.map((tag, index) => (
               <span key={index} className="tag-chip">
@@ -120,7 +121,8 @@ const Edit = ({ material }) => {
                 <button type="button" onClick={() => deleteTag(index)}>X</button>
               </span>
             ))}
-          </span>
+          </span>     
+          <ExperimentalAllTagsSelect onTagsChange={handleTagsChange} />
         </div>
 
         <div className="read_edit_create_btns">

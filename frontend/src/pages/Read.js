@@ -39,7 +39,7 @@ const Read = () => {
                             <article>
                                 <div className="read_title">{material.title}</div>
                                 <div className="read_body">{material.body}</div>
-                                <div className="document_form_headings">Tags:</div>
+                                <div className="document_form_headings read_tags_label" >Tags:</div>
                                 <div className="read-tags-container">
                                     {material.tags.map((tag, index) => (
                                         <span key={index} className=" tags tag-chip">{tag}</span>

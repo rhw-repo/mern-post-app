@@ -116,6 +116,33 @@ function Table({ data }) {
         console.log('Component updated')
     }, [])
 
+    const TagCell = ({ value, limit }) => {
+        let displayedTags = value;
+        let ellipsis = false;
+
+        if (value.length > limit) {
+            displayedTags = value.slice(0, limit);
+            ellipsis = true;
+        }
+
+        return (
+            <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+                {displayedTags.map((tag, index) => (
+                    <div key={index} className='tag-chip' style={{ margin: '0.5rem' }}>
+                        {tag}
+                        <button>×</button>
+                    </div>
+                ))}
+                {ellipsis && <span>...</span>}
+            </div>
+        )
+    }
+
+    const LinkedCell = ({ value, row }) => (
+        <div style={{ maxWidth: '300px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+            <Link to={`/articles/${row.original._id}`}>{value}</Link>
+        </div>
+    )
 
     // useMemo prevents unnecessary recalculations (better performance)
     const columns = useMemo(
@@ -124,32 +151,19 @@ function Table({ data }) {
                 Header: "Title",
                 accessor: "title",
                 disableSortBy: true,
-                // TODO refactor Link into component, pass in, avoid code smell
-                Cell: ({ value, row }) => (
-                    <Link to={`/articles/${row.original._id}`}>{value}</Link>
-                ),
+                Cell: LinkedCell,
             },
             {
                 Header: "Content",
                 accessor: "body",
                 disableSortBy: true,
-                // TODO refactor Link into component, pass in, avoid code smell
-                Cell: ({ value, row }) => (
-                    <Link to={`/articles/${row.original._id}`}>{value}</Link>
-                ),
+                Cell: LinkedCell,
             },
             {
                 Header: "Tags",
                 accessor: "tags",
-                width: 100,
-                Cell: ({ value }) => {
-                    if (value.length > 3) {
-                        const slicedTags = value.slice(0, 4);
-                        return `${slicedTags.join(", ")}, ...`;
-                    } else {
-                        return value.join(", ");
-                    }
-                },
+
+                Cell: props => <TagCell {...props} limit={2} />,
                 disableSortBy: true,
                 filter: "contains",
                 Filter: TagsSelect,
@@ -202,7 +216,7 @@ function Table({ data }) {
             data,
             defaultColumn,
             filterTypes,
-            initialState: { pageIndex: 0, pageSize: 4 },
+            initialState: { pageIndex: 0, pageSize: 3 },
         },
         useFilters,
         useGlobalFilter,
@@ -219,7 +233,7 @@ function Table({ data }) {
     // Clear pagination selections or global/column/date/tags filters
     const resetTable = () => {
         setGlobalFilter('');
-        setPageSize(4);
+        setPageSize(3);
         columns.forEach(column => {
             setFilter(column.accessor, undefined)
 
@@ -236,6 +250,9 @@ function Table({ data }) {
     const sortIcon = <FontAwesomeIcon icon={faSort} size="2xl" style={{ color: "#E0E0E0", }} />
     const forwardsIcon = <FontAwesomeIcon icon={faForward} />
     const backwardsIcon = <FontAwesomeIcon icon={faBackward} />
+
+    // apply to table body table row return to have uneven rows different backgroundColor
+    //  backgroundColor: row.index % 2 === 0 ? "white" : "#c8e6c9",
 
     // rendering options_container before table aims for easy user experience
     return (
@@ -334,8 +351,9 @@ function Table({ data }) {
                             return (
                                 <tr {...row.getRowProps()}
                                     style={{
-                                        backgroundColor: row.index % 2 === 0 ? "white" : "#E0E0E0",
-                                        maxHeight: "4rem"
+                                        maxHeight: "2rem",
+                                        borderBottom: '1px solid grey',
+
                                     }}>
                                     {row.cells.map(cell => {
                                         return (

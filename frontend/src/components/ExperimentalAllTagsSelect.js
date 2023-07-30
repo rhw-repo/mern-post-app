@@ -1,5 +1,3 @@
-/*TODO debug is not adding new tags to select */
-
 import { useState, useEffect } from "react";
 import Creatable from "react-select/creatable";
 import { useMaterialsContext } from "../hooks/useMaterialsContext";
@@ -70,7 +68,7 @@ function ExperimentalAllTagsSelect({ onTagsChange }) {
   
   return (
     <label>
-      Click on tags or type in new tags:
+      Click the arrow to select or create tags:
       <div className="select-container">
         {allTags ? (
           <Creatable

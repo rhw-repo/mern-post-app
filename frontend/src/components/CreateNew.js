@@ -1,3 +1,6 @@
+/* TODO 
+1.Research (& implement or reccomend) input validation, sanitisation
+*/
 import { useState } from "react";
 import { useMaterialsContext } from "../hooks/useMaterialsContext";
 import { useAuthContext } from "../hooks/useAuthContext";
@@ -73,8 +76,7 @@ const CreateNew = () => {
     return (
         <>
             <form className="create" onSubmit={handleSubmit}>
-                <h3>Add A New Piece Of Content Here:</h3>
-                <label>Title:</label>
+                <label className="document_form_headings ">Type or paste the title here:</label>
                 <textarea
                     rows={3}
                     onChange={(e) => setTitle(e.target.value)}
@@ -82,7 +84,7 @@ const CreateNew = () => {
                     className={emptyFields.includes("title") ? "error" : "primary"}
                     style={customStyles}
                 />
-                <label>Paste content here:</label>
+                <label className="document_form_headings ">Type or paste content here:</label>
                 <textarea
                     rows={8}
                     cols={40}
@@ -91,7 +93,7 @@ const CreateNew = () => {
                     className={emptyFields.includes("body") ? "error" : ""}
                     style={customStyles}
                 />
-                <label>Add tags here:</label>
+                <label className="document_form_headings ">Add tags here:</label>
                 <div className="tags_section_container">
                     <div className="existing_tags_container">
                         <ExperimentalAllTagsSelect onTagsChange={handleTagsChange} />
