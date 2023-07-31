@@ -163,7 +163,7 @@ function Table({ data }) {
                 Header: "Tags",
                 accessor: "tags",
 
-                Cell: props => <TagCell {...props} limit={2} />,
+                Cell: props => <TagCell {...props} limit={1} />,
                 disableSortBy: true,
                 filter: "contains",
                 Filter: TagsSelect,

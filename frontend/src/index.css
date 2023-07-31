@@ -132,7 +132,6 @@
 
  /* all pages */
  .pages {
-   max-width: 87.5rem;
    max-height: 75vh;
    padding: 1.25rem;
    margin: 0 auto;
@@ -141,6 +140,14 @@
    overflow-y: auto;
  }
 
+ /* center and limit width of create, read, edit pages*/
+ .create,
+.read,
+.edit {
+  max-width: 87.5rem;
+  display: block;
+  margin: auto;
+ }
  
  /* homepage */
  .home {
@@ -358,6 +365,8 @@ inappropriate for user's filtering needs*/
  }
 
  /* CreateNew */
+ 
+
  .tags_section_container {
    display: flex;
    justify-content: space-between;
