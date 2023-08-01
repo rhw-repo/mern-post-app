@@ -73,6 +73,7 @@ function TagsSelect({
 }
 
 // returns an object with properties to apply to every column in table  
+
 function Table({ data }) {
 
     const filterTypes = useMemo(
@@ -98,9 +99,10 @@ function Table({ data }) {
 
                         return false
                     })
+                
                 }
             }
-        }
+        }, []
     )
 
     const defaultColumn = useMemo(
@@ -128,7 +130,7 @@ function Table({ data }) {
         return (
             <div style={{ display: 'flex', flexWrap: 'wrap' }}>
                 {displayedTags.map((tag, index) => (
-                    <div key={index} className='tag-chip' style={{ margin: '0.5rem' }}>
+                    <div key={index} className='tag-chip' >
                         {tag}
                         <button>×</button>
                     </div>
@@ -139,7 +141,7 @@ function Table({ data }) {
     }
 
     const LinkedCell = ({ value, row }) => (
-        <div style={{ maxWidth: '300px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+        <div style={{ maxWidth: "35rem", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
             <Link to={`/articles/${row.original._id}`}>{value}</Link>
         </div>
     )
@@ -322,8 +324,8 @@ function Table({ data }) {
                                             fontWeight: "bold",
                                             fontSize: "1.25rem",
                                             fontFamily: "Lexend Deca, Helvetica, Arial, Lucida, sans-serif",
-                                            padding: "1.5rem",
-                                            margin: "0.625rem",
+                                            padding: "1rem 0.1rem",
+                                           /* margin: "0.625rem",*/
                                             textAlign: "center",
 
                                         }}

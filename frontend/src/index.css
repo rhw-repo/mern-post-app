@@ -224,10 +224,25 @@ inappropriate for user's filtering needs*/
    }
  }
 
+
+
+td {
+  border-bottom: 1px solid #ddd;
+}
+
+tr:hover {
+  background-color: #e0e0e0;
+}
+
+ /* delete button in table */
  .material-symbols-outlined {
   display: flex;
   justify-content: center;
   align-items: center;
+  border: 1px solid #435362;
+  border-radius: 50%;
+  height: 2rem;
+  width: 2rem;
  }
 
  /* dialog box to confirm delete button action */
@@ -343,6 +358,7 @@ inappropriate for user's filtering needs*/
    padding: 0.625rem;
    margin: 0rem 0.5rem 0 1rem;
    min-width: 4em;
+   max-width: auto;
  }
 
 .tag-chip button {
