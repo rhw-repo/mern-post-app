@@ -354,8 +354,8 @@ tr:hover {
    justify-content: center;
    height: 1rem;
    line-height: 2rem;
-   background-color: #e6e6e6;
-   color: black;
+   background-color: #778DA5;
+   color: #ffffff;
    font-weight: bold;
    border-radius: 0.3rem;
    padding: 0.625rem;
@@ -370,7 +370,8 @@ tr:hover {
    border: none;
    background-color: unset;
    cursor: pointer;
-   color: black;
+   color: #ffffff;
+   font-weight: bold;
  }
 
  /* display tags in Read experimenting with adding edit's document-tags*/

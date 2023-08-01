@@ -16,7 +16,7 @@ function ExperimentalAllTagsSelect({ onTagsChange }) {
       setAllTags(savedAllTags);
       setLoading(false);
       setDataLoaded(true);
-    } else if (materials.length > 0 ) {
+    } else if (materials.length > 0) {
       const tagsSet = new Set(materials.flatMap((material) => material.tags))
       const tagsArray = Array.from(tagsSet)
       setAllTags(tagsArray)
@@ -29,7 +29,7 @@ function ExperimentalAllTagsSelect({ onTagsChange }) {
   useEffect(() => {
     console.log("allTags updated:", allTags)
   }, [allTags])
-  
+
   // Effect to handle onTagsChange whenever selectedTags changes
   useEffect(() => {
     onTagsChange(selectedTags);
@@ -66,6 +66,7 @@ function ExperimentalAllTagsSelect({ onTagsChange }) {
     return null
   }
 
+  /* replaces default colorways for the Creatable select element */
   const customCreatableStyles = {
     control: (baseStyles, state) => ({
       ...baseStyles,
@@ -83,10 +84,21 @@ function ExperimentalAllTagsSelect({ onTagsChange }) {
         backgroundColor: '#778DA5',
         color: 'white',
       }
-    }),
-    
-  } 
-  
+    }), multiValue: (baseStyles, state) => {
+      return {
+        ...baseStyles,
+        backgroundColor: '#778DA5',
+        color: 'white',
+      }
+    },
+    multiValueLabel: (baseStyles, state) => {
+      return {
+        ...baseStyles,
+        color: 'white',
+      }
+    }
+  }
+
   return (
     <label>
       Click the arrow to select or create tags:
