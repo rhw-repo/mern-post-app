@@ -307,9 +307,8 @@ tr:hover {
  .read {
    background: #fff;
    border-radius: 0.625rem;
-   padding: 1.25rem;
+   padding: 2rem;
    position: relative;
-   margin: 1.3rem;
    box-shadow:
      0rem 0.125rem 0.25rem 0rem rgba(0, 0, 0, 0.2),
      0rem 0.25rem 0.3125rem 0rem rgba(0, 0, 0, 0.14),
@@ -490,10 +489,9 @@ tr:hover {
  form.signup,
  form.login {
    max-width: 30rem;
-   margin: 2rem auto 2rem auto;
+   margin: 4rem auto 2rem auto;
    padding: 3rem;
    background: #fff;
-   padding: 0.625rem;
    border-radius: 0.625rem;
    box-shadow:
      0rem 0.125rem 0.25rem 0rem rgba(0, 0, 0, 0.2),

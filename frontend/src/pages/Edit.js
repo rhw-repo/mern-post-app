@@ -101,7 +101,7 @@ const Edit = ({ material }) => {
           <label htmlFor="body" className="document_form_headings">Edit Body:</label>
           <textarea
             id="body"
-            rows={10}
+            rows={8}
             value={body}
             onChange={(e) => setBody(e.target.value)}
             className={emptyFields.includes("body") ? "error" : ""}

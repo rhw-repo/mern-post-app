@@ -10,7 +10,7 @@ const SearchBox = styled.div`
     border: 1px solid #ddd;
     border-radius: 0.5rem;
     margin: 0.312rem auto;
-    padding: 0.625rem;
+    padding: 0 0.5rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
