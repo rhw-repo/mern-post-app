@@ -50,12 +50,24 @@ function TagsSelect({
     }
 
     const customStyles = {
-        control: (baseStyles) => ({
+        control: (baseStyles, state) => ({
             ...baseStyles,
             width: "90%",
-            maxWidth: "300px",
-            border: "1px solid #e6e6e6",
+            maxWidth: "31.25rem",
+            border: state.isFocused ? '1px solid #778DA5' : '1px solid #e6e6e6',
             margin: "1rem auto;",
+            boxShadow: state.isFocused ? '0 0 0 1px #778DA5' : baseStyles.boxShadow,
+        '&:hover': {
+            border: state.isFocused ? '1px solid #778DA5' : '1px solid #e6e6e6',
+        }
+        }),
+        option: (baseStyles, state) => ({
+            ...baseStyles,
+            backgroundColor: state.isFocused ? '#778DA5' : baseStyles.backgroundColor,
+            color: state.isFocused ? "white" : baseStyles.color,
+            ':hover': {
+                backgroundColor: '#778DA5'
+            }
         })
     }
 
@@ -99,7 +111,7 @@ function Table({ data }) {
 
                         return false
                     })
-                
+
                 }
             }
         }, []
@@ -325,7 +337,7 @@ function Table({ data }) {
                                             fontSize: "1.25rem",
                                             fontFamily: "Lexend Deca, Helvetica, Arial, Lucida, sans-serif",
                                             padding: "1rem 0.1rem",
-                                           /* margin: "0.625rem",*/
+                                            /* margin: "0.625rem",*/
                                             textAlign: "center",
 
                                         }}

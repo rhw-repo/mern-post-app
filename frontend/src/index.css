@@ -224,8 +224,6 @@ inappropriate for user's filtering needs*/
    }
  }
 
-
-
 td {
   border-bottom: 1px solid #ddd;
 }
@@ -243,6 +241,11 @@ tr:hover {
   border-radius: 50%;
   height: 2rem;
   width: 2rem;
+ }
+
+ .material-symbols-outlined:hover {
+  background-color: var(--error);
+  color:#ffffff;
  }
 
  /* dialog box to confirm delete button action */
