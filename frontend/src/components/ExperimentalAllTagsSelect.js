@@ -65,6 +65,27 @@ function ExperimentalAllTagsSelect({ onTagsChange }) {
   if (!dataLoaded) {
     return null
   }
+
+  const customCreatableStyles = {
+    control: (baseStyles, state) => ({
+      ...baseStyles,
+      border: state.isFocused ? '1px solid #778DA5' : '1px solid #e6e6e6',
+      boxShadow: state.isFocused ? '0 0 0 1px #778DA5' : baseStyles.boxShadow,
+      '&:hover': {
+        border: state.isFocused ? '1px solid #778DA5' : '1px solid #e6e6e6',
+      }
+    }),
+    option: (baseStyles, state) => ({
+      ...baseStyles,
+      backgroundColor: state.isFocused ? '#778DA5' : baseStyles.backgroundColor,
+      color: state.isFocused ? 'white' : baseStyles.color,
+      ':hover': {
+        backgroundColor: '#778DA5',
+        color: 'white',
+      }
+    }),
+    
+  } 
   
   return (
     <label>
@@ -80,6 +101,7 @@ function ExperimentalAllTagsSelect({ onTagsChange }) {
             value={selectedTags.map((tag) => ({ value: tag, label: tag }))}
             onChange={handleChange}
             isValidNewOption={isValidNewOption}
+            styles={customCreatableStyles}
           />
         ) : (
           <div>No tags available</div>
