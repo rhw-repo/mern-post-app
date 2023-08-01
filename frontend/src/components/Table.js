@@ -57,9 +57,9 @@ function TagsSelect({
             border: state.isFocused ? '1px solid #778DA5' : '1px solid #e6e6e6',
             margin: "1rem auto;",
             boxShadow: state.isFocused ? '0 0 0 1px #778DA5' : baseStyles.boxShadow,
-        '&:hover': {
-            border: state.isFocused ? '1px solid #778DA5' : '1px solid #e6e6e6',
-        }
+            '&:hover': {
+                border: state.isFocused ? '1px solid #778DA5' : '1px solid #e6e6e6',
+            }
         }),
         option: (baseStyles, state) => ({
             ...baseStyles,
@@ -68,7 +68,20 @@ function TagsSelect({
             ':hover': {
                 backgroundColor: '#778DA5'
             }
-        })
+        }),
+        multiValue: (baseStyles, state) => {
+            return {
+                ...baseStyles,
+                backgroundColor: '#778DA5',
+                color: 'white',
+            }
+        },
+        multiValueLabel: (baseStyles, state) => {
+            return {
+                ...baseStyles,
+                color: 'white',
+            }
+        }
     }
 
     // Render a multi-select box
@@ -144,7 +157,6 @@ function Table({ data }) {
                 {displayedTags.map((tag, index) => (
                     <div key={index} className='tag-chip' >
                         {tag}
-                        <button>×</button>
                     </div>
                 ))}
                 {ellipsis && <span>...</span>}
