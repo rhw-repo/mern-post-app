@@ -76,7 +76,9 @@ const CreateNew = () => {
     return (
         <>
             <form className="create" onSubmit={handleSubmit}>
-                <label className="document_form_headings ">Type or paste the title here:</label>
+                <label className="document_form_headings ">
+                    Type or paste the title here:
+                    </label>
                 <textarea
                     rows={3}
                     onChange={(e) => setTitle(e.target.value)}

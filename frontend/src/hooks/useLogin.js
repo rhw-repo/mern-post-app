@@ -23,16 +23,18 @@ export const useLogin = () => {
             setError(json.error)
             localStorage.removeItem("user")
         }
-        
+
         if (response.ok) {
             // save the user to local storage - insecure, temporary, replace with SSO
             localStorage.setItem("user", JSON.stringify(json))
+
+            // update AuthContext
+            dispatch({ type: "LOGIN", payload: json })
+
+            setIsLoading(false)
+
         }
 
-        // update AuthContext
-        dispatch({ type: "LOGIN", payload: json })
-
-        setIsLoading(false)
     }
     return { login, isLoading, error }
 }
