@@ -10,7 +10,7 @@ import DateRangeFilter, { filterByDateRange } from './DateRangeFilter';
 import ModalDateRangeFilter from './ModalDateRangeFilter';
 import 'react-date-range/dist/styles.css';
 import 'react-date-range/dist/theme/default.css';
-import { useMemo, useState, useEffect, useRef, forwardRef } from 'react';
+import { useMemo, useState, useEffect, useRef, forwardRef, useImperativeHandle } from 'react';
 import Select from 'react-select';
 import { Link } from 'react-router-dom';
 import DeleteButton from "./DeleteButton";
@@ -28,9 +28,9 @@ import {
 import { format } from "date-fns";
 
 // filter table rows according to selected options (all the tags in document collection)
-function TagsSelect({
+const TagsSelect = forwardRef(({
     column: { filterValue, setFilter, preFilteredRows, id }
-}) {
+}, ref) => {
     // Calculate the options for filtering
     // using the preFilteredRows
     const options = useMemo(() => {
@@ -92,11 +92,16 @@ function TagsSelect({
     const selectorRef = useRef();
 
     const clearTags = () => {
-        selectorRef.current.select.clearValue();
+        selectorRef.current.clearValue();
     }
 
     // Render a multi-select box
     let selectOptions = options.map(option => ({ value: option, label: option }))
+
+    // Use useImperativeHandle to expose the clearTags function
+    useImperativeHandle(ref, () => ({
+        clearTags
+    }));
 
     return (
         <Select
@@ -106,8 +111,8 @@ function TagsSelect({
             isMulti
             styles={customStyles}
         />
-    )
-}
+    );
+});
 
 // returns an object with properties to apply to every column in table  
 
@@ -204,7 +209,8 @@ function Table({ data }) {
                 Cell: props => <TagCell {...props} limit={1} />,
                 disableSortBy: true,
                 filter: "contains",
-                Filter: TagsSelect,
+                // Filter: TagsSelect,
+                Filter: (props) => <TagsSelect {...props} ref={tagsSelectRef} />, // No forwardRef needed, just pass the ref
             },
             {
                 Header: "Created At",
@@ -279,9 +285,14 @@ function Table({ data }) {
         gotoPage(0)
     }
 
+
+    // Create a ref for the TagsSelect component
+    const tagsSelectRef = useRef();
+
+    // Use the ref to clear the tags in the TagsSelect component
     const clearChildTags = () => {
-        // clear child tags code is called here
-    }
+        tagsSelectRef.current.clearTags();
+    };
 
     // Toggle visbility DateRangeFilter, too large for UI
     const [isOpen, setIsOpen] = useState(false)
