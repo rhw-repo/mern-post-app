@@ -1,4 +1,5 @@
 /* uncommenting line 31 allows check document _id*/
+/* TODO debug lack of paragraphs in body element render */
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import useFetch from "../hooks/useFetch";

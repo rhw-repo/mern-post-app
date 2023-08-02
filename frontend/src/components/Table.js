@@ -1,3 +1,8 @@
+/* TODO 
+complete standarising microactions for all buttons
+complete function to clear Select and pass it to "Reset Table"
+code review all component
+*/
 import { useTable, usePagination, useSortBy, useGlobalFilter, useFilters } from 'react-table';
 import GlobalFilter from './GlobalFilter';
 import ColumnFilter from './ColumnFilter';

@@ -1,5 +1,7 @@
 /* provide logical && searching and work in conjunction with global filter
-TODO: 1. create function sanitise to prevent XSS attacks */
+TODO: 1. create function sanitise to prevent XSS attacks 
+2. margin right Searchbox needs increasing
+*/
 import { useEffect } from "react";
 import styled from "styled-components"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'

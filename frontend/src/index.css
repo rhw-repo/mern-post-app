@@ -1,6 +1,7 @@
  /* TODO  
- 1. Review all-tags-select for redundancy on complete select 
- 2. brief: deskop/ laptop/ tablet version,meet client re add media queries */
+ 1. Review all-tags-select for redundancy on complete select and stop overflow tags-chip selector
+ 2. Set standardised microactions for all buttons
+ 3. brief: deskop/ laptop/ tablet version,meet client re add media queries */
 
  @import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@400;500;600;700&family=Open+Sans:wght@300;400&display=swap');
 
