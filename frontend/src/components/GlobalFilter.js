@@ -10,19 +10,38 @@ const SearchBox = styled.div`
     border: 1px solid #ddd;
     border-radius: 0.5rem;
     margin: 0.312rem auto;
-    padding: 0 0.5rem;
+    padding: 0 0.5rem 0 0.75rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: 100%;
+
+ 
     & input {
         border: none;
         flex-grow: 1;
     }
 
-    & svg {
-        color: #E0E0E0;
+    & .filter-icon {
+        color: #BD7374; // Default color for SVG icon
+        transition: color 0.3s, transform 0.3s; // Smooth transition for color and scaling
     }
+
+    &:hover {
+        border-color: #778DA5;
+
+        & .filter-icon {
+            color: #8E5659; // More distinct darker shade for hover
+            transform: scale(1.1); // Slightly scaled up for hover
+        }
+    }
+
+    & input:focus + .filter-icon {
+        color: #6B4045; // Even more distinct darker shade for focus
+        transform: scale(1.2); // Further scaled up for focus
+    }
+  
+}   
 `
 
 const GlobalFilter = ({ filter, setFilter }) => {
@@ -33,7 +52,7 @@ const GlobalFilter = ({ filter, setFilter }) => {
         setFilter(value || undefined)
     }, 300)
 
-    const filterIcon = <FontAwesomeIcon icon={faFilter} size="xl"/>
+    const filterIcon = <FontAwesomeIcon icon={faFilter} className="filter-icon"/>
 
     const customStyles = {
         outline: "none", 
