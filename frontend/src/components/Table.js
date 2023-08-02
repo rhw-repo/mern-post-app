@@ -10,7 +10,7 @@ import DateRangeFilter, { filterByDateRange } from './DateRangeFilter';
 import ModalDateRangeFilter from './ModalDateRangeFilter';
 import 'react-date-range/dist/styles.css';
 import 'react-date-range/dist/theme/default.css';
-import { useMemo, useState, useEffect } from 'react';
+import { useMemo, useState, useEffect, useRef, forwardRef } from 'react';
 import Select from 'react-select';
 import { Link } from 'react-router-dom';
 import DeleteButton from "./DeleteButton";
@@ -89,11 +89,18 @@ function TagsSelect({
         }
     }
 
+    const selectorRef = useRef();
+
+    const clearTags = () => {
+        selectorRef.current.select.clearValue();
+    }
+
     // Render a multi-select box
     let selectOptions = options.map(option => ({ value: option, label: option }))
 
     return (
         <Select
+            ref={selectorRef}
             onChange={changeHandler}
             options={selectOptions}
             isMulti
@@ -272,6 +279,10 @@ function Table({ data }) {
         gotoPage(0)
     }
 
+    const clearChildTags = () => {
+        // clear child tags code is called here
+    }
+
     // Toggle visbility DateRangeFilter, too large for UI
     const [isOpen, setIsOpen] = useState(false)
 
@@ -310,7 +321,10 @@ function Table({ data }) {
                 <span>
                     <button
                         className="reset_table_btn"
-                        onClick={resetTable}
+                        onClick={() => {
+                            resetTable()
+                            clearChildTags()
+                        }}
                     >
                         {resetIcon} RESET
                     </button>
@@ -423,7 +437,10 @@ function Table({ data }) {
                     </select>
                     <button
                         className="table_pagination"
-                        onClick={resetTable}>
+                        onClick={() => {
+                            resetTable()
+                            clearChildTags()
+                        }}>
                         {resetIcon} RESET
                     </button>
                     <span>
