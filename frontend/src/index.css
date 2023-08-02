@@ -17,11 +17,11 @@
    font-family: "Open Sans", "Helvetica", Arial, sans-serif;
  }
 
- /* all buttons glow when clicked - informs user click 'succesful' */
+ /* all buttons glow when clicked - informs user click 'succesful' 
  button:active,
- /* pagination select*/
+ /* pagination select
  select:active,
- /* table row delete button */
+ /* table row delete button 
  span.material-symbols-outlined:active {
    box-shadow: 0 0 .2rem #fff,
      0 0 .2rem #fff,
@@ -29,7 +29,7 @@
      0 0 0.8rem #BD7374,
      0 0 2.8rem #BD7374,
      inset 0 0 1.3rem #BD7374;
- }
+ }*/
 
  /* primary buttons */
  .login_btn,
@@ -49,12 +49,43 @@
    font-weight: bold;
    border-radius: 1.875rem;
    cursor: pointer;
-   box-shadow:
+   /*box-shadow:
    0rem 0.125rem 0.25rem 0rem rgba(0, 0, 0, 0.15),
    0rem 0.25rem 0.3125rem 0rem rgba(0, 0, 0, 0.09),
    0rem 0.0625rem 0.625rem 0rem rgba(0, 0, 0, 0.07),
-   0.3125rem 0.3125rem 0.3125rem 0.3125rem #778DA5;
+   0.3125rem 0.3125rem 0.3125rem 0.3125rem #778DA5;*/
+   box-shadow: 0rem 0.25rem 0.5rem 0rem rgba(0, 0, 0, 0.2); /* revised shadow for a subtle lift */
+   opacity: 1;
+  transition: background 0.3s, box-shadow 0.3s, transform 0.3s; /* smooth transitions */
  }
+
+/* experiment material.io guidelines for microactions */
+/* hover state */
+.login_btn:hover,
+.signup_btn:hover,
+.create_new_btn:hover,
+.go-to-edit-btn:hover,
+.save_btn:hover {
+  background:  #A96669; /* slightly darker color on hover */
+  box-shadow: 
+    0rem 0.1875rem 0.375rem 0rem rgba(0, 0, 0, 0.2),
+    0rem 0.5rem 0.625rem 0rem rgba(0, 0, 0, 0.14),
+    0rem 0.125rem 0.75rem 0rem rgba(0, 0, 0, 0.12);
+}
+
+/* pressed (active) state */
+.login_btn:active,
+.signup_btn:active,
+.create_new_btn:active,
+.go-to-edit-btn:active,
+.save_btn:active {
+  background:   #954B4C; /* even darker on active */
+  box-shadow: 
+    0rem 0.0625rem 0.125rem 0rem rgba(0, 0, 0, 0.2),
+    0rem 0.125rem 0.15625rem 0rem rgba(0, 0, 0, 0.14),
+    0rem 0.03125rem 0.3125rem 0rem rgba(0, 0, 0, 0.12);
+  transform: scale(0.98); /* slight scaling to give a pressed effect */
+}
 
  /* secondary buttons */
  nav button,
@@ -70,7 +101,35 @@
    border-radius: 1.875rem;
    font-family: "Lexend Deca", Helvetica, Arial, sans-serif;
    cursor: pointer;
- }
+   /* experiment to meet material.io 3 microaction guidelines */
+   transition: background 0.3s, color 0.3s, transform 0.3s; /* smooth transitions */
+ }/* hover state */
+nav button:hover,
+.reset_table_btn:hover,
+.table_pagination:hover,
+.select_box:hover,
+.date_range_btn:hover,
+.cancel_btn:hover,
+.switch_form_btn:hover {
+  background: rgba(189, 115, 116, 0.1); /* slight tint of the primary color */
+  color: #954B4C; /* manually picked color that's slightly darker than primary */
+  box-shadow: 0rem 0.125rem 0.25rem 0rem rgba(0, 0, 0, 0.1); /* subtle shadow for a lifted appearance */
+}
+
+/* pressed (active) state */
+nav button:active,
+.reset_table_btn:active,
+.table_pagination:active,
+.select_box:active,
+.date_range_btn:active,
+.cancel_btn:active,
+.switch_form_btn:active {
+  background: rgba(189, 115, 116, 0.2); /* darker tint of the primary color */
+  color: #703634; /* manually picked color that's darker than hover */
+  transform: scale(0.98); /* slight scaling to give a pressed effect */
+}
+
+ 
 
  /* navbar */
  header {
@@ -242,6 +301,7 @@ tr:hover {
   border-radius: 50%;
   height: 2rem;
   width: 2rem;
+  transition: background-color 0.3s, color 0.3s;
  }
 
  .material-symbols-outlined:hover {
@@ -254,7 +314,7 @@ tr:hover {
    text-align: center;
    border: 1px solid #BD7374;
    border-radius: 0.625rem;
-   padding: 1rem 2rem 2rem 2rem;
+   padding: 1.5rem 2rem 2rem 2rem;
    position: fixed;
    top: 50%;
    left: 50%;
@@ -270,25 +330,53 @@ tr:hover {
    display: flex;
    justify-content: space-between;
    align-items: center;
+   margin-top: 2rem;
  }
 
- .yes_delete {
-   border: 1px solid var(--error);
-   border-radius: 0.625rem;
-   background-color: var(--error);
-   color: #ffffff;
-   font-weight: bold;
-   padding: 1rem;
- }
+ /* experiment to meet material.io guidelines */
 
- .no_cancel_delete {
-   border: 1px solid var(--primary);
-   border-radius: 0.625rem;
-   background-color: var(--primary);
-   color: #ffffff;
-   font-weight: bold;
-   padding: 1rem;
- }
+ .yes_delete,
+.no_cancel_delete {
+  border: none;
+  border-radius: 1.875rem; 
+  font-weight: 500; 
+  font-size: 0.875rem; 
+  font-family: "Lexend Deca", Helvetica, Arial, sans-serif;
+  padding: 1rem; 
+  margin: 0.25rem; 
+  cursor: pointer; 
+  text-align: center; 
+  transition: background-color 0.3s, color 0.3s; 
+  display: inline-flex; /* To align icons and text properly */
+  align-items: center; 
+  justify-content: center; 
+}
+
+.yes_delete {
+  background-color: var(--error);
+  color: #ffffff;
+}
+
+.no_cancel_delete {
+  background-color: var(--primary);
+  color: #ffffff;
+  font-weight: 800;
+}
+
+.yes_delete:hover,
+.no_cancel_delete:hover {
+  background-color: #d9534f; /* Slightly darken on hover */
+}
+
+.yes_delete:active,
+.no_cancel_delete:active {
+  background-color: #c9302c; /* Even darker on active */
+  transform: scale(0.98); /* Slight scaling to give a pressed effect */
+}
+
+.dialog-button-icon {
+  margin-right: 0.5rem; /* Space between icon and text */
+}
 
  .create_new_btn {
   width: 12rem;

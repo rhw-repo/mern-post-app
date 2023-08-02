@@ -43,8 +43,8 @@ const DeleteButton = ({ _id }) => {
         setShowDialog(false)
     }
 
-    const deleteIcon = <FontAwesomeIcon icon={faTrashCan} />
-    const saveIcon = <FontAwesomeIcon icon={faFloppyDisk} />
+    const deleteIcon = <FontAwesomeIcon icon={faTrashCan} className="dialog-button-icon" />
+    const saveIcon = <FontAwesomeIcon icon={faFloppyDisk} className="dialog-button-icon" />
 
     return (
         <div>
@@ -57,9 +57,9 @@ const DeleteButton = ({ _id }) => {
 
             {showDialog && (
                 <dialog open className="dialog_confirm_delete">
-                    <h2 className="confirm_delete">Just checking - </h2>
-                    <p><strong>Did you want to click on DELETE?</strong></p>
-                    <p>If you delete it, it will be gone forever.</p>
+                    <h2 className="confirm_delete">Confirm Deletion</h2>
+                    <p><strong>Do you want to delete this item?</strong></p>
+                    <p>Choosing the red delete button here cannot be undone.</p>
                     <div className="confirm_delete_buttons">
                         <button
                             className="yes_delete"
@@ -71,7 +71,7 @@ const DeleteButton = ({ _id }) => {
                             className="no_cancel_delete"
                             onClick={handleCancelDelete}
                         >
-                            {saveIcon} No! Keep it!
+                            {saveIcon} No - Keep it
                         </button>
                     </div>
                 </dialog>
