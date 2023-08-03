@@ -1,6 +1,4 @@
 /* TODO 
-complete standarising microactions for all buttons
-complete function to clear Select and pass it to "Reset Table"
 code review all component
 */
 import { useTable, usePagination, useSortBy, useGlobalFilter, useFilters } from 'react-table';
@@ -345,7 +343,7 @@ function Table({ data }) {
                     </button>
                 </span>
 
-                <span>
+                <span className='create_new_btn_container'>
                     <Link to="/create_new">
                         <button
                             className="create_new_btn"

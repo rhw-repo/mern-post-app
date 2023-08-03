@@ -1,6 +1,5 @@
  /* TODO  
- 1. Review all-tags-select for redundancy on complete select 
- 2. Set standardised microactions for all buttons
+ 1. Review for redundancy and DRY principle
  3. brief: deskop/ laptop/ tablet version,meet client re add media queries */
 
  @import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@400;500;600;700&family=Open+Sans:wght@300;400&display=swap');
@@ -217,6 +216,13 @@ nav button:active,
   margin-bottom: 0.625rem;
 }
 
+.options_container .create_new_btn_container .create_new_btn {
+  position:fixed;
+  top: 8rem;
+  right: 1rem;
+  z-index: 1000;
+ }
+ 
 /* Reset table button */ 
 .reset_table_btn {
     width: 9rem;
