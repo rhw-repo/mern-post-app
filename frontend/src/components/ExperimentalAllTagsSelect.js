@@ -70,24 +70,29 @@ function ExperimentalAllTagsSelect({ onTagsChange }) {
   const customCreatableStyles = {
     control: (baseStyles, state) => ({
       ...baseStyles,
-      border: state.isFocused ? '1px solid #778DA5' : '1px solid #e6e6e6',
-      boxShadow: state.isFocused ? '0 0 0 1px #778DA5' : baseStyles.boxShadow,
+      border: state.isFocused ? '1px solid #667B99' : '1px solid #e6e6e6',
+      boxShadow: state.isFocused ? '0 0 0 1px #667B99' : baseStyles.boxShadow,
       '&:hover': {
-        border: state.isFocused ? '1px solid #778DA5' : '1px solid #e6e6e6',
+        border: state.isFocused ? '1px solid #667B99' : '1px solid #e6e6e6',
       }
     }),
+    placeholder: (baseStyles) => ({
+      ...baseStyles,
+      color: '#435362',
+      fontSize: '1rem', 
+  }),
     option: (baseStyles, state) => ({
       ...baseStyles,
-      backgroundColor: state.isFocused ? '#778DA5' : baseStyles.backgroundColor,
+      backgroundColor: state.isFocused ? '#667B99' : baseStyles.backgroundColor,
       color: state.isFocused ? 'white' : baseStyles.color,
       ':hover': {
-        backgroundColor: '#778DA5',
+        backgroundColor: '#667B99',
         color: 'white',
       }
     }), multiValue: (baseStyles, state) => {
       return {
         ...baseStyles,
-        backgroundColor: '#778DA5',
+        backgroundColor: '#667B99',
         color: 'white',
       }
     },

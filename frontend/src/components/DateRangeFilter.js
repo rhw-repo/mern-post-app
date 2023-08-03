@@ -35,7 +35,7 @@ function DateRangeFilter({ handleFilter }) {
     <div className="modal">
       <DateRangePicker
         className="modal"
-        rangeColors={["#BD7374"]}
+        rangeColors={["#667B99"]}
         showSelectionPreview={false}
         ranges={[dateRange]}
         onChange={handleSelect} />

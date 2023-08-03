@@ -10,6 +10,8 @@
    --primary: #BD7374;
    --error: #A2262C;
    --secondary: #435362;
+   --secondary-light: #667B99;
+   --secondary-chips: #5C6D84;
  }
 
  body {
@@ -36,11 +38,6 @@
    font-weight: bold;
    border-radius: 1.875rem;
    cursor: pointer;
-   /*box-shadow:
-   0rem 0.125rem 0.25rem 0rem rgba(0, 0, 0, 0.15),
-   0rem 0.25rem 0.3125rem 0rem rgba(0, 0, 0, 0.09),
-   0rem 0.0625rem 0.625rem 0rem rgba(0, 0, 0, 0.07),
-   0.3125rem 0.3125rem 0.3125rem 0.3125rem #778DA5;*/
    box-shadow: 0rem 0.25rem 0.5rem 0rem rgba(0, 0, 0, 0.2); /* revised shadow for a subtle lift */
    opacity: 1;
   transition: background 0.3s, box-shadow 0.3s, transform 0.3s; /* smooth transitions */
@@ -433,8 +430,7 @@ tr:hover {
    justify-content: center;
    height: 1rem;
    line-height: 2rem;
-   /*background-color: #778DA5;*/
-   background-color: var(--secondary);
+   background-color: var(--secondary-chips);
    color: #ffffff;
    font-weight: bold;
    border-radius: 0.3rem;
@@ -587,7 +583,7 @@ tr:hover {
  form.signup,
  form.login {
    max-width: 30rem;
-   margin: 4rem auto 2rem auto;
+   margin: 2rem auto;
    padding: 3rem;
    background: #fff;
    border-radius: 0.625rem;

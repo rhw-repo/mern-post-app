@@ -59,25 +59,30 @@ const TagsSelect = forwardRef(({
             ...baseStyles,
             width: "90%",
             maxWidth: "31.25rem",
-            border: state.isFocused ? '1px solid #778DA5' : '1px solid #e6e6e6',
+            border: state.isFocused ? '1px solid var(--secondary-light)' : '1px solid #e6e6e6',
             margin: "1rem auto;",
-            boxShadow: state.isFocused ? '0 0 0 1px #778DA5' : baseStyles.boxShadow,
+            boxShadow: state.isFocused ? '0 0 0 1px var(--secondary-light)' : baseStyles.boxShadow,
             '&:hover': {
-                border: state.isFocused ? '1px solid #778DA5' : '1px solid #e6e6e6',
+                border: state.isFocused ? '1px solid var(--secondary-light)' : '1px solid #e6e6e6',
             }
+        }),
+        placeholder: (baseStyles) => ({
+            ...baseStyles,
+            color: 'var(--secondary)',
+            fontSize: '1rem', 
         }),
         option: (baseStyles, state) => ({
             ...baseStyles,
-            backgroundColor: state.isFocused ? '#778DA5' : baseStyles.backgroundColor,
+            backgroundColor: state.isFocused ? 'var(--secondary-light)' : baseStyles.backgroundColor,
             color: state.isFocused ? "white" : baseStyles.color,
             ':hover': {
-                backgroundColor: '#778DA5'
+                backgroundColor: 'var(--secondary-light)'
             }
         }),
         multiValue: (baseStyles, state) => {
             return {
                 ...baseStyles,
-                backgroundColor: '#778DA5',
+                backgroundColor: 'var(--secondary-chips)',
                 color: 'white',
             }
         },
@@ -299,15 +304,12 @@ function Table({ data }) {
     // Toggle visbility DateRangeFilter, too large for UI
     const [isOpen, setIsOpen] = useState(false)
 
-    const calendarIcon = <FontAwesomeIcon icon={faCalendarDays} />
+    const calendarIcon = <FontAwesomeIcon icon={faCalendarDays} style={{ color: "var(--secondary-light", }}/>
     const createNewIcon = <FontAwesomeIcon icon={faPlus} />
     const resetIcon = <FontAwesomeIcon icon={faUndo} />
-    const sortIcon = <FontAwesomeIcon icon={faSort} size="2xl" style={{ color: "#E0E0E0", }} />
+    const sortIcon = <FontAwesomeIcon icon={faSort} size="2xl" style={{ color: "var(--secondary-light", }} />
     const forwardsIcon = <FontAwesomeIcon icon={faForward} />
     const backwardsIcon = <FontAwesomeIcon icon={faBackward} />
-
-    // apply to table body table row return to have uneven rows different backgroundColor
-    //  backgroundColor: row.index % 2 === 0 ? "white" : "#c8e6c9",
 
     // rendering options_container before table aims for easy user experience
     return (
@@ -456,16 +458,16 @@ function Table({ data }) {
                         }}>
                         {resetIcon} RESET
                     </button>
-                    <span aria-label="Display current page number out of total pages">          
-                          Page{" "}
+                    <span aria-label="Display current page number out of total pages">
+                        Page{" "}
                         <strong>
                             {pageIndex + 1} of {pageOptions.length}
                         </strong>{" "}
-                          </span>  
-                    <span 
-                    style={{ display: "inline-flex", alignItems: "center" }}
-                    aria-label='Go to specific page'>
-                                | Go to page: {" "} 
+                    </span>
+                    <span
+                        style={{ display: "inline-flex", alignItems: "center" }}
+                        aria-label='Go to specific page'>
+                        | Go to page: {" "}
                         <input
                             type="number"
                             defaultValue={pageIndex + 1}
@@ -478,7 +480,7 @@ function Table({ data }) {
                         />
                     </span>
                     <button
-                        className="table_pagination_button" 
+                        className="table_pagination_button"
                         aria-label="Go to previous page"
                         onClick={() => gotoPage(0)} disabled={!canPreviousPage}
                     >
@@ -492,14 +494,14 @@ function Table({ data }) {
                     </button>
                     <button
                         className="table_pagination_button"
-                        aria-label= "Go to next page"
+                        aria-label="Go to next page"
                         onClick={() => nextPage()} disabled={!canNextPage}
                     >
                         Next
                     </button>
                     <button
                         className="table_pagination_button"
-                        aria-label= "Go to next page"
+                        aria-label="Go to next page"
                         onClick={() => gotoPage(pageCount - 1)} disabled={!canNextPage}
                     >
                         {forwardsIcon}

@@ -5,7 +5,7 @@ import { faCircleXmark } from "@fortawesome/free-solid-svg-icons"
 function ModalDateRangeFilter({ open, children, onClose }) {
     if(!open) return null
 
-    const closeIcon = <FontAwesomeIcon icon={faCircleXmark } style={{color: "#bd7374" }} size='4x'/>
+    const closeIcon = <FontAwesomeIcon icon={faCircleXmark } style={{color: "var(--secondary-light)" }} size='4x'/>
 
   return (
     <div> 
