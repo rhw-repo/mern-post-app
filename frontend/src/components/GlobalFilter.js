@@ -1,5 +1,5 @@
 // multiple terms, finds match(es) in the 1st applicable column. 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useAsyncDebounce } from "react-table";
 import styled from "styled-components"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -43,9 +43,15 @@ const SearchBox = styled.div`
   
 }   
 `
-
 const GlobalFilter = ({ filter, setFilter }) => {
     const [value, setValue] = useState(filter)
+
+     // Experiment successful, adds useEffect synchronizing local state with prop to 
+     // ensure resetTable functions 
+     useEffect(() => {
+        setValue(filter);
+    }, [filter]);
+
 
     // Delays filter execution preventing unnecessary operations, better performance
     const onChange = useAsyncDebounce(value => {

@@ -9,6 +9,7 @@
  :root {
    --primary: #BD7374;
    --error: #A2262C;
+   --outline: #778DA5; 
  }
 
  body {
@@ -100,10 +101,13 @@
    border: 0.125rem solid var(--primary);
    border-radius: 1.875rem;
    font-family: "Lexend Deca", Helvetica, Arial, sans-serif;
+   font-weight: 800;
+   font-size: 1rem;
    cursor: pointer;
    /* experiment to meet material.io 3 microaction guidelines */
    transition: background 0.3s, color 0.3s, transform 0.3s; /* smooth transitions */
- }/* hover state */
+ }
+ /* hover state */
 nav button:hover,
 .reset_table_btn:hover,
 .table_pagination:hover,
@@ -461,6 +465,13 @@ tr:hover {
    color: #ffffff;
    font-weight: bold;
  }
+
+ /* specific to table tags column to prevent overflow */
+ .table-tags-container .tag-chip {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 
  /* display tags in Read experimenting with adding edit's document-tags*/
  .read-tags-container, 

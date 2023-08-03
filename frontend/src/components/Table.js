@@ -170,7 +170,7 @@ function Table({ data }) {
         }
 
         return (
-            <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+            <div className='table-tags-container' style={{ display: 'flex', flexWrap: 'wrap' }}>
                 {displayedTags.map((tag, index) => (
                     <div key={index} className='tag-chip' >
                         {tag}
@@ -274,7 +274,7 @@ function Table({ data }) {
         setFilter("createdAt", selectedRange)
     }
 
-    // Clear pagination selections or global/column/date/tags filters
+    // Clear pagination selections or global/column/date range filters
     const resetTable = () => {
         setGlobalFilter('');
         setPageSize(3);
@@ -289,7 +289,8 @@ function Table({ data }) {
     // Create a ref for the TagsSelect component
     const tagsSelectRef = useRef();
 
-    // Use the ref to clear the tags in the TagsSelect component
+    /* Use the ref to clear the tags in the TagsSelect 
+    component using Reset Table button */
     const clearChildTags = () => {
         tagsSelectRef.current.clearTags();
     };
@@ -473,7 +474,8 @@ function Table({ data }) {
                         />
                     </span>
                     <button
-                        className="table_pagination button"
+                        className="table_pagination button" 
+                        aria-label="Go to previous page"
                         onClick={() => gotoPage(0)} disabled={!canPreviousPage}
                     >
                         {backwardsIcon}
@@ -486,12 +488,14 @@ function Table({ data }) {
                     </button>
                     <button
                         className="table_pagination button"
+                        aria-label= "Go to next page"
                         onClick={() => nextPage()} disabled={!canNextPage}
                     >
                         Next
                     </button>
                     <button
                         className="table_pagination button"
+                        aria-label= "Go to next page"
                         onClick={() => gotoPage(pageCount - 1)} disabled={!canNextPage}
                     >
                         {forwardsIcon}
