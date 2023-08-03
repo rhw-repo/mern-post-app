@@ -1,5 +1,5 @@
  /* TODO  
- 1. Review all-tags-select for redundancy on complete select and stop overflow tags-chip selector
+ 1. Review all-tags-select for redundancy on complete select 
  2. Set standardised microactions for all buttons
  3. brief: deskop/ laptop/ tablet version,meet client re add media queries */
 
@@ -9,7 +9,7 @@
  :root {
    --primary: #BD7374;
    --error: #A2262C;
-   --outline: #778DA5; 
+   --secondary: #435362;
  }
 
  body {
@@ -17,20 +17,6 @@
    margin: 0;
    font-family: "Open Sans", "Helvetica", Arial, sans-serif;
  }
-
- /* all buttons glow when clicked - informs user click 'succesful' 
- button:active,
- /* pagination select
- select:active,
- /* table row delete button 
- span.material-symbols-outlined:active {
-   box-shadow: 0 0 .2rem #fff,
-     0 0 .2rem #fff,
-     0 0 2rem #BD7374,
-     0 0 0.8rem #BD7374,
-     0 0 2.8rem #BD7374,
-     inset 0 0 1.3rem #BD7374;
- }*/
 
  /* primary buttons */
  .login_btn,
@@ -91,14 +77,14 @@
  /* secondary buttons */
  nav button,
  .reset_table_btn,
- .table_pagination,
+ .table_pagination_button,
  .select_box,
  .date_range_btn,
  .cancel_btn,
  .switch_form_btn {
    background: #fff;
-   color: var(--primary);
-   border: 0.125rem solid var(--primary);
+   color:var(--secondary);
+   border: 0.1rem solid var(--secondary);
    border-radius: 1.875rem;
    font-family: "Lexend Deca", Helvetica, Arial, sans-serif;
    font-weight: 800;
@@ -110,30 +96,28 @@
  /* hover state */
 nav button:hover,
 .reset_table_btn:hover,
-.table_pagination:hover,
+.table_pagination_button:hover,
 .select_box:hover,
 .date_range_btn:hover,
 .cancel_btn:hover,
 .switch_form_btn:hover {
-  background: rgba(189, 115, 116, 0.1); /* slight tint of the primary color */
-  color: #954B4C; /* manually picked color that's slightly darker than primary */
+  background: rgba(119, 141, 165, 0.15); /* slight tint of the new secondary color */
+  color: #37404b; /* manually picked color that's slightly darker than secondary */
   box-shadow: 0rem 0.125rem 0.25rem 0rem rgba(0, 0, 0, 0.1); /* subtle shadow for a lifted appearance */
 }
 
 /* pressed (active) state */
 nav button:active,
 .reset_table_btn:active,
-.table_pagination:active,
+.table_pagination_button:active,
 .select_box:active,
 .date_range_btn:active,
 .cancel_btn:active,
 .switch_form_btn:active {
-  background: rgba(189, 115, 116, 0.2); /* darker tint of the primary color */
-  color: #703634; /* manually picked color that's darker than hover */
+  background: rgba(67, 83, 98, 0.2); /* darker tint of the new secondary color */
+  color: #2c333b; /* manually picked color that's darker than hover */
   transform: scale(0.98); /* slight scaling to give a pressed effect */
 }
-
- 
 
  /* navbar */
  header {
@@ -141,7 +125,7 @@ nav button:active,
    top: 0rem;
    z-index: 1;
    background-color: #ffffff;
-   color: #435362;
+   color: var(--secondary);
    font-family: "Lexend Deca", Helvetica, Arial, sans-serif;
    font-weight: bold;
    margin-top: 1rem;
@@ -166,7 +150,7 @@ nav button:active,
  nav button {
    margin-left: 1rem;
    padding: 0.625rem;
-   width: 6rem;
+   min-width: 8rem;
  }
 
  /* footer */
@@ -181,8 +165,11 @@ nav button:active,
    width: 100vw;
    padding: 1.33rem 0.66rem;
    margin-top: 1.25rem;
-   background-color: #778DA5;
+   background-color: var(--secondary);
    font-family: 'Lexend Deca', Helvetica, Arial, Lucida, sans-serif;
+   font-size: 1rem;
+   color:#ffffff;
+   font-weight: 600;
  }
 
  footer a {
@@ -258,7 +245,7 @@ nav button:active,
  
  /* DateRangeFilter modal & modal toggle buttons */
  .date_range_btn {
-   width: 9rem;
+   min-width: 11rem;
    padding: 0.625rem;
  }
 
@@ -301,7 +288,7 @@ tr:hover {
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid #435362;
+  border: 1px solid var(--secondary);
   border-radius: 50%;
   height: 2rem;
   width: 2rem;
@@ -383,11 +370,11 @@ tr:hover {
 }
 
  .create_new_btn {
-  width: 12rem;
+  min-width: 12rem;
  }
 
  /* pagination options buttons */
- .table_pagination,
+ .table_pagination_button,
  .select_box {
    font-size: 1rem;
    padding: 0.625rem;
@@ -446,7 +433,8 @@ tr:hover {
    justify-content: center;
    height: 1rem;
    line-height: 2rem;
-   background-color: #778DA5;
+   /*background-color: #778DA5;*/
+   background-color: var(--secondary);
    color: #ffffff;
    font-weight: bold;
    border-radius: 0.3rem;
@@ -484,8 +472,6 @@ tr:hover {
  }
 
  /* CreateNew */
- 
-
  .tags_section_container {
    display: flex;
    justify-content: space-between;
@@ -561,13 +547,25 @@ tr:hover {
    border: 1px solid #ddd;
    border-radius: 0.5rem;
    box-sizing: border-box;
+   outline: none;
+   transition: border-color 0.3s, color 0.3s, transform 0.3s;
    /*max-height: 2rem;*/
+ }
+
+ input:hover,
+ textarea:hover {
+  border-color: var(--secondary);
+ }
+
+ input:focus,
+ textarea:focus {
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
  }
 
  label,
  p {
   font-family: "Lexend Deca", Helvetica, Arial, sans-serif;
-  color:#435362;
+  color:var(--secondary);
  }
 
  /* error styling */
@@ -615,5 +613,5 @@ tr:hover {
 
  .switch_form_btn {
    padding: 0.625rem;
-   width: 6rem;
+   min-width: 8rem;
  }

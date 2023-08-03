@@ -23,21 +23,21 @@ const SearchBox = styled.div`
     }
 
     & .filter-icon {
-        color: #BD7374; // Default color for SVG icon
+        color: var(--secondary); // Default color for SVG icon
         transition: color 0.3s, transform 0.3s; // Smooth transition for color and scaling
     }
 
     &:hover {
-        border-color: #778DA5;
+        border-color: var(--secondary);
 
         & .filter-icon {
-            color: #8E5659; // More distinct darker shade for hover
+            color: #667B99; // More distinct darker shade for hover
             transform: scale(1.1); // Slightly scaled up for hover
         }
     }
 
     & input:focus + .filter-icon {
-        color: #6B4045; // Even more distinct darker shade for focus
+        color: #556672;; // Even more distinct darker shade for focus
         transform: scale(1.2); // Further scaled up for focus
     }
   
@@ -46,9 +46,9 @@ const SearchBox = styled.div`
 const GlobalFilter = ({ filter, setFilter }) => {
     const [value, setValue] = useState(filter)
 
-     // Experiment successful, adds useEffect synchronizing local state with prop to 
-     // ensure resetTable functions 
-     useEffect(() => {
+    // Experiment successful, adds useEffect synchronizing local state with prop to 
+    // ensure resetTable functions 
+    useEffect(() => {
         setValue(filter);
     }, [filter]);
 
@@ -58,10 +58,12 @@ const GlobalFilter = ({ filter, setFilter }) => {
         setFilter(value || undefined)
     }, 300)
 
-    const filterIcon = <FontAwesomeIcon icon={faFilter} className="filter-icon"/>
+    const filterIcon = <FontAwesomeIcon icon={faFilter} className="filter-icon" />
 
+    //increased css specificity to override general input style rules
     const customStyles = {
-        outline: "none", 
+        outline: "none",
+        boxShadow: "none",
         width: "20rem",
         fontSize: "1rem",
         marginLeft: "0.625rem",
@@ -80,7 +82,7 @@ const GlobalFilter = ({ filter, setFilter }) => {
             }}>
                 <SearchBox>
                     {filterIcon}
-                    <input 
+                    <input
                         type="text"
                         placeholder="Search in all columns..."
                         value={value || ""}

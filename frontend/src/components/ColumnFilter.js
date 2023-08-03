@@ -27,7 +27,7 @@ const SearchBox = styled.div`
     }
 
     & .filter-icon {
-        color: var(--primary); // Default color for SVG icon
+        color: var(--secondary); // Default color for SVG icon
         margin-right: 0.312rem;
         transition: color 0.3s, transform 0.3s; // Smooth transition for color and scaling
     }
@@ -36,14 +36,15 @@ const SearchBox = styled.div`
         border-color: var(--outline);
 
         & .filter-icon {
-            color: #8E5659; // More distinct darker shade for hover
+            color: #667B99;; // More distinct darker shade for hover
             transform: scale(1.1); // Slightly scaled up for hover
         }
     }
 
     & input:focus + .filter-icon {
-        color: #6B4045; // Even more distinct darker shade for focus
+        color: #556672; // Even more distinct darker shade for focus
         transform: scale(1.2); // Further scaled up for focus
+    }
     }
 `
 
@@ -57,12 +58,10 @@ const ColumnFilter = ({ column }) => {
 
     const { filterValue, setFilter } = column
 
- /*   REDUNDANT styling handled by styled components 
-        const customStyles = {
-        outline: "none", 
-        //fontSize: "1rem",
-      //  marginLeft: "0.625rem",
-    }*/
+// increased css specificty to override general input style rules
+    const customStyles = {
+        boxShadow: "none",
+    }
 
     // hides input in date columns (DateRangeFilter used instead or no filter)
     if (column.Header !== "Created At" && column.Header !== "Updated At" && column.Header !== "Delete") {
@@ -76,6 +75,7 @@ const ColumnFilter = ({ column }) => {
                             placeholder="Search this column..."
                             value={filterValue || ""}
                             onChange={e => setFilter(e.target.value)}
+                            style={customStyles}
                         />
                     </SearchBox>
                 </span>

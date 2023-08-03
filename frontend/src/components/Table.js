@@ -110,6 +110,7 @@ const TagsSelect = forwardRef(({
             options={selectOptions}
             isMulti
             styles={customStyles}
+            aria-label='Select tags'
         />
     );
 });
@@ -448,21 +449,23 @@ function Table({ data }) {
                         ))}
                     </select>
                     <button
-                        className="table_pagination"
+                        className="table_pagination_button"
                         onClick={() => {
                             resetTable()
                             clearChildTags()
                         }}>
                         {resetIcon} RESET
                     </button>
-                    <span>
-                        Page{" "}
+                    <span aria-label="Display current page number out of total pages">          
+                          Page{" "}
                         <strong>
                             {pageIndex + 1} of {pageOptions.length}
                         </strong>{" "}
-                    </span>
-                    <span style={{ display: "inline-flex", alignItems: "center" }}>
-                        | Go to page: {" "}
+                          </span>  
+                    <span 
+                    style={{ display: "inline-flex", alignItems: "center" }}
+                    aria-label='Go to specific page'>
+                                | Go to page: {" "} 
                         <input
                             type="number"
                             defaultValue={pageIndex + 1}
@@ -471,30 +474,31 @@ function Table({ data }) {
                                 gotoPage(pageNumber);
                             }}
                             style={{ width: "3.125rem", marginLeft: "0.5rem" }}
+                            aria-label='Page number'
                         />
                     </span>
                     <button
-                        className="table_pagination button" 
+                        className="table_pagination_button" 
                         aria-label="Go to previous page"
                         onClick={() => gotoPage(0)} disabled={!canPreviousPage}
                     >
                         {backwardsIcon}
                     </button>
                     <button
-                        className="table_pagination button"
+                        className="table_pagination_button"
                         onClick={() => previousPage()} disabled={!canPreviousPage}
                     >
                         Previous
                     </button>
                     <button
-                        className="table_pagination button"
+                        className="table_pagination_button"
                         aria-label= "Go to next page"
                         onClick={() => nextPage()} disabled={!canNextPage}
                     >
                         Next
                     </button>
                     <button
-                        className="table_pagination button"
+                        className="table_pagination_button"
                         aria-label= "Go to next page"
                         onClick={() => gotoPage(pageCount - 1)} disabled={!canNextPage}
                     >
