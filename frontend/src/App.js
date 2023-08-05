@@ -19,7 +19,6 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-      {/* <AllTagsProvider> */ }
       <Toaster 
         position='top-center'
         toastOptions={{
@@ -65,7 +64,6 @@ function App() {
           </Routes>
         </div>
         <Footer />
-        { /* </AllTagsProvider> */ }
       </BrowserRouter>
     </div>
   )

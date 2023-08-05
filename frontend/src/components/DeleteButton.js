@@ -43,16 +43,16 @@ const DeleteButton = ({ _id }) => {
         setShowDialog(false)
     }
 
-    const deleteIcon = <FontAwesomeIcon icon={faTrashCan} className="dialog-button-icon" />
+    const deleteIcon = <FontAwesomeIcon icon={faTrashCan} className="dialog-button-icon" size="xl"/>
     const saveIcon = <FontAwesomeIcon icon={faFloppyDisk} className="dialog-button-icon" />
 
     return (
-        <div>
+        <div className="delete-div">
             <span
-                className="material-symbols-outlined"
+                className="delete-span"
                 onClick={handleDeleteClick}
             >
-                delete
+               {deleteIcon}
             </span>
 
             {showDialog && (

@@ -287,18 +287,24 @@ tr:hover {
 }
 
  /* delete button in table */
- .material-symbols-outlined {
+ .delete-div {
+  margin:auto;
+ }
+
+ .delete-span {
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
   border: 1px solid var(--secondary);
   border-radius: 50%;
-  height: 2rem;
-  width: 2rem;
+  height: 3rem;
+  width: 3rem;
   transition: background-color 0.3s, color 0.3s;
+  color: var(--secondary)
  }
 
- .material-symbols-outlined:hover {
+ .delete-span:hover {
   background-color: var(--error);
   color:#ffffff;
  }
@@ -371,6 +377,13 @@ tr:hover {
 .dialog-button-icon {
   margin-right: 0.5rem; /* Space between icon and text */
 }
+
+.delete-span .dialog-button-icon {
+  margin-right: 0;
+  display: block;
+  margin: auto;
+}
+
 
  .create_new_btn {
   min-width: 12rem;
