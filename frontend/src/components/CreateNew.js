@@ -1,7 +1,8 @@
-/* TODO 
-1.Research (& implement or reccomend) input validation, sanitisation
-*/
-import { useState } from "react";
+// TODO 1.Research input  sanitisation
+/* Validation: without all fields completed, form cannot submit frontend & 
+backend also rejects if detect same. Both display styled error messages */
+
+import { useEffect, useState } from "react";
 import { useMaterialsContext } from "../hooks/useMaterialsContext";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { useNavigate } from "react-router-dom";
@@ -20,10 +21,29 @@ const CreateNew = () => {
     const [emptyFields, setEmptyFields] = useState([])
 
     const [selectedTags, setSelectedTags] = useState([])
+    const [trySubmit, setTrySubmit] = useState(false)
 
-    // function to handle changes to the selected tags
+    // EXPERIMENT to add frontend validation prevent empty fields 
+    const [isFormValid, setIsFormValid] = useState(false)
+
+    useEffect(() => {
+        console.log('Title:', title)
+        console.log('Body', body)
+        console.log('Selected tags', selectedTags)
+        if (title && body && selectedTags.length) {
+            setIsFormValid(true)
+        } else {
+            setIsFormValid(false)
+        }
+    }, [title, body, selectedTags])
+
+    // handles changes to the selected tags, fires if tags selected &/ created
     const handleTagsChange = (tags) => {
-        setSelectedTags(tags)
+        if (tags && tags.length) {
+            setSelectedTags(tags)
+        } else {
+            console.log("handleTagsChange called without tags entered")
+        }
     }
 
     const handleSubmit = async (e) => {
@@ -31,6 +51,11 @@ const CreateNew = () => {
 
         if (!user) {
             setError("You must be logged in")
+            return
+        }
+
+        if (!isFormValid) {
+            setTrySubmit(true)
             return
         }
 
@@ -69,37 +94,59 @@ const CreateNew = () => {
         }
     }
 
+    // sets frontend validation error display according to missing fields
+    const missingFields = () => {
+        let fields = []
+        if (!title) fields.push("Title")
+        if (!body) fields.push("Body")
+        if (selectedTags.length === 0) fields.push("Tags")
+        return fields
+    }
+
     return (
         <>
             <form className="create" onSubmit={handleSubmit}>
+                {(trySubmit && !isFormValid) || error ? (
+                    <div className="error">
+                        {trySubmit && !isFormValid ? (
+                            <>
+                                Please fill in the following fields: {missingFields().join(", ")}
+                            </>
+                        ) : (
+                            error
+                        )}
+                    </div>
+                ) : null}
+
                 <label className="document_form_headings ">
                     Type or paste the title here:
-                    </label>
+                </label>
                 <textarea
                     rows={3}
                     onChange={(e) => setTitle(e.target.value)}
                     value={title}
-                    className={emptyFields.includes("title") ? "error" : "primary"}
+                    className={(trySubmit && !title) || emptyFields.includes("title") ? "error" : "primary"}
+
                 />
                 <label className="document_form_headings ">Type or paste content here:</label>
                 <textarea
                     rows={8}
-               
                     onChange={(e) => setBody(e.target.value)}
                     value={body}
-                    className={emptyFields.includes("body") ? "error" : ""}
+                    className={(trySubmit && !body) || emptyFields.includes("body") ? "error" : "primary"}
                 />
                 <label className="document_form_headings ">Add tags here:</label>
                 <div className="tags_section_container">
                     <div className="existing_tags_container">
-                        <ExperimentalAllTagsSelect onTagsChange={handleTagsChange} />
+                        <div className={trySubmit && selectedTags.length === 0 ? "error" : ""}>
+                            <ExperimentalAllTagsSelect onTagsChange={handleTagsChange} />
+                        </div>
                     </div>
                 </div>
-
                 <div className="read_edit_create_btns">
                     <CancelButton />
-                    <button className="save_btn">Save</button>
-                    {error && <div className="error">{error}</div>}
+                    <button className="save_btn" onClick={handleSubmit}>Save</button>
+
                 </div>
             </form>
 
