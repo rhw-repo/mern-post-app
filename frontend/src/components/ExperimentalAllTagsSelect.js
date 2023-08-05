@@ -70,6 +70,7 @@ function ExperimentalAllTagsSelect({ onTagsChange }) {
   const customCreatableStyles = {
     control: (baseStyles, state) => ({
       ...baseStyles,
+      cursor: "pointer",
       border: state.isFocused ? '1px solid #667B99' : '1px solid #e6e6e6',
       boxShadow: state.isFocused ? '0 0 0 1px #667B99' : baseStyles.boxShadow,
       '&:hover': {

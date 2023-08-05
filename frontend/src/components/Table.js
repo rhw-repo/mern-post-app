@@ -55,6 +55,7 @@ const TagsSelect = forwardRef(({
     const customStyles = {
         control: (baseStyles, state) => ({
             ...baseStyles,
+            cursor: "pointer",
             width: "90%",
             maxWidth: "31.25rem",
             border: state.isFocused ? '1px solid var(--secondary-light)' : '1px solid #e6e6e6',
@@ -302,10 +303,10 @@ function Table({ data }) {
     // Toggle visbility DateRangeFilter, too large for UI
     const [isOpen, setIsOpen] = useState(false)
 
-    const calendarIcon = <FontAwesomeIcon icon={faCalendarDays} style={{ color: "var(--secondary-light", }}/>
+    const calendarIcon = <FontAwesomeIcon icon={faCalendarDays} style={{ color: "var(--secondary-light)", }}/>
     const createNewIcon = <FontAwesomeIcon icon={faPlus} />
     const resetIcon = <FontAwesomeIcon icon={faUndo} />
-    const sortIcon = <FontAwesomeIcon icon={faSort} size="2xl" style={{ color: "var(--secondary-light", }} />
+    const sortIcon = <FontAwesomeIcon icon={faSort} size="2xl" style={{ color: "var(--secondary-light)", cursor: "pointer" }} />
     const forwardsIcon = <FontAwesomeIcon icon={faForward} />
     const backwardsIcon = <FontAwesomeIcon icon={faBackward} />
 

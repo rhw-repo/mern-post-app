@@ -427,6 +427,7 @@ tr:hover {
    max-width: 100%;
    white-space: normal;
    margin: 1.3rem; 
+   white-space: pre-wrap;
  }
 
  /* tags display matches default from react-select Creatable */
