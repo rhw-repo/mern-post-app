@@ -30,7 +30,7 @@ const CreateNew = () => {
         console.log('Title:', title)
         console.log('Body', body)
         console.log('Selected tags', selectedTags)
-        if (title && body && selectedTags.length) {
+        if (title && body && selectedTags.length > 0) {
             setIsFormValid(true)
         } else {
             setIsFormValid(false)
@@ -43,6 +43,8 @@ const CreateNew = () => {
             setSelectedTags(tags)
         } else {
             console.log("handleTagsChange called without tags entered")
+            // EXPERIMENT to prevent submission if all tags deleted before submission...
+            setSelectedTags([])
         }
     }
 
