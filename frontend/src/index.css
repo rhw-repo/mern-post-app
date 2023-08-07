@@ -599,6 +599,11 @@ tr:hover {
    border: 0.125rem solid var(--error);
  }
 
+ div.read div.edit input.error,
+ div.read div.edit textarea.error {
+   border: 0.125rem solid var(--error);
+}
+
  /* temporary auth forms */
  form.signup,
  form.login {

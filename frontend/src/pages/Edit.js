@@ -5,13 +5,13 @@
 import { useState, useEffect } from "react";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { useMaterialsContext } from "../hooks/useMaterialsContext";
-import { json, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import CancelButton from "../components/CancelButton";
 import toast from "react-hot-toast"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFloppyDisk } from "@fortawesome/free-solid-svg-icons"
 import ExperimentalAllTagsSelect from "../components/ExperimentalAllTagsSelect";
-import { text } from "@fortawesome/fontawesome-svg-core";
+
 
 const Edit = ({ material }) => {
   const [title, setTitle] = useState(material.title)
@@ -25,12 +25,29 @@ const Edit = ({ material }) => {
   const navigate = useNavigate()
   // maintain  state for existing tags 
   const [tags, setTags] = useState(material.tags)
+ // EXPERIMENT to add frontend validation prevent empty fields 
+  const [isFormValid, setIsFormValid] = useState(false)
+  const [trySubmit, setTrySubmit] = useState(false)
+
+  console.log(emptyFields)
 
   useEffect(() => {
     setTitle(material.title)
     setBody(material.body)
     setTags(material.tags)
   }, [material])
+
+  useEffect(() => {
+    console.log('Title:', title);
+    console.log('Body', body);
+    console.log('Selected tags', selectedTags);
+    if (title && body && (selectedTags.length > 0 || tags.length > 0)) {
+        setIsFormValid(true);
+    } else {
+        setIsFormValid(false);
+    }
+}, [title, body, selectedTags, tags.length]);
+
 
   const deleteTag = (index) => {
     setTags(prevState => prevState.filter((tag, i) => i !== index))
@@ -47,6 +64,14 @@ const Edit = ({ material }) => {
     // merge existing and new tags
     const everyTag = Array.from(new Set([...tags, ...selectedTags]))
     const updatedMaterial = { title, body, tags: everyTag }
+    
+    
+      // Check for valid form before proceeding
+      if (!isFormValid) {
+        setTrySubmit(true);
+        return;
+    }
+
     const response = await fetch(`/api/materials/${material._id}`, {
       method: "PATCH",
       headers:
@@ -75,6 +100,15 @@ const Edit = ({ material }) => {
     }
   }
 
+     // sets frontend validation error display according to missing fields
+    const missingFields = () => {
+        let fields = []
+        if (!title) fields.push("Title")
+        if (!body) fields.push("Body")
+        if (selectedTags.length === 0) fields.push("Tags")
+        return fields
+    }
+
   const saveIcon = <FontAwesomeIcon icon={faFloppyDisk} />
 
   const customStyles = {
@@ -83,8 +117,20 @@ const Edit = ({ material }) => {
   }
 
   return (
-    <div className="edit">
       <form onSubmit={handleSubmit}>
+      {(trySubmit && !isFormValid) || error ? (
+    <div className="error">
+        {trySubmit && !isFormValid ? (
+            <>
+                Please fill in the following fields: {missingFields().join(", ")}
+            </>
+        ) : (
+            error
+        )}
+    </div>
+) : null}
+
+<div className="edit">
         <div>
           <label htmlFor="title" className="document_form_headings">Edit Title:</label>
           <textarea
@@ -104,7 +150,7 @@ const Edit = ({ material }) => {
             rows={8}
             value={body}
             onChange={(e) => setBody(e.target.value)}
-            className={emptyFields.includes("body") ? "error" : ""}
+           className={emptyFields.includes("body") ? "error" : ""}
             style={customStyles}
           >
           </textarea>
@@ -128,9 +174,9 @@ const Edit = ({ material }) => {
         <div className="read_edit_create_btns">
           <CancelButton />
           <button className="save_btn" type="submit">{saveIcon} Save</button>
+        </div> 
         </div>
       </form>
-    </div>
   )
 }
 

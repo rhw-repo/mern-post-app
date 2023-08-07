@@ -59,9 +59,7 @@ const createMaterial = async (req, res) => {
         res.status(200).json(material)
     } catch (error) {
         res.status(400).json({ error: error.message })
-
     }
-
 }
 
 // delete a document
