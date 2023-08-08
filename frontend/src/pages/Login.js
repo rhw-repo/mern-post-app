@@ -104,7 +104,7 @@ const Login = () => {
                 <h1>Welcome. Login here:</h1>
                 <label>Email*</label>
                 <input
-                    aria-label="Enter your password"
+                    aria-label="Enter your email address"
                     id="email"
                     type="email"
                     onChange={(e) => {
@@ -118,7 +118,7 @@ const Login = () => {
                 />
                 <label>Password*</label>
                 <input
-                    aria-label="Enter your email address"
+                    aria-label="Enter your password"
                     id="password"
                     type="password"
                     onChange={(e) => {

@@ -7,9 +7,9 @@ export const useLogin = () => {
     const [isLoading, setIsLoading] = useState(null)
     const { dispatch } = useAuthContext()
 
-       /* used to control when server-side validation 
-        error messages need clearing from display*/
-       const clearError = () => {
+    /* exported for controlling display server-side validation 
+    error messages when redundant in Login*/
+    const clearError = () => {
         setError(null);
     }
 
