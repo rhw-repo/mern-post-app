@@ -7,6 +7,12 @@ export const useLogin = () => {
     const [isLoading, setIsLoading] = useState(null)
     const { dispatch } = useAuthContext()
 
+       /* used to control when server-side validation 
+        error messages need clearing from display*/
+       const clearError = () => {
+        setError(null);
+    }
+
     const login = async (email, password) => {
         setIsLoading(true)
         setError(null)
@@ -36,6 +42,6 @@ export const useLogin = () => {
         }
 
     }
-    return { login, isLoading, error }
+    return { login, isLoading, error, clearError }
 }
 
