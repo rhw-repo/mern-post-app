@@ -384,7 +384,6 @@ tr:hover {
   margin: auto;
 }
 
-
  .create_new_btn {
   min-width: 12rem;
  }
@@ -417,7 +416,6 @@ tr:hover {
    font-weight: bold;
    color: #435362;
    font-family: "Lexend Deca", Helvetica, Arial, sans-serif;
-  /* margin: 1rem 0;*/
  }
 
  .read_tags_label {
@@ -511,13 +509,17 @@ tr:hover {
    border: none;
    padding: 0.25rem;
    border-radius: 4px;
-   /*margin: 0.5rem auto;*/
  }
 
  .document-tags {
   display: flex;
   justify-content: space-around;
   align-items: center; 
+ }
+
+ /* Edit page - hides div containing existing tags if all are deleted */ 
+ .hidden {
+  display: none;
  }
 
  /* buttons specific to read, edit & create new pages */
@@ -557,6 +559,7 @@ tr:hover {
  input,
  textarea {
    font-family: 'Open Sans', 'Helvetica', Arial, sans-serif;
+   font-size: 1rem;
    padding: 0.625rem;
    margin: 0.312rem auto;
    width: 100%;

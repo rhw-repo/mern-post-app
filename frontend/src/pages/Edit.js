@@ -1,5 +1,6 @@
 /* TODO 
-1.Research (& implement or reccomend) input validation, sanitisation
+1.Research (& implement or reccomend) further server-side input validation, sanitisation
+and client-side sanitisation
 */
 
 import { useState, useEffect } from "react";
@@ -14,45 +15,53 @@ import ExperimentalAllTagsSelect from "../components/ExperimentalAllTagsSelect";
 
 
 const Edit = ({ material }) => {
+  // initialise state of title, body and tags
   const [title, setTitle] = useState(material.title)
   const [body, setBody] = useState(material.body)
+  // error handling 
   const [error, setError] = useState(null)
+  // keep track of any empty form fields 
   const [emptyFields, setEmptyFields] = useState([])
-  // maintain state selected options (other tags from user's doc collection)
+
+  // maintain state selected tags from drop-down options = other tags from user's doc collection
   const [selectedTags, setSelectedTags] = useState([]);
+  // context hooks for global state management of user and materials
   const { dispatch } = useMaterialsContext()
   const { user } = useAuthContext()
+  // navigation between routes 
   const navigate = useNavigate()
   // maintain  state for existing tags 
   const [tags, setTags] = useState(material.tags)
- // EXPERIMENT to add frontend validation prevent empty fields 
+  // check - frontend validation prevents form submission with empty fields 
   const [isFormValid, setIsFormValid] = useState(false)
   const [trySubmit, setTrySubmit] = useState(false)
 
   console.log(emptyFields)
-
+  // synchronise state when material prop updates 
   useEffect(() => {
     setTitle(material.title)
     setBody(material.body)
     setTags(material.tags)
   }, [material])
 
+  // check if title, body & tags have user input 
   useEffect(() => {
     console.log('Title:', title);
     console.log('Body', body);
     console.log('Selected tags', selectedTags);
     if (title && body && (selectedTags.length > 0 || tags.length > 0)) {
-        setIsFormValid(true);
+      setIsFormValid(true);
     } else {
-        setIsFormValid(false);
+      setIsFormValid(false);
     }
-}, [title, body, selectedTags, tags.length]);
+  }, [title, body, selectedTags, tags.length]);
 
-
+  // allow deletion of an existing tag based on it's index in Tags array
   const deleteTag = (index) => {
     setTags(prevState => prevState.filter((tag, i) => i !== index))
   }
 
+  // update the state when tags selected from dropdown 
   const handleTagsChange = (newTags) => {
     setSelectedTags(newTags);
   }
@@ -64,12 +73,12 @@ const Edit = ({ material }) => {
     // merge existing and new tags
     const everyTag = Array.from(new Set([...tags, ...selectedTags]))
     const updatedMaterial = { title, body, tags: everyTag }
-    
-    
-      // Check for valid form before proceeding
-      if (!isFormValid) {
-        setTrySubmit(true);
-        return;
+
+
+    // Prevent form submission with empty fields 
+    if (!isFormValid) {
+      setTrySubmit(true);
+      return;
     }
 
     const response = await fetch(`/api/materials/${material._id}`, {
@@ -85,11 +94,13 @@ const Edit = ({ material }) => {
     const json = await response.json()
 
     if (!response.ok) {
+      // server-side error handling
       setError(json.error)
       setEmptyFields(json.emptyFields)
     }
 
     if (response.ok) {
+      // update global state and navigate to homepage, show toast to confirm "work saved"
       setError(null)
       setEmptyFields([])
       dispatch({ type: "UPDATE_MATERIAL", payload: json })
@@ -100,37 +111,32 @@ const Edit = ({ material }) => {
     }
   }
 
-     // sets frontend validation error display according to missing fields
-    const missingFields = () => {
-        let fields = []
-        if (!title) fields.push("Title")
-        if (!body) fields.push("Body")
-        if (selectedTags.length === 0) fields.push("Tags")
-        return fields
-    }
+  // dynamic error message checks which fields are missing, stores in object, passes to error message to render 
+  const missingFields = () => {
+    let fields = []
+    if (!title) fields.push("Title")
+    if (!body) fields.push("Body")
+    if (selectedTags.length === 0 && tags.length === 0) fields.push("Tags")
+    return fields
+  }
 
   const saveIcon = <FontAwesomeIcon icon={faFloppyDisk} />
 
-  const customStyles = {
-    outline: "none",
-    fontSize: "1rem",
-  }
-
   return (
-      <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit}>
       {(trySubmit && !isFormValid) || error ? (
-    <div className="error">
-        {trySubmit && !isFormValid ? (
+        <div className="error">
+          {trySubmit && !isFormValid ? (
             <>
-                Please fill in the following fields: {missingFields().join(", ")}
+              Please fill in the following fields: {missingFields().join(", ")}
             </>
-        ) : (
+          ) : (
             error
-        )}
-    </div>
-) : null}
+          )}
+        </div>
+      ) : null}
 
-<div className="edit">
+      <div className="edit">
         <div>
           <label htmlFor="title" className="document_form_headings">Edit Title:</label>
           <textarea
@@ -138,8 +144,7 @@ const Edit = ({ material }) => {
             rows={2}
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            className={emptyFields.includes("title") ? "error" : ""}
-            style={customStyles}
+            className={(trySubmit && !title) || emptyFields.includes("title") ? "error" : "primary"}
           />
         </div>
 
@@ -150,33 +155,45 @@ const Edit = ({ material }) => {
             rows={8}
             value={body}
             onChange={(e) => setBody(e.target.value)}
-           className={emptyFields.includes("body") ? "error" : ""}
-            style={customStyles}
+            className={(trySubmit && !body) || emptyFields.includes("body") ? "error" : "primary"}
           >
           </textarea>
         </div>
 
         <label htmlFor="tags" className="document_form_headings">Edit Tags:</label>
         <div className="input-tags-container">
-     
-          <p>Tags you already have here - click on the x to delete any you don't want:</p>
-          <span className="document-tags">
-            {tags.map((tag, index) => (
-              <span key={index} className="tag-chip">
-                {tag}
-                <button type="button" onClick={() => deleteTag(index)}>X</button>
+          <div className={
+            tags.length > 0
+              ? (trySubmit &&
+                (selectedTags.length === 0 && tags.length === 0)
+                ? "error input-tags-container" : "input-tags-container")
+              : "hidden"
+          }>
+            <div className={trySubmit && (selectedTags.length === 0 && tags.length === 0) ? "error" : ""}>
+              <p>Tags you already have here - click on the x to delete any you don't want:</p>
+              <span className="document-tags">
+                {tags.map((tag, index) => (
+                  <span key={index} className="tag-chip">
+                    {tag}
+                    <button type="button" onClick={() => deleteTag(index)}>X</button>
+                  </span>
+                ))}
               </span>
-            ))}
-          </span>     
-          <ExperimentalAllTagsSelect onTagsChange={handleTagsChange} />
+            </div>
+          </div>
+          <div className={trySubmit && (selectedTags.length === 0 && tags.length === 0) ? "error" : ""}>
+            <ExperimentalAllTagsSelect onTagsChange={handleTagsChange} />
+          </div>
+
         </div>
 
         <div className="read_edit_create_btns">
           <CancelButton />
           <button className="save_btn" type="submit">{saveIcon} Save</button>
-        </div> 
         </div>
-      </form>
+      </div>
+
+    </form>
   )
 }
 
