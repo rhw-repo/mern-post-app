@@ -4,6 +4,10 @@
 
  @import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@400;500;600;700&family=Open+Sans:wght@300;400&display=swap');
 
+  /* Note
+  .primary class currently not defined, is no-op placeholder in form error handling, 
+  can be styled later if required */
+ 
  /* general color scheme */
  :root {
    --primary: #BD7374;
@@ -12,6 +16,7 @@
    --secondary-light: #667B99;
    --secondary-chips: #5C6D84;
  }
+
 
  body {
    background-color: #ffffff;
