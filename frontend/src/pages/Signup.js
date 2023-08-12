@@ -106,6 +106,7 @@ const Signup = () => {
                 <input
                     aria-label="Enter your email address"
                     type="email"
+                    autoComplete="off"
                     onChange={(e) => {
                         setEmail(e.target.value)
                         emailInput.handleInputChange(e)
@@ -118,6 +119,7 @@ const Signup = () => {
                 <input
                     aria-label="Enter your password"
                     type="password"
+                    autoComplete="off"
                     onChange={(e) => {
                         setPassword(e.target.value)
                         passwordInput.handleInputChange(e)
