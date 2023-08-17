@@ -2,6 +2,9 @@
 
 Experiments using MERN stack for an app designed to help users store and manage documents like text (or links to Google Docs) for blog and social media posts. 
 
+
+https://github.com/rhw-repo/mern-post-app/assets/85512549/cce600fc-0cbe-4871-ab85-71407813daf9
+
 - create account, login / logout (JSON Web Tokens)
 - protected API routes = after succesful login, user may now access just their own set of documents 
 - create new document, on submit added to the database and renders to the "dashboard" 
