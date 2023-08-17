@@ -203,7 +203,7 @@ function Table({ data }) {
             },
             {
                 Header: "Content",
-                accessor: "body",
+                accessor: "content",
                 disableSortBy: true,
                 Cell: LinkedCell,
             },

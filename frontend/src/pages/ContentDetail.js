@@ -1,5 +1,4 @@
 /* uncommenting line 31 allows check document _id*/
-/* TODO debug lack of paragraphs in body element render */
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import useFetch from "../hooks/useFetch";
@@ -9,7 +8,7 @@ import CancelButton from "../components/CancelButton";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons"
 
-const Read = () => {
+const ContentDetail = () => {
     const { _id } = useParams();
     const { data: material, error, isPending } = useFetch(
         "/api/materials/" + _id
@@ -28,7 +27,7 @@ const Read = () => {
 
     return (
         <>
-            <div className="read">
+            <div className="content_detail">
                 {isEditing ? (
                     <Edit material={material} onUpdateComplete={handleUpdateComplete} />
                 ) : (
@@ -38,17 +37,17 @@ const Read = () => {
                         {error && <div>{error}</div>}
                         {material && (
                             <article>
-                                <div className="read_title">{material.title}</div>
-                                <div className="read_body">{material.body}</div>
-                                <div className="document_form_headings read_tags_label" >Tags:</div>
-                                <div className="read-tags-container">
+                                <div className="content_detail_title">{material.title}</div>
+                                <div className="content_detail_content">{material.content}</div>
+                                <div className="document_form_headings content_detail_tags_label" >Tags:</div>
+                                <div className="content_detail_tags_container">
                                     {material.tags.map((tag, index) => (
                                         <span key={index} className=" tags tag-chip">{tag}</span>
                                     ))}
                                 </div>
                             </article>
                         )}
-                        <div className="read_edit_create_btns">
+                        <div className="content_detail_edit_create_btns">
                             <CancelButton />
                             <button
                                 className="go-to-edit-btn"
@@ -66,5 +65,5 @@ const Read = () => {
     )
 }
 
-export default Read;
+export default ContentDetail;
 

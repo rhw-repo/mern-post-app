@@ -1,6 +1,6 @@
 // TODO 1.Research input  sanitisation
 /* Validation: without all fields completed, form cannot submit frontend & 
-backend also rejects if detect same. Both display styled error messages */
+backend also rejects if detect same. Both display styled error messages */ 
 
 import { useEffect, useState } from "react";
 import { useMaterialsContext } from "../hooks/useMaterialsContext";
@@ -16,7 +16,7 @@ const CreateNew = () => {
     const navigate = useNavigate()
 
     const [title, setTitle] = useState("")
-    const [body, setBody] = useState("")
+    const [content, setContent] = useState("")
     const [error, setError] = useState(null)
     const [emptyFields, setEmptyFields] = useState([])
 
@@ -28,14 +28,14 @@ const CreateNew = () => {
 
     useEffect(() => {
         console.log('Title:', title)
-        console.log('Body', body)
+        console.log('Content', content)
         console.log('Selected tags', selectedTags)
-        if (title && body && selectedTags.length > 0) {
+        if (title && content && selectedTags.length > 0) {
             setIsFormValid(true)
         } else {
             setIsFormValid(false)
         }
-    }, [title, body, selectedTags])
+    }, [title, content, selectedTags])
 
     // handles changes to the selected tags, fires if tags selected &/ created
     const handleTagsChange = (tags) => {
@@ -61,7 +61,7 @@ const CreateNew = () => {
             return
         }
 
-        const material = { title, body, tags: selectedTags }
+        const material = { title, content, tags: selectedTags }
 
         // Log material object being sent to the backend
         console.log('Material sent to the backend:', material);
@@ -87,7 +87,7 @@ const CreateNew = () => {
 
         if (response.ok) {
             setTitle("")
-            setBody("")
+            setContent("")
             setError(null)
             setEmptyFields([])
             dispatch({ type: "CREATE_MATERIAL", payload: json })
@@ -100,7 +100,7 @@ const CreateNew = () => {
     const missingFields = () => {
         let fields = []
         if (!title) fields.push("Title")
-        if (!body) fields.push("Body")
+        if (!content) fields.push("Content")
         if (selectedTags.length === 0) fields.push("Tags")
         return fields
     }
@@ -133,9 +133,9 @@ const CreateNew = () => {
                 <label className="document_form_headings ">Type or paste content here:</label>
                 <textarea
                     rows={8}
-                    onChange={(e) => setBody(e.target.value)}
-                    value={body}
-                    className={(trySubmit && !body) || emptyFields.includes("body") ? "error" : "primary"}
+                    onChange={(e) => setContent(e.target.value)}
+                    value={content}
+                    className={(trySubmit && !content) || emptyFields.includes("content") ? "error" : "primary"}
                 />
                 <label className="document_form_headings ">Add tags here:</label>
                 <div className="tags_section_container">

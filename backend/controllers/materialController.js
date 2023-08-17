@@ -29,7 +29,7 @@ const getMaterial = async (req, res) => {
 
 // create new document
 const createMaterial = async (req, res) => {
-    const { title, body, tags } = req.body
+    const { title, content, tags } = req.body
 
     // detect which fields are empty on form submit 
     let emptyFields = []
@@ -38,8 +38,8 @@ const createMaterial = async (req, res) => {
     if (!title) {
         emptyFields.push("title")
     }
-    if (!body) {
-        emptyFields.push("body")
+    if (!content) {
+        emptyFields.push("content")
     }
     if (!tags) {
         emptyFields.push("tags")
@@ -55,7 +55,7 @@ const createMaterial = async (req, res) => {
     try {
         const user_id = req.user._id
         // TODO create Promise to contain Material so "await" avoids code smell
-        const material = await Material.create({ title, body, tags, user_id })
+        const material = await Material.create({ title, content, tags, user_id })
         res.status(200).json(material)
     } catch (error) {
         res.status(400).json({ error: error.message })

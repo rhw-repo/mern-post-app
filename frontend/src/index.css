@@ -192,9 +192,9 @@ nav button:active,
    overflow-y: auto;
  }
 
- /* center and limit width of create, read, edit pages*/
+ /* center and limit width of create, content detail, edit pages*/
  .create,
-.read,
+.content_detail,
 .edit {
   max-width: 87.5rem;
   display: block;
@@ -403,8 +403,8 @@ tr:hover {
  }
 
  /* other pages and tags */
- /* read page */
- .read {
+ /* content detail page */
+ .content_detail {
    background: #fff;
    border-radius: 0.625rem;
    padding: 2rem;
@@ -423,11 +423,11 @@ tr:hover {
    font-family: "Lexend Deca", Helvetica, Arial, sans-serif;
  }
 
- .read_tags_label {
+ .content_detail_tags_label {
   margin: 1rem 0 1rem 1.3rem;
  }
 
- .read_title {
+ .content_detail_title {
    font-size: 1.5rem;
    font-weight: bold;
    margin: 1.3rem;
@@ -438,7 +438,7 @@ tr:hover {
    white-space: nowrap;
  }
 
- .read_body {
+ .content_detail_content {
   font-size: 1.25rem;
    max-width: 100%;
    white-space: normal;
@@ -480,8 +480,8 @@ tr:hover {
   white-space: nowrap;
 }
 
- /* display tags in Read experimenting with adding edit's document-tags*/
- .read-tags-container, 
+ /* display tags in Content Detail experimenting with adding edit's document-tags*/
+ .content_detail_tags_container, 
  .document-tags {
    display: flex;
    align-items: center;
@@ -527,13 +527,13 @@ tr:hover {
   display: none;
  }
 
- /* buttons specific to read, edit & create new pages */
+ /* buttons specific to content detail, edit & create new pages */
  .cancel_btn {
    padding: 0.625rem;
    width: 6rem;
  }
 
- .read_edit_create_btns {
+ .content_detail_edit_create_btns {
    display: flex;
    justify-content: space-between;
    align-items: center;
@@ -607,8 +607,8 @@ tr:hover {
    border: 0.125rem solid var(--error);
  }
 
- div.read div.edit input.error,
- div.read div.edit textarea.error {
+ div.content_detail div.edit input.error,
+ div.content_detail div.edit textarea.error {
    border: 0.125rem solid var(--error);
 }
 

@@ -7,10 +7,10 @@ import { Toaster } from 'react-hot-toast';
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
-import Read from "./pages/Read";
 import Navbar from './components/Navbar';
 import CreateNew from './components/CreateNew';
 import Footer from './components/Footer';
+import ContentDetail from './pages/ContentDetail';
 
 
 function App() {
@@ -55,7 +55,7 @@ function App() {
             />
             <Route
               path="/articles/:_id"
-              element={!user ? <Signup /> : <Read />}
+              element={!user ? <Signup /> : <ContentDetail />}
             />
             <Route
               path="/create_new"

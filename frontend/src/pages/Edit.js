@@ -15,9 +15,9 @@ import ExperimentalAllTagsSelect from "../components/ExperimentalAllTagsSelect";
 
 
 const Edit = ({ material }) => {
-  // initialise state of title, body and tags
+  // initialise state of title, content and tags
   const [title, setTitle] = useState(material.title)
-  const [body, setBody] = useState(material.body)
+  const [content, setContent] = useState(material.content)
   // error handling 
   const [error, setError] = useState(null)
   // keep track of any empty form fields 
@@ -40,21 +40,21 @@ const Edit = ({ material }) => {
   // synchronise state when material prop updates 
   useEffect(() => {
     setTitle(material.title)
-    setBody(material.body)
+    setContent(material.content)
     setTags(material.tags)
   }, [material])
 
-  // check if title, body & tags have user input 
+  // check if title, content & tags have user input 
   useEffect(() => {
     console.log('Title:', title);
-    console.log('Body', body);
+    console.log('Content', content);
     console.log('Selected tags', selectedTags);
-    if (title && body && (selectedTags.length > 0 || tags.length > 0)) {
+    if (title && content && (selectedTags.length > 0 || tags.length > 0)) {
       setIsFormValid(true);
     } else {
       setIsFormValid(false);
     }
-  }, [title, body, selectedTags, tags.length]);
+  }, [title, content, selectedTags, tags.length]);
 
   // allow deletion of an existing tag based on it's index in Tags array
   const deleteTag = (index) => {
@@ -72,7 +72,7 @@ const Edit = ({ material }) => {
 
     // merge existing and new tags
     const everyTag = Array.from(new Set([...tags, ...selectedTags]))
-    const updatedMaterial = { title, body, tags: everyTag }
+    const updatedMaterial = { title, content, tags: everyTag }
 
 
     // Prevent form submission with empty fields 
@@ -115,7 +115,7 @@ const Edit = ({ material }) => {
   const missingFields = () => {
     let fields = []
     if (!title) fields.push("Title")
-    if (!body) fields.push("Body")
+    if (!content) fields.push("Content")
     if (selectedTags.length === 0 && tags.length === 0) fields.push("Tags")
     return fields
   }
@@ -149,13 +149,13 @@ const Edit = ({ material }) => {
         </div>
 
         <div>
-          <label htmlFor="body" className="document_form_headings">Edit Body:</label>
+          <label htmlFor="content" className="document_form_headings">Edit Content:</label>
           <textarea
-            id="body"
+            id="content"
             rows={8}
-            value={body}
-            onChange={(e) => setBody(e.target.value)}
-            className={(trySubmit && !body) || emptyFields.includes("body") ? "error" : "primary"}
+            value={content}
+            onChange={(e) => setContent(e.target.value)}
+            className={(trySubmit && !content) || emptyFields.includes("content") ? "error" : "primary"}
           >
           </textarea>
         </div>
@@ -187,7 +187,7 @@ const Edit = ({ material }) => {
 
         </div>
 
-        <div className="read_edit_create_btns">
+        <div className="content_detail_edit_create_btns">
           <CancelButton />
           <button className="save_btn" type="submit">{saveIcon} Save</button>
         </div>
