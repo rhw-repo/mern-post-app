@@ -7,6 +7,12 @@ export const useLogin = () => {
     const [isLoading, setIsLoading] = useState(null)
     const { dispatch } = useAuthContext()
 
+    /* exported for controlling display server-side validation 
+    error messages when redundant in Login*/
+    const clearError = () => {
+        setError(null);
+    }
+
     const login = async (email, password) => {
         setIsLoading(true)
         setError(null)
@@ -23,17 +29,19 @@ export const useLogin = () => {
             setError(json.error)
             localStorage.removeItem("user")
         }
-        
+
         if (response.ok) {
             // save the user to local storage - insecure, temporary, replace with SSO
             localStorage.setItem("user", JSON.stringify(json))
+
+            // update AuthContext
+            dispatch({ type: "LOGIN", payload: json })
+
+            setIsLoading(false)
+
         }
 
-        // update AuthContext
-        dispatch({ type: "LOGIN", payload: json })
-
-        setIsLoading(false)
     }
-    return { login, isLoading, error }
+    return { login, isLoading, error, clearError }
 }
 

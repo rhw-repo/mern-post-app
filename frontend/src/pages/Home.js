@@ -1,8 +1,5 @@
-/* TODO 
-add chip component for data.tags property (allow user to tag table 'entries') */
-
 // hooks
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import { useMaterialsContext } from "../hooks/useMaterialsContext";
 import { useAuthContext } from "../hooks/useAuthContext";
 
@@ -13,9 +10,10 @@ const Home = () => {
   const { materials, dispatch } = useMaterialsContext()
   const { user } = useAuthContext()
 
-  // see line 2 package.json in frontend - for dev phase only, for build, point every req to endpoint 
+  // see ln 2 frontend package.json - for dev phase only, for build, point every req to endpoint 
   useEffect(() => {
     const fetchMaterials = async () => {
+      console.log('fetchMaterials called')
       const response = await fetch('/api/materials', {
         headers: { "Authorization": `Bearer ${user.token}` },
       })
@@ -25,16 +23,17 @@ const Home = () => {
         dispatch({ type: "SET_MATERIALS", payload: json })
       }
     }
-
+   
     if (user) {
       fetchMaterials()
     }
 
-  }, [dispatch, user])
+}, [dispatch, user])
 
   // Array of objects to pass to table (Tanstack Table v7) 
-  const data = materials
-  // console.log(data)
+  const data = useMemo(() => materials, [materials])
+
+  console.log(data)
 
   if (!data) {
     return
@@ -43,10 +42,8 @@ const Home = () => {
   return (
     <>
       <div className="home">
-        <div className="materials">
           <Table data={data} />
-        </div>
-      </div>
+        </div>      
       <div>
       </div>
     </>

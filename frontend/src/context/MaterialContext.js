@@ -5,6 +5,7 @@ export const MaterialsContext = createContext()
 // keeps local state in sync with database 
 
 export const materialsReducer = (state, action) => {
+
     switch (action.type) {
         case "SET_MATERIALS":
             return {
@@ -20,17 +21,18 @@ export const materialsReducer = (state, action) => {
             }
         case "UPDATE_MATERIAL":
             return {
-                materials: state.workouts.filter((m) => m._id === action.payload_id)
+                materials: state.materials.filter((m) => m._id === action.payload_id)
             }
         default:
             return state
     }
 }
 
+// experiment initialised materials to array replacing materials: null in reducer
 // use Reducer() hook invokes materialsReducer()
 export const MaterialsContextProvider = ({ children }) => {
     const [state, dispatch] = useReducer(materialsReducer, {
-        materials: null
+        materials: []
     })
 
     /* object describes desired state change (type property) and any data needed to 

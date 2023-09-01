@@ -29,19 +29,22 @@ const getMaterial = async (req, res) => {
 
 // create new document
 const createMaterial = async (req, res) => {
-    const { title, body, tags } = req.body
+    const { title, content, tags } = req.body
 
+    // detect which fields are empty on form submit 
     let emptyFields = []
 
+    // if field empty push name of field to emptyFields array
     if (!title) {
         emptyFields.push("title")
     }
-    if (!body) {
-        emptyFields.push("body")
+    if (!content) {
+        emptyFields.push("content")
     }
     if (!tags) {
         emptyFields.push("tags")
     }
+    // if greater than zero, send error to client & array of empty fields
     if (emptyFields.length > 0) {
         return res.status(400).json({
             error: "Please complete all boxes.", emptyFields
@@ -52,13 +55,11 @@ const createMaterial = async (req, res) => {
     try {
         const user_id = req.user._id
         // TODO create Promise to contain Material so "await" avoids code smell
-        const material = await Material.create({ title, body, tags, user_id })
+        const material = await Material.create({ title, content, tags, user_id })
         res.status(200).json(material)
     } catch (error) {
         res.status(400).json({ error: error.message })
-
     }
-
 }
 
 // delete a document
@@ -106,5 +107,5 @@ module.exports = {
     getMaterial,
     createMaterial,
     deleteMaterial,
-    updateMaterial
+    updateMaterial,
 }

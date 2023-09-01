@@ -20,6 +20,7 @@ const userSchema = new Schema({
 })
 
 // signup method checks email unique, if not send error message
+// error messages revised to not identify specific issue for security purposes
 userSchema.statics.signup = async function(email, password) {
 
     // validation
@@ -27,16 +28,16 @@ userSchema.statics.signup = async function(email, password) {
         throw Error("All fields must be filled")
     }
     if (!validator.isEmail(email)) {
-        throw Error("Email is not valid")
+        throw Error("Incorrect log in details")
     }
     if (!validator.isStrongPassword((password))) {
-        throw Error("Password is not strong enough")
+        throw Error("Incorrect format")
     }
 
     const exists = await this.findOne({ email })
 
     if (exists) {
-        throw Error("Email already in use")
+        throw Error("Incorrect log in details")
     }
 
     // generate salt
@@ -49,6 +50,7 @@ userSchema.statics.signup = async function(email, password) {
 }
 
 // login method
+// error messages revised to not identify specific issue for security purposes
 userSchema.statics.login = async function (email, password) {
     if (!email || !password) {
         throw Error("All fields must be filled")
@@ -57,13 +59,13 @@ userSchema.statics.login = async function (email, password) {
     const user = await this.findOne({ email })
 
     if (!user) {
-        throw Error("Email incorrect")
+        throw Error("Incorrect log in details")
     }
 
     const match = await bcrypt.compare(password, user.password)
 
     if (!match) {
-        throw Error("Password incorrect")
+        throw Error("Incorrect log in details")
     }
 
     return user

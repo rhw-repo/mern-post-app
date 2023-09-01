@@ -1,14 +1,14 @@
-/* uncommenting line 33 allows check document _id
-TODO 
-1. integrate with feature/chips branch */
+/* uncommenting line 31 allows check document _id*/
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import useFetch from "../hooks/useFetch";
 import Edit from "./Edit";
 import Footer from "../components/Footer";
 import CancelButton from "../components/CancelButton";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPenToSquare } from "@fortawesome/free-solid-svg-icons"
 
-const Read = () => {
+const ContentDetail = () => {
     const { _id } = useParams();
     const { data: material, error, isPending } = useFetch(
         "/api/materials/" + _id
@@ -23,9 +23,11 @@ const Read = () => {
         setIsEditing(false)
     }
 
+    const editIcon = <FontAwesomeIcon icon={faPenToSquare} />
+
     return (
         <>
-            <div className="read">
+            <div className="content_detail">
                 {isEditing ? (
                     <Edit material={material} onUpdateComplete={handleUpdateComplete} />
                 ) : (
@@ -35,31 +37,33 @@ const Read = () => {
                         {error && <div>{error}</div>}
                         {material && (
                             <article>
-                                <div className="read_form_headings">Title:</div>
-                                <div className="read_title">{material.title}</div>
-                                <div className="read_form_headings">Contents:</div>
-                                <div>{material.body}</div>
-                                <div className="read_form_headings">Tags Will Be Chips:</div>
-                                <div className="tags">{material.tags}</div>
+                                <div className="content_detail_title">{material.title}</div>
+                                <div className="content_detail_content">{material.content}</div>
+                                <div className="document_form_headings content_detail_tags_label" >Tags:</div>
+                                <div className="content_detail_tags_container">
+                                    {material.tags.map((tag, index) => (
+                                        <span key={index} className=" tags tag-chip">{tag}</span>
+                                    ))}
+                                </div>
                             </article>
                         )}
-                        <span>
+                        <div className="content_detail_edit_create_btns">
+                            <CancelButton />
                             <button
-                                className="update-btn"
+                                className="go-to-edit-btn"
                                 onClick={handleUpdateClick}>
-                                Edit
+                                {editIcon} Edit
                             </button>
-                        </span>
+
+                        </div>
                     </div>
                 )}
-                <CancelButton />
+
             </div>
-            <div>
-                <Footer />
-            </div>
+            <Footer />
         </>
     )
 }
 
-export default Read;
+export default ContentDetail;
 

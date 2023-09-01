@@ -7,6 +7,12 @@ export const useSignup = () => {
     const [isLoading, setIsLoading] = useState(null)
     const { dispatch } = useAuthContext()
 
+    /* exported for controlling display server-side validation 
+    error messages when redundant in Signup*/
+    const clearError = () => {
+        setError(null)
+    }
+
     const signup = async (email, password) => {
         setIsLoading(true)
         setError(null)
@@ -25,15 +31,13 @@ export const useSignup = () => {
         if (response.ok) {
             // save the user to local storage- insecure, temporary, replace with SSO
             localStorage.setItem("user", JSON.stringify(json))
-        
+            // update AuthContext
+            dispatch({ type: "LOGIN", payload: json })
 
-        // update AuthContext
-        dispatch({ type: "LOGIN", payload: json })
+            setIsLoading(false)
+        }
+    }
 
-        setIsLoading(false)
-    }
-    }
-    
-    return { signup, isLoading, error }
+    return { signup, isLoading, error, clearError }
 }
 
