@@ -145,7 +145,7 @@ const CreateNew = () => {
                         </div>
                     </div>
                 </div>
-                <div className="read_edit_create_btns">
+                <div className="content_detail_edit_create_btns">
                     <CancelButton />
                     <button className="save_btn" onClick={handleSubmit}>Save</button>
 
