@@ -1,6 +1,6 @@
 // TODO 1.Research input  sanitisation
 /* Validation: without all fields completed, form cannot submit frontend & 
-backend also rejects if detect same. Both display styled error messages */ 
+backend also rejects if detect same. Both display styled error messages */
 
 import { useEffect, useState } from "react";
 import { useMaterialsContext } from "../hooks/useMaterialsContext";
@@ -48,6 +48,18 @@ const CreateNew = () => {
         }
     }
 
+    // TODO: escape HTML chars 
+    const escapeHTML = (str) => {
+        const map = {
+            '&': '&amp;',
+            '<': '&lt;',
+            '>': '&gt;',
+        };
+
+        return str.replace(/[&<>]/g, (char) => map[char]);
+    };
+
+
     const handleSubmit = async (e) => {
         e.preventDefault()
 
@@ -61,7 +73,13 @@ const CreateNew = () => {
             return
         }
 
-        const material = { title, content, tags: selectedTags }
+        // Sanitize input before sending to the backend
+        const sanitizedTitle = escapeHTML(title);
+        const sanitizedContent = escapeHTML(content);
+        const sanitizedTags = selectedTags.map(tag => escapeHTML(tag));
+
+        //const material = { title, content, tags: selectedTags }
+        const material = { title: sanitizedTitle, content: sanitizedContent, tags: sanitizedTags }
 
         // Log material object being sent to the backend
         console.log('Material sent to the backend:', material);
