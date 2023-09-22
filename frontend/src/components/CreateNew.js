@@ -1,4 +1,6 @@
-// TODO 1.Research input  sanitisation
+// TODO 1.Research input  sanitisation - 
+/// writing function to 'unescape' HTML chars for display poor strategy 
+// preferable: library example: DOMPurify 
 /* Validation: without all fields completed, form cannot submit frontend & 
 backend also rejects if detect same. Both display styled error messages */
 
