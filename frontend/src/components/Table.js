@@ -59,7 +59,7 @@ const TagsSelect = forwardRef(({
             width: "90%",
             maxWidth: "31.25rem",
             border: state.isFocused ? '1px solid var(--secondary-light)' : '1px solid #e6e6e6',
-            margin: "1rem auto;",
+            margin: "1rem auto",
             boxShadow: state.isFocused ? '0 0 0 1px var(--secondary-light)' : baseStyles.boxShadow,
             '&:hover': {
                 border: state.isFocused ? '1px solid var(--secondary-light)' : '1px solid #e6e6e6',
@@ -120,7 +120,6 @@ const TagsSelect = forwardRef(({
 });
 
 // returns an object with properties to apply to every column in table  
-
 function Table({ data }) {
 
     const filterTypes = useMemo(
@@ -303,10 +302,10 @@ function Table({ data }) {
     // Toggle visbility DateRangeFilter, too large for UI
     const [isOpen, setIsOpen] = useState(false)
 
-    const calendarIcon = <FontAwesomeIcon icon={faCalendarDays} style={{ color: "var(--secondary-light)", }}/>
+    const calendarIcon = <FontAwesomeIcon icon={faCalendarDays} className="calendarIcon" />
     const createNewIcon = <FontAwesomeIcon icon={faPlus} />
     const resetIcon = <FontAwesomeIcon icon={faUndo} />
-    const sortIcon = <FontAwesomeIcon icon={faSort} size="2xl" style={{ color: "var(--secondary-light)", cursor: "pointer" }} />
+    const sortIcon = <FontAwesomeIcon icon={faSort} size="2xl" className="sortIcon" />
     const forwardsIcon = <FontAwesomeIcon icon={faForward} />
     const backwardsIcon = <FontAwesomeIcon icon={faBackward} />
 
@@ -382,9 +381,7 @@ function Table({ data }) {
                                             fontSize: "1.25rem",
                                             fontFamily: "Lexend Deca, Helvetica, Arial, Lucida, sans-serif",
                                             padding: "1rem 0.1rem",
-                                            /* margin: "0.625rem",*/
                                             textAlign: "center",
-
                                         }}
                                     >
                                         {column.render("Header")}

@@ -1,8 +1,5 @@
-// TODO 1.Research input  sanitisation - 
-/// writing function to 'unescape' HTML chars for display poor strategy 
-// preferable: library example: DOMPurify 
-/* Validation: without all fields completed, form cannot submit frontend & 
-backend also rejects if detect same. Both display styled error messages */
+/* Validation: form will not submit if any field empty. 
+   Instead will display error messages indicating empty field(s) */
 
 import { useEffect, useState } from "react";
 import { useMaterialsContext } from "../hooks/useMaterialsContext";
@@ -25,7 +22,7 @@ const CreateNew = () => {
     const [selectedTags, setSelectedTags] = useState([])
     const [trySubmit, setTrySubmit] = useState(false)
 
-    // EXPERIMENT to add frontend validation prevent empty fields 
+    // frontend validation prevents form submission with empty fields
     const [isFormValid, setIsFormValid] = useState(false)
 
     useEffect(() => {
@@ -45,22 +42,10 @@ const CreateNew = () => {
             setSelectedTags(tags)
         } else {
             console.log("handleTagsChange called without tags entered")
-            // EXPERIMENT to prevent submission if all tags deleted before submission...
+            // prevent submission if all selected tags deleted 
             setSelectedTags([])
         }
     }
-
-    // TODO: escape HTML chars 
-    const escapeHTML = (str) => {
-        const map = {
-            '&': '&amp;',
-            '<': '&lt;',
-            '>': '&gt;',
-        };
-
-        return str.replace(/[&<>]/g, (char) => map[char]);
-    };
-
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -75,13 +60,7 @@ const CreateNew = () => {
             return
         }
 
-        // Sanitize input before sending to the backend
-        const sanitizedTitle = escapeHTML(title);
-        const sanitizedContent = escapeHTML(content);
-        const sanitizedTags = selectedTags.map(tag => escapeHTML(tag));
-
-        //const material = { title, content, tags: selectedTags }
-        const material = { title: sanitizedTitle, content: sanitizedContent, tags: sanitizedTags }
+        const material = { title, content, tags: selectedTags }
 
         // Log material object being sent to the backend
         console.log('Material sent to the backend:', material);
@@ -140,7 +119,7 @@ const CreateNew = () => {
                     </div>
                 ) : null}
 
-                <label className="document_form_headings ">
+                <label className="document_form_headings">
                     Type or paste the title here:
                 </label>
                 <textarea
@@ -148,16 +127,15 @@ const CreateNew = () => {
                     onChange={(e) => setTitle(e.target.value)}
                     value={title}
                     className={(trySubmit && !title) || emptyFields.includes("title") ? "error" : "primary"}
-
                 />
-                <label className="document_form_headings ">Type or paste content here:</label>
+                <label className="document_form_headings">Type or paste content here:</label>
                 <textarea
                     rows={8}
                     onChange={(e) => setContent(e.target.value)}
                     value={content}
                     className={(trySubmit && !content) || emptyFields.includes("content") ? "error" : "primary"}
                 />
-                <label className="document_form_headings ">Add tags here:</label>
+                <label className="document_form_headings">Add tags here:</label>
                 <div className="tags_section_container">
                     <div className="existing_tags_container">
                         <div className={trySubmit && selectedTags.length === 0 ? "error" : ""}>
@@ -168,10 +146,8 @@ const CreateNew = () => {
                 <div className="content_detail_edit_create_btns">
                     <CancelButton />
                     <button className="save_btn" onClick={handleSubmit}>Save</button>
-
                 </div>
             </form>
-
         </>
     )
 }

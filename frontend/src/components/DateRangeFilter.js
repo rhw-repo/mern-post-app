@@ -30,7 +30,8 @@ function DateRangeFilter({ handleFilter }) {
     handleFilter(ranges.selection)
   }
 
-  // rangeColors overrides default styling to app's primary color #BD7374
+  /* rangeColors prop sets the color scheme of DateRangePicker 
+  to match the app's primary color */
   return (
     <div className="modal">
       <DateRangePicker

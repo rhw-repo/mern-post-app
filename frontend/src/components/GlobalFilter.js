@@ -46,12 +46,11 @@ const SearchBox = styled.div`
 const GlobalFilter = ({ filter, setFilter }) => {
     const [value, setValue] = useState(filter)
 
-    // Experiment successful, adds useEffect synchronizing local state with prop to 
+    //  adds useEffect synchronizing local state with prop to 
     // ensure resetTable functions 
     useEffect(() => {
         setValue(filter);
     }, [filter]);
-
 
     // Delays filter execution preventing unnecessary operations, better performance
     const onChange = useAsyncDebounce(value => {
@@ -60,26 +59,9 @@ const GlobalFilter = ({ filter, setFilter }) => {
 
     const filterIcon = <FontAwesomeIcon icon={faFilter} className="filter-icon" />
 
-    //increased css specificity to override general input style rules
-    const customStyles = {
-        outline: "none",
-        boxShadow: "none",
-        width: "20rem",
-        fontSize: "1rem",
-        marginLeft: "0.625rem",
-    }
-
     return (
-        <div style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "flex-start",
-        }}>
-            <span style={{
-                fontWeight: "bold",
-                fontSize: "1.25rem",
-                padding: "0.625rem",
-            }}>
+        <div className="global-filter-div">
+            <span className="global-filter-span">
                 <SearchBox>
                     {filterIcon}
                     <input
@@ -90,7 +72,7 @@ const GlobalFilter = ({ filter, setFilter }) => {
                             setValue(e.target.value)
                             onChange(e.target.value)
                         }}
-                        style={customStyles}
+                        className="global-filter-input"
                     />
                 </SearchBox>
             </span>

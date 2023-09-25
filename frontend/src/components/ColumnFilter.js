@@ -1,6 +1,4 @@
-/* provide logical && searching and work in conjunction with global filter
-TODO: 1. create function sanitise to prevent XSS attacks 
-*/
+// provides logical && searching and works in conjunction with global filter
 import { useEffect } from "react";
 import styled from "styled-components"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -47,7 +45,6 @@ const SearchBox = styled.div`
     }
     }
 `
-
 const filterIcon = <FontAwesomeIcon icon={faFilter} className="filter-icon" />
 
 const ColumnFilter = ({ column }) => {
@@ -57,11 +54,6 @@ const ColumnFilter = ({ column }) => {
     }, [])
 
     const { filterValue, setFilter } = column
-
-// increased css specificty to override general input style rules
-    const customStyles = {
-        boxShadow: "none",
-    }
 
     // hides input in date columns (DateRangeFilter used instead or no filter)
     if (column.Header !== "Created At" && column.Header !== "Updated At" && column.Header !== "Delete") {
@@ -75,7 +67,6 @@ const ColumnFilter = ({ column }) => {
                             placeholder="Search this column..."
                             value={filterValue || ""}
                             onChange={e => setFilter(e.target.value)}
-                            style={customStyles}
                         />
                     </SearchBox>
                 </span>

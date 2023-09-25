@@ -4,10 +4,10 @@
 
  @import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@400;500;600;700&family=Open+Sans:wght@300;400&display=swap');
 
-  /* Note
+ /* Note
   .primary class currently not defined, is no-op placeholder in form error handling, 
   can be styled later if required */
- 
+
  /* general color scheme */
  :root {
    --primary: #BD7374;
@@ -42,38 +42,43 @@
    font-weight: bold;
    border-radius: 1.875rem;
    cursor: pointer;
-   box-shadow: 0rem 0.25rem 0.5rem 0rem rgba(0, 0, 0, 0.2); /* revised shadow for a subtle lift */
+   box-shadow: 0rem 0.25rem 0.5rem 0rem rgba(0, 0, 0, 0.2);
+   /* revised shadow for a subtle lift */
    opacity: 1;
-  transition: background 0.3s, box-shadow 0.3s, transform 0.3s; /* smooth transitions */
+   transition: background 0.3s, box-shadow 0.3s, transform 0.3s;
+   /* smooth transitions */
  }
 
-/* experiment material.io guidelines for microactions */
-/* hover state */
-.login_btn:hover,
-.signup_btn:hover,
-.create_new_btn:hover,
-.go-to-edit-btn:hover,
-.save_btn:hover {
-  background:  #A96669; /* slightly darker color on hover */
-  box-shadow: 
-    0rem 0.1875rem 0.375rem 0rem rgba(0, 0, 0, 0.2),
-    0rem 0.5rem 0.625rem 0rem rgba(0, 0, 0, 0.14),
-    0rem 0.125rem 0.75rem 0rem rgba(0, 0, 0, 0.12);
-}
+ /* experiment material.io guidelines for microactions */
+ /* hover state */
+ .login_btn:hover,
+ .signup_btn:hover,
+ .create_new_btn:hover,
+ .go-to-edit-btn:hover,
+ .save_btn:hover {
+   background: #A96669;
+   /* slightly darker color on hover */
+   box-shadow:
+     0rem 0.1875rem 0.375rem 0rem rgba(0, 0, 0, 0.2),
+     0rem 0.5rem 0.625rem 0rem rgba(0, 0, 0, 0.14),
+     0rem 0.125rem 0.75rem 0rem rgba(0, 0, 0, 0.12);
+ }
 
-/* pressed (active) state */
-.login_btn:active,
-.signup_btn:active,
-.create_new_btn:active,
-.go-to-edit-btn:active,
-.save_btn:active {
-  background:   #954B4C; /* even darker on active */
-  box-shadow: 
-    0rem 0.0625rem 0.125rem 0rem rgba(0, 0, 0, 0.2),
-    0rem 0.125rem 0.15625rem 0rem rgba(0, 0, 0, 0.14),
-    0rem 0.03125rem 0.3125rem 0rem rgba(0, 0, 0, 0.12);
-  transform: scale(0.98); /* slight scaling to give a pressed effect */
-}
+ /* pressed (active) state */
+ .login_btn:active,
+ .signup_btn:active,
+ .create_new_btn:active,
+ .go-to-edit-btn:active,
+ .save_btn:active {
+   background: #954B4C;
+   /* even darker on active */
+   box-shadow:
+     0rem 0.0625rem 0.125rem 0rem rgba(0, 0, 0, 0.2),
+     0rem 0.125rem 0.15625rem 0rem rgba(0, 0, 0, 0.14),
+     0rem 0.03125rem 0.3125rem 0rem rgba(0, 0, 0, 0.12);
+   transform: scale(0.98);
+   /* slight scaling to give a pressed effect */
+ }
 
  /* secondary buttons */
  nav button,
@@ -84,7 +89,7 @@
  .cancel_btn,
  .switch_form_btn {
    background: #fff;
-   color:var(--secondary);
+   color: var(--secondary);
    border: 0.1rem solid var(--secondary);
    border-radius: 1.875rem;
    font-family: "Lexend Deca", Helvetica, Arial, sans-serif;
@@ -92,33 +97,41 @@
    font-size: 1rem;
    cursor: pointer;
    /* experiment to meet material.io 3 microaction guidelines */
-   transition: background 0.3s, color 0.3s, transform 0.3s; /* smooth transitions */
+   transition: background 0.3s, color 0.3s, transform 0.3s;
+   /* smooth transitions */
  }
- /* hover state */
-nav button:hover,
-.reset_table_btn:hover,
-.table_pagination_button:hover,
-.select_box:hover,
-.date_range_btn:hover,
-.cancel_btn:hover,
-.switch_form_btn:hover {
-  background: rgba(119, 141, 165, 0.15); /* slight tint of the new secondary color */
-  color: #37404b; /* manually picked color that's slightly darker than secondary */
-  box-shadow: 0rem 0.125rem 0.25rem 0rem rgba(0, 0, 0, 0.1); /* subtle shadow for a lifted appearance */
-}
 
-/* pressed (active) state */
-nav button:active,
-.reset_table_btn:active,
-.table_pagination_button:active,
-.select_box:active,
-.date_range_btn:active,
-.cancel_btn:active,
-.switch_form_btn:active {
-  background: rgba(67, 83, 98, 0.2); /* darker tint of the new secondary color */
-  color: #2c333b; /* manually picked color that's darker than hover */
-  transform: scale(0.98); /* slight scaling to give a pressed effect */
-}
+ /* hover state */
+ nav button:hover,
+ .reset_table_btn:hover,
+ .table_pagination_button:hover,
+ .select_box:hover,
+ .date_range_btn:hover,
+ .cancel_btn:hover,
+ .switch_form_btn:hover {
+   background: rgba(119, 141, 165, 0.15);
+   /* slight tint of the new secondary color */
+   color: #37404b;
+   /* manually picked color that's slightly darker than secondary */
+   box-shadow: 0rem 0.125rem 0.25rem 0rem rgba(0, 0, 0, 0.1);
+   /* subtle shadow for a lifted appearance */
+ }
+
+ /* pressed (active) state */
+ nav button:active,
+ .reset_table_btn:active,
+ .table_pagination_button:active,
+ .select_box:active,
+ .date_range_btn:active,
+ .cancel_btn:active,
+ .switch_form_btn:active {
+   background: rgba(67, 83, 98, 0.2);
+   /* darker tint of the new secondary color */
+   color: #2c333b;
+   /* manually picked color that's darker than hover */
+   transform: scale(0.98);
+   /* slight scaling to give a pressed effect */
+ }
 
  /* navbar */
  header {
@@ -169,7 +182,7 @@ nav button:active,
    background-color: var(--secondary);
    font-family: 'Lexend Deca', Helvetica, Arial, Lucida, sans-serif;
    font-size: 1rem;
-   color:#ffffff;
+   color: #ffffff;
    font-weight: 600;
  }
 
@@ -179,7 +192,7 @@ nav button:active,
    align-items: center;
    color: #ffffff;
    text-decoration: none;
-   
+
  }
 
  /* all pages */
@@ -187,20 +200,20 @@ nav button:active,
    max-height: 75vh;
    padding: 1.25rem;
    margin: 0 auto;
-  /* experiment */
+   /* experiment */
    overflow-x: hidden;
    overflow-y: auto;
  }
 
  /* center and limit width of create, content detail, edit pages*/
  .create,
-.content_detail,
-.edit {
-  max-width: 87.5rem;
-  display: block;
-  margin: auto;
+ .content_detail,
+ .edit {
+   max-width: 87.5rem;
+   display: block;
+   margin: auto;
  }
- 
+
  /* homepage */
  .home {
    display: block;
@@ -214,43 +227,64 @@ nav button:active,
  /* table */
  /* container for global filter, date range picker, create new button */
  .options_container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 0.3rem;
-  margin-bottom: 0.625rem;
-}
-
-.options_container .create_new_btn_container .create_new_btn {
-  position:fixed;
-  top: 8rem;
-  right: 1rem;
-  z-index: 1000;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   margin-top: 0.3rem;
+   margin-bottom: 0.625rem;
  }
- 
-/* Reset table button */ 
-.reset_table_btn {
-    width: 9rem;
-    padding: 0.625rem;
-    margin: 1rem;
-  }
-  
-  /* DateRangePicker div in DateRangeFilter, z index simple positioning */
-  .modal {
-    position: absolute;
-    top: 53%;
-    left: 38%;
-    transform: translate(-50%, -50%);
-    border: solid 1px #778DA5;
-    border-radius: 1rem;
-    box-shadow:
-      0rem 0.125rem 0.25rem 0rem rgba(0, 0, 0, 0.2),
-      0rem 0.25rem 0.3125rem 0rem rgba(0, 0, 0, 0.14),
-      0rem 0.0625rem 0.625rem 0rem rgba(0, 0, 0, 0.12),
-      0.3125rem 0.3125rem 0.3125rem 0.3125rem #778DA5;
-    z-index: 1;
-  }
- 
+
+ .options_container .create_new_btn_container .create_new_btn {
+   position: fixed;
+   top: 8rem;
+   right: 1rem;
+   z-index: 1000;
+ }
+
+ /* Reset table button */
+ .reset_table_btn {
+   width: 9rem;
+   padding: 0.625rem;
+   margin: 1rem;
+ }
+
+ /* table's Global Filter */
+ .global-filter-input {
+   outline: none;
+   box-shadow: none;
+   width: 20rem;
+   font-size: 1rem;
+   margin-left: 0.625rem;
+ }
+
+ .global-filter-div {
+   display: flex;
+   flex-direction: column;
+   align-items: flex-start;
+ }
+
+ .global-filter-span {
+   font-weight: bold;
+   font-size: 1.25rem;
+   padding: 0.625rem;
+ }
+
+ /* DateRangePicker div in DateRangeFilter, z index simple positioning */
+ .modal {
+   position: absolute;
+   top: 53%;
+   left: 38%;
+   transform: translate(-50%, -50%);
+   border: solid 1px #778DA5;
+   border-radius: 1rem;
+   box-shadow:
+     0rem 0.125rem 0.25rem 0rem rgba(0, 0, 0, 0.2),
+     0rem 0.25rem 0.3125rem 0rem rgba(0, 0, 0, 0.14),
+     0rem 0.0625rem 0.625rem 0rem rgba(0, 0, 0, 0.12),
+     0.3125rem 0.3125rem 0.3125rem 0.3125rem #778DA5;
+   z-index: 1;
+ }
+
  /* DateRangeFilter modal & modal toggle buttons */
  .date_range_btn {
    min-width: 11rem;
@@ -258,14 +292,14 @@ nav button:active,
  }
 
  .close_date_range {
-  border: none;
-  background-color: none; 
-  margin: 0.5rem 0;
-  cursor: pointer;
-  padding: 0;
-  height: 2rem;
-  width: 2rem;
-  border-radius: 50%;
+   border: none;
+   background-color: none;
+   margin: 0.5rem 0;
+   cursor: pointer;
+   padding: 0;
+   height: 2rem;
+   width: 2rem;
+   border-radius: 50%;
  }
 
  /* hides DateRangePicker 'days until' & 'days from' today div: 
@@ -283,35 +317,48 @@ inappropriate for user's filtering needs*/
    }
  }
 
-td {
-  border-bottom: 1px solid #ddd;
+ .close_date_range_btn_icon {
+   color: var(--secondary-light);
+ }
+
+.calendarIcon {
+  color: var(--secondary-light);
 }
 
-tr:hover {
-  background-color: #e0e0e0;
+.sortIcon {
+  color: var(--secondary-light);
+  cursor: pointer;
 }
+
+ td {
+   border-bottom: 1px solid #ddd;
+ }
+
+ tr:hover {
+   background-color: #e0e0e0;
+ }
 
  /* delete button in table */
  .delete-div {
-  margin:auto;
+   margin: auto;
  }
 
  .delete-span {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  border: 1px solid var(--secondary);
-  border-radius: 50%;
-  height: 3rem;
-  width: 3rem;
-  transition: background-color 0.3s, color 0.3s;
-  color: var(--secondary)
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   text-align: center;
+   border: 1px solid var(--secondary);
+   border-radius: 50%;
+   height: 3rem;
+   width: 3rem;
+   transition: background-color 0.3s, color 0.3s;
+   color: var(--secondary)
  }
 
  .delete-span:hover {
-  background-color: var(--error);
-  color:#ffffff;
+   background-color: var(--error);
+   color: #ffffff;
  }
 
  /* dialog box to confirm delete button action */
@@ -341,56 +388,61 @@ tr:hover {
  /* experiment to meet material.io guidelines */
 
  .yes_delete,
-.no_cancel_delete {
-  border: none;
-  border-radius: 1.875rem; 
-  font-weight: 500; 
-  font-size: 0.875rem; 
-  font-family: "Lexend Deca", Helvetica, Arial, sans-serif;
-  padding: 1rem; 
-  margin: 0.25rem; 
-  cursor: pointer; 
-  text-align: center; 
-  transition: background-color 0.3s, color 0.3s; 
-  display: inline-flex; /* To align icons and text properly */
-  align-items: center; 
-  justify-content: center; 
-}
+ .no_cancel_delete {
+   border: none;
+   border-radius: 1.875rem;
+   font-weight: 500;
+   font-size: 0.875rem;
+   font-family: "Lexend Deca", Helvetica, Arial, sans-serif;
+   padding: 1rem;
+   margin: 0.25rem;
+   cursor: pointer;
+   text-align: center;
+   transition: background-color 0.3s, color 0.3s;
+   display: inline-flex;
+   /* To align icons and text properly */
+   align-items: center;
+   justify-content: center;
+ }
 
-.yes_delete {
-  background-color: var(--error);
-  color: #ffffff;
-}
+ .yes_delete {
+   background-color: var(--error);
+   color: #ffffff;
+ }
 
-.no_cancel_delete {
-  background-color: var(--primary);
-  color: #ffffff;
-  font-weight: 800;
-}
+ .no_cancel_delete {
+   background-color: var(--primary);
+   color: #ffffff;
+   font-weight: 800;
+ }
 
-.yes_delete:hover,
-.no_cancel_delete:hover {
-  background-color: #d9534f; /* Slightly darken on hover */
-}
+ .yes_delete:hover,
+ .no_cancel_delete:hover {
+   background-color: #d9534f;
+   /* Slightly darken on hover */
+ }
 
-.yes_delete:active,
-.no_cancel_delete:active {
-  background-color: #c9302c; /* Even darker on active */
-  transform: scale(0.98); /* Slight scaling to give a pressed effect */
-}
+ .yes_delete:active,
+ .no_cancel_delete:active {
+   background-color: #c9302c;
+   /* Even darker on active */
+   transform: scale(0.98);
+   /* Slight scaling to give a pressed effect */
+ }
 
-.dialog-button-icon {
-  margin-right: 0.5rem; /* Space between icon and text */
-}
+ .dialog-button-icon {
+   margin-right: 0.5rem;
+   /* Space between icon and text */
+ }
 
-.delete-span .dialog-button-icon {
-  margin-right: 0;
-  display: block;
-  margin: auto;
-}
+ .delete-span .dialog-button-icon {
+   margin-right: 0;
+   display: block;
+   margin: auto;
+ }
 
  .create_new_btn {
-  min-width: 12rem;
+   min-width: 12rem;
  }
 
  /* pagination options buttons */
@@ -424,7 +476,7 @@ tr:hover {
  }
 
  .content_detail_tags_label {
-  margin: 1rem 0 1rem 1.3rem;
+   margin: 1rem 0 1rem 1.3rem;
  }
 
  .content_detail_title {
@@ -439,10 +491,10 @@ tr:hover {
  }
 
  .content_detail_content {
-  font-size: 1.25rem;
+   font-size: 1.25rem;
    max-width: 100%;
    white-space: normal;
-   margin: 1.3rem; 
+   margin: 1.3rem;
    white-space: pre-wrap;
  }
 
@@ -463,7 +515,7 @@ tr:hover {
    max-width: auto;
  }
 
-.tag-chip button {
+ .tag-chip button {
    display: flex;
    padding: 6px;
    border: none;
@@ -475,13 +527,13 @@ tr:hover {
 
  /* specific to table tags column to prevent overflow */
  .table-tags-container .tag-chip {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
+   overflow: hidden;
+   text-overflow: ellipsis;
+   white-space: nowrap;
+ }
 
  /* display tags in Content Detail experimenting with adding edit's document-tags*/
- .content_detail_tags_container, 
+ .content_detail_tags_container,
  .document-tags {
    display: flex;
    align-items: center;
@@ -504,7 +556,7 @@ tr:hover {
    /*overflow: hidden;*/
  }
 
-/* handles display of Creatable & existing tags in Edit */
+ /* handles display of Creatable & existing tags in Edit */
  .input-tags-container {
    display: flex;
    flex-direction: column;
@@ -517,14 +569,14 @@ tr:hover {
  }
 
  .document-tags {
-  display: flex;
-  justify-content: space-around;
-  align-items: center; 
+   display: flex;
+   justify-content: space-around;
+   align-items: center;
  }
 
- /* Edit page - hides div containing existing tags if all are deleted */ 
+ /* Edit page - hides div containing existing tags if all are deleted */
  .hidden {
-  display: none;
+   display: none;
  }
 
  /* buttons specific to content detail, edit & create new pages */
@@ -558,7 +610,7 @@ tr:hover {
  }
 
  label {
-  margin-top: 1rem;
+   margin-top: 1rem;
  }
 
  input,
@@ -578,18 +630,18 @@ tr:hover {
 
  input:hover,
  textarea:hover {
-  border-color: var(--secondary);
+   border-color: var(--secondary);
  }
 
  input:focus,
  textarea:focus {
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
  }
 
  label,
  p {
-  font-family: "Lexend Deca", Helvetica, Arial, sans-serif;
-  color:var(--secondary);
+   font-family: "Lexend Deca", Helvetica, Arial, sans-serif;
+   color: var(--secondary);
  }
 
  /* error styling */
@@ -610,7 +662,7 @@ tr:hover {
  div.content_detail div.edit input.error,
  div.content_detail div.edit textarea.error {
    border: 0.125rem solid var(--error);
-}
+ }
 
  /* temporary auth forms */
  form.signup,

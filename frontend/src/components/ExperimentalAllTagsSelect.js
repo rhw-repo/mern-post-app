@@ -4,18 +4,18 @@ import { useMaterialsContext } from "../hooks/useMaterialsContext";
 
 function ExperimentalAllTagsSelect({ onTagsChange }) {
   const { materials } = useMaterialsContext();
-  const [selectedTags, setSelectedTags] = useState([]);
-  const [allTags, setAllTags] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [dataLoaded, setDataLoaded] = useState(false);
+  const [selectedTags, setSelectedTags] = useState([])
+  const [allTags, setAllTags] = useState([])
+  const [loading, setLoading] = useState(true)
+  const [dataLoaded, setDataLoaded] = useState(false)
 
-  // Effect to load allTags from local storage on component mount
+  // to load allTags from local storage on component mount
   useEffect(() => {
-    const savedAllTags = JSON.parse(localStorage.getItem("allTags"));
+    const savedAllTags = JSON.parse(localStorage.getItem("allTags"))
     if (savedAllTags && savedAllTags.length > 0) {
-      setAllTags(savedAllTags);
-      setLoading(false);
-      setDataLoaded(true);
+      setAllTags(savedAllTags)
+      setLoading(false)
+      setDataLoaded(true)
     } else if (materials.length > 0) {
       const tagsSet = new Set(materials.flatMap((material) => material.tags))
       const tagsArray = Array.from(tagsSet)
@@ -30,7 +30,7 @@ function ExperimentalAllTagsSelect({ onTagsChange }) {
     console.log("allTags updated:", allTags)
   }, [allTags])
 
-  // Effect to handle onTagsChange whenever selectedTags changes
+  // to handle onTagsChange whenever selectedTags changes
   useEffect(() => {
     onTagsChange(selectedTags);
   }, [selectedTags, onTagsChange]);
@@ -126,7 +126,7 @@ function ExperimentalAllTagsSelect({ onTagsChange }) {
         )}
       </div>
     </label>
-  );
+  )
 }
 
 export default ExperimentalAllTagsSelect;

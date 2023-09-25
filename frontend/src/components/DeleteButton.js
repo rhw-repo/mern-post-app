@@ -27,7 +27,7 @@ const DeleteButton = ({ _id }) => {
             headers: {
                 "Authorization": `Bearer ${user.token}`
             }
-        });
+        })
 
         const json = await response.json()
 
@@ -35,7 +35,6 @@ const DeleteButton = ({ _id }) => {
             dispatch({ type: "DELETE_MATERIAL", payload: json })
             console.log("Delete succesful")
             navigate("/")
-
         }
     }
 
@@ -43,7 +42,7 @@ const DeleteButton = ({ _id }) => {
         setShowDialog(false)
     }
 
-    const deleteIcon = <FontAwesomeIcon icon={faTrashCan} className="dialog-button-icon" size="xl"/>
+    const deleteIcon = <FontAwesomeIcon icon={faTrashCan} className="dialog-button-icon" size="xl" />
     const saveIcon = <FontAwesomeIcon icon={faFloppyDisk} className="dialog-button-icon" />
 
     return (
@@ -52,7 +51,7 @@ const DeleteButton = ({ _id }) => {
                 className="delete-span"
                 onClick={handleDeleteClick}
             >
-               {deleteIcon}
+                {deleteIcon}
             </span>
 
             {showDialog && (
