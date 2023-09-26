@@ -728,6 +728,21 @@ inappropriate for user's filtering needs*/
    border: 0.125rem solid var(--error);
  }
 
+ /* toast styling */
+ .toast-container {
+  color: #ffffff;
+}
+
+.toast-success {
+  color: #435362;
+  font-family: "Lexend Deca", Helvetica, Arial, sans-serif;
+  font-weight: bold;
+}
+
+.toast-success-icon {
+  color: #BD7374;
+}
+
  /* temporary auth forms */
  form.signup,
  form.login {

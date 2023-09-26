@@ -1,6 +1,7 @@
+// TODO refactor inline styling for security
+
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { useAuthContext } from './hooks/useAuthContext';
-//import { AllTagsProvider } from './context/AllTagsContext';
 import { Toaster } from 'react-hot-toast';
 
 // pages and components
@@ -20,11 +21,11 @@ function App() {
     <div className="App">
       <BrowserRouter>
       <Toaster 
-        position='top-center'
+        position="top-center"
         toastOptions={{
           duration: 3000,
           style: {
-            color: '#fffffff',
+            color: "#fffffff",
           },
           success: {
             duration: 3000,

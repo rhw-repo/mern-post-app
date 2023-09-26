@@ -1,8 +1,3 @@
-/* TODO 
-1.Research (& implement or reccomend) further server-side input validation, sanitisation
-and client-side sanitisation
-*/
-
 import { useState, useEffect } from "react";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { useMaterialsContext } from "../hooks/useMaterialsContext";

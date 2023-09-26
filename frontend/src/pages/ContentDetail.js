@@ -54,7 +54,6 @@ const ContentDetail = () => {
                                 onClick={handleUpdateClick}>
                                 {editIcon} Edit
                             </button>
-
                         </div>
                     </div>
                 )}
