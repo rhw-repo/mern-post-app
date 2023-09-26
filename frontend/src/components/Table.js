@@ -1,19 +1,16 @@
-/* TODO 
-code review all component
-*/
 import { useTable, usePagination, useSortBy, useGlobalFilter, useFilters } from 'react-table';
-import GlobalFilter from './GlobalFilter';
-import ColumnFilter from './ColumnFilter';
-import DateRangeFilter, { filterByDateRange } from './DateRangeFilter';
-import ModalDateRangeFilter from './ModalDateRangeFilter';
-import 'react-date-range/dist/styles.css';
-import 'react-date-range/dist/theme/default.css';
-import { useMemo, useState, useEffect, useRef, forwardRef, useImperativeHandle } from 'react';
-import Select from 'react-select';
-import { Link } from 'react-router-dom';
+import GlobalFilter from "./GlobalFilter";
+import ColumnFilter from "./ColumnFilter";
+import DateRangeFilter, { filterByDateRange } from "./DateRangeFilter";
+import ModalDateRangeFilter from "./ModalDateRangeFilter";
+import "react-date-range/dist/styles.css";
+import "react-date-range/dist/theme/default.css";
+import { useMemo, useState, useEffect, useRef, forwardRef, useImperativeHandle } from "react";
+import Select from "react-select";
+import { Link } from "react-router-dom";
 import DeleteButton from "./DeleteButton";
 // icons
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import {
     faCalendarDays,
     faPlus,
@@ -32,7 +29,7 @@ const TagsSelect = forwardRef(({
     // Calculate the options for filtering
     // using the preFilteredRows
     const options = useMemo(() => {
-        const options = new Set();
+        const options = new Set()
         preFilteredRows.forEach((row) => {
             // console.log("line 36", row)
             let tagsArray = row.values[id]
@@ -58,37 +55,37 @@ const TagsSelect = forwardRef(({
             cursor: "pointer",
             width: "90%",
             maxWidth: "31.25rem",
-            border: state.isFocused ? '1px solid var(--secondary-light)' : '1px solid #e6e6e6',
+            border: state.isFocused ? "1px solid var(--secondary-light)" : "1px solid #e6e6e6",
             margin: "1rem auto",
-            boxShadow: state.isFocused ? '0 0 0 1px var(--secondary-light)' : baseStyles.boxShadow,
-            '&:hover': {
-                border: state.isFocused ? '1px solid var(--secondary-light)' : '1px solid #e6e6e6',
+            boxShadow: state.isFocused ? "0 0 0 1px var(--secondary-light)" : baseStyles.boxShadow,
+            "&:hover": {
+                border: state.isFocused ? "1px solid var(--secondary-light)" : "1px solid #e6e6e6",
             }
         }),
         placeholder: (baseStyles) => ({
             ...baseStyles,
-            color: 'var(--secondary)',
-            fontSize: '1rem', 
+            color: "var(--secondary)",
+            fontSize: '1rem',
         }),
         option: (baseStyles, state) => ({
             ...baseStyles,
-            backgroundColor: state.isFocused ? 'var(--secondary-light)' : baseStyles.backgroundColor,
+            backgroundColor: state.isFocused ? "var(--secondary-light)" : baseStyles.backgroundColor,
             color: state.isFocused ? "white" : baseStyles.color,
-            ':hover': {
-                backgroundColor: 'var(--secondary-light)'
+            ":hover": {
+                backgroundColor: "var(--secondary-light)"
             }
         }),
         multiValue: (baseStyles, state) => {
             return {
                 ...baseStyles,
-                backgroundColor: 'var(--secondary-chips)',
-                color: 'white',
+                backgroundColor: "var(--secondary-chips)",
+                color: "white",
             }
         },
         multiValueLabel: (baseStyles, state) => {
             return {
                 ...baseStyles,
-                color: 'white',
+                color: "white",
             }
         }
     }
@@ -105,7 +102,7 @@ const TagsSelect = forwardRef(({
     // Use useImperativeHandle to expose the clearTags function
     useImperativeHandle(ref, () => ({
         clearTags
-    }));
+    }))
 
     return (
         <Select
@@ -161,7 +158,7 @@ function Table({ data }) {
     )
 
     useEffect(() => {
-        console.log('Component updated')
+        console.log("Component updated")
     }, [])
 
     const TagCell = ({ value, limit }) => {
@@ -174,9 +171,9 @@ function Table({ data }) {
         }
 
         return (
-            <div className='table-tags-container' style={{ display: 'flex', flexWrap: 'wrap' }}>
+            <div className="table-tags-container">
                 {displayedTags.map((tag, index) => (
-                    <div key={index} className='tag-chip' >
+                    <div key={index} className="tag-chip" >
                         {tag}
                     </div>
                 ))}
@@ -186,7 +183,7 @@ function Table({ data }) {
     }
 
     const LinkedCell = ({ value, row }) => (
-        <div style={{ maxWidth: "35rem", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+        <div className="linked-cell-container">
             <Link to={`/articles/${row.original._id}`}>{value}</Link>
         </div>
     )
@@ -209,12 +206,12 @@ function Table({ data }) {
             {
                 Header: "Tags",
                 accessor: "tags",
-
                 Cell: props => <TagCell {...props} limit={1} />,
                 disableSortBy: true,
                 filter: "contains",
-                // Filter: TagsSelect,
-                Filter: (props) => <TagsSelect {...props} ref={tagsSelectRef} />, // No forwardRef needed, just pass the ref
+                // Filter: TagsSelect
+                // No forwardRef needed, just pass the ref
+                Filter: (props) => <TagsSelect {...props} ref={tagsSelectRef} />,
             },
             {
                 Header: "Created At",
@@ -280,7 +277,7 @@ function Table({ data }) {
 
     // Clear pagination selections or global/column/date range filters
     const resetTable = () => {
-        setGlobalFilter('');
+        setGlobalFilter("");
         setPageSize(3);
         columns.forEach(column => {
             setFilter(column.accessor, undefined)
@@ -289,14 +286,19 @@ function Table({ data }) {
         gotoPage(0)
     }
 
-
-    // Create a ref for the TagsSelect component
+    // create a ref for the TagsSelect component
     const tagsSelectRef = useRef();
 
-    /* Use the ref to clear the tags in the TagsSelect 
+    /* use the ref to clear the tags in the TagsSelect 
     component using Reset Table button */
     const clearChildTags = () => {
         tagsSelectRef.current.clearTags();
+    };
+
+    // combine to pass into return statement, to avoid inline event handlers
+    const handleResetClick = () => {
+        resetTable();
+        clearChildTags();
     };
 
     // Toggle visbility DateRangeFilter, too large for UI
@@ -308,6 +310,34 @@ function Table({ data }) {
     const sortIcon = <FontAwesomeIcon icon={faSort} size="2xl" className="sortIcon" />
     const forwardsIcon = <FontAwesomeIcon icon={faForward} />
     const backwardsIcon = <FontAwesomeIcon icon={faBackward} />
+
+    /* pagination functions */
+    const handlePageSizeChange = (e) => {
+        const selectedPageSize = e.target.value === ""
+            ? undefined : Number(e.target.value)
+        setPageSize(selectedPageSize || 3)
+    }
+
+    const handlePageChange = (e) => {
+        const pageNumber = e.target.value ? Number(e.target.value) - 1 : 0;
+        gotoPage(pageNumber);
+    };
+
+    const goToFirstPage = () => {
+        gotoPage(0);
+    };
+
+    const goToPreviousPage = () => {
+        previousPage();
+    };
+
+    const goToNextPage = () => {
+        nextPage();
+    };
+
+    const goToLastPage = () => {
+        gotoPage(pageCount - 1);
+    };
 
     // rendering options_container before table aims for easy user experience
     return (
@@ -343,7 +373,7 @@ function Table({ data }) {
                     </button>
                 </span>
 
-                <span className='create_new_btn_container'>
+                <span className="create_new_btn_container">
                     <Link to="/create_new">
                         <button
                             className="create_new_btn"
@@ -354,35 +384,15 @@ function Table({ data }) {
                 </span>
             </div>
 
-            <div style={{
-                width: "100%",
-                border: "solid 1px white",
-                borderRadius: "0.625rem",
-                overflow: "hidden",
-                boxShadow: "0px 2px 4px 0px rgba(0, 0, 0, 0.2), " +
-                    "0px 4px 5px 0px rgba(0, 0, 0, 0.14), " +
-                    "0px 1px 10px 0px rgba(0, 0, 0, 0.12), " +
-                    "0.3125rem 0.3125rem 0.3125rem 0.3125rem #778DA5"
-            }}>
-                <table {...getTableProps()}
-                    style={{ width: "100%", borderSpacing: 0 }}>
+            <div className="table-container">
+                <table {...getTableProps()} className="table-no-gaps">
                     <thead>
                         {headerGroups.map(headerGroup => (
                             <tr {...headerGroup.getHeaderGroupProps()}>
                                 {headerGroup.headers.map(column => (
                                     <th
                                         {...column.getHeaderProps(column.getSortByToggleProps())}
-                                        style={{
-                                            whiteSpace: 'nowrap',
-                                            borderBottom: "solid 3px #BD7374",
-                                            background: "white",
-                                            color: "#435362",
-                                            fontWeight: "bold",
-                                            fontSize: "1.25rem",
-                                            fontFamily: "Lexend Deca, Helvetica, Arial, Lucida, sans-serif",
-                                            padding: "1rem 0.1rem",
-                                            textAlign: "center",
-                                        }}
+                                        className="table-header"
                                     >
                                         {column.render("Header")}
                                         <div>{column.canFilter ? column.render("Filter") : null}</div>
@@ -406,18 +416,12 @@ function Table({ data }) {
                             prepareRow(row)
                             return (
                                 <tr {...row.getRowProps()}
-                                    style={{
-                                        maxHeight: "2rem",
-                                        borderBottom: '1px solid grey',
-
-                                    }}>
+                                    className="table-row">
                                     {row.cells.map(cell => {
                                         return (
                                             <td
                                                 {...cell.getCellProps()}
-                                                style={{
-                                                    padding: "1rem",
-                                                }}
+                                                className="table-cell"
                                             >
                                                 {cell.render("Cell")}
                                             </td>
@@ -428,30 +432,22 @@ function Table({ data }) {
                         })}
                     </tbody>
                 </table>
-                <div style={{ textAlign: "center" }}>
+                <div className="text-center">
                     <select
                         className="select_box"
                         value={pageSize}
-                        onChange={(e) => {
-                            const selectedPageSize = e.target.value === ""
-                                ? undefined : Number(e.target.value)
-                            setPageSize(selectedPageSize || 3)
-                        }}
+                        onChange={handlePageSizeChange}
                     >
                         <option value={""}>-- Show Me More --</option>
-                        {[5, 10, 20, 50].map(pageSize => (
-                            <option
-                                key={pageSize} value={pageSize}>
-                                Show {pageSize} Rows
+                        {[5, 10, 20, 50].map(size => (
+                            <option key={size} value={size}>
+                                Show {size} Rows
                             </option>
                         ))}
                     </select>
                     <button
                         className="table_pagination_button"
-                        onClick={() => {
-                            resetTable()
-                            clearChildTags()
-                        }}>
+                        onClick={handleResetClick}>
                         {resetIcon} RESET
                     </button>
                     <span aria-label="Display current page number out of total pages">
@@ -460,45 +456,42 @@ function Table({ data }) {
                             {pageIndex + 1} of {pageOptions.length}
                         </strong>{" "}
                     </span>
-                    <span
-                        style={{ display: "inline-flex", alignItems: "center" }}
-                        aria-label='Go to specific page'>
+                    <span className="inline-flex-center" aria-label="Go to specific page">
                         | Go to page: {" "}
-                        <input
+                        <input className="page-input" aria-label="Page number"
                             type="number"
                             defaultValue={pageIndex + 1}
-                            onChange={(e) => {
-                                const pageNumber = e.target.value ? Number(e.target.value) - 1 : 0;
-                                gotoPage(pageNumber);
-                            }}
-                            style={{ width: "3.125rem", marginLeft: "0.5rem" }}
-                            aria-label='Page number'
+                            onChange={handlePageChange}
                         />
                     </span>
                     <button
                         className="table_pagination_button"
                         aria-label="Go to previous page"
-                        onClick={() => gotoPage(0)} disabled={!canPreviousPage}
+                        onClick={goToFirstPage}
+                        disabled={!canPreviousPage}
                     >
                         {backwardsIcon}
                     </button>
                     <button
                         className="table_pagination_button"
-                        onClick={() => previousPage()} disabled={!canPreviousPage}
+                        onClick={goToPreviousPage}
+                        disabled={!canPreviousPage}
                     >
                         Previous
                     </button>
                     <button
                         className="table_pagination_button"
                         aria-label="Go to next page"
-                        onClick={() => nextPage()} disabled={!canNextPage}
+                        onClick={goToNextPage}
+                        disabled={!canNextPage}
                     >
                         Next
                     </button>
                     <button
                         className="table_pagination_button"
                         aria-label="Go to next page"
-                        onClick={() => gotoPage(pageCount - 1)} disabled={!canNextPage}
+                        onClick={goToLastPage}
+                        disabled={!canNextPage}
                     >
                         {forwardsIcon}
                     </button>

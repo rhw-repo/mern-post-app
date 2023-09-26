@@ -330,6 +330,55 @@ inappropriate for user's filtering needs*/
   cursor: pointer;
 }
 
+.table-tags-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.table-container {
+  width: 100%;
+  border: solid 1px white;
+  border-radius: 0.625rem;
+  overflow: hidden;
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.2), 
+              0px 4px 5px 0px rgba(0, 0, 0, 0.14), 
+              0px 1px 10px 0px rgba(0, 0, 0, 0.12), 
+              0.3125rem 0.3125rem 0.3125rem 0.3125rem #778DA5;
+}
+
+.table-no-gaps { 
+  width: 100%;
+  border-spacing: 0;
+}
+
+.table-header {
+  white-space: nowrap;
+  border-bottom: solid 3px #BD7374;
+  background: white;
+  color: #435362;
+  font-weight: bold;
+  font-size: 1.25rem;
+  font-family: 'Lexend Deca', Helvetica, Arial, Lucida, sans-serif;
+  padding: 1rem 0.1rem;
+  text-align: center;
+}
+
+.table-row {
+  max-height: 2rem;
+  border-bottom: 1px solid grey;
+}
+
+.table-cell {
+  padding: 1rem;
+}
+
+.linked-cell-container {
+  max-width: 35rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
  td {
    border-bottom: 1px solid #ddd;
  }
@@ -385,8 +434,9 @@ inappropriate for user's filtering needs*/
    margin-top: 2rem;
  }
 
- /* experiment to meet material.io guidelines */
 
+
+ /* experiment to meet material.io guidelines */
  .yes_delete,
  .no_cancel_delete {
    border: none;
@@ -400,7 +450,7 @@ inappropriate for user's filtering needs*/
    text-align: center;
    transition: background-color 0.3s, color 0.3s;
    display: inline-flex;
-   /* To align icons and text properly */
+   /* align icons and text */
    align-items: center;
    justify-content: center;
  }
@@ -444,6 +494,20 @@ inappropriate for user's filtering needs*/
  .create_new_btn {
    min-width: 12rem;
  }
+
+ .text-center {
+  text-align: center;
+}
+
+.inline-flex-center {
+  display: inline-flex;
+  align-items: center;
+}
+
+.page-input {
+  width: 3.125rem;
+  margin-left: 0.5rem;
+}
 
  /* pagination options buttons */
  .table_pagination_button,
