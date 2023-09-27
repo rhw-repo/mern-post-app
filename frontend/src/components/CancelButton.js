@@ -9,7 +9,7 @@ const cancel = () => {
   }
 
   return (
-    <button className="cancel_btn" onClick={cancel}>Cancel</button>
+    <button className="cancel-btn" onClick={cancel}>Cancel</button>
   )
 }
 

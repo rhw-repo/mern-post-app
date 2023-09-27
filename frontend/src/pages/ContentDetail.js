@@ -27,7 +27,7 @@ const ContentDetail = () => {
 
     return (
         <>
-            <div className="content_detail">
+            <div className="content-detail">
                 {isEditing ? (
                     <Edit material={material} onUpdateComplete={handleUpdateComplete} />
                 ) : (
@@ -37,17 +37,17 @@ const ContentDetail = () => {
                         {error && <div>{error}</div>}
                         {material && (
                             <article>
-                                <div className="content_detail_title">{material.title}</div>
-                                <div className="content_detail_content">{material.content}</div>
-                                <div className="document_form_headings content_detail_tags_label" >Tags:</div>
-                                <div className="content_detail_tags_container">
+                                <div className="content-detail-title">{material.title}</div>
+                                <div className="content-detail-content">{material.content}</div>
+                                <div className="document-form-headings content-detail-tags-label" >Tags:</div>
+                                <div className="content-detail-tags-container">
                                     {material.tags.map((tag, index) => (
                                         <span key={index} className=" tags tag-chip">{tag}</span>
                                     ))}
                                 </div>
                             </article>
                         )}
-                        <div className="content_detail_edit_create_btns">
+                        <div className="content-detail-edit-create-btns">
                             <CancelButton />
                             <button
                                 className="go-to-edit-btn"

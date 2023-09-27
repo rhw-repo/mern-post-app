@@ -95,18 +95,21 @@ const Edit = ({ material }) => {
     }
 
     if (response.ok) {
-      // update global state and navigate to homepage, show toast to confirm "work saved"
+      // update global state and navigate to homepage, 
+      // show toast to confirm "work saved"
       setError(null)
       setEmptyFields([])
       dispatch({ type: "UPDATE_MATERIAL", payload: json })
       navigate("/")
+      console.log("About to show success toast")
       toast.success("Your work is safely saved!")
     } else {
       toast.error("Sorry, that save did not go so well, please try again")
     }
   }
 
-  // dynamic error message checks which fields are missing, stores in object, passes to error message to render 
+  // dynamic error message checks which fields are missing, 
+  // stores in object, passes to error message to render 
   const missingFields = () => {
     let fields = []
     if (!title) fields.push("Title")
@@ -133,7 +136,7 @@ const Edit = ({ material }) => {
 
       <div className="edit">
         <div>
-          <label htmlFor="title" className="document_form_headings">Edit Title:</label>
+          <label htmlFor="title" className="document-form-headings">Edit Title:</label>
           <textarea
             id="title"
             rows={2}
@@ -144,7 +147,7 @@ const Edit = ({ material }) => {
         </div>
 
         <div>
-          <label htmlFor="content" className="document_form_headings">Edit Content:</label>
+          <label htmlFor="content" className="document-form-headings">Edit Content:</label>
           <textarea
             id="content"
             rows={8}
@@ -155,7 +158,7 @@ const Edit = ({ material }) => {
           </textarea>
         </div>
 
-        <label htmlFor="tags" className="document_form_headings">Edit Tags:</label>
+        <label htmlFor="tags" className="document-form-headings">Edit Tags:</label>
         <div className="input-tags-container">
           <div className={
             tags.length > 0
@@ -166,7 +169,7 @@ const Edit = ({ material }) => {
           }>
             <div className={trySubmit && (selectedTags.length === 0 && tags.length === 0) ? "error" : ""}>
               <p>Tags you already have here - click on the x to delete any you don't want:</p>
-              <span className="document-tags">
+              <span className="edit-document-tags">
                 {tags.map((tag, index) => (
                   <span key={index} className="tag-chip">
                     {tag}
@@ -182,9 +185,9 @@ const Edit = ({ material }) => {
 
         </div>
 
-        <div className="content_detail_edit_create_btns">
+        <div className="content-detail-edit-create-btns">
           <CancelButton />
-          <button className="save_btn" type="submit">{saveIcon} Save</button>
+          <button className="save-btn" type="submit">{saveIcon} Save</button>
         </div>
       </div>
 

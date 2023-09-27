@@ -55,19 +55,19 @@ const DeleteButton = ({ _id }) => {
             </span>
 
             {showDialog && (
-                <dialog open className="dialog_confirm_delete">
-                    <h2 className="confirm_delete">Confirm Deletion</h2>
+                <dialog open className="dialog-confirm-delete">
+                    <h2 className="confirm-delete">Confirm Deletion</h2>
                     <p><strong>Do you want to delete this item?</strong></p>
-                    <p>Choosing the red delete button here cannot be undone.</p>
-                    <div className="confirm_delete_buttons">
+                    <p>Choosing the delete button here cannot be undone.</p>
+                    <div className="confirm-delete-buttons">
                         <button
-                            className="yes_delete"
+                            className="yes-delete-btn"
                             onClick={handleConfirmDelete}
                         >
                             {deleteIcon} Yes, delete
                         </button>
                         <button
-                            className="no_cancel_delete"
+                            className="no-cancel-delete-btn"
                             onClick={handleCancelDelete}
                         >
                             {saveIcon} No - Keep it

@@ -131,7 +131,7 @@ const Signup = () => {
 
                 <div >
                     <button
-                        className="signup_btn"
+                        className="signup-btn"
                         disabled={isLoading}
                     >
                         {signupIcon} Signup
@@ -139,10 +139,10 @@ const Signup = () => {
                     {error && <div className="error">{error}</div>}
                 </div>
             </form>
-            <div className="switch_form_btns">
+            <div className="switch-form-btns">
                 <h3>Click below if you already have an account:</h3>
                 <button
-                    className="switch_form_btn"
+                    className="switch-form-btn"
                     onClick={goToLogin}
                 >
                     {loginIcon} Login

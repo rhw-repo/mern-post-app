@@ -129,9 +129,8 @@ function Table({ data }) {
                         let mutualItems = []
                         let rowTags = row.values[id]
                         for (const tag of filterValue) {
+                            //collects tags present in both filterValue and rowTags
                             if (rowTags.includes(tag)) {
-                                //as soon as you find something return true
-                                // return true 
                                 mutualItems.push(tag)
                             }
                         }
@@ -304,10 +303,10 @@ function Table({ data }) {
     // Toggle visbility DateRangeFilter, too large for UI
     const [isOpen, setIsOpen] = useState(false)
 
-    const calendarIcon = <FontAwesomeIcon icon={faCalendarDays} className="calendarIcon" />
+    const calendarIcon = <FontAwesomeIcon icon={faCalendarDays} className="calendar-icon" />
     const createNewIcon = <FontAwesomeIcon icon={faPlus} />
     const resetIcon = <FontAwesomeIcon icon={faUndo} />
-    const sortIcon = <FontAwesomeIcon icon={faSort} size="2xl" className="sortIcon" />
+    const sortIcon = <FontAwesomeIcon icon={faSort} size="2xl" className="sort-icon" />
     const forwardsIcon = <FontAwesomeIcon icon={faForward} />
     const backwardsIcon = <FontAwesomeIcon icon={faBackward} />
 
@@ -339,13 +338,13 @@ function Table({ data }) {
         gotoPage(pageCount - 1);
     };
 
-    // rendering options_container before table aims for easy user experience
+    // rendering options before table aims for easy user experience
     return (
         <>
-            <div className="options_container">
+            <div className="options-container">
                 <span>
                     <button
-                        className="date_range_btn"
+                        className="date-range-btn"
                         onClick={() => setIsOpen(true)}
                     >
                         {calendarIcon} Filter by Dates
@@ -363,7 +362,7 @@ function Table({ data }) {
 
                 <span>
                     <button
-                        className="reset_table_btn"
+                        className="reset-table-btn"
                         onClick={() => {
                             resetTable()
                             clearChildTags()
@@ -372,11 +371,10 @@ function Table({ data }) {
                         {resetIcon} RESET
                     </button>
                 </span>
-
-                <span className="create_new_btn_container">
+                <span>
                     <Link to="/create_new">
                         <button
-                            className="create_new_btn"
+                            className="create-new-btn"
                         >
                             {createNewIcon} Create New
                         </button>
@@ -432,9 +430,9 @@ function Table({ data }) {
                         })}
                     </tbody>
                 </table>
-                <div className="text-center">
+                <div className="pagination">
                     <select
-                        className="select_box"
+                        className="select-box"
                         value={pageSize}
                         onChange={handlePageSizeChange}
                     >
@@ -446,7 +444,7 @@ function Table({ data }) {
                         ))}
                     </select>
                     <button
-                        className="table_pagination_button"
+                        className="table-pagination-button"
                         onClick={handleResetClick}>
                         {resetIcon} RESET
                     </button>
@@ -456,7 +454,7 @@ function Table({ data }) {
                             {pageIndex + 1} of {pageOptions.length}
                         </strong>{" "}
                     </span>
-                    <span className="inline-flex-center" aria-label="Go to specific page">
+                    <span className="go-to-page-text" aria-label="Go to specific page">
                         | Go to page: {" "}
                         <input className="page-input" aria-label="Page number"
                             type="number"
@@ -465,7 +463,7 @@ function Table({ data }) {
                         />
                     </span>
                     <button
-                        className="table_pagination_button"
+                        className="table-pagination-button"
                         aria-label="Go to previous page"
                         onClick={goToFirstPage}
                         disabled={!canPreviousPage}
@@ -473,14 +471,14 @@ function Table({ data }) {
                         {backwardsIcon}
                     </button>
                     <button
-                        className="table_pagination_button"
+                        className="table-pagination-button"
                         onClick={goToPreviousPage}
                         disabled={!canPreviousPage}
                     >
                         Previous
                     </button>
                     <button
-                        className="table_pagination_button"
+                        className="table-pagination-button"
                         aria-label="Go to next page"
                         onClick={goToNextPage}
                         disabled={!canNextPage}
@@ -488,7 +486,7 @@ function Table({ data }) {
                         Next
                     </button>
                     <button
-                        className="table_pagination_button"
+                        className="table-pagination-button"
                         aria-label="Go to next page"
                         onClick={goToLastPage}
                         disabled={!canNextPage}

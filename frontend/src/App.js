@@ -1,5 +1,3 @@
-// TODO refactor inline styling for security
-
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { useAuthContext } from './hooks/useAuthContext';
 import { Toaster } from 'react-hot-toast';
@@ -24,19 +22,10 @@ function App() {
         position="top-center"
         toastOptions={{
           duration: 3000,
-          style: {
-            color: "#fffffff",
-          },
+          className: "toaster", 
           success: {
             duration: 3000,
-            style: {
-              color: "#435362",
-              fontFamily: "Lexend Deca, Helvetica, Arial, sans-serif",
-              fontWeight: "bold"
-            },
-            iconTheme: {
-              primary: "#BD7374",
-            }
+            className: "toaster-success", 
           },
         }}/>
         <Navbar />
