@@ -165,15 +165,22 @@ function Table({ data }) {
         let ellipsis = false;
 
         if (value.length > limit) {
-            displayedTags = value.slice(0, limit);
-            ellipsis = true;
+            displayedTags = value.slice(0, limit)
+            ellipsis = true
+        }
+        // limit width of displayed tag in tag column
+        const trimText = (text, maxLength) => {
+            if (text.length > maxLength) {
+                return text.substring(0, maxLength) + "..." 
+            }
+            return text
         }
 
         return (
             <div className="table-tags-container">
                 {displayedTags.map((tag, index) => (
-                    <div key={index} className="tag-chip" >
-                        {tag}
+                    <div key={index} className="tag-chip-table" >
+                       {trimText(tag, 16)}
                     </div>
                 ))}
                 {ellipsis && <span>...</span>}

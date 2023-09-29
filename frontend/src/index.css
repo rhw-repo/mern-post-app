@@ -552,6 +552,24 @@ tr:hover {
   min-width: 4em;
   max-width: auto;
 }
+.table-tags-container .tag-chip-table {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  height: 1rem;
+  line-height: 2rem; 
+  background-color: var(--secondary-chips);
+  color: #ffffff;
+  font-weight: bold;
+  border-radius: 0.3rem;
+  padding: 0.625rem;
+  margin: 0rem 0.5rem 0 1rem;
+  min-width: 4em;
+  max-width: 8rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 
 .tag-chip button {
   display: flex;
