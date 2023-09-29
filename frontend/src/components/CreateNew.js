@@ -143,7 +143,7 @@ const CreateNew = () => {
                 </div>
                 <div className="content-detail-edit-create-btns">
                     <CancelButton />
-                    <button className="save-btn" onClick={handleSubmit}>Save</button>
+                    <button className="save-btn" type="submit">Save</button>
                 </div>
             </form>
         </>

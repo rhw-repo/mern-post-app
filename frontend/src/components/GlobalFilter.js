@@ -46,18 +46,23 @@ const SearchBox = styled.div`
 const GlobalFilter = ({ filter, setFilter }) => {
     const [value, setValue] = useState(filter)
 
-    //  adds useEffect synchronizing local state with prop to 
+    //  synchronise local state with prop to 
     // ensure resetTable functions 
     useEffect(() => {
         setValue(filter);
     }, [filter]);
 
-    // Delays filter execution preventing unnecessary operations, better performance
+    // Delays filter execution preventing unnecessary operations
     const onChange = useAsyncDebounce(value => {
         setFilter(value || undefined)
     }, 300)
 
     const filterIcon = <FontAwesomeIcon icon={faFilter} className="filter-icon" />
+
+    const handleInputChange = (e) => {
+        setValue(e.target.value)
+         onChange(e.target.value)
+      }
 
     return (
         <div className="global-filter-div">
@@ -68,10 +73,7 @@ const GlobalFilter = ({ filter, setFilter }) => {
                         type="text"
                         placeholder="Search in all columns..."
                         value={value || ""}
-                        onChange={(e) => {
-                            setValue(e.target.value)
-                            onChange(e.target.value)
-                        }}
+                        onChange= {handleInputChange}
                         className="global-filter-input"
                     />
                 </SearchBox>

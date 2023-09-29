@@ -1,4 +1,4 @@
-import { useTable, usePagination, useSortBy, useGlobalFilter, useFilters } from 'react-table';
+import { useTable, usePagination, useSortBy, useGlobalFilter, useFilters } from "react-table";
 import GlobalFilter from "./GlobalFilter";
 import ColumnFilter from "./ColumnFilter";
 import DateRangeFilter, { filterByDateRange } from "./DateRangeFilter";
@@ -65,7 +65,7 @@ const TagsSelect = forwardRef(({
         placeholder: (baseStyles) => ({
             ...baseStyles,
             color: "var(--secondary)",
-            fontSize: '1rem',
+            fontSize: "1rem",
         }),
         option: (baseStyles, state) => ({
             ...baseStyles,
@@ -111,7 +111,7 @@ const TagsSelect = forwardRef(({
             options={selectOptions}
             isMulti
             styles={customStyles}
-            aria-label='Select tags'
+            aria-label="Select tags"
         />
     );
 });
@@ -182,7 +182,7 @@ function Table({ data }) {
     }
 
     const LinkedCell = ({ value, row }) => (
-        <div className="linked-cell-container">
+        <div className="table-linked-cell-container">
             <Link to={`/articles/${row.original._id}`}>{value}</Link>
         </div>
     )

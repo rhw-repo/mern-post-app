@@ -171,14 +171,6 @@ footer {
   font-weight: 600;
 }
 
-footer a {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #ffffff;
-  text-decoration: none;
-}
-
 /* all pages */
 .pages {
   max-height: 75vh;
@@ -207,7 +199,6 @@ footer a {
   text-decoration: none;
 }
 
-/* table */
 /* container for global filter, date range picker, create new button */
 .options-container {
   display: flex;
@@ -279,8 +270,7 @@ footer a {
 }
 
 /* library className 
- hides DateRangePicker 'days until' & 'days from' today div: 
-inappropriate for user's filtering needs*/
+ hides DateRangePicker 'days until' & 'days from' today div: */
 .rdrInputRange {
   visibility: hidden;
 }
@@ -293,17 +283,23 @@ inappropriate for user's filtering needs*/
   color: var(--secondary-light);
 }
 
+.create-new-btn {
+  min-width: 12rem;
+}
+
 /* table sort buttons */
 .sort-icon {
   color: var(--secondary-light);
   cursor: pointer;
 }
 
+/* tags column */
 .table-tags-container {
   display: flex;
   flex-wrap: wrap;
 }
 
+/* entire table */
 .table-container {
   width: 100%;
   border: solid 1px white;
@@ -341,8 +337,15 @@ inappropriate for user's filtering needs*/
   padding: 1rem;
 }
 
-.linked-cell-container {
+.table-linked-cell-container {
   max-width: 35rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* specific to table tags column to prevent overflow */
+.table-tags-container .tag-chip {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -403,7 +406,7 @@ tr:hover {
   margin-top: 2rem;
 }
 
-/* experiment to meet material.io guidelines */
+/* buttons when delete modal open */
 .yes-delete-btn,
 .no-cancel-delete-btn {
   border: none;
@@ -417,7 +420,6 @@ tr:hover {
   text-align: center;
   transition: background-color 0.3s, color 0.3s;
   display: inline-flex;
-  /* align icons and text */
   align-items: center;
   justify-content: center;
 }
@@ -456,10 +458,7 @@ tr:hover {
   margin: auto;
 }
 
-.create-new-btn {
-  min-width: 12rem;
-}
-
+/* table pagination section */
 .pagination {
   text-align: center;
 }
@@ -474,7 +473,6 @@ tr:hover {
   margin-left: 0.5rem;
 }
 
-/* pagination options buttons */
 .table-pagination-button,
 .select-box {
   font-size: 1rem;
@@ -494,7 +492,6 @@ tr:hover {
   font-weight: bold;
 }
 
-/* other pages and tags */
 /* content detail page */
 .content-detail {
   background: #fff;
@@ -538,6 +535,7 @@ tr:hover {
   white-space: pre-wrap;
 }
 
+/* tags */
 /* tags display matches default from react-select Creatable */
 .tag-chip {
   display: flex;
@@ -565,13 +563,6 @@ tr:hover {
   font-weight: bold;
 }
 
-/* specific to table tags column to prevent overflow */
-.table-tags-container .tag-chip {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
 /* display tags in Content Detail & Edit pages */
 .content-detail-tags-container,
 .edit-document-tags {
@@ -582,7 +573,7 @@ tr:hover {
   row-gap: 1rem;
 }
 
-/* CreateNew */
+/* display tags in CreateNew */
 .tags-section-container {
   display: flex;
   justify-content: space-between;
@@ -593,7 +584,6 @@ tr:hover {
 .select-container {
   border-radius: 0.625rem;
   margin: 1rem 0;
-  /*overflow: hidden;*/
 }
 
 /* handles display of Creatable & existing tags in Edit */
@@ -632,7 +622,8 @@ tr:hover {
   margin-top: 2rem;
 }
 
-/* create new form  */
+/* forms */
+/* CreateNew form  */
 h1 {
   color: #435362;
   font-weight: 900;
@@ -640,7 +631,7 @@ h1 {
   font-family: "Lexend Deca", Helvetica, Arial, sans-serif;
 }
 
-/* create new and edit forms  */
+/* CreateNew and Edit forms  */
 label,
 input,
 textarea,
@@ -683,7 +674,7 @@ p {
   color: var(--secondary);
 }
 
-/* error styling */
+/* forms error styling */
 div.error {
   padding: 0.625rem;
   background: #ffefef;

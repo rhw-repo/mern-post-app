@@ -30,13 +30,17 @@ function DateRangeFilter({ handleFilter }) {
     handleFilter(ranges.selection)
   }
 
+  // TODO would need unique exception to CSP: 
+  // library seem to inject style into HTML
+  const rangeColors = ["#667B99"]
+
   /* rangeColors prop sets the color scheme of DateRangePicker 
   to match the app's primary color */
   return (
     <div className="modal">
       <DateRangePicker
         className="modal"
-        rangeColors={["#667B99"]}
+        rangeColors={rangeColors}
         showSelectionPreview={false}
         ranges={[dateRange]}
         onChange={handleSelect} />
