@@ -69,6 +69,10 @@ const TagsSelect = forwardRef(({
         }),
         option: (baseStyles, state) => ({
             ...baseStyles,
+            maxWidth: "15rem",
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+            whiteSpace: "nowrap",
             backgroundColor: state.isFocused ? "var(--secondary-light)" : baseStyles.backgroundColor,
             color: state.isFocused ? "white" : baseStyles.color,
             ":hover": {
@@ -171,7 +175,7 @@ function Table({ data }) {
         // limit width of displayed tag in tag column
         const trimText = (text, maxLength) => {
             if (text.length > maxLength) {
-                return text.substring(0, maxLength) + "..." 
+                return text.substring(0, maxLength) + "..."
             }
             return text
         }
@@ -180,7 +184,7 @@ function Table({ data }) {
             <div className="table-tags-container">
                 {displayedTags.map((tag, index) => (
                     <div key={index} className="tag-chip-table" >
-                       {trimText(tag, 16)}
+                        {trimText(tag, 30)}
                     </div>
                 ))}
                 {ellipsis && <span>...</span>}
