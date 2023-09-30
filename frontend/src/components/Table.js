@@ -53,8 +53,8 @@ const TagsSelect = forwardRef(({
         control: (baseStyles, state) => ({
             ...baseStyles,
             cursor: "pointer",
-            width: "90%",
-            maxWidth: "31.25rem",
+            width: "100%",
+            maxWidth: "20rem",
             border: state.isFocused ? "1px solid var(--secondary-light)" : "1px solid #e6e6e6",
             margin: "1rem auto",
             boxShadow: state.isFocused ? "0 0 0 1px var(--secondary-light)" : baseStyles.boxShadow,
@@ -69,7 +69,7 @@ const TagsSelect = forwardRef(({
         }),
         option: (baseStyles, state) => ({
             ...baseStyles,
-            maxWidth: "15rem",
+            maxWidth: "100%",
             overflow: "hidden",
             textOverflow: "ellipsis",
             whiteSpace: "nowrap",

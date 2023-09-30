@@ -349,10 +349,19 @@ footer {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  text-align: center;
 }
 
 td {
   border-bottom: 1px solid #ddd;
+}
+
+/* aligns tags column with Tags Select box in table header */
+td.table-cell .table-tags-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-left: 1rem;
 }
 
 tr:hover {
@@ -555,7 +564,7 @@ tr:hover {
 .table-tags-container .tag-chip-table {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
   height: 1rem;
   line-height: 2rem; 
   background-color: var(--secondary-chips);
