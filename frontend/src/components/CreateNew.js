@@ -78,7 +78,7 @@ const CreateNew = () => {
 
         // Log the response received from the backend
         console.log('Response received from the backend:', json)
-
+        // error handling
         if (!response.ok) {
             setError(json.error)
             setEmptyFields(json.emptyFields)

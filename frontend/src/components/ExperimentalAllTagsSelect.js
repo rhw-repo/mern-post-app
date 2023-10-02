@@ -61,9 +61,12 @@ function ExperimentalAllTagsSelect({ onTagsChange }) {
   if (loading) {
     return <div>Loading...</div>
   }
-  // could return loading spinner / message 
+  // error handling
   if (!dataLoaded) {
-    return null
+    return <div className="error">
+      The data cannot load. Please try refreshing the page. 
+      If this problem persists, please contact support.
+      </div>
   }
 
   /* replaces default colorways for the Creatable select element */
