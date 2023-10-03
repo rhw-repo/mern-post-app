@@ -6,7 +6,7 @@ import { faRightFromBracket } from "@fortawesome/free-solid-svg-icons"
 
 const Navbar = () => {
 
-    const { logout } = useLogout()
+    const { logout, logoutError } = useLogout()
     const { user } = useAuthContext()
     const navigate = useNavigate()
     const handleClick = () => {
@@ -34,6 +34,7 @@ const Navbar = () => {
                         </div>
                     )}
                 </nav>
+                {logoutError && <div className="error">{logoutError}</div>}
             </div>
         </header>
     )

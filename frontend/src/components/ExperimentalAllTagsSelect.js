@@ -64,7 +64,7 @@ function ExperimentalAllTagsSelect({ onTagsChange }) {
   // error handling
   if (!dataLoaded) {
     return <div className="error">
-      The data cannot load. Please try refreshing the page. 
+      An error occured: please try refreshing the page. 
       If this problem persists, please contact support.
       </div>
   }

@@ -701,7 +701,7 @@ p {
   color: var(--secondary);
 }
 
-/* error styling */
+/* general error styling */
 div.error {
   padding: 0.625rem;
   background: #ffefef;
