@@ -5,6 +5,7 @@ import { useAuthContext } from "../hooks/useAuthContext";
 
 // components
 import Table from "../components/Table";
+import ErrorBoundary from "../components/ErrorBoundary";
 
 const Home = () => {
   const { materials, dispatch } = useMaterialsContext()
@@ -23,12 +24,12 @@ const Home = () => {
         dispatch({ type: "SET_MATERIALS", payload: json })
       }
     }
-   
+
     if (user) {
       fetchMaterials()
     }
 
-}, [dispatch, user])
+  }, [dispatch, user])
 
   // Array of objects to pass to table (Tanstack Table v7) 
   const data = useMemo(() => materials, [materials])
@@ -41,11 +42,13 @@ const Home = () => {
 
   return (
     <>
-      <div className="home">
+      <ErrorBoundary>
+        <div className="home">
           <Table data={data} />
-        </div>      
-      <div>
-      </div>
+        </div>
+        <div>
+        </div>
+      </ErrorBoundary>
     </>
   )
 }
