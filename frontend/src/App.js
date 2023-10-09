@@ -6,11 +6,11 @@ import { Toaster } from 'react-hot-toast';
 import Home from "./pages/Home/Home";
 import Login from "./pages/Login/Login";
 import Signup from "./pages/Signup/Signup";
-import Navbar from './components/Navbar';
+import Navbar from "./components/Navbar/Navbar";
 import CreateNew from './pages/CreateNew/CreateNew';
-import Footer from './components/Footer';
+import Footer from './components/Footer/Footer';
 import ContentDetail from './pages/ContentDetail/ContentDetail';
-import ErrorBoundary from './components/ErrorBoundary';
+import ErrorBoundary from './components/ErrorBoundary/ErrorBoundary';
 
 
 function App() {

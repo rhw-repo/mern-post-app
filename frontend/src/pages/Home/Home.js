@@ -6,7 +6,7 @@ import { useAuthContext } from "../../hooks/useAuthContext";
 // components
 // import Table from "../components/Table";
 import Table from "./Table.js";
-import ErrorBoundary from "../../components/ErrorBoundary";
+import ErrorBoundary from "../../components/ErrorBoundary/ErrorBoundary";
 
 const Home = () => {
   const { materials, dispatch } = useMaterialsContext()

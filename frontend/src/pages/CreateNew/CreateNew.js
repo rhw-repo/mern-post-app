@@ -5,8 +5,8 @@ import { useEffect, useState } from "react";
 import { useMaterialsContext } from "../../hooks/useMaterialsContext";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import { useNavigate } from "react-router-dom";
-import CancelButton from "../../components/CancelButton";
-import ExperimentalAllTagsSelect from "../../components/ExperimentalAllTagsSelect";
+import CancelButton from "../../components/CancelButton/CancelButton";
+import ExperimentalAllTagsSelect from "../../components/ExperimentalAllTagsSelect/ExperimentalAllTagsSelect";
 import toast from "react-hot-toast"
 
 const CreateNew = () => {

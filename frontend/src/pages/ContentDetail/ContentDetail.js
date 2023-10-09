@@ -3,8 +3,7 @@ import { useState } from "react";
 import { useParams } from "react-router-dom";
 import useFetch from "../../hooks/useFetch";
 import Edit from "./Edit";
-import Footer from "../../components/Footer";
-import CancelButton from "../../components/CancelButton";
+import CancelButton from "../../components/CancelButton/CancelButton";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons"
 
@@ -59,7 +58,6 @@ const ContentDetail = () => {
                 )}
 
             </div>
-            <Footer />
         </>
     )
 }

@@ -2,11 +2,11 @@ import { useState, useEffect } from "react";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import { useMaterialsContext } from "../../hooks/useMaterialsContext";
 import { useNavigate } from "react-router-dom";
-import CancelButton from "../../components/CancelButton";
+import CancelButton from "../../components/CancelButton/CancelButton";
 import toast from "react-hot-toast"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFloppyDisk } from "@fortawesome/free-solid-svg-icons"
-import ExperimentalAllTagsSelect from "../../components/ExperimentalAllTagsSelect";
+import ExperimentalAllTagsSelect from "../../components/ExperimentalAllTagsSelect/ExperimentalAllTagsSelect"
 
 
 const Edit = ({ material }) => {
