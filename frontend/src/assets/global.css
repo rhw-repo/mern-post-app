@@ -1,0 +1,121 @@
+/* globaly css rules will be here */
+
+/* TODO: make responsive */
+
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@400;500;600;700&family=Open+Sans:wght@300;400&display=swap');
+
+/* Notes 
+  - general aim to simulate Material Design 3 guidelines
+  .primary class currently not defined, is no-op placeholder in form error handling, 
+   can be styled later if required 
+ */
+
+/* general color scheme */
+:root {
+  --primary: #BD7374;
+  --error: #A2262C;
+  --secondary: #435362;
+  --secondary-light: #667B99;
+  --secondary-chips: #5C6D84;
+}
+
+body {
+  background-color: #ffffff;
+  margin: 0;
+  font-family: "Open Sans", "Helvetica", Arial, sans-serif;
+}
+
+/* primary buttons */
+.login-btn,
+.signup-btn,
+.create-new-btn,
+.go-to-edit-btn,
+.save-btn {
+  background: var(--primary);
+  border: 0;
+  color: #fff;
+  text-align: center;
+  height: 3rem;
+  width: 10rem;
+  padding: 0.625rem;
+  font-family: "Lexend Deca", Helvetica, Arial, sans-serif;
+  font-size: 1.25rem;
+  font-weight: bold;
+  border-radius: 1.875rem;
+  cursor: pointer;
+  box-shadow: 0rem 0.25rem 0.5rem 0rem rgba(0, 0, 0, 0.2);
+  opacity: 1;
+  transition: background 0.3s, box-shadow 0.3s, transform 0.3s;
+}
+
+/* primary buttons hover slightly darker */
+.login-btn:hover,
+.signup-btn:hover,
+.create-new-btn:hover,
+.go-to-edit-btn:hover,
+.save-btn:hover {
+  background: #A96669;
+  box-shadow:
+    0rem 0.1875rem 0.375rem 0rem rgba(0, 0, 0, 0.2),
+    0rem 0.5rem 0.625rem 0rem rgba(0, 0, 0, 0.14),
+    0rem 0.125rem 0.75rem 0rem rgba(0, 0, 0, 0.12);
+}
+
+/* primary buttons active darker still */
+.login-btn:active,
+.signup-btn:active,
+.create-new-btn:active,
+.go-to-edit-btn:active,
+.save-btn:active {
+  background: #954B4C;
+  box-shadow:
+    0rem 0.0625rem 0.125rem 0rem rgba(0, 0, 0, 0.2),
+    0rem 0.125rem 0.15625rem 0rem rgba(0, 0, 0, 0.14),
+    0rem 0.03125rem 0.3125rem 0rem rgba(0, 0, 0, 0.12);
+  transform: scale(0.98);
+}
+
+/* secondary buttons */
+nav button,
+.reset-table-btn,
+.table-pagination-button,
+.select-box,
+.date-range-btn,
+.cancel-btn,
+.switch-form-btn {
+  background: #fff;
+  color: var(--secondary);
+  border: 0.1rem solid var(--secondary);
+  border-radius: 1.875rem;
+  font-family: "Lexend Deca", Helvetica, Arial, sans-serif;
+  font-weight: 800;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s, transform 0.3s;
+}
+
+/* secondary buttons hover state slightly darker */
+nav button:hover,
+.reset-table-btn:hover,
+.table-pagination-button:hover,
+.select-box:hover,
+.date-range-btn:hover,
+.cancel-btn:hover,
+.switch-form-btn:hover {
+  background: rgba(119, 141, 165, 0.15);
+  color: #37404b;
+  box-shadow: 0rem 0.125rem 0.25rem 0rem rgba(0, 0, 0, 0.1);
+}
+
+/* secondary buttons active darker still */
+nav button:active,
+.reset-table-btn:active,
+.table-pagination-button:active,
+.select-box:active,
+.date-range-btn:active,
+.cancel-btn:active,
+.switch-form-btn:active {
+  background: rgba(67, 83, 98, 0.2);
+  color: #2c333b;
+  transform: scale(0.98);
+}

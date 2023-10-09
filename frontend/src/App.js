@@ -3,13 +3,13 @@ import { useAuthContext } from './hooks/useAuthContext';
 import { Toaster } from 'react-hot-toast';
 
 // pages and components
-import Home from "./pages/Home";
-import Login from "./pages/Login";
-import Signup from "./pages/Signup";
+import Home from "./pages/Home/Home";
+import Login from "./pages/Login/Login";
+import Signup from "./pages/Signup/Signup";
 import Navbar from './components/Navbar';
-import CreateNew from './components/CreateNew';
+import CreateNew from './pages/CreateNew/CreateNew';
 import Footer from './components/Footer';
-import ContentDetail from './pages/ContentDetail';
+import ContentDetail from './pages/ContentDetail/ContentDetail';
 import ErrorBoundary from './components/ErrorBoundary';
 
 
