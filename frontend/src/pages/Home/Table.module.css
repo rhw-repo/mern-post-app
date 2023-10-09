@@ -1,0 +1,134 @@
+/* Table and options container */
+
+
+/* options container for global filter, date range picker, create new button */
+.optionsContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 0.3rem;
+    margin-bottom: 0.625rem;
+}
+
+.calendarIcon {
+    color: var(--secondary-light);
+}
+
+/* DateRangeFilter modal & modal toggle buttons */
+.dateRangeBtn {
+    min-width: 11rem;
+    padding: 0.625rem;
+}
+
+/* Reset table button */
+.resetTableBtn {
+    width: 9rem;
+    padding: 0.625rem;
+    margin: 1rem;
+}
+
+.createNewBtn {
+    min-width: 12rem;
+}
+
+
+/* entire table */
+.tableContainer {
+    width: 100%;
+    border: solid 1px white;
+    border-radius: 0.625rem;
+    overflow: hidden;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.2),
+        0px 4px 5px 0px rgba(0, 0, 0, 0.14),
+        0px 1px 10px 0px rgba(0, 0, 0, 0.12),
+        0.3125rem 0.3125rem 0.3125rem 0.3125rem #778DA5;
+}
+
+.tableNoGaps {
+    width: 100%;
+    border-spacing: 0;
+}
+
+.tableRow {
+    max-height: 2rem;
+    border-bottom: 1px solid grey;
+}
+
+.tableCell {
+    padding: 1rem;
+}
+
+/* table pagination section */
+.pagination {
+    text-align: center;
+}
+
+
+
+.tableHeader {
+    white-space: nowrap;
+    border-bottom: solid 3px #BD7374;
+    background: white;
+    color: #435362;
+    font-weight: bold;
+    font-size: 1.25rem;
+    font-family: "Lexend Deca", Helvetica, Arial, Lucida, sans-serif;
+    padding: 1rem 0.1rem;
+    text-align: center;
+}
+
+/* tags column */
+.tableTagsContainer {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.tableTagsContainer .tagChipTable {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 1rem;
+    line-height: 2rem;
+    background-color: var(--secondary-chips);
+    color: #ffffff;
+    font-weight: bold;
+    border-radius: 0.3rem;
+    padding: 0.625rem;
+    margin: 0rem 0.5rem 0 1rem;
+    min-width: 4em;
+    max-width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.tableLinkedCellContainer {
+    max-width: 35rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* table sort buttons */
+.sortIcon {
+    color: var(--secondary-light);
+    cursor: pointer;
+}
+
+.tablePaginationButton,
+.SelectBox {
+    font-size: 1rem;
+    padding: 0.625rem;
+    margin: 1rem;
+    min-width: 6em;
+}
+
+.goToPageText {
+    display: inline-flex;
+    align-items: center;
+}
+
+.pageInput {
+    width: 3.125rem;
+    margin-left: 0.5rem;
+}

@@ -140,7 +140,7 @@ const Signup = () => {
                 </div>
             </form>
             <div className="switch-form-btns">
-                <h3>Click below if you already have an account:</h3>
+                <div className="switch-form-text-prompt">Click below if you already have an account:</div>
                 <button
                     className="switch-form-btn"
                     onClick={goToLogin}

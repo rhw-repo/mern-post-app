@@ -2,6 +2,7 @@
 import { useEffect, useMemo } from "react";
 import { useMaterialsContext } from "../../hooks/useMaterialsContext";
 import { useAuthContext } from "../../hooks/useAuthContext";
+import styles from "./Home.module.css";
 
 // components
 // import Table from "../components/Table";
@@ -44,7 +45,7 @@ const Home = () => {
   return (
     <>
       <ErrorBoundary>
-        <div className="home">
+        <div className={styles.home}>
           <Table data={data} />
         </div>
         <div>

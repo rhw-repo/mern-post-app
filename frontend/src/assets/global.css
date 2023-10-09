@@ -119,3 +119,21 @@ nav button:active,
   color: #2c333b;
   transform: scale(0.98);
 }
+
+/* all pages */
+.pages {
+  max-height: 75vh;
+  padding: 1.25rem;
+  margin: 0 auto;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+center and limit width of create, content detail, edit pages
+.create,
+.content-detail,
+.edit {
+  max-width: 87.5rem;
+  display: block;
+  margin: auto;
+}

@@ -1,3 +1,4 @@
+import styles from "./Table.module.css";
 import { useTable, usePagination, useSortBy, useGlobalFilter, useFilters } from "react-table";
 import GlobalFilter from "./GlobalFilter";
 import ColumnFilter from "./ColumnFilter";
@@ -181,9 +182,9 @@ function Table({ data }) {
         }
 
         return (
-            <div className="table-tags-container">
+            <div className={styles.tableTagsContainer}>
                 {displayedTags.map((tag, index) => (
-                    <div key={index} className="tag-chip-table" >
+                    <div key={index} className={styles.tagChipTable} >
                         {trimText(tag, 30)}
                     </div>
                 ))}
@@ -193,7 +194,7 @@ function Table({ data }) {
     }
 
     const LinkedCell = ({ value, row }) => (
-        <div className="table-linked-cell-container">
+        <div className={styles.tableLinkedCellContainer}>
             <Link to={`/articles/${row.original._id}`}>{value}</Link>
         </div>
     )
@@ -314,10 +315,10 @@ function Table({ data }) {
     // Toggle visbility DateRangeFilter, too large for UI
     const [isOpen, setIsOpen] = useState(false)
 
-    const calendarIcon = <FontAwesomeIcon icon={faCalendarDays} className="calendar-icon" />
+    const calendarIcon = <FontAwesomeIcon icon={faCalendarDays} className={styles.calendarIcon } />
     const createNewIcon = <FontAwesomeIcon icon={faPlus} />
-    const resetIcon = <FontAwesomeIcon icon={faUndo} />
-    const sortIcon = <FontAwesomeIcon icon={faSort} size="2xl" className="sort-icon" />
+    const resetIcon = <FontAwesomeIcon icon={faUndo} /> 
+    const sortIcon = <FontAwesomeIcon icon={faSort} size="2xl" className={styles.sortIcon } />
     const forwardsIcon = <FontAwesomeIcon icon={faForward} />
     const backwardsIcon = <FontAwesomeIcon icon={faBackward} />
 
@@ -352,10 +353,10 @@ function Table({ data }) {
     // rendering options before table aims for easy user experience
     return (
         <>
-            <div className="options-container">
+            <div className={styles.optionsContainer}>
                 <span>
                     <button
-                        className="date-range-btn"
+                        className={`${styles.dateRangeBtn} date-range-btn`}
                         onClick={() => setIsOpen(true)}
                     >
                         {calendarIcon} Filter by Dates
@@ -373,7 +374,7 @@ function Table({ data }) {
 
                 <span>
                     <button
-                        className="reset-table-btn"
+                        className={styles.resetTableBtn}
                         onClick={() => {
                             resetTable()
                             clearChildTags()
@@ -385,7 +386,7 @@ function Table({ data }) {
                 <span>
                     <Link to="/create_new">
                         <button
-                            className="create-new-btn"
+                            className={styles.createNewBtn}
                         >
                             {createNewIcon} Create New
                         </button>
@@ -393,15 +394,15 @@ function Table({ data }) {
                 </span>
             </div>
 
-            <div className="table-container">
-                <table {...getTableProps()} className="table-no-gaps">
+            <div className={styles.tableContainer}>
+                <table {...getTableProps()} className={styles.tableNoGaps}>
                     <thead>
                         {headerGroups.map(headerGroup => (
                             <tr {...headerGroup.getHeaderGroupProps()}>
                                 {headerGroup.headers.map(column => (
                                     <th
                                         {...column.getHeaderProps(column.getSortByToggleProps())}
-                                        className="table-header"
+                                        className={styles.tableHeader}
                                     >
                                         {column.render("Header")}
                                         <div>{column.canFilter ? column.render("Filter") : null}</div>
@@ -425,12 +426,12 @@ function Table({ data }) {
                             prepareRow(row)
                             return (
                                 <tr {...row.getRowProps()}
-                                    className="table-row">
+                                    className={styles.tableRow}>
                                     {row.cells.map(cell => {
                                         return (
                                             <td
                                                 {...cell.getCellProps()}
-                                                className="table-cell"
+                                                className={styles.tableCell}
                                             >
                                                 {cell.render("Cell")}
                                             </td>
@@ -441,9 +442,9 @@ function Table({ data }) {
                         })}
                     </tbody>
                 </table>
-                <div className="pagination">
+                <div className={styles.pagination}>
                     <select
-                        className="select-box"
+                        className={styles.SelectBox}
                         value={pageSize}
                         onChange={handlePageSizeChange}
                     >
@@ -455,7 +456,7 @@ function Table({ data }) {
                         ))}
                     </select>
                     <button
-                        className="table-pagination-button"
+                        className={styles.tablePaginationButton}
                         onClick={handleResetClick}>
                         {resetIcon} RESET
                     </button>
@@ -465,16 +466,16 @@ function Table({ data }) {
                             {pageIndex + 1} of {pageOptions.length}
                         </strong>{" "}
                     </span>
-                    <span className="go-to-page-text" aria-label="Go to specific page">
+                    <span className={styles.goToPageText} aria-label="Go to specific page">
                         | Go to page: {" "}
-                        <input className="page-input" aria-label="Page number"
+                        <input className={styles.pageInput} aria-label="Page number"
                             type="number"
                             defaultValue={pageIndex + 1}
                             onChange={handlePageChange}
                         />
                     </span>
                     <button
-                        className="table-pagination-button"
+                        className={styles.tablePaginationButton}
                         aria-label="Go to previous page"
                         onClick={goToFirstPage}
                         disabled={!canPreviousPage}
@@ -482,14 +483,14 @@ function Table({ data }) {
                         {backwardsIcon}
                     </button>
                     <button
-                        className="table-pagination-button"
+                         className={styles.tablePaginationButton}
                         onClick={goToPreviousPage}
                         disabled={!canPreviousPage}
                     >
                         Previous
                     </button>
                     <button
-                        className="table-pagination-button"
+                        className={styles.tablePaginationButton}
                         aria-label="Go to next page"
                         onClick={goToNextPage}
                         disabled={!canNextPage}
@@ -497,7 +498,7 @@ function Table({ data }) {
                         Next
                     </button>
                     <button
-                        className="table-pagination-button"
+                        className={styles.tablePaginationButton}
                         aria-label="Go to next page"
                         onClick={goToLastPage}
                         disabled={!canNextPage}

@@ -1,100 +1,18 @@
-
-/* navbar */
-header {
-  position: sticky;
-  top: 0rem;
-  z-index: 1;
-  background-color: #ffffff;
-  color: var(--secondary);
-  font-family: "Lexend Deca", Helvetica, Arial, sans-serif;
-  font-weight: bold;
-  margin-top: 1rem;
-}
-
-header .container {
-  max-width: 87.5rem;
-  margin: 0 auto;
-  padding: 0.625rem 1.25rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 3rem;
-}
-
-/* colors text logout button, removes links underline*/
-header a {
-  color: #BD7374;
-  text-decoration: none;
-}
-
-nav button {
-  margin-left: 1rem;
-  padding: 0.625rem;
-  min-width: 8rem;
-}
-
-/* footer */
-footer {
-  line-height: 0.3rem;
-  text-align: center;
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  height: 0.3rem;
-  width: 100vw;
-  padding: 1.33rem 0.66rem;
-  margin-top: 1.25rem;
-  background-color: var(--secondary);
-  font-family: "Lexend Deca", Helvetica, Arial, Lucida, sans-serif;
-  font-size: 1rem;
-  color: #ffffff;
-  font-weight: 600;
-}
-
-/* all pages */
-.pages {
-  max-height: 75vh;
-  padding: 1.25rem;
-  margin: 0 auto;
-  overflow-x: hidden;
-  overflow-y: auto;
-}
-
-/* center and limit width of create, content detail, edit pages*/
-.create,
-.content-detail,
-.edit {
-  max-width: 87.5rem;
-  display: block;
-  margin: auto;
-}
-
-/* homepage */
-.home {
-  display: block;
-}
-
-.home a {
-  color: inherit;
-  text-decoration: none;
-}
-
-/* container for global filter, date range picker, create new button */
-.options-container {
+/* containeetr for global filter, date range picker, create new button */
+/*.options-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-top: 0.3rem;
   margin-bottom: 0.625rem;
-}
+}*/
 
-/* Reset table button */
+/* Reset table button 
 .reset-table-btn {
   width: 9rem;
   padding: 0.625rem;
   margin: 1rem;
-}
+}*/
 
 /* table's Global Filter */
 .global-filter-input {
@@ -133,11 +51,11 @@ footer {
   z-index: 1;
 }
 
-/* DateRangeFilter modal & modal toggle buttons */
+/* DateRangeFilter modal & modal toggle buttons 
 .date-range-btn {
   min-width: 11rem;
   padding: 0.625rem;
-}
+}*/
 
 .close-date-range-btn {
   border: none;
@@ -160,13 +78,13 @@ footer {
   color: var(--secondary-light);
 }
 
-.calendar-icon {
+/*.calendar-icon {
   color: var(--secondary-light);
-}
+}*/
 
-.create-new-btn {
+/*.create-new-btn {
   min-width: 12rem;
-}
+}*/
 
 /* table sort buttons */
 .sort-icon {
@@ -174,13 +92,13 @@ footer {
   cursor: pointer;
 }
 
-/* tags column */
+/* tags column 
 .table-tags-container {
   display: flex;
   flex-wrap: wrap;
-}
+}*/
 
-/* entire table */
+/* entire table 
 .table-container {
   width: 100%;
   border: solid 1px white;
@@ -191,11 +109,11 @@ footer {
     0px 1px 10px 0px rgba(0, 0, 0, 0.12),
     0.3125rem 0.3125rem 0.3125rem 0.3125rem #778DA5;
 }
-
+class
 .table-no-gaps {
   width: 100%;
   border-spacing: 0;
-}
+}*/
 
 .table-header {
   white-space: nowrap;
@@ -348,7 +266,7 @@ tr:hover {
   margin: auto;
 }
 
-/* table pagination section */
+/* table pagination section 
 .pagination {
   text-align: center;
 }
@@ -369,7 +287,7 @@ tr:hover {
   padding: 0.625rem;
   margin: 1rem;
   min-width: 6em;
-}
+}/*
 
 /* toaster toasts */
 .toaster {
@@ -442,12 +360,13 @@ tr:hover {
   min-width: 4em;
   max-width: auto;
 }
-.table-tags-container .tag-chip-table {
+
+/*.table-tags-container .tag-chip-table {
   display: flex;
   align-items: center;
   justify-content: center;
   height: 1rem;
-  line-height: 2rem; 
+  line-height: 2rem;
   background-color: var(--secondary-chips);
   color: #ffffff;
   font-weight: bold;
@@ -459,7 +378,7 @@ tr:hover {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-}
+}*/
 
 .tag-chip button {
   display: flex;
@@ -623,6 +542,16 @@ form.login {
   justify-content: space-evenly;
   align-items: center;
   margin: 1.5rem auto 1rem auto;
+}
+
+.switch-form-text-prompt {
+  display: block;
+  font-size: 1.17rem;
+  margin-block-start: 1rem;
+  margin-block-end: 1rem;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+  font-weight: bold;
 }
 
 .switch-form-btns {

@@ -143,7 +143,7 @@ const Login = () => {
                 </div>
             </form>
             <div className="switch-form-btns">
-                <h3>Need an account?</h3>
+                <div className="switch-form-text-prompt">Need an account?</div>
                 <button
                     className="switch-form-btn"
                     onClick={goToSignup}
