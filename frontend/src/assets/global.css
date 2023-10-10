@@ -144,3 +144,40 @@ nav button:active,
   visibility: hidden;
 }
 
+/* tags */
+/* tags display matches default from react-select Creatable */
+.tag-chip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 1rem;
+  line-height: 2rem;
+  background-color: var(--secondary-chips);
+  color: #ffffff;
+  font-weight: bold;
+  border-radius: 0.3rem;
+  padding: 0.625rem;
+  margin: 0rem 0.5rem 0 1rem;
+  min-width: 4em;
+  max-width: auto;
+}
+
+.tag-chip button {
+  display: flex;
+  padding: 6px;
+  border: none;
+  background-color: unset;
+  cursor: pointer;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+/* display tags in Content Detail & Edit pages */
+.content-detail-tags-container,
+.edit-document-tags {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  row-gap: 1rem;
+}

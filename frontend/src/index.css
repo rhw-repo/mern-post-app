@@ -284,7 +284,7 @@ td {
   font-weight: bold;
 }
 
-/* content detail page */
+/* content detail page 
 .content-detail {
   background: #fff;
   border-radius: 0.625rem;
@@ -295,7 +295,7 @@ td {
     0rem 0.25rem 0.3125rem 0rem rgba(0, 0, 0, 0.14),
     0rem 0.0625rem 0.625rem 0rem rgba(0, 0, 0, 0.12),
     0.3125rem 0.3125rem 0.3125rem 0.3125rem #778DA5;
-}
+}*/
 
 .document-form-headings {
   font-size: 1.5rem;
@@ -308,7 +308,7 @@ td {
   margin: 1rem 0 1rem 1.3rem;
 }
 
-.content-detail-title {
+/*.content-detail-title {
   font-size: 1.5rem;
   font-weight: bold;
   margin: 1.3rem;
@@ -325,10 +325,10 @@ td {
   white-space: normal;
   margin: 1.3rem;
   white-space: pre-wrap;
-}
+}*/
 
 /* tags */
-/* tags display matches default from react-select Creatable */
+/* tags display matches default from react-select Creatable 
 .tag-chip {
   display: flex;
   align-items: center;
@@ -343,7 +343,7 @@ td {
   margin: 0rem 0.5rem 0 1rem;
   min-width: 4em;
   max-width: auto;
-}
+}*/
 
 /*.table-tags-container .tag-chip-table {
   display: flex;
@@ -362,7 +362,7 @@ td {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-}*/
+}
 
 .tag-chip button {
   display: flex;
@@ -374,7 +374,7 @@ td {
   font-weight: bold;
 }
 
-/* display tags in Content Detail & Edit pages */
+/* display tags in Content Detail & Edit pages 
 .content-detail-tags-container,
 .edit-document-tags {
   display: flex;
