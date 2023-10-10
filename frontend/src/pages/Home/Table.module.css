@@ -87,11 +87,13 @@ Table Header Tags Select Box */
     align-items: center;
 }
 
+/* styles tableTagsContainer when child of tableCell */ 
 .tableCell .tableTagsContainer {
     flex-wrap: wrap;
     margin-left: 1rem;
 }
 
+/* styles tagsChipTable when child of tableTagsContainer */
 .tableTagsContainer .tagChipTable {
     height: 1rem;
     line-height: 2rem;
