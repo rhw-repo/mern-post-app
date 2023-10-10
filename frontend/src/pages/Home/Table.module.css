@@ -1,7 +1,6 @@
-/* Table and options container */
-
-
-/* options container for global filter, date range picker, create new button */
+/* table-related options container, positioned above table
+contains the global filter, date range picker, a reset table btn
+& the create new button */ 
 .optionsContainer {
     display: flex;
     justify-content: space-between;
@@ -10,14 +9,17 @@
     margin-bottom: 0.625rem;
 }
 
-.calendarIcon {
-    color: var(--secondary-light);
-}
+/* Please note - closeDateRangeBtn in ModalDateRangeFilter, 
+globalFilter in GlobalFilter */ 
 
-/* DateRangeFilter modal & modal toggle buttons */
+/* DateRangeFilter modal toggle buttons */
 .dateRangeBtn {
     min-width: 11rem;
     padding: 0.625rem;
+}
+
+.calendarIcon {
+    color: var(--secondary-light);
 }
 
 /* Reset table button */
@@ -31,8 +33,8 @@
     min-width: 12rem;
 }
 
-
-/* entire table */
+/* Table layout and container style rules for displaying 
+content as if on an elevated surface*/
 .tableContainer {
     width: 100%;
     border: solid 1px white;
@@ -43,7 +45,7 @@
         0px 1px 10px 0px rgba(0, 0, 0, 0.12),
         0.3125rem 0.3125rem 0.3125rem 0.3125rem #778DA5;
 }
-
+/* eliminate spacing between cells */
 .tableNoGaps {
     width: 100%;
     border-spacing: 0;
@@ -54,17 +56,16 @@
     border-bottom: 1px solid grey;
 }
 
+.tableRow:hover {
+    background-color: #e0e0e0;
+}
+
 .tableCell {
     padding: 1rem;
+    border-bottom: 1px solid #ddd;
 }
 
-/* table pagination section */
-.pagination {
-    text-align: center;
-}
-
-
-
+/* Table Header Section */ 
 .tableHeader {
     white-space: nowrap;
     border-bottom: solid 3px #BD7374;
@@ -77,16 +78,21 @@
     text-align: center;
 }
 
-/* tags column */
-.tableTagsContainer {
+/* Table Tags column rules & alignment with 
+Table Header Tags Select Box */
+
+.centerTableTags {
     display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tableCell .tableTagsContainer {
     flex-wrap: wrap;
+    margin-left: 1rem;
 }
 
 .tableTagsContainer .tagChipTable {
-    display: flex;
-    align-items: center;
-    justify-content: center;
     height: 1rem;
     line-height: 2rem;
     background-color: var(--secondary-chips);
@@ -113,6 +119,11 @@
 .sortIcon {
     color: var(--secondary-light);
     cursor: pointer;
+}
+
+/* Table Pagination section */
+.pagination {
+    text-align: center;
 }
 
 .tablePaginationButton,

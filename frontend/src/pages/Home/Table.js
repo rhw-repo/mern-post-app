@@ -182,10 +182,10 @@ function Table({ data }) {
         }
 
         return (
-            <div className={styles.tableTagsContainer}>
+            <div className={`${styles.tableTagsContainer} ${styles.centerTableTags}`}>
                 {displayedTags.map((tag, index) => (
-                    <div key={index} className={styles.tagChipTable} >
-                        {trimText(tag, 30)}
+                    <div key={index} className={` ${styles.tagChipTable} ${styles.centerTableTags}`} >
+                        {trimText(tag, 16)}
                     </div>
                 ))}
                 {ellipsis && <span>...</span>}
@@ -315,10 +315,10 @@ function Table({ data }) {
     // Toggle visbility DateRangeFilter, too large for UI
     const [isOpen, setIsOpen] = useState(false)
 
-    const calendarIcon = <FontAwesomeIcon icon={faCalendarDays} className={styles.calendarIcon } />
+    const calendarIcon = <FontAwesomeIcon icon={faCalendarDays} className={styles.calendarIcon} />
     const createNewIcon = <FontAwesomeIcon icon={faPlus} />
-    const resetIcon = <FontAwesomeIcon icon={faUndo} /> 
-    const sortIcon = <FontAwesomeIcon icon={faSort} size="2xl" className={styles.sortIcon } />
+    const resetIcon = <FontAwesomeIcon icon={faUndo} />
+    const sortIcon = <FontAwesomeIcon icon={faSort} size="2xl" className={styles.sortIcon} />
     const forwardsIcon = <FontAwesomeIcon icon={faForward} />
     const backwardsIcon = <FontAwesomeIcon icon={faBackward} />
 
@@ -374,7 +374,7 @@ function Table({ data }) {
 
                 <span>
                     <button
-                        className={styles.resetTableBtn}
+                        className={`${styles.resetTableBtn} reset-table-btn`}
                         onClick={() => {
                             resetTable()
                             clearChildTags()
@@ -386,7 +386,7 @@ function Table({ data }) {
                 <span>
                     <Link to="/create_new">
                         <button
-                            className={styles.createNewBtn}
+                            className={`${styles.createNewBtn} create-new-btn`}
                         >
                             {createNewIcon} Create New
                         </button>
@@ -444,7 +444,7 @@ function Table({ data }) {
                 </table>
                 <div className={styles.pagination}>
                     <select
-                        className={styles.SelectBox}
+                        className={`${styles.SelectBox} select-box`}
                         value={pageSize}
                         onChange={handlePageSizeChange}
                     >
@@ -456,7 +456,7 @@ function Table({ data }) {
                         ))}
                     </select>
                     <button
-                        className={styles.tablePaginationButton}
+                        className={`${styles.tablePaginationButton} table-pagination-button`}
                         onClick={handleResetClick}>
                         {resetIcon} RESET
                     </button>
@@ -475,7 +475,7 @@ function Table({ data }) {
                         />
                     </span>
                     <button
-                        className={styles.tablePaginationButton}
+                        className={`${styles.tablePaginationButton} table-pagination-button`}
                         aria-label="Go to previous page"
                         onClick={goToFirstPage}
                         disabled={!canPreviousPage}
@@ -483,14 +483,14 @@ function Table({ data }) {
                         {backwardsIcon}
                     </button>
                     <button
-                         className={styles.tablePaginationButton}
+                        className={`${styles.tablePaginationButton} table-pagination-button`}
                         onClick={goToPreviousPage}
                         disabled={!canPreviousPage}
                     >
                         Previous
                     </button>
                     <button
-                        className={styles.tablePaginationButton}
+                        className={`${styles.tablePaginationButton} table-pagination-button`}
                         aria-label="Go to next page"
                         onClick={goToNextPage}
                         disabled={!canNextPage}
@@ -498,7 +498,7 @@ function Table({ data }) {
                         Next
                     </button>
                     <button
-                        className={styles.tablePaginationButton}
+                        className={`${styles.tablePaginationButton} table-pagination-button`}
                         aria-label="Go to next page"
                         onClick={goToLastPage}
                         disabled={!canNextPage}

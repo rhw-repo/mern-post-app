@@ -1,18 +1,4 @@
-/* containeetr for global filter, date range picker, create new button */
-/*.options-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 0.3rem;
-  margin-bottom: 0.625rem;
-}*/
 
-/* Reset table button 
-.reset-table-btn {
-  width: 9rem;
-  padding: 0.625rem;
-  margin: 1rem;
-}*/
 
 /* table's Global Filter */
 .global-filter-input {
@@ -86,11 +72,11 @@
   min-width: 12rem;
 }*/
 
-/* table sort buttons */
+/* table sort buttons 
 .sort-icon {
   color: var(--secondary-light);
   cursor: pointer;
-}
+}*/
 
 /* tags column 
 .table-tags-container {
@@ -127,45 +113,45 @@ class
   text-align: center;
 }
 
-.table-row {
+/*.table-row {
   max-height: 2rem;
   border-bottom: 1px solid grey;
-}
+}*/
 
-.table-cell {
+/*.table-cell {
   padding: 1rem;
-}
+}*/
 
-.table-linked-cell-container {
+/*.table-linked-cell-container {
   max-width: 35rem;
   overflow: hidden;
   text-overflow: ellipsis;
-  white-space: nowrap;
-}
+  white-space: nowrap*/
 
-/* specific to table tags column to prevent overflow */
+/* specific to table tags column to prevent overflow 
 .table-tags-container .tag-chip {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
   text-align: center;
-}
+}*/
 
+/* refactored as style rule within .tableCell in css module
 td {
   border-bottom: 1px solid #ddd;
-}
+} */
 
-/* aligns tags column with Tags Select box in table header */
-td.table-cell .table-tags-container {
+
+/* td.table-cell .table-tags-container {
   display: flex;
   justify-content: flex-start;
   align-items: center;
   margin-left: 1rem;
-}
+}*/
 
-tr:hover {
+/*tr:hover {
   background-color: #e0e0e0;
-}
+}*/
 
 /* delete button in table */
 .delete-div {
