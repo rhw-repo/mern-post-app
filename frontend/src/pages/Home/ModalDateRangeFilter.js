@@ -1,16 +1,17 @@
 // DateRangeFilter needs visibility toggle else too large for page
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleXmark } from "@fortawesome/free-solid-svg-icons"
+import styles from "./ModalDateRangeFilter.module.css";
 
 function ModalDateRangeFilter({ open, children, onClose }) {
   if (!open) return null
 
-  const closeIcon = <FontAwesomeIcon icon={faCircleXmark} className="close-date-range-btn-icon" size='4x' />
+  const closeIcon = <FontAwesomeIcon icon={faCircleXmark} className={styles.closeDateRangeBtnIcon} size='4x' />
 
   return (
     <div>
       {children}
-      <button className="close-date-range-btn" onClick={onClose} aria-label="Close">{closeIcon}</button>
+      <button className={styles.closeDateRangeBtn } onClick={onClose} aria-label="Close">{closeIcon}</button>
     </div>
   )
 }

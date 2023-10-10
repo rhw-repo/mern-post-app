@@ -129,7 +129,7 @@ nav button:active,
   overflow-y: auto;
 }
 
-center and limit width of create, content detail, edit pages
+/* center and limit width of create, content detail, edit pages */
 .create,
 .content-detail,
 .edit {
@@ -137,3 +137,10 @@ center and limit width of create, content detail, edit pages
   display: block;
   margin: auto;
 }
+
+/* Note! This library className 
+ hides DateRangePicker 'days until' & 'days from' today div:*/ 
+ .rdrInputRange {
+  visibility: hidden;
+}
+

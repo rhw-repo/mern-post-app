@@ -1,27 +1,25 @@
-
-
-/* table's Global Filter */
+/* table's Global Filter 
 .global-filter-input {
   outline: none;
   box-shadow: none;
   width: 20rem;
   font-size: 1rem;
   margin-left: 0.625rem;
-}
+}*/
 
-.global-filter-div {
+/*.global-filter-div {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-}
+}*/
 
-.global-filter-span {
+/*.global-filter-span {
   font-weight: bold;
   font-size: 1.25rem;
   padding: 0.625rem;
-}
+}*/
 
-/* DateRangePicker div in DateRangeFilter, z index simple positioning */
+/* DateRangePicker div in DateRangeFilter, z index simple positioning 
 .modal {
   position: absolute;
   top: 53%;
@@ -35,7 +33,7 @@
     0rem 0.0625rem 0.625rem 0rem rgba(0, 0, 0, 0.12),
     0.3125rem 0.3125rem 0.3125rem 0.3125rem #778DA5;
   z-index: 1;
-}
+} */
 
 /* DateRangeFilter modal & modal toggle buttons 
 .date-range-btn {
@@ -43,7 +41,7 @@
   padding: 0.625rem;
 }*/
 
-.close-date-range-btn {
+/*.close-date-range-btn {
   border: none;
   background-color: none;
   margin: 0.5rem 0;
@@ -52,17 +50,17 @@
   height: 2rem;
   width: 2rem;
   border-radius: 50%;
-}
+}*/
 
 /* library className 
- hides DateRangePicker 'days until' & 'days from' today div: */
+ hides DateRangePicker 'days until' & 'days from' today div: 
 .rdrInputRange {
   visibility: hidden;
-}
+}*/
 
-.close-date-range-btn-icon {
+/*.close-date-range-btn-icon {
   color: var(--secondary-light);
-}
+}*/
 
 /*.calendar-icon {
   color: var(--secondary-light);
@@ -153,7 +151,7 @@ td {
   background-color: #e0e0e0;
 }*/
 
-/* delete button in table */
+/* delete button in table 
 .delete-div {
   margin: auto;
 }
@@ -176,7 +174,7 @@ td {
   color: #ffffff;
 }
 
-/* dialog box to confirm delete button action */
+/* dialog box to confirm delete button action 
 .dialog-confirm-delete {
   text-align: center;
   border: 1px solid #BD7374;
@@ -200,7 +198,7 @@ td {
   margin-top: 2rem;
 }
 
-/* buttons when delete modal open */
+/* buttons when delete modal open 
 .yes-delete-btn,
 .no-cancel-delete-btn {
   border: none;
@@ -229,13 +227,13 @@ td {
   font-weight: 800;
 }
 
-/* darker color hover */
+/* darker color hover 
 .yes-delete-btn:hover,
 .no-cancel-delete-btn:hover {
   background-color: #d9534f;
 }
 
-/* brighter color active */
+/* brighter color active 
 .yes-delete-btn:active,
 .no-cancel-delete-btn:active {
   background-color: #c9302c;
@@ -250,7 +248,7 @@ td {
   margin-right: 0;
   display: block;
   margin: auto;
-}
+} */
 
 /* table pagination section 
 .pagination {

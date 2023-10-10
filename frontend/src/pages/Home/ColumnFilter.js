@@ -14,34 +14,34 @@ const SearchBox = styled.div`
     align-items: center;
     justify-content: space-between;
     width: 80%;
-    transition: border-color 0.3s; // Smooth transition for border color
+    transition: border-color 0.3s; 
 
     & input {
         border: none;
         flex-grow: 1;
-        outline: none; // Removing default focus outline
+        outline: none; 
         font-size: 1rem;
         margin-left: 0.625rem;
     }
 
     & .filter-icon {
-        color: var(--secondary-light); // Default color for SVG icon
+        color: var(--secondary-light); 
         margin-right: 0.312rem;
-        transition: color 0.3s, transform 0.3s; // Smooth transition for color and scaling
+        transition: color 0.3s, transform 0.3s; 
     }
 
     &:hover {
         border-color: var(--outline);
 
         & .filter-icon {
-            color: #445566; // More distinct darker shade for hover
-            transform: scale(1.1); // Slightly scaled up for hover
+            color: #445566; 
+            transform: scale(1.1); 
         }
     }
 
     & input:focus + .filter-icon {
-        color:  #334455; // Even more distinct darker shade for focus
-        transform: scale(1.2); // Further scaled up for focus
+        color:  #334455; 
+        transform: scale(1.2); 
     }
     }
 `

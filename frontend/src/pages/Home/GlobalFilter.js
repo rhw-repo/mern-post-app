@@ -4,6 +4,7 @@ import { useAsyncDebounce } from "react-table";
 import styled from "styled-components"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFilter } from "@fortawesome/free-solid-svg-icons"
+import styles from "./GlobalFilter.module.css";
 
 // icon is SVG not CSS: styled component allows icon in placeholder
 const SearchBox = styled.div`
@@ -16,29 +17,28 @@ const SearchBox = styled.div`
     justify-content: space-between;
     width: 100%;
 
- 
     & input {
         border: none;
         flex-grow: 1;
     }
 
     & .filter-icon {
-        color: var(--secondary-light); // Default color for SVG icon
-        transition: color 0.3s, transform 0.3s; // Smooth transition for color and scaling
+        color: var(--secondary-light); 
+        transition: color 0.3s, transform 0.3s; 
     }
 
     &:hover {
         border-color: var(--secondary);
 
         & .filter-icon {
-            color: #445566; // More distinct darker shade for hover
-            transform: scale(1.1); // Slightly scaled up for hover
+            color: #445566; 
+            transform: scale(1.1); 
         }
     }
 
     & input:focus + .filter-icon {
-        color: #334455; // Even more distinct darker shade for focus
-        transform: scale(1.2); // Further scaled up for focus
+        color: #334455; 
+        transform: scale(1.2); 
     }
   
 }   
@@ -65,8 +65,8 @@ const GlobalFilter = ({ filter, setFilter }) => {
       }
 
     return (
-        <div className="global-filter-div">
-            <span className="global-filter-span">
+        <div className={styles.globalFilterDiv}>
+            <span className={styles.globalFilterSpan}>
                 <SearchBox>
                     {filterIcon}
                     <input
@@ -74,7 +74,7 @@ const GlobalFilter = ({ filter, setFilter }) => {
                         placeholder="Search in all columns..."
                         value={value || ""}
                         onChange= {handleInputChange}
-                        className="global-filter-input"
+                        className={styles.globalFilterInput}
                     />
                 </SearchBox>
             </span>
