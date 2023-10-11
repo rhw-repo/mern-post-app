@@ -1,4 +1,4 @@
-/* delete button in table */
+/* styles specific to table delete button */
 .deleteDiv {
     margin: auto;
   }
@@ -21,7 +21,7 @@
     color: #ffffff;
   }
   
-  /* dialog box to confirm delete button action */
+  /* styles for dialog box to confirm delete button action */
   .dialogConfirmDelete {
     text-align: center;
     border: 1px solid #BD7374;

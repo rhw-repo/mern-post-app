@@ -99,7 +99,7 @@ class
   border-spacing: 0;
 }*/
 
-.table-header {
+/*.table-header {
   white-space: nowrap;
   border-bottom: solid 3px #BD7374;
   background: white;
@@ -109,7 +109,7 @@ class
   font-family: "Lexend Deca", Helvetica, Arial, Lucida, sans-serif;
   padding: 1rem 0.1rem;
   text-align: center;
-}
+}*/
 
 /*.table-row {
   max-height: 2rem;
@@ -273,16 +273,16 @@ td {
   min-width: 6em;
 }/*
 
-/* toaster toasts */
+/* toaster toasts 
 .toaster {
   color: #ffffff;
-}
+}*/
 
-.toaster-success {
-  color: #435362;
+/*toaster-success {
   font-family: "Lexend Deca", Helvetica, Arial, sans-serif;
   font-weight: bold;
-}
+} */
+
 
 /* content detail page 
 .content-detail {
@@ -297,16 +297,16 @@ td {
     0.3125rem 0.3125rem 0.3125rem 0.3125rem #778DA5;
 }*/
 
-.document-form-headings {
+/*.document-form-headings {
   font-size: 1.5rem;
   font-weight: bold;
   color: #435362;
   font-family: "Lexend Deca", Helvetica, Arial, sans-serif;
-}
+}*/
 
-.content-detail-tags-label {
+/*.content-detail-tags-label {
   margin: 1rem 0 1rem 1.3rem;
-}
+}*/
 
 /*.content-detail-title {
   font-size: 1.5rem;
@@ -384,12 +384,12 @@ td {
   row-gap: 1rem;
 }
 
-/* display tags in CreateNew */
+/* display tags in CreateNew 
 .tags-section-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
+}*/
 
 /* ExperimentalAllTagsSelect */
 .select-container {
@@ -397,7 +397,7 @@ td {
   margin: 1rem 0;
 }
 
-/* handles display of Creatable & existing tags in Edit */
+/* handles display of Creatable & existing tags in Edit 
 .input-tags-container {
   display: flex;
   flex-direction: column;
@@ -407,24 +407,25 @@ td {
   border: none;
   padding: 0.25rem;
   border-radius: 4px;
-}
+}*/
 
-.document-tags {
+/* presumed redundant rule */
+/*.document-tags {
   display: flex;
   justify-content: space-around;
   align-items: center;
-}
+}*/
 
-/* Edit page - hides div containing existing tags if all are deleted */
+/* Edit page - hides div containing existing tags if all are deleted 
 .hidden {
   display: none;
-}
+}*/
 
-/* buttons specific to content detail, edit & create new pages */
+/* buttons specific to content detail, edit & create new pages 
 .cancel-btn {
   padding: 0.625rem;
   width: 6rem;
-}
+}*/
 
 .content-detail-edit-create-btns {
   display: flex;
@@ -433,16 +434,16 @@ td {
   margin-top: 2rem;
 }
 
-/* forms */
-/* CreateNew form  */
+/* forms 
+
 h1 {
   color: #435362;
   font-weight: 900;
   text-align: center;
   font-family: "Lexend Deca", Helvetica, Arial, sans-serif;
-}
+}*/
 
-/* CreateNew and Edit forms  */
+/* inputs 
 label,
 input,
 textarea,
@@ -483,9 +484,9 @@ label,
 p {
   font-family: "Lexend Deca", Helvetica, Arial, sans-serif;
   color: var(--secondary);
-}
+}*/
 
-/* general error styling */
+/* general error styling 
 div.error {
   padding: 0.625rem;
   background: #ffefef;
@@ -503,11 +504,11 @@ textarea.error {
 div.content-detail div.edit input.error,
 div.content-detail div.edit textarea.error {
   border: 0.125rem solid var(--error);
-}
+}*/
 
-/* temporary auth forms */
-form.signup,
-form.login {
+/* temporary auth forms 
+.signup-form,
+.login-form {
   max-width: 30rem;
   margin: 2rem auto;
   padding: 3rem;
@@ -518,9 +519,9 @@ form.login {
     0rem 0.25rem 0.3125rem 0rem rgba(0, 0, 0, 0.14),
     0rem 0.0625rem 0.625rem 0rem rgba(0, 0, 0, 0.12),
     0.3125rem 0.3125rem 0.3125rem 0.3125rem #778DA5;
-}
+}*/
 
-.login-btn,
+/*.login-btn,
 .signup-btn {
   display: flex;
   justify-content: space-evenly;
@@ -546,4 +547,4 @@ form.login {
 .switch-form-btn {
   padding: 0.625rem;
   min-width: 8rem;
-}
+}*/

@@ -129,23 +129,126 @@ nav button:active,
   overflow-y: auto;
 }
 
+h1 {
+  color: #435362;
+  font-weight: 900;
+  text-align: center;
+  font-family: "Lexend Deca", Helvetica, Arial, sans-serif;
+}
+
+/* inputs */
+label,
+input,
+textarea,
+p {
+  display: block;
+  font-weight: bold;
+}
+
+label {
+  margin-top: 1rem;
+}
+
+input,
+textarea {
+  font-family: 'Open Sans', 'Helvetica', Arial, sans-serif;
+  font-size: 1rem;
+  padding: 0.625rem;
+  margin: 0.312rem auto;
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 0.5rem;
+  box-sizing: border-box;
+  outline: none;
+  transition: border-color 0.3s, color 0.3s, transform 0.3s;
+}
+
+input:hover,
+textarea:hover {
+  border-color: var(--secondary);
+}
+
+input:focus,
+textarea:focus {
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+label,label,
+input,
+textarea,
+p {
+  display: block;
+  font-weight: bold;
+}
+
+label {
+  margin-top: 1rem;
+}
+
+input,
+textarea {
+  font-family: 'Open Sans', 'Helvetica', Arial, sans-serif;
+  font-size: 1rem;
+  padding: 0.625rem;
+  margin: 0.312rem auto;
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 0.5rem;
+  box-sizing: border-box;
+  outline: none;
+  transition: border-color 0.3s, color 0.3s, transform 0.3s;
+}
+
+input:hover,
+textarea:hover {
+  border-color: var(--secondary);
+}
+
+input:focus,
+textarea:focus {
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+label,
+p {
+  font-family: "Lexend Deca", Helvetica, Arial, sans-serif;
+  color: var(--secondary);
+}
+
+p {
+  font-family: "Lexend Deca", Helvetica, Arial, sans-serif;
+  color: var(--secondary);
+}
+
+/* login & signup forms, create, content detail, edit pages */
+/* paper effect as if displaying on an elevated surface*/
+.login-form,
+.signup-form,
+.content-detail-edit-create-containers {
+  background: #fff;
+  border-radius: 0.625rem;
+  box-shadow:
+    0rem 0.125rem 0.25rem 0rem rgba(0, 0, 0, 0.2),
+    0rem 0.25rem 0.3125rem 0rem rgba(0, 0, 0, 0.14),
+    0rem 0.0625rem 0.625rem 0rem rgba(0, 0, 0, 0.12),
+    0.3125rem 0.3125rem 0.3125rem 0.3125rem #778DA5;
+}
+
 /* center and limit width of create, content detail, edit pages */
-.create,
-.content-detail,
-.edit {
+.content-detail-edit-create-containers {
   max-width: 87.5rem;
   display: block;
   margin: auto;
+  padding: 2rem;
 }
 
 /* Note! This library className 
- hides DateRangePicker 'days until' & 'days from' today div:*/ 
- .rdrInputRange {
+ hides DateRangePicker 'days until' & 'days from' today div:*/
+.rdrInputRange {
   visibility: hidden;
 }
 
-/* tags */
-/* tags display matches default from react-select Creatable */
+/* tags: display matches default from react-select Creatable */
 .tag-chip {
   display: flex;
   align-items: center;
@@ -172,6 +275,13 @@ nav button:active,
   font-weight: bold;
 }
 
+.document-form-headings {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #435362;
+  font-family: "Lexend Deca", Helvetica, Arial, sans-serif;
+}
+
 /* display tags in Content Detail & Edit pages */
 .content-detail-tags-container,
 .edit-document-tags {
@@ -180,4 +290,65 @@ nav button:active,
   justify-content: flex-start;
   flex-wrap: wrap;
   row-gap: 1rem;
+}
+
+/* general error styling */
+div.error {
+  padding: 0.625rem;
+  background: #ffefef;
+  border: 0.06rem solid var(--error);
+  color: var(--error);
+  border-radius: 0.5rem;
+  margin: 1.25rem 0;
+}
+
+input.error,
+textarea.error {
+  border: 0.125rem solid var(--error);
+}
+
+div.content-detail div.edit input.error,
+div.content-detail div.edit textarea.error {
+  border: 0.125rem solid var(--error);
+}
+
+/* success toasts */
+.toaster-success {
+  font-family: "Lexend Deca", Helvetica, Arial, sans-serif;
+  font-weight: bold;
+}
+/* temporary auth forms */
+.signup-form,
+.login-form {
+  max-width: 30rem;
+  margin: 2rem auto;
+  padding: 3rem;
+}
+
+.login-btn,
+.signup-btn {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 1.5rem auto 1rem auto;
+}
+
+.switch-form-text-prompt {
+  display: block;
+  font-size: 1.17rem;
+  margin-block-start: 1rem;
+  margin-block-end: 1rem;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+  font-weight: bold;
+}
+
+.switch-form-btns {
+  text-align: center;
+  color: #435362;
+}
+
+.switch-form-btn {
+  padding: 0.625rem;
+  min-width: 8rem;
 }

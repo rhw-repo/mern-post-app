@@ -1,15 +1,16 @@
 // user needs a way to abandon action & return to homepage
 import { useNavigate } from "react-router-dom";
+import styles from "./CancelButton.module.css";
 
 const CancelButton = () => {
-    const navigate = useNavigate()
+  const navigate = useNavigate()
 
-const cancel = () => {
+  const cancel = () => {
     navigate("/")
   }
 
   return (
-    <button className="cancel-btn" onClick={cancel}>Cancel</button>
+    <button className={`${styles.cancelBtn} cancel-btn`} onClick={cancel}>Cancel</button>
   )
 }
 

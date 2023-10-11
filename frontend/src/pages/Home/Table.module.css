@@ -1,3 +1,5 @@
+/* styles specific to table element & related options container */
+
 /* table-related options container, positioned above table
 contains the global filter, date range picker, a reset table btn
 & the create new button */ 
@@ -40,10 +42,11 @@ content as if on an elevated surface*/
     border: solid 1px white;
     border-radius: 0.625rem;
     overflow: hidden;
-    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.2),
-        0px 4px 5px 0px rgba(0, 0, 0, 0.14),
-        0px 1px 10px 0px rgba(0, 0, 0, 0.12),
-        0.3125rem 0.3125rem 0.3125rem 0.3125rem #778DA5;
+    box-shadow:
+    0rem 0.125rem 0.25rem 0rem rgba(0, 0, 0, 0.2),
+    0rem 0.25rem 0.3125rem 0rem rgba(0, 0, 0, 0.14),
+    0rem 0.0625rem 0.625rem 0rem rgba(0, 0, 0, 0.12),
+    0.3125rem 0.3125rem 0.3125rem 0.3125rem #778DA5;
 }
 /* eliminate spacing between cells */
 .tableNoGaps {

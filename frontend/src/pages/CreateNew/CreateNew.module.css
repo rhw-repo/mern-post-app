@@ -1,0 +1,7 @@
+/* styles specific to CreateNew page */
+/* display tags in CreateNew */
+.tagsSectionContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }

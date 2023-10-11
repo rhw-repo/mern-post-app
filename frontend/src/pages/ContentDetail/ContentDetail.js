@@ -27,7 +27,7 @@ const ContentDetail = () => {
 
     return (
         <>
-            <div className={styles.contentDetail}>
+            <div className="content-detail-edit-create-containers">
                 {isEditing ? (
                     <Edit material={material} onUpdateComplete={handleUpdateComplete} />
                 ) : (

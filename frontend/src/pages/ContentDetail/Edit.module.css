@@ -1,0 +1,19 @@
+/* styles specific to Edit page */
+/* handles display of Creatable & existing tags in Edit */
+.inputTagsContainer {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    border: none;
+    padding: 0.25rem;
+    border-radius: 4px;
+  }
+
+  /* hides div containing existing tags if all are deleted */
+.hideEmptyTagsDiv {
+    display: none;
+  }
+
+  

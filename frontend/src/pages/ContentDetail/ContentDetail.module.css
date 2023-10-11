@@ -1,16 +1,4 @@
-/* content detail page */
-.contentDetail {
-    background: #fff;
-    border-radius: 0.625rem;
-    padding: 2rem;
-    position: relative;
-    box-shadow:
-      0rem 0.125rem 0.25rem 0rem rgba(0, 0, 0, 0.2),
-      0rem 0.25rem 0.3125rem 0rem rgba(0, 0, 0, 0.14),
-      0rem 0.0625rem 0.625rem 0rem rgba(0, 0, 0, 0.12),
-      0.3125rem 0.3125rem 0.3125rem 0.3125rem #778DA5;
-  }
-
+/* styles specific to content detail page */
   .contentDetailTitle {
     font-size: 1.5rem;
     font-weight: bold;

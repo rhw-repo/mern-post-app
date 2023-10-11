@@ -88,7 +88,7 @@ const Login = () => {
 
     return (
         <>
-            <form className="login" onSubmit={handleSubmit}>
+            <form className="login-form" onSubmit={handleSubmit}>
                 {(trySubmit && !isFormValid) || error ? (
                     <div className="error">
                         {trySubmit && !isFormValid ? (

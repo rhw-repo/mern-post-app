@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFilter } from "@fortawesome/free-solid-svg-icons"
 
 // icon is SVG not CSS: styled component allows icon in placeholder
+// Note - no modules.css for ColumnFilter.js
 const SearchBox = styled.div`
     border: 1px solid #ddd;
     border-radius: 0.5rem;

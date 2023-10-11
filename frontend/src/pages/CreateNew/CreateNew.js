@@ -1,13 +1,13 @@
 /* Validation: form will not submit if any field empty. 
    Instead will display error messages indicating empty field(s) */
-
 import { useEffect, useState } from "react";
 import { useMaterialsContext } from "../../hooks/useMaterialsContext";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import { useNavigate } from "react-router-dom";
 import CancelButton from "../../components/CancelButton/CancelButton";
 import ExperimentalAllTagsSelect from "../../components/ExperimentalAllTagsSelect/ExperimentalAllTagsSelect";
-import toast from "react-hot-toast"
+import toast from "react-hot-toast";
+import styles from "./CreateNew.module.css";
 
 const CreateNew = () => {
     const { dispatch } = useMaterialsContext()
@@ -106,7 +106,7 @@ const CreateNew = () => {
 
     return (
         <>
-            <form className="create" onSubmit={handleSubmit}>
+            <form className="content-detail-edit-create-containers" onSubmit={handleSubmit}>
                 {(trySubmit && !isFormValid) || error ? (
                     <div className="error">
                         {trySubmit && !isFormValid ? (
@@ -136,9 +136,9 @@ const CreateNew = () => {
                     className={(trySubmit && !content) || emptyFields.includes("content") ? "error" : "primary"}
                 />
                 <label className="document-form-headings">Add tags here:</label>
-                <div className="tags-section-container">
-                        <div className={trySubmit && selectedTags.length === 0 ? "error" : ""}>
-                            <ExperimentalAllTagsSelect onTagsChange={handleTagsChange} />
+                <div className={styles.tagsSectionContainer}>
+                    <div className={trySubmit && selectedTags.length === 0 ? "error" : ""}>
+                        <ExperimentalAllTagsSelect onTagsChange={handleTagsChange} />
                     </div>
                 </div>
                 <div className="content-detail-edit-create-btns">

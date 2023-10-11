@@ -1,0 +1,5 @@
+/* styles specific to ExperimentalAllTagsSelect */
+.selectContainer {
+    border-radius: 0.625rem;
+    margin: 1rem 0;
+  }

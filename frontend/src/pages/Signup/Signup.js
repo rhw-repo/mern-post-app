@@ -88,7 +88,7 @@ const Signup = () => {
 
     return (
         <>
-            <form className="signup" onSubmit={handleSubmit}>
+            <form className="signup-form" onSubmit={handleSubmit}>
                 {(trySubmit && !isFormValid) || error ? (
                     <div className="error">
                         {trySubmit && !isFormValid ? (
