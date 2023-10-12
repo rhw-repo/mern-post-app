@@ -287,8 +287,6 @@ p {
   font-weight: bold;
 }
 
-
-
 /* ContentDetail & Edit pages: display existing tags */
 .content-detail-tags-container,
 .edit-document-tags {
@@ -313,17 +311,13 @@ input.error,
 textarea.error {
   border: 0.125rem solid var(--error);
 }
+
 /* Error styling specific to ContentDetail & Edit pages */
 div.content-detail div.edit input.error,
 div.content-detail div.edit textarea.error {
   border: 0.125rem solid var(--error);
 }
 
-/* Success toasts */
-.toaster-success {
-  font-family: "Lexend Deca", Helvetica, Arial, sans-serif;
-  font-weight: bold;
-}
 /* Login & Signup forms */
 .signup-form,
 .login-form {

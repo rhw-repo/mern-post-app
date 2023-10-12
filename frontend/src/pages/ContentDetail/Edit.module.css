@@ -1,4 +1,4 @@
-/* styles specific to Edit page */
+/* Styles specific to Edit page */
 /* handles display of Creatable & existing tags in Edit */
 .inputTagsContainer {
     display: flex;
@@ -11,7 +11,7 @@
     border-radius: 4px;
   }
 
-  /* hides div containing existing tags if all are deleted */
+  /* Hides div containing existing tags if all are deleted */
 .hideEmptyTagsDiv {
     display: none;
   }

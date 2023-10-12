@@ -1,4 +1,4 @@
-/* styles specific to table delete button */
+/* Styles specific to table delete button */
 .deleteDiv {
     margin: auto;
   }
@@ -21,7 +21,7 @@
     color: #ffffff;
   }
   
-  /* styles for dialog box to confirm delete button action */
+  /* Styles for dialog box to confirm delete button action */
   .dialogConfirmDelete {
     text-align: center;
     border: 1px solid #BD7374;
@@ -33,13 +33,13 @@
     transform: translate(-50%, -50%);
   }
   
-  /* text "Confirm Deletion" within dialog box*/
+  /* Text "Confirm Deletion" within dialog box*/
   .confirmDelete {
     color: #BD7374;
     font-weight: bold;
   }
   
-  /* buttons container within dialog box */
+  /* Buttons container within dialog box */
   .confirmDeleteBtns {
     display: flex;
     justify-content: space-between;
@@ -47,7 +47,7 @@
     margin-top: 2rem;
   }
   
-  /* buttons within buttons container */
+  /* Buttons within buttons container */
   .yesDeleteBtn,
   .noCancelDeleteBtn {
     border: none;
@@ -76,20 +76,20 @@
     font-weight: 800;
   }
   
-  /* darker color button hover */
+  /* Darker color button hover */
   .yesDeleteBtn:hover,
   .noCancelDeleteBtn:hover {
     background-color: #d9534f;
   }
   
-  /* brighter color button active */
+  /* Brighter color button active */
   .yesDeleteBtn:active,
   .noCancelDeleteBtn:active {
     background-color: #c9302c;
     transform: scale(0.98);
   }
   
-/* spacing between icon and text within dialog box buttons*/
+/* Spacing between icon and text within dialog box buttons*/
   .dialogBtnIcon {
     margin-right: 0.5rem;
   }

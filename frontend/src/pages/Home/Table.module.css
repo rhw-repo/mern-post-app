@@ -1,6 +1,6 @@
-/* styles specific to table element & related options container */
+/* Styles specific to table element & related options container */
 
-/* table-related options container, positioned above table
+/* Table-related options container, positioned above table
 contains the global filter, date range picker, a reset table btn
 & the create new button */ 
 .optionsContainer {
@@ -48,7 +48,7 @@ content as if on an elevated surface*/
     0rem 0.0625rem 0.625rem 0rem rgba(0, 0, 0, 0.12),
     0.3125rem 0.3125rem 0.3125rem 0.3125rem #778DA5;
 }
-/* eliminate spacing between cells */
+/* Eliminate spacing between cells */
 .tableNoGaps {
     width: 100%;
     border-spacing: 0;
@@ -83,7 +83,6 @@ content as if on an elevated surface*/
 
 /* Table Tags column rules & alignment with 
 Table Header Tags Select Box */
-
 .centerTableTags {
     display: flex;
     justify-content: center;
@@ -120,7 +119,7 @@ Table Header Tags Select Box */
     white-space: nowrap;
 }
 
-/* table sort buttons */
+/* Table sort buttons */
 .sortIcon {
     color: var(--secondary-light);
     cursor: pointer;
