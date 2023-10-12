@@ -1,5 +1,10 @@
-/* styles specific to ExperimentalAllTagsSelect */
+/* static css styles specific to ExperimentalAllTagsSelect */
 .selectContainer {
     border-radius: 0.625rem;
     margin: 1rem 0;
   }
+  
+  /* Note! - further custom styles defined within component: 
+ using functions that customize appearance based on component state.
+ */
+

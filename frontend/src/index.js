@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './assets/global.css'
-import './index.css';
 import App from './App';
 import { MaterialsContextProvider } from './context/MaterialContext';
 import { AuthContextProvider } from './context/AuthContext';

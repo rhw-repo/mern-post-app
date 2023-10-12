@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import Creatable from "react-select/creatable";
 import { useMaterialsContext } from "../../hooks/useMaterialsContext";
+import styles from "./ExperimentalAllTagsSelect.module.css";
 
 function ExperimentalAllTagsSelect({ onTagsChange }) {
   const { materials } = useMaterialsContext();
@@ -69,7 +70,7 @@ function ExperimentalAllTagsSelect({ onTagsChange }) {
       </div>
   }
 
-  /* replaces default colorways for the Creatable select element */
+  /* dynamic styling based on component state, replaces default styles */
   const customCreatableStyles = {
     control: (baseStyles, state) => ({
       ...baseStyles,
@@ -111,7 +112,7 @@ function ExperimentalAllTagsSelect({ onTagsChange }) {
   return (
     <label>
       Click the arrow to select or create tags:
-      <div className="select-container">
+      <div className={styles.selectContainer}>
         {allTags ? (
           <Creatable
             isMulti
