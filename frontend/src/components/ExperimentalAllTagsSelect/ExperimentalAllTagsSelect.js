@@ -11,11 +11,14 @@ function ExperimentalAllTagsSelect({ onTagsChange }) {
   const [allTags, setAllTags] = useState([])
   const [loading, setLoading] = useState(true)
   const [dataLoaded, setDataLoaded] = useState(false)
+  const [userInteracted, setUserInteracted] = useState(false);
 
-  //Added for debugging session. Log the materials Prop every time it changes
+
+  /* Added for debugging session. 
+  Uncomment block to log the materials Prop every time it changes:
   useEffect(() => {
     console.log('materials prop changed:', materials);
-  }, [materials]);
+  }, [materials]);*/
 
   // to load allTags from local storage on component mount
   useEffect(() => {
@@ -34,14 +37,16 @@ function ExperimentalAllTagsSelect({ onTagsChange }) {
     }
   }, [materials])
 
-  /* useEffect(() => {
-     console.log("allTags updated:", allTags)
-   }, [allTags])*/
+  useEffect(() => {
+    console.log("allTags updated:", allTags)
+  }, [allTags])
 
   // to handle onTagsChange whenever selectedTags changes
   useEffect(() => {
-    onTagsChange(selectedTags);
-  }, [selectedTags, onTagsChange]);
+    if (userInteracted) {
+      onTagsChange(selectedTags)
+    }
+  }, [selectedTags, onTagsChange, userInteracted])
 
   const handleChange = (selectedOptions) => {
     const options = selectedOptions
@@ -49,6 +54,7 @@ function ExperimentalAllTagsSelect({ onTagsChange }) {
       : []
     setSelectedTags(options)
     setAllTags(prevTags => Array.from(new Set([...prevTags, ...options])))
+    setUserInteracted(true)
   };
 
   // update allTags in localStorage to include any new tags created

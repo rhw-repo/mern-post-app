@@ -1,5 +1,3 @@
-/* Validation: form will not submit if any field empty. 
-   Instead will display error messages indicating empty field(s) */
 import { useEffect, useState } from "react";
 import { useMaterialsContext } from "../../hooks/useMaterialsContext";
 import { useAuthContext } from "../../hooks/useAuthContext";
@@ -18,11 +16,9 @@ const CreateNew = () => {
     const [content, setContent] = useState("")
     const [error, setError] = useState(null)
     const [emptyFields, setEmptyFields] = useState([])
-
     const [selectedTags, setSelectedTags] = useState([])
     const [trySubmit, setTrySubmit] = useState(false)
-
-    // frontend validation prevents form submission with empty fields
+    // Prevent form submission with empty fields
     const [isFormValid, setIsFormValid] = useState(false)
 
     useEffect(() => {
@@ -36,14 +32,14 @@ const CreateNew = () => {
         }
     }, [title, content, selectedTags])
 
-    // handles changes to the selected tags, fires if tags selected &/ created
+    // Handles changes to the selected tags
     const handleTagsChange = (tags) => {
         if (tags && tags.length) {
             setSelectedTags(tags)
         } else {
             console.log("handleTagsChange called without tags entered")
-            // updates only if selectedTags not already empty array
-            // and prevents submission if all selected tags deleted 
+            // Update only if selectedTags not already empty array
+            // Also prevent submission if all selected tags deleted 
             if (selectedTags.length !== 0) {
                  setSelectedTags([])
             }
@@ -81,7 +77,7 @@ const CreateNew = () => {
 
         // Log the response received from the backend
         console.log('Response received from the backend:', json)
-        // error handling
+        // Error handling
         if (!response.ok) {
             setError(json.error)
             setEmptyFields(json.emptyFields)
@@ -98,7 +94,7 @@ const CreateNew = () => {
         }
     }
 
-    // sets frontend validation error display according to missing fields
+    // Sets frontend validation error display according to missing fields
     const missingFields = () => {
         let fields = []
         if (!title) fields.push("Title")
