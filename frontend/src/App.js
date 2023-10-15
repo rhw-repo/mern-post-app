@@ -1,37 +1,37 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { useAuthContext } from './hooks/useAuthContext';
 import { Toaster } from 'react-hot-toast';
+import styles from "./App.module.css";
 
 // pages and components
-import Home from "./pages/Home";
-import Login from "./pages/Login";
-import Signup from "./pages/Signup";
-import Navbar from './components/Navbar';
-import CreateNew from './components/CreateNew';
-import Footer from './components/Footer';
-import ContentDetail from './pages/ContentDetail';
-import ErrorBoundary from './components/ErrorBoundary';
+import Home from "./pages/Home/Home";
+import Login from "./pages/Login/Login";
+import Signup from "./pages/Signup/Signup";
+import Navbar from "./components/Navbar/Navbar";
+import CreateNew from "./pages/CreateNew/CreateNew";
+import Footer from "./components/Footer/Footer";
 
+import ContentDetail from "./pages/ContentDetail/ContentDetail";
+import ErrorBoundary from "./components/ErrorBoundary/ErrorBoundary";
 
 function App() {
   const { user } = useAuthContext()
 
   return (
     <ErrorBoundary>
-      <div className="App">
+      <div>
         <BrowserRouter>
           <Toaster
             position="top-center"
             toastOptions={{
               duration: 3000,
-              className: "toaster",
               success: {
                 duration: 3000,
-                className: "toaster-success",
+                className: styles.toasterSuccess,
               },
             }} />
           <Navbar />
-          <div className='pages'>
+          <div className="pages">
             <Routes>
               <Route
                 path="/"

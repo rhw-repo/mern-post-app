@@ -1,0 +1,149 @@
+/* Styles specific to table element & related options container */
+
+/* Table-related options container, positioned above table
+contains the global filter, date range picker, a reset table btn
+& the create new button */ 
+.optionsContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 0.3rem;
+    margin-bottom: 0.625rem;
+}
+
+/* Please note - closeDateRangeBtn in ModalDateRangeFilter, 
+globalFilter in GlobalFilter */ 
+
+/* DateRangeFilter modal toggle buttons */
+.dateRangeBtn {
+    min-width: 11rem;
+    padding: 0.625rem;
+}
+
+.calendarIcon {
+    color: var(--secondary-light);
+}
+
+/* Reset table button */
+.resetTableBtn {
+    width: 9rem;
+    padding: 0.625rem;
+    margin: 1rem;
+}
+
+.createNewBtn {
+    min-width: 12rem;
+}
+
+/* Table layout and container style rules for displaying 
+content as if on an elevated surface*/
+.tableContainer {
+    width: 100%;
+    border: solid 1px white;
+    border-radius: 0.625rem;
+    overflow: hidden;
+    box-shadow:
+    0rem 0.125rem 0.25rem 0rem rgba(0, 0, 0, 0.2),
+    0rem 0.25rem 0.3125rem 0rem rgba(0, 0, 0, 0.14),
+    0rem 0.0625rem 0.625rem 0rem rgba(0, 0, 0, 0.12),
+    0.3125rem 0.3125rem 0.3125rem 0.3125rem #778DA5;
+}
+/* Eliminate spacing between cells */
+.tableNoGaps {
+    width: 100%;
+    border-spacing: 0;
+}
+
+.tableRow {
+    max-height: 2rem;
+    border-bottom: 1px solid grey;
+}
+
+.tableRow:hover {
+    background-color: #e0e0e0;
+}
+
+.tableCell {
+    padding: 1rem;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Table Header Section */ 
+.tableHeader {
+    white-space: nowrap;
+    border-bottom: solid 3px #BD7374;
+    background: white;
+    color: #435362;
+    font-weight: bold;
+    font-size: 1.25rem;
+    font-family: "Lexend Deca", Helvetica, Arial, Lucida, sans-serif;
+    padding: 1rem 0.1rem;
+    text-align: center;
+}
+
+/* Table Tags column rules & alignment with 
+Table Header Tags Select Box */
+.centerTableTags {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* styles tableTagsContainer when child of tableCell */ 
+.tableCell .tableTagsContainer {
+    flex-wrap: wrap;
+    margin-left: 1rem;
+}
+
+/* styles tagsChipTable when child of tableTagsContainer */
+.tableTagsContainer .tagChipTable {
+    height: 1rem;
+    line-height: 2rem;
+    background-color: var(--secondary-chips);
+    color: #ffffff;
+    font-weight: bold;
+    border-radius: 0.3rem;
+    padding: 0.625rem;
+    margin: 0rem 0.5rem 0 1rem;
+    min-width: 4em;
+    max-width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.tableLinkedCellContainer {
+    max-width: 35rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Table sort buttons */
+.sortIcon {
+    color: var(--secondary-light);
+    cursor: pointer;
+}
+
+/* Table Pagination section */
+.pagination {
+    text-align: center;
+}
+
+.tablePaginationButton,
+.SelectBox {
+    font-size: 1rem;
+    padding: 0.625rem;
+    margin: 1rem;
+    min-width: 6em;
+}
+
+.goToPageText {
+    display: inline-flex;
+    align-items: center;
+}
+
+.pageInput {
+    width: 3.125rem;
+    margin-left: 0.5rem;
+}

@@ -1,0 +1,355 @@
+/* TODO: Refactor to make responsive across different devices */
+/* Styling Note - all styles aim to meet Material Design 3 guidelines.*/
+ 
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@400;500;600;700&family=Open+Sans:wght@300;400&display=swap');
+
+/* Global color scheme */
+:root {
+  --primary: #BD7374;
+  --error: #A2262C;
+  --secondary: #435362;
+  --secondary-light: #667B99;
+  --secondary-chips: #5C6D84;
+}
+
+/* Global rules */
+body {
+  background-color: #ffffff;
+  margin: 0;
+  font-family: "Open Sans", "Helvetica", Arial, sans-serif;
+}
+
+/* Primary buttons */
+.login-btn,
+.signup-btn,
+.create-new-btn,
+.go-to-edit-btn,
+.save-btn {
+  background: var(--primary);
+  border: 0;
+  color: #fff;
+  text-align: center;
+  height: 3rem;
+  width: 10rem;
+  padding: 0.625rem;
+  font-family: "Lexend Deca", Helvetica, Arial, sans-serif;
+  font-size: 1.25rem;
+  font-weight: bold;
+  border-radius: 1.875rem;
+  cursor: pointer;
+  box-shadow: 0rem 0.25rem 0.5rem 0rem rgba(0, 0, 0, 0.2);
+  opacity: 1;
+  transition: background 0.3s, box-shadow 0.3s, transform 0.3s;
+}
+
+/* Primary buttons hover slightly darker */
+.login-btn:hover,
+.signup-btn:hover,
+.create-new-btn:hover,
+.go-to-edit-btn:hover,
+.save-btn:hover {
+  background: #A96669;
+  box-shadow:
+    0rem 0.1875rem 0.375rem 0rem rgba(0, 0, 0, 0.2),
+    0rem 0.5rem 0.625rem 0rem rgba(0, 0, 0, 0.14),
+    0rem 0.125rem 0.75rem 0rem rgba(0, 0, 0, 0.12);
+}
+
+/* Primary buttons active darker still */
+.login-btn:active,
+.signup-btn:active,
+.create-new-btn:active,
+.go-to-edit-btn:active,
+.save-btn:active {
+  background: #954B4C;
+  box-shadow:
+    0rem 0.0625rem 0.125rem 0rem rgba(0, 0, 0, 0.2),
+    0rem 0.125rem 0.15625rem 0rem rgba(0, 0, 0, 0.14),
+    0rem 0.03125rem 0.3125rem 0rem rgba(0, 0, 0, 0.12);
+  transform: scale(0.98);
+}
+
+/* Secondary buttons */
+nav button,
+.reset-table-btn,
+.table-pagination-button,
+.select-box,
+.date-range-btn,
+.cancel-btn,
+.switch-form-btn {
+  background: #fff;
+  color: var(--secondary);
+  border: 0.1rem solid var(--secondary);
+  border-radius: 1.875rem;
+  font-family: "Lexend Deca", Helvetica, Arial, sans-serif;
+  font-weight: 800;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s, transform 0.3s;
+}
+
+/* Secondary buttons hover state slightly darker */
+nav button:hover,
+.reset-table-btn:hover,
+.table-pagination-button:hover,
+.select-box:hover,
+.date-range-btn:hover,
+.cancel-btn:hover,
+.switch-form-btn:hover {
+  background: rgba(119, 141, 165, 0.15);
+  color: #37404b;
+  box-shadow: 0rem 0.125rem 0.25rem 0rem rgba(0, 0, 0, 0.1);
+}
+
+/* Secondary buttons active darker still */
+nav button:active,
+.reset-table-btn:active,
+.table-pagination-button:active,
+.select-box:active,
+.date-range-btn:active,
+.cancel-btn:active,
+.switch-form-btn:active {
+  background: rgba(67, 83, 98, 0.2);
+  color: #2c333b;
+  transform: scale(0.98);
+}
+
+/* All pages */
+.pages {
+  max-height: 75vh;
+  padding: 1.25rem;
+  margin: 0 auto;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+h1 {
+  color: #435362;
+  font-weight: 900;
+  text-align: center;
+  font-family: "Lexend Deca", Helvetica, Arial, sans-serif;
+}
+
+/* Form text inputs */
+label,
+input,
+textarea,
+p {
+  display: block;
+  font-weight: bold;
+}
+
+label {
+  margin-top: 1rem;
+}
+
+input,
+textarea {
+  font-family: 'Open Sans', 'Helvetica', Arial, sans-serif;
+  font-size: 1rem;
+  padding: 0.625rem;
+  margin: 0.312rem auto;
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 0.5rem;
+  box-sizing: border-box;
+  outline: none;
+  transition: border-color 0.3s, color 0.3s, transform 0.3s;
+}
+
+input:hover,
+textarea:hover {
+  border-color: var(--secondary);
+}
+
+input:focus,
+textarea:focus {
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+label,label,
+input,
+textarea,
+p {
+  display: block;
+  font-weight: bold;
+}
+
+label {
+  margin-top: 1rem;
+}
+
+input,
+textarea {
+  font-family: 'Open Sans', 'Helvetica', Arial, sans-serif;
+  font-size: 1rem;
+  padding: 0.625rem;
+  margin: 0.312rem auto;
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 0.5rem;
+  box-sizing: border-box;
+  outline: none;
+  transition: border-color 0.3s, color 0.3s, transform 0.3s;
+}
+
+input:hover,
+textarea:hover {
+  border-color: var(--secondary);
+}
+
+input:focus,
+textarea:focus {
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+label,
+p {
+  font-family: "Lexend Deca", Helvetica, Arial, sans-serif;
+  color: var(--secondary);
+}
+
+p {
+  font-family: "Lexend Deca", Helvetica, Arial, sans-serif;
+  color: var(--secondary);
+}
+
+/* Login & Signup forms, and all pages:
+   Mimics paper, as if displaying content on a piece of 
+   paper that casts shadows */
+.login-form,
+.signup-form,
+.content-detail-edit-create-containers {
+  background: #fff;
+  border-radius: 0.625rem;
+  box-shadow:
+    0rem 0.125rem 0.25rem 0rem rgba(0, 0, 0, 0.2),
+    0rem 0.25rem 0.3125rem 0rem rgba(0, 0, 0, 0.14),
+    0rem 0.0625rem 0.625rem 0rem rgba(0, 0, 0, 0.12),
+    0.3125rem 0.3125rem 0.3125rem 0.3125rem #778DA5;
+}
+
+/* Create, ContentDetail, Edit pages: */
+/* Center and limit width */
+.content-detail-edit-create-containers {
+  max-width: 87.5rem;
+  display: block;
+  margin: auto;
+  padding: 2rem;
+}
+/* Layout Cancel & Save buttons */
+.content-detail-edit-create-btns {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+/* Headings for all fields */
+.document-form-headings {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #435362;
+  font-family: "Lexend Deca", Helvetica, Arial, sans-serif;
+}
+
+/* Table related element */
+/* Note! Library-provided className: 
+   redundant UI elements in the date range indicator */
+.rdrInputRange {
+  visibility: hidden;
+}
+
+/* Tags: display matches library default */
+.tag-chip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 1rem;
+  line-height: 2rem;
+  background-color: var(--secondary-chips);
+  color: #ffffff;
+  font-weight: bold;
+  border-radius: 0.3rem;
+  padding: 0.625rem;
+  margin: 0rem 0.5rem 0 1rem;
+  min-width: 4em;
+  max-width: auto;
+}
+
+.tag-chip button {
+  display: flex;
+  padding: 6px;
+  border: none;
+  background-color: unset;
+  cursor: pointer;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+/* ContentDetail & Edit pages: display existing tags */
+.content-detail-tags-container,
+.edit-document-tags {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  row-gap: 1rem;
+}
+
+/* Global Error styling */
+div.error {
+  padding: 0.625rem;
+  background: #ffefef;
+  border: 0.06rem solid var(--error);
+  color: var(--error);
+  border-radius: 0.5rem;
+  margin: 1.25rem 0;
+}
+
+input.error,
+textarea.error {
+  border: 0.125rem solid var(--error);
+}
+
+/* Error styling specific to ContentDetail & Edit pages */
+div.content-detail div.edit input.error,
+div.content-detail div.edit textarea.error {
+  border: 0.125rem solid var(--error);
+}
+
+/* Login & Signup forms */
+.signup-form,
+.login-form {
+  max-width: 30rem;
+  margin: 2rem auto;
+  padding: 3rem;
+}
+
+.login-btn,
+.signup-btn {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 1.5rem auto 1rem auto;
+}
+
+.switch-form-text-prompt {
+  display: block;
+  font-size: 1.17rem;
+  margin-block-start: 1rem;
+  margin-block-end: 1rem;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+  font-weight: bold;
+}
+
+.switch-form-btns {
+  text-align: center;
+  color: #435362;
+}
+
+.switch-form-btn {
+  padding: 0.625rem;
+  min-width: 8rem;
+}

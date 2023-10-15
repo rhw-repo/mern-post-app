@@ -1,8 +1,9 @@
 import { Link, useNavigate } from "react-router-dom";
-import { useAuthContext } from "../hooks/useAuthContext";
-import { useLogout } from "../hooks/useLogout";
+import { useAuthContext } from "../../hooks/useAuthContext";
+import { useLogout } from "../../hooks/useLogout";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faRightFromBracket } from "@fortawesome/free-solid-svg-icons"
+import styles from "./Navbar.module.css";
 
 const Navbar = () => {
 
@@ -18,9 +19,9 @@ const Navbar = () => {
     const logoutIcon = <FontAwesomeIcon icon={faRightFromBracket} />
 
     return (
-        <header>
-            <div className="container">
-                <Link to="/">
+        <header className={styles.header}>
+            <div className={styles.container}>
+                <Link to="/" className={styles.link}>
                     <h1>ONLINE POST MANAGER</h1>
                 </Link>
                 <nav>
@@ -29,6 +30,7 @@ const Navbar = () => {
                             <span>{user.email}</span>
                             <button
                                 onClick={handleClick}
+                                className={styles.button}
                             >
                                 {logoutIcon} Log Out</button>
                         </div>

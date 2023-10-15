@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
-import { useAuthContext } from "../hooks/useAuthContext";
-import { useMaterialsContext } from "../hooks/useMaterialsContext";
+import { useAuthContext } from "../../hooks/useAuthContext";
+import { useMaterialsContext } from "../../hooks/useMaterialsContext";
 import { useNavigate } from "react-router-dom";
-import CancelButton from "../components/CancelButton";
+import CancelButton from "../../components/CancelButton/CancelButton";
 import toast from "react-hot-toast"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFloppyDisk } from "@fortawesome/free-solid-svg-icons"
-import ExperimentalAllTagsSelect from "../components/ExperimentalAllTagsSelect";
-
+import ExperimentalAllTagsSelect from "../../components/ExperimentalAllTagsSelect/ExperimentalAllTagsSelect"
+import styles from "./Edit.module.css";
 
 const Edit = ({ material }) => {
   // initialise state of title, content and tags
@@ -134,62 +134,62 @@ const Edit = ({ material }) => {
         </div>
       ) : null}
 
-      <div className="edit">
-        <div>
-          <label htmlFor="title" className="document-form-headings">Edit Title:</label>
-          <textarea
-            id="title"
-            rows={2}
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            className={(trySubmit && !title) || emptyFields.includes("title") ? "error" : "primary"}
-          />
-        </div>
-
-        <div>
-          <label htmlFor="content" className="document-form-headings">Edit Content:</label>
-          <textarea
-            id="content"
-            rows={8}
-            value={content}
-            onChange={(e) => setContent(e.target.value)}
-            className={(trySubmit && !content) || emptyFields.includes("content") ? "error" : "primary"}
-          >
-          </textarea>
-        </div>
-
-        <label htmlFor="tags" className="document-form-headings">Edit Tags:</label>
-        <div className="input-tags-container">
-          <div className={
-            tags.length > 0
-              ? (trySubmit &&
-                (selectedTags.length === 0 && tags.length === 0)
-                ? "error input-tags-container" : "input-tags-container")
-              : "hidden"
-          }>
-            <div className={trySubmit && (selectedTags.length === 0 && tags.length === 0) ? "error" : ""}>
-              <p>Tags you already have here - click on the x to delete any you don't want:</p>
-              <span className="edit-document-tags">
-                {tags.map((tag, index) => (
-                  <span key={index} className="tag-chip">
-                    {tag}
-                    <button type="button" onClick={() => deleteTag(index)}>X</button>
-                  </span>
-                ))}
-              </span>
-            </div>
-          </div>
-          <div className={trySubmit && (selectedTags.length === 0 && tags.length === 0) ? "error" : ""}>
-            <ExperimentalAllTagsSelect onTagsChange={handleTagsChange} />
-          </div>
-
-        </div>
-
-        <div className="content-detail-edit-create-btns">
-          <CancelButton />
-          <button className="save-btn" type="submit">{saveIcon} Save</button>
-        </div>
+      <div>
+        <label htmlFor="title" className="document-form-headings">Edit Title:</label>
+        <textarea
+          id="title"
+          rows={2}
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          className={(trySubmit && !title) || emptyFields.includes("title") ? "error" : "primary"}
+        />
       </div>
+
+      <div>
+        <label htmlFor="content" className="document-form-headings">Edit Content:</label>
+        <textarea
+          id="content"
+          rows={8}
+          value={content}
+          onChange={(e) => setContent(e.target.value)}
+          className={(trySubmit && !content) || emptyFields.includes("content") ? "error" : "primary"}
+        >
+        </textarea>
+      </div>
+
+      <label htmlFor="tags" className="document-form-headings">Edit Tags:</label>
+      <div className={styles.inputTagsContainer}>
+        <div className={
+          tags.length > 0
+            ? (trySubmit &&
+              (selectedTags.length === 0 && tags.length === 0)
+              ? `error ${styles.inputTagsContainer}`
+              : styles.inputTagsContainer)
+            : styles.hideEmptyTagsDiv
+        }>
+          <div className={trySubmit && (selectedTags.length === 0 && tags.length === 0) ? "error" : ""}>
+            <p>Tags you already have here - click on the x to delete any you don't want:</p>
+            <span className="edit-document-tags">
+              {tags.map((tag, index) => (
+                <span key={index} className="tag-chip">
+                  {tag}
+                  <button type="button" onClick={() => deleteTag(index)}>X</button>
+                </span>
+              ))}
+            </span>
+          </div>
+        </div>
+        <div className={trySubmit && (selectedTags.length === 0 && tags.length === 0) ? "error" : ""}>
+          <ExperimentalAllTagsSelect onTagsChange={handleTagsChange} />
+        </div>
+
+      </div>
+
+      <div className="content-detail-edit-create-btns">
+        <CancelButton />
+        <button className="save-btn" type="submit">{saveIcon} Save</button>
+      </div>
+
 
     </form>
   )

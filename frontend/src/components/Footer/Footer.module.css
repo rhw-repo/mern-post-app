@@ -1,0 +1,19 @@
+/* Styles specific to footer */
+.footer {
+    line-height: 0.3rem;
+    text-align: center;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    height: 0.3rem;
+    width: 100vw;
+    padding: 1.33rem 0.66rem;
+    margin-top: 1.25rem;
+    background-color: var(--secondary);
+    font-family: "Lexend Deca", Helvetica, Arial, Lucida, sans-serif;
+    font-size: 1rem;
+    color: #ffffff;
+    font-weight: 600;
+  }
+  

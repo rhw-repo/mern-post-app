@@ -1,9 +1,10 @@
 import { useState } from "react"
-import { useMaterialsContext } from "../hooks/useMaterialsContext"
-import { useAuthContext } from "../hooks/useAuthContext"
+import { useMaterialsContext } from "../../hooks/useMaterialsContext"
+import { useAuthContext } from "../../hooks/useAuthContext"
 import { useNavigate } from "react-router-dom"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTrashCan, faFloppyDisk } from "@fortawesome/free-solid-svg-icons"
+import { faTrashCan, faFloppyDisk, faTrash } from "@fortawesome/free-solid-svg-icons"
+import styles from "./DeleteButton.module.css";
 
 const DeleteButton = ({ _id }) => {
     const [showDialog, setShowDialog] = useState(false)
@@ -42,32 +43,33 @@ const DeleteButton = ({ _id }) => {
         setShowDialog(false)
     }
 
-    const deleteIcon = <FontAwesomeIcon icon={faTrashCan} className="dialog-button-icon" size="xl" />
-    const saveIcon = <FontAwesomeIcon icon={faFloppyDisk} className="dialog-button-icon" />
-
+    const deleteIcon = <FontAwesomeIcon icon={faTrashCan} size="xl" />
+    const saveIcon = <FontAwesomeIcon icon={faFloppyDisk} className={styles.dialogBtnIcon} />
+    const confirmYesDeleteIcon = <FontAwesomeIcon icon={faTrash} className={styles.dialogBtnIcon} />
+    
     return (
-        <div className="delete-div">
+        <div className={styles.deleteDiv}>
             <span
-                className="delete-span"
+                className={styles.deleteSpan}
                 onClick={handleDeleteClick}
             >
                 {deleteIcon}
             </span>
 
             {showDialog && (
-                <dialog open className="dialog-confirm-delete">
-                    <h2 className="confirm-delete">Confirm Deletion</h2>
+                <dialog open className={styles.dialogConfirmDelete}>
+                    <h2 className={styles.confirmDelete}>Confirm Deletion</h2>
                     <p><strong>Do you want to delete this item?</strong></p>
                     <p>Choosing the delete button here cannot be undone.</p>
-                    <div className="confirm-delete-buttons">
+                    <div className={styles.confirmDeleteBtns}>
                         <button
-                            className="yes-delete-btn"
+                            className={styles.yesDeleteBtn}
                             onClick={handleConfirmDelete}
                         >
-                            {deleteIcon} Yes, delete
+                            {confirmYesDeleteIcon} Yes, delete
                         </button>
                         <button
-                            className="no-cancel-delete-btn"
+                            className={styles.noCancelDeleteBtn}
                             onClick={handleCancelDelete}
                         >
                             {saveIcon} No - Keep it
