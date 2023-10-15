@@ -4,11 +4,18 @@ import { useMaterialsContext } from "../../hooks/useMaterialsContext";
 import styles from "./ExperimentalAllTagsSelect.module.css";
 
 function ExperimentalAllTagsSelect({ onTagsChange }) {
+  console.log('ExperimentalAllTagsSelect rendered!');
+  console.log('All props:', { onTagsChange });
   const { materials } = useMaterialsContext();
   const [selectedTags, setSelectedTags] = useState([])
   const [allTags, setAllTags] = useState([])
   const [loading, setLoading] = useState(true)
   const [dataLoaded, setDataLoaded] = useState(false)
+
+  //Added for debugging session. Log the materials Prop every time it changes
+  useEffect(() => {
+    console.log('materials prop changed:', materials);
+  }, [materials]);
 
   // to load allTags from local storage on component mount
   useEffect(() => {
@@ -27,9 +34,9 @@ function ExperimentalAllTagsSelect({ onTagsChange }) {
     }
   }, [materials])
 
-  useEffect(() => {
-    console.log("allTags updated:", allTags)
-  }, [allTags])
+  /* useEffect(() => {
+     console.log("allTags updated:", allTags)
+   }, [allTags])*/
 
   // to handle onTagsChange whenever selectedTags changes
   useEffect(() => {
@@ -65,9 +72,9 @@ function ExperimentalAllTagsSelect({ onTagsChange }) {
   // error handling
   if (!dataLoaded) {
     return <div className="error">
-      An error occured: please try refreshing the page. 
+      An error occured: please try refreshing the page.
       If this problem persists, please contact support.
-      </div>
+    </div>
   }
 
   /* dynamic styling based on component state, replaces default styles */
@@ -84,8 +91,8 @@ function ExperimentalAllTagsSelect({ onTagsChange }) {
     placeholder: (baseStyles) => ({
       ...baseStyles,
       color: '#435362',
-      fontSize: '1rem', 
-  }),
+      fontSize: '1rem',
+    }),
     option: (baseStyles, state) => ({
       ...baseStyles,
       backgroundColor: state.isFocused ? '#667B99' : baseStyles.backgroundColor,

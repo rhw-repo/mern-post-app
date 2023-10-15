@@ -42,8 +42,11 @@ const CreateNew = () => {
             setSelectedTags(tags)
         } else {
             console.log("handleTagsChange called without tags entered")
-            // prevent submission if all selected tags deleted 
-            setSelectedTags([])
+            // updates only if selectedTags not already empty array
+            // and prevents submission if all selected tags deleted 
+            if (selectedTags.length !== 0) {
+                 setSelectedTags([])
+            }
         }
     }
 
@@ -149,5 +152,9 @@ const CreateNew = () => {
         </>
     )
 }
+
+if (typeof window !== 'undefined' && process.env.NODE_ENV === 'development') {
+    CreateNew.whyDidYouRender = true;
+  }
 
 export default CreateNew;
