@@ -149,8 +149,4 @@ const CreateNew = () => {
     )
 }
 
-if (typeof window !== 'undefined' && process.env.NODE_ENV === 'development') {
-    CreateNew.whyDidYouRender = true;
-  }
-
 export default CreateNew;
