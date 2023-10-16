@@ -8,8 +8,9 @@ function ExperimentalAllTagsSelect({ onTagsChange }) {
   const [allTags, setAllTags] = useState([]);
   const [loading, setLoading] = useState(true);
   const [dataLoaded, setDataLoaded] = useState(false);
+  const [userInteracted, setUserInteracted] = useState(false);
 
-  // Effect to load allTags from local storage on component mount
+  // to load allTags from local storage on component mount
   useEffect(() => {
     const savedAllTags = JSON.parse(localStorage.getItem("allTags"));
     if (savedAllTags && savedAllTags.length > 0) {
@@ -30,10 +31,13 @@ function ExperimentalAllTagsSelect({ onTagsChange }) {
     console.log("allTags updated:", allTags)
   }, [allTags])
 
-  // Effect to handle onTagsChange whenever selectedTags changes
+  // to handle onTagsChange whenever selectedTags changes
   useEffect(() => {
     onTagsChange(selectedTags);
-  }, [selectedTags, onTagsChange]);
+    if (userInteracted) {
+      onTagsChange(selectedTags)
+    }
+  }, [selectedTags, onTagsChange, userInteracted]);
 
   const handleChange = (selectedOptions) => {
     const options = selectedOptions
@@ -41,6 +45,7 @@ function ExperimentalAllTagsSelect({ onTagsChange }) {
       : []
     setSelectedTags(options)
     setAllTags(prevTags => Array.from(new Set([...prevTags, ...options])))
+    setUserInteracted(true)
   };
 
   // update allTags in localStorage to include any new tags created

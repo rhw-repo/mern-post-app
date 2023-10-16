@@ -1,6 +1,5 @@
-// TODO 1.Research input  sanitisation
 /* Validation: without all fields completed, form cannot submit frontend & 
-backend also rejects if detect same. Both display styled error messages */ 
+backend also rejects if detect same. Both display styled error messages */
 
 import { useEffect, useState } from "react";
 import { useMaterialsContext } from "../hooks/useMaterialsContext";
@@ -23,7 +22,7 @@ const CreateNew = () => {
     const [selectedTags, setSelectedTags] = useState([])
     const [trySubmit, setTrySubmit] = useState(false)
 
-    // EXPERIMENT to add frontend validation prevent empty fields 
+    // prevent form submission with empty fields
     const [isFormValid, setIsFormValid] = useState(false)
 
     useEffect(() => {
@@ -37,14 +36,16 @@ const CreateNew = () => {
         }
     }, [title, content, selectedTags])
 
-    // handles changes to the selected tags, fires if tags selected &/ created
+    // Handles changes to the selected tags
     const handleTagsChange = (tags) => {
         if (tags && tags.length) {
             setSelectedTags(tags)
         } else {
-            console.log("handleTagsChange called without tags entered")
-            // EXPERIMENT to prevent submission if all tags deleted before submission...
-            setSelectedTags([])
+            // Update only if selectedTags not already empty array
+            // Also prevent submission if all selected tags deleted 
+            if (selectedTags.length !== 0) {
+                 setSelectedTags([])
+            }
         }
     }
 
