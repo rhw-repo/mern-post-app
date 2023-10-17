@@ -1,11 +1,10 @@
-/* TODO:
-temporary log in, replace with SSO & avoid user details in local storage */
+/* temporary signup, replace & avoid user details in local storage */
 
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useLogin } from "../hooks/useLogin";
+import { useSignup } from "../../hooks/useSignup";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faRightToBracket, faUserPlus } from "@fortawesome/free-solid-svg-icons"
+import { faUserPlus, faRightToBracket } from "@fortawesome/free-solid-svg-icons"
 
 // custom hook manages input fields error handling
 const useInput = (initialValue, externalError) => {
@@ -34,16 +33,16 @@ const useInput = (initialValue, externalError) => {
     }
 }
 
-const Login = () => {
-    // imports from custom useLogin hook
-    const { login, error, isLoading, clearError } = useLogin()
+const Signup = () => {
+
+    // imports from custom useSignin hook
+    const { signup, error, isLoading, clearError } = useSignup()
     // custom input hooks for email and password 
     const emailInput = useInput("", error)
     const passwordInput = useInput("", error)
     // state for email and password values
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
-
 
     // client-side validation prevent submission with empty fields 
     const [isFormValid, setIsFormValid] = useState(false)
@@ -66,13 +65,14 @@ const Login = () => {
             return
         }
 
-        await login(email, password)
+
+        await signup(email, password)
     }
 
     const navigate = useNavigate()
 
-    const goToSignup = () => {
-        navigate("/Signup")
+    const goToLogin = () => {
+        navigate("/Login")
     }
 
     // client-side - set error display according to missing fields 
@@ -82,13 +82,13 @@ const Login = () => {
         if (!password) fields.push("Password")
         return fields
     }
-    // icons for buttons
-    const loginIcon = <FontAwesomeIcon icon={faRightToBracket} />
+
     const signupIcon = <FontAwesomeIcon icon={faUserPlus} />
+    const loginIcon = <FontAwesomeIcon icon={faRightToBracket} />
 
     return (
         <>
-            <form className="login" onSubmit={handleSubmit}>
+            <form className="signup-form" onSubmit={handleSubmit}>
                 {(trySubmit && !isFormValid) || error ? (
                     <div className="error">
                         {trySubmit && !isFormValid ? (
@@ -101,11 +101,10 @@ const Login = () => {
                     </div>
                 ) : null}
 
-                <h1>Welcome. Login here:</h1>
+                <h1>Create your account here:</h1>
                 <label>Email*</label>
                 <input
                     aria-label="Enter your email address"
-                    id="email"
                     type="email"
                     autoComplete="off"
                     onChange={(e) => {
@@ -113,14 +112,12 @@ const Login = () => {
                         emailInput.handleInputChange(e)
                         clearError()
                     }}
-
                     value={email}
                     className={(trySubmit && !email) || emailInput.error ? "error" : "primary"}
                 />
                 <label>Password*</label>
                 <input
                     aria-label="Enter your password"
-                    id="password"
                     type="password"
                     autoComplete="off"
                     onChange={(e) => {
@@ -134,25 +131,25 @@ const Login = () => {
 
                 <div >
                     <button
-                        className="login_btn"
+                        className="signup-btn"
                         disabled={isLoading}
                     >
-                        {loginIcon} Login
+                        {signupIcon} Signup
                     </button>
                     {error && <div className="error">{error}</div>}
                 </div>
             </form>
-            <div className="switch_form_btns">
-                <h3>Need an account?</h3>
+            <div className="switch-form-btns">
+                <div className="switch-form-text-prompt">Click below if you already have an account:</div>
                 <button
-                    className="switch_form_btn"
-                    onClick={goToSignup}
+                    className="switch-form-btn"
+                    onClick={goToLogin}
                 >
-                    {signupIcon} Signup
+                    {loginIcon} Login
                 </button>
             </div>
         </>
     )
 }
 
-export default Login
+export default Signup;

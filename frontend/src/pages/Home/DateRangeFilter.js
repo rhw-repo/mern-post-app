@@ -2,6 +2,7 @@ import { useState } from "react";
 import { DateRangePicker } from "react-date-range";
 // function required for filtering by selected date range
 import { isWithinInterval } from "date-fns"
+import styles from "./DateRangeFilter.module.css";
 
 // exported & passed to Table.js (separate filter logic & column declarations)
 
@@ -30,12 +31,17 @@ function DateRangeFilter({ handleFilter }) {
     handleFilter(ranges.selection)
   }
 
-  // rangeColors overrides default styling to app's primary color #BD7374
+  // TODO would need unique exception to CSP: 
+  // library seem to inject style into HTML
+  const rangeColors = ["#667B99"]
+
+  /* rangeColors prop sets the color scheme of DateRangePicker 
+  to match the app's primary color */
   return (
-    <div className="modal">
+    <div className={styles.modal}>
       <DateRangePicker
-        className="modal"
-        rangeColors={["#667B99"]}
+        className={styles.modal}
+        rangeColors={rangeColors}
         showSelectionPreview={false}
         ranges={[dateRange]}
         onChange={handleSelect} />

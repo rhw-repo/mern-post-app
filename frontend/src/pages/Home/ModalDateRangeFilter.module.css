@@ -1,0 +1,15 @@
+/* Styles specific to opened modal for DateRangeFilter */
+.closeDateRangeBtn {
+    border: none;
+    background-color: none;
+    margin: 0.5rem 0;
+    cursor: pointer;
+    padding: 0;
+    height: 2rem;
+    width: 2rem;
+    border-radius: 50%;
+  }
+
+  .closeDateRangeBtnIcon {
+    color: var(--secondary-light);
+  }

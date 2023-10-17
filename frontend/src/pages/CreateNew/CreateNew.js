@@ -1,13 +1,11 @@
-/* Validation: without all fields completed, form cannot submit frontend & 
-backend also rejects if detect same. Both display styled error messages */
-
 import { useEffect, useState } from "react";
-import { useMaterialsContext } from "../hooks/useMaterialsContext";
-import { useAuthContext } from "../hooks/useAuthContext";
+import { useMaterialsContext } from "../../hooks/useMaterialsContext";
+import { useAuthContext } from "../../hooks/useAuthContext";
 import { useNavigate } from "react-router-dom";
-import CancelButton from "./CancelButton";
-import ExperimentalAllTagsSelect from "./ExperimentalAllTagsSelect";
-import toast from "react-hot-toast"
+import CancelButton from "../../components/CancelButton/CancelButton";
+import ExperimentalAllTagsSelect from "../../components/ExperimentalAllTagsSelect/ExperimentalAllTagsSelect";
+import toast from "react-hot-toast";
+import styles from "./CreateNew.module.css";
 
 const CreateNew = () => {
     const { dispatch } = useMaterialsContext()
@@ -18,11 +16,9 @@ const CreateNew = () => {
     const [content, setContent] = useState("")
     const [error, setError] = useState(null)
     const [emptyFields, setEmptyFields] = useState([])
-
     const [selectedTags, setSelectedTags] = useState([])
     const [trySubmit, setTrySubmit] = useState(false)
-
-    // prevent form submission with empty fields
+    // Prevent form submission with empty fields
     const [isFormValid, setIsFormValid] = useState(false)
 
     useEffect(() => {
@@ -41,6 +37,7 @@ const CreateNew = () => {
         if (tags && tags.length) {
             setSelectedTags(tags)
         } else {
+            console.log("handleTagsChange called without tags entered")
             // Update only if selectedTags not already empty array
             // Also prevent submission if all selected tags deleted 
             if (selectedTags.length !== 0) {
@@ -80,7 +77,7 @@ const CreateNew = () => {
 
         // Log the response received from the backend
         console.log('Response received from the backend:', json)
-
+        // Error handling
         if (!response.ok) {
             setError(json.error)
             setEmptyFields(json.emptyFields)
@@ -97,7 +94,7 @@ const CreateNew = () => {
         }
     }
 
-    // sets frontend validation error display according to missing fields
+    // Sets frontend validation error display according to missing fields
     const missingFields = () => {
         let fields = []
         if (!title) fields.push("Title")
@@ -108,7 +105,7 @@ const CreateNew = () => {
 
     return (
         <>
-            <form className="create" onSubmit={handleSubmit}>
+            <form className="content-detail-edit-create-containers" onSubmit={handleSubmit}>
                 {(trySubmit && !isFormValid) || error ? (
                     <div className="error">
                         {trySubmit && !isFormValid ? (
@@ -121,7 +118,7 @@ const CreateNew = () => {
                     </div>
                 ) : null}
 
-                <label className="document_form_headings ">
+                <label className="document-form-headings">
                     Type or paste the title here:
                 </label>
                 <textarea
@@ -129,30 +126,25 @@ const CreateNew = () => {
                     onChange={(e) => setTitle(e.target.value)}
                     value={title}
                     className={(trySubmit && !title) || emptyFields.includes("title") ? "error" : "primary"}
-
                 />
-                <label className="document_form_headings ">Type or paste content here:</label>
+                <label className="document-form-headings">Type or paste content here:</label>
                 <textarea
                     rows={8}
                     onChange={(e) => setContent(e.target.value)}
                     value={content}
                     className={(trySubmit && !content) || emptyFields.includes("content") ? "error" : "primary"}
                 />
-                <label className="document_form_headings ">Add tags here:</label>
-                <div className="tags_section_container">
-                    <div className="existing_tags_container">
-                        <div className={trySubmit && selectedTags.length === 0 ? "error" : ""}>
-                            <ExperimentalAllTagsSelect onTagsChange={handleTagsChange} />
-                        </div>
+                <label className="document-form-headings">Add tags here:</label>
+                <div className={styles.tagsSectionContainer}>
+                    <div className={trySubmit && selectedTags.length === 0 ? "error" : ""}>
+                        <ExperimentalAllTagsSelect onTagsChange={handleTagsChange} />
                     </div>
                 </div>
-                <div className="content_detail_edit_create_btns">
+                <div className="content-detail-edit-create-btns">
                     <CancelButton />
-                    <button className="save_btn" onClick={handleSubmit}>Save</button>
-
+                    <button className="save-btn" type="submit">Save</button>
                 </div>
             </form>
-
         </>
     )
 }

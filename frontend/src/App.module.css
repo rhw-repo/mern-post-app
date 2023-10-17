@@ -1,0 +1,6 @@
+/* Styles specific to App.js */
+/* Success toasts */
+.toasterSuccess {
+    font-family: "Lexend Deca", Helvetica, Arial, sans-serif;
+    font-weight: bold;
+  }

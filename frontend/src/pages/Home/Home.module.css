@@ -1,0 +1,9 @@
+/* Styles specific to homepage */
+.home {
+    display: block;
+  }
+ 
+.home a {
+    color: inherit;
+    text-decoration: none;
+  }

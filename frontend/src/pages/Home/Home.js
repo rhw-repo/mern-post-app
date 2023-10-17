@@ -1,10 +1,13 @@
 // hooks
 import { useEffect, useMemo } from "react";
-import { useMaterialsContext } from "../hooks/useMaterialsContext";
-import { useAuthContext } from "../hooks/useAuthContext";
+import { useMaterialsContext } from "../../hooks/useMaterialsContext";
+import { useAuthContext } from "../../hooks/useAuthContext";
+import styles from "./Home.module.css";
 
 // components
-import Table from "../components/Table";
+// import Table from "../components/Table";
+import Table from "./Table.js";
+import ErrorBoundary from "../../components/ErrorBoundary/ErrorBoundary";
 
 const Home = () => {
   const { materials, dispatch } = useMaterialsContext()
@@ -23,12 +26,12 @@ const Home = () => {
         dispatch({ type: "SET_MATERIALS", payload: json })
       }
     }
-   
+
     if (user) {
       fetchMaterials()
     }
 
-}, [dispatch, user])
+  }, [dispatch, user])
 
   // Array of objects to pass to table (Tanstack Table v7) 
   const data = useMemo(() => materials, [materials])
@@ -41,11 +44,13 @@ const Home = () => {
 
   return (
     <>
-      <div className="home">
+      <ErrorBoundary>
+        <div className={styles.home}>
           <Table data={data} />
-        </div>      
-      <div>
-      </div>
+        </div>
+        <div>
+        </div>
+      </ErrorBoundary>
     </>
   )
 }

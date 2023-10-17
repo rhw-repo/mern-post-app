@@ -1,12 +1,12 @@
 /* uncommenting line 31 allows check document _id*/
 import { useState } from "react";
 import { useParams } from "react-router-dom";
-import useFetch from "../hooks/useFetch";
+import useFetch from "../../hooks/useFetch";
 import Edit from "./Edit";
-import Footer from "../components/Footer";
-import CancelButton from "../components/CancelButton";
+import CancelButton from "../../components/CancelButton/CancelButton";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons"
+import styles from "./ContentDetail.module.css";
 
 const ContentDetail = () => {
     const { _id } = useParams();
@@ -27,7 +27,7 @@ const ContentDetail = () => {
 
     return (
         <>
-            <div className="content_detail">
+            <div className="content-detail-edit-create-containers">
                 {isEditing ? (
                     <Edit material={material} onUpdateComplete={handleUpdateComplete} />
                 ) : (
@@ -37,30 +37,28 @@ const ContentDetail = () => {
                         {error && <div>{error}</div>}
                         {material && (
                             <article>
-                                <div className="content_detail_title">{material.title}</div>
-                                <div className="content_detail_content">{material.content}</div>
-                                <div className="document_form_headings content_detail_tags_label" >Tags:</div>
-                                <div className="content_detail_tags_container">
+                                <div className={styles.contentDetailTitle}>{material.title}</div>
+                                <div className={styles.contentDetailContent}>{material.content}</div>
+                                <div className={`${styles.contentDetailTagsLabel} document-form-headings`}>Tags:</div>
+                                <div className="content-detail-tags-container">
                                     {material.tags.map((tag, index) => (
                                         <span key={index} className=" tags tag-chip">{tag}</span>
                                     ))}
                                 </div>
                             </article>
                         )}
-                        <div className="content_detail_edit_create_btns">
+                        <div className="content-detail-edit-create-btns">
                             <CancelButton />
                             <button
                                 className="go-to-edit-btn"
                                 onClick={handleUpdateClick}>
                                 {editIcon} Edit
                             </button>
-
                         </div>
                     </div>
                 )}
 
             </div>
-            <Footer />
         </>
     )
 }

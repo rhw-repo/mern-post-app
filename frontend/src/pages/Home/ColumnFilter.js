@@ -1,12 +1,11 @@
-/* provide logical && searching and work in conjunction with global filter
-TODO: 1. create function sanitise to prevent XSS attacks 
-*/
+// provides logical && searching and works in conjunction with global filter
 import { useEffect } from "react";
 import styled from "styled-components"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFilter } from "@fortawesome/free-solid-svg-icons"
 
 // icon is SVG not CSS: styled component allows icon in placeholder
+// Note - no modules.css for ColumnFilter.js
 const SearchBox = styled.div`
     border: 1px solid #ddd;
     border-radius: 0.5rem;
@@ -16,38 +15,37 @@ const SearchBox = styled.div`
     align-items: center;
     justify-content: space-between;
     width: 80%;
-    transition: border-color 0.3s; // Smooth transition for border color
+    transition: border-color 0.3s; 
 
     & input {
         border: none;
         flex-grow: 1;
-        outline: none; // Removing default focus outline
+        outline: none; 
         font-size: 1rem;
         margin-left: 0.625rem;
     }
 
     & .filter-icon {
-        color: var(--secondary-light); // Default color for SVG icon
+        color: var(--secondary-light); 
         margin-right: 0.312rem;
-        transition: color 0.3s, transform 0.3s; // Smooth transition for color and scaling
+        transition: color 0.3s, transform 0.3s; 
     }
 
     &:hover {
         border-color: var(--outline);
 
         & .filter-icon {
-            color: #445566; // More distinct darker shade for hover
-            transform: scale(1.1); // Slightly scaled up for hover
+            color: #445566; 
+            transform: scale(1.1); 
         }
     }
 
     & input:focus + .filter-icon {
-        color:  #334455; // Even more distinct darker shade for focus
-        transform: scale(1.2); // Further scaled up for focus
+        color:  #334455; 
+        transform: scale(1.2); 
     }
     }
 `
-
 const filterIcon = <FontAwesomeIcon icon={faFilter} className="filter-icon" />
 
 const ColumnFilter = ({ column }) => {
@@ -57,11 +55,6 @@ const ColumnFilter = ({ column }) => {
     }, [])
 
     const { filterValue, setFilter } = column
-
-// increased css specificty to override general input style rules
-    const customStyles = {
-        boxShadow: "none",
-    }
 
     // hides input in date columns (DateRangeFilter used instead or no filter)
     if (column.Header !== "Created At" && column.Header !== "Updated At" && column.Header !== "Delete") {
@@ -75,7 +68,6 @@ const ColumnFilter = ({ column }) => {
                             placeholder="Search this column..."
                             value={filterValue || ""}
                             onChange={e => setFilter(e.target.value)}
-                            style={customStyles}
                         />
                     </SearchBox>
                 </span>

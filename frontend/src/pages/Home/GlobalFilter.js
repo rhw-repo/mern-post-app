@@ -4,6 +4,7 @@ import { useAsyncDebounce } from "react-table";
 import styled from "styled-components"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFilter } from "@fortawesome/free-solid-svg-icons"
+import styles from "./GlobalFilter.module.css";
 
 // icon is SVG not CSS: styled component allows icon in placeholder
 const SearchBox = styled.div`
@@ -16,29 +17,28 @@ const SearchBox = styled.div`
     justify-content: space-between;
     width: 100%;
 
- 
     & input {
         border: none;
         flex-grow: 1;
     }
 
     & .filter-icon {
-        color: var(--secondary-light); // Default color for SVG icon
-        transition: color 0.3s, transform 0.3s; // Smooth transition for color and scaling
+        color: var(--secondary-light); 
+        transition: color 0.3s, transform 0.3s; 
     }
 
     &:hover {
         border-color: var(--secondary);
 
         & .filter-icon {
-            color: #445566; // More distinct darker shade for hover
-            transform: scale(1.1); // Slightly scaled up for hover
+            color: #445566; 
+            transform: scale(1.1); 
         }
     }
 
     & input:focus + .filter-icon {
-        color: #334455; // Even more distinct darker shade for focus
-        transform: scale(1.2); // Further scaled up for focus
+        color: #334455; 
+        transform: scale(1.2); 
     }
   
 }   
@@ -46,51 +46,35 @@ const SearchBox = styled.div`
 const GlobalFilter = ({ filter, setFilter }) => {
     const [value, setValue] = useState(filter)
 
-    // Experiment successful, adds useEffect synchronizing local state with prop to 
+    //  synchronise local state with prop to 
     // ensure resetTable functions 
     useEffect(() => {
         setValue(filter);
     }, [filter]);
 
-
-    // Delays filter execution preventing unnecessary operations, better performance
+    // Delays filter execution preventing unnecessary operations
     const onChange = useAsyncDebounce(value => {
         setFilter(value || undefined)
     }, 300)
 
     const filterIcon = <FontAwesomeIcon icon={faFilter} className="filter-icon" />
 
-    //increased css specificity to override general input style rules
-    const customStyles = {
-        outline: "none",
-        boxShadow: "none",
-        width: "20rem",
-        fontSize: "1rem",
-        marginLeft: "0.625rem",
-    }
+    const handleInputChange = (e) => {
+        setValue(e.target.value)
+         onChange(e.target.value)
+      }
 
     return (
-        <div style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "flex-start",
-        }}>
-            <span style={{
-                fontWeight: "bold",
-                fontSize: "1.25rem",
-                padding: "0.625rem",
-            }}>
+        <div className={styles.globalFilterDiv}>
+            <span className={styles.globalFilterSpan}>
                 <SearchBox>
                     {filterIcon}
                     <input
                         type="text"
                         placeholder="Search in all columns..."
                         value={value || ""}
-                        onChange={(e) => {
-                            setValue(e.target.value)
-                            onChange(e.target.value)
-                        }}
-                        style={customStyles}
+                        onChange= {handleInputChange}
+                        className={styles.globalFilterInput}
                     />
                 </SearchBox>
             </span>

@@ -37,7 +37,7 @@ userSchema.statics.signup = async function(email, password) {
     const exists = await this.findOne({ email })
 
     if (exists) {
-        throw Error("Incorrect log in details")
+        throw Error("This email address is not available. Please use another address.")
     }
 
     // generate salt
