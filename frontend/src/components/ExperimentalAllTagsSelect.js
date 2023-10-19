@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+/*import { useState, useEffect } from "react";
 import Creatable from "react-select/creatable";
 import { useMaterialsContext } from "../hooks/useMaterialsContext";
 
@@ -71,7 +71,7 @@ function ExperimentalAllTagsSelect({ onTagsChange }) {
     return null
   }
 
-  /* replaces default colorways for the Creatable select element */
+   replaces default colorways for the Creatable select element 
   const customCreatableStyles = {
     control: (baseStyles, state) => ({
       ...baseStyles,
@@ -134,4 +134,4 @@ function ExperimentalAllTagsSelect({ onTagsChange }) {
   );
 }
 
-export default ExperimentalAllTagsSelect;
+export default ExperimentalAllTagsSelect;*/
