@@ -2,7 +2,7 @@
 
 /* Table-related options container, positioned above table
 contains the global filter, date range picker, a reset table btn
-& the create new button */ 
+& the create new button */
 .optionsContainer {
     display: flex;
     justify-content: space-between;
@@ -12,7 +12,7 @@ contains the global filter, date range picker, a reset table btn
 }
 
 /* Please note - closeDateRangeBtn in ModalDateRangeFilter, 
-globalFilter in GlobalFilter */ 
+globalFilter in GlobalFilter */
 
 /* DateRangeFilter modal toggle buttons */
 .dateRangeBtn {
@@ -43,11 +43,12 @@ content as if on an elevated surface*/
     border-radius: 0.625rem;
     overflow: hidden;
     box-shadow:
-    0rem 0.125rem 0.25rem 0rem rgba(0, 0, 0, 0.2),
-    0rem 0.25rem 0.3125rem 0rem rgba(0, 0, 0, 0.14),
-    0rem 0.0625rem 0.625rem 0rem rgba(0, 0, 0, 0.12),
-    0.3125rem 0.3125rem 0.3125rem 0.3125rem #778DA5;
+        0rem 0.125rem 0.25rem 0rem rgba(0, 0, 0, 0.2),
+        0rem 0.25rem 0.3125rem 0rem rgba(0, 0, 0, 0.14),
+        0rem 0.0625rem 0.625rem 0rem rgba(0, 0, 0, 0.12),
+        0.3125rem 0.3125rem 0.3125rem 0.3125rem #778DA5;
 }
+
 /* Eliminate spacing between cells */
 .tableNoGaps {
     width: 100%;
@@ -68,7 +69,7 @@ content as if on an elevated surface*/
     border-bottom: 1px solid #ddd;
 }
 
-/* Table Header Section */ 
+/* Table Header Section */
 .tableHeader {
     white-space: nowrap;
     border-bottom: solid 3px #BD7374;
@@ -89,7 +90,7 @@ Table Header Tags Select Box */
     align-items: center;
 }
 
-/* styles tableTagsContainer when child of tableCell */ 
+/* styles tableTagsContainer when child of tableCell */
 .tableCell .tableTagsContainer {
     flex-wrap: wrap;
     margin-left: 1rem;
@@ -146,4 +147,49 @@ Table Header Tags Select Box */
 .pageInput {
     width: 3.125rem;
     margin-left: 0.5rem;
+}
+
+/* adjust to grid for screens smaller than desktop */
+@media (max-width: 1370px) {
+    th {
+        display: none;
+    }
+
+    td {
+        display: grid;
+        grid-template-columns: 15ch auto;
+        padding: 0.75rem 1rem;
+    }
+
+    td::before {
+        font-weight: 700;
+        text-transform: capitalize;
+    }
+
+    td:nth-of-type(1)::before {
+        content: "Title";
+    }
+
+    td:nth-of-type(2)::before {
+        content: "Content";
+    }
+
+    td:nth-of-type(3)::before {
+        content: "Tags";
+    }
+
+    td:nth-of-type(4)::before {
+        content: "Created on";
+    }
+
+    td:nth-of-type(5)::before {
+        content: "Updated on";
+    }
+}
+
+/* limit width of any table cell for very small screens */
+@media (max-width: 480px) {
+    td {
+        max-width: 15rem;
+    }
 }
