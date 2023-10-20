@@ -21,8 +21,22 @@ Original design files: Figma
 
 ## **Next ToDos: work in progress** 
 
+### **CSS**
+1) Currently adding responsiveness for display across different devices (tablet, mobile, etc).
+
+### **Features**
+1) Consider adding multiple document delete option.
+2) Consider adding WYSIWYG for input inside app.
+
+### **Testing** 
+1) Currently working on unit testing, with view to adding integration then e2e testing. 
+
 ### **Auth**
-1) Potentially SSO to replace current JWT email & password system
+1) SSO to replace current JWT email & password system.
+
+### **Deployment**
+1) Final aim: deploy frontend with mock 'database backend' (example: possibly Mirage.js). 
+2) Evaluate whether to continue to deploy backend and using which method (containerise or not).
 
 ### **Earlier concepts**
 Earlier concepts and frontend designs [here](https://github.com/rhw-repo/content_simple).
