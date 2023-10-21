@@ -1,99 +1,120 @@
 /* Styles specific to table delete button */
 .deleteDiv {
-    margin: auto;
-  }
-  
-  .deleteSpan {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    border: 1px solid var(--secondary);
-    border-radius: 50%;
-    height: 3rem;
-    width: 3rem;
-    transition: background-color 0.3s, color 0.3s;
-    color: var(--secondary)
-  }
-  
-  .deleteSpan:hover {
-    background-color: var(--error);
-    color: #ffffff;
-  }
-  
-  /* Styles for dialog box to confirm delete button action */
-  .dialogConfirmDelete {
-    text-align: center;
-    border: 1px solid #BD7374;
-    border-radius: 0.625rem;
-    padding: 1.5rem 2rem 2rem 2rem;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-  
-  /* Text "Confirm Deletion" within dialog box*/
-  .confirmDelete {
-    color: #BD7374;
-    font-weight: bold;
-  }
-  
-  /* Buttons container within dialog box */
-  .confirmDeleteBtns {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 2rem;
-  }
-  
-  /* Buttons within buttons container */
-  .yesDeleteBtn,
-  .noCancelDeleteBtn {
-    border: none;
-    border-radius: 1.875rem;
-    font-weight: 500;
-    font-size: 0.875rem;
-    font-family: "Lexend Deca", Helvetica, Arial, sans-serif;
-    padding: 1rem;
-    margin: 0.25rem;
-    cursor: pointer;
-    text-align: center;
-    transition: background-color 0.3s, color 0.3s;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .yesDeleteBtn {
-    background-color: var(--error);
-    color: #ffffff;
-  }
-  
-  .noCancelDeleteBtn {
-    background-color: var(--primary);
-    color: #ffffff;
-    font-weight: 800;
-  }
-  
-  /* Darker color button hover */
-  .yesDeleteBtn:hover,
-  .noCancelDeleteBtn:hover {
-    background-color: #d9534f;
-  }
-  
-  /* Brighter color button active */
-  .yesDeleteBtn:active,
-  .noCancelDeleteBtn:active {
-    background-color: #c9302c;
-    transform: scale(0.98);
-  }
-  
-/* Spacing between icon and text within dialog box buttons*/
-  .dialogBtnIcon {
-    margin-right: 0.5rem;
-  }
-  
+  margin: auto;
+}
 
-  
-  
+.deleteSpan {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border: 1px solid var(--secondary);
+  border-radius: 50%;
+  height: 3rem;
+  width: 3rem;
+  transition: background-color 0.3s, color 0.3s;
+  color: var(--secondary)
+}
+
+.deleteSpan:hover {
+  background-color: var(--error);
+  color: #ffffff;
+}
+
+/* Styles for dialog box to confirm delete button action */
+.dialogConfirmDelete {
+  text-align: center;
+  border: 1px solid #BD7374;
+  border-radius: 0.625rem;
+  padding: 1.5rem 2rem 2rem 2rem;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Text "Confirm Deletion" within dialog box*/
+.confirmDelete {
+  color: #BD7374;
+  font-weight: bold;
+}
+
+/* Buttons container within dialog box */
+.confirmDeleteBtns {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+/* Buttons within buttons container */
+.yesDeleteBtn,
+.noCancelDeleteBtn {
+  border: none;
+  border-radius: 1.875rem;
+  font-weight: 500;
+  font-size: 0.875rem;
+  font-family: "Lexend Deca", Helvetica, Arial, sans-serif;
+  padding: 1rem;
+  margin: 0.25rem;
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 0.3s, color 0.3s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.yesDeleteBtn {
+  background-color: var(--error);
+  color: #ffffff;
+}
+
+.noCancelDeleteBtn {
+  background-color: var(--primary);
+  color: #ffffff;
+  font-weight: 800;
+}
+
+/* Darker color button hover */
+.yesDeleteBtn:hover,
+.noCancelDeleteBtn:hover {
+  background-color: #d9534f;
+}
+
+/* Brighter color button active */
+.yesDeleteBtn:active,
+.noCancelDeleteBtn:active {
+  background-color: #c9302c;
+  transform: scale(0.98);
+}
+
+/* Spacing between icon and text within dialog box buttons*/
+.dialogBtnIcon {
+  margin-right: 0.5rem;
+}
+
+@media (max-width: 1370px) {
+  .deleteDiv {
+    margin: 0;
+    max-height: 80%;
+    margin: 0;
+  }
+
+  .deleteSpan {
+    font-size: 0.8rem;
+    grid: end;
+    height: 1.6rem;
+    width: 1.6rem;
+    padding: 0.5rem;
+
+  }
+}
+
+/* Custom breakpoint specific to table delete button */
+@media (min-width: 352px) and (max-width: 400px) {
+  .deleteDiv {
+    margin-left: 1rem;
+  }
+}
+

@@ -16,8 +16,6 @@ globalFilter in GlobalFilter */
 
 /* DateRangeFilter modal toggle buttons */
 .dateRangeBtn {
-    /*min-width: 11rem;*/
-    /*min-width: 100%;*/
     padding: 0.625rem;
 }
 
@@ -57,7 +55,6 @@ content as if on an elevated surface*/
 }
 
 .tableRow {
-    /*max-height: 2rem;*/
     border-bottom: 1px solid grey;
 }
 
@@ -83,23 +80,20 @@ content as if on an elevated surface*/
     text-align: center;
 }
 
-/* align content of each tag */
+/* Align content of each tag */
 .centerTableTags {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-/* styles tableTagsContainer when child of tableCell */
+/* Styles tableTagsContainer when child of tableCell */
 .tableCell .tableTagsContainer {
     flex-wrap: wrap;
-    /*margin-left: 1rem;*/
 }
 
-/* styles tagsChipTable when child of tableTagsContainer */
+/* Styles tagsChipTable when child of tableTagsContainer */
 .tableTagsContainer .tagChipTable {
-    /*height: 1rem;*/
-    /*line-height: 2rem;*/
     background-color: var(--secondary-chips);
     color: #ffffff;
     font-weight: bold;
@@ -148,7 +142,7 @@ content as if on an elevated surface*/
     margin-left: 0.5rem;
 }
 
-/* prevent table overflowing */
+/* Prevent table overflowing */
 @media (max-width: 1370px) {
     th {
         display: none;
@@ -156,14 +150,15 @@ content as if on an elevated surface*/
 
     td {
         display: grid;
-        grid-template-columns: 15ch auto;
-        padding: 0.75rem 1rem;
+        grid-template-columns: 1fr 2fr;
+        padding: 0.5rem 1rem;
     }
 
     td::before {
         font-weight: 700;
         text-transform: capitalize;
-       
+        color: var(--secondary);
+        font-size: 1.3rem;
     }
 
     td:nth-of-type(1)::before {
@@ -186,56 +181,53 @@ content as if on an elevated surface*/
         content: "Updated on";
     }
 
-    /* styles tableTagsContainer when child of tableCell */
-.tableCell .tableTagsContainer {
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 5%;
-    /*white-space: nowrap;*/
-    /*margin-left: 1rem;*/
-}
-    
-    /* current code issue is keeps elipsis in center and wastes whitespace */
+    td:nth-of-type(6)::before {
+        content: "Delete item?";
+    }
+
+    /* Styles tableTagsContainer when child of tableCell */
+    .tableCell .tableTagsContainer {
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 5%;
+    }
+
     .tableCell .tableTagsContainer .tagChipTable {
         min-width: 10%;
         display: block;
-        max-width: fit-content;  
-        overflow: hidden; 
+        max-width: fit-content;
+        overflow: hidden;
         margin: 0;
         text-align: start;
         white-space: nowrap;
     }
 
-    /* repositions tags to start of row, limits width */
+    /* Repositions tags to start of row, limits width */
     .centerTableTags {
-    display: block;
-    text-align: center;
-    white-space: normal;
-    overflow: hidden;
+        display: block;
+        text-align: center;
+        white-space: normal;
+        overflow: hidden;
     }
 }
 
-/* limit width of any table cell for very small screens */
+/* Limit width of any table cell for very small screens */
 @media (max-width: 480px) {
-    td {
-        max-width: 15rem;
+    td::before {
+        font-size: 1rem;
     }
-     /* styles tagsChipTable when child of tableTagsContainer */
-.tableCell .tableTagsContainer .tagChipTable {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    margin: 0;
-}       
 
-/* repositions tags to start of row, limits width */
-.centerTableTags {
-    display: block;
-    text-align: center;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    max-width: 80%;
+    /* Styles tagsChipTable when child of tableTagsContainer */
+    .tableCell .tableTagsContainer .tagChipTable {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin: 0;
+    }
+
+    .centerTableTags {    
+        max-width: 80%;
+    }
 }
-}   
