@@ -16,7 +16,8 @@ globalFilter in GlobalFilter */
 
 /* DateRangeFilter modal toggle buttons */
 .dateRangeBtn {
-    min-width: 11rem;
+    /*min-width: 11rem;*/
+    /*min-width: 100%;*/
     padding: 0.625rem;
 }
 
@@ -56,7 +57,7 @@ content as if on an elevated surface*/
 }
 
 .tableRow {
-    max-height: 2rem;
+    /*max-height: 2rem;*/
     border-bottom: 1px solid grey;
 }
 
@@ -82,8 +83,7 @@ content as if on an elevated surface*/
     text-align: center;
 }
 
-/* Table Tags column rules & alignment with 
-Table Header Tags Select Box */
+/* align content of each tag */
 .centerTableTags {
     display: flex;
     justify-content: center;
@@ -93,21 +93,20 @@ Table Header Tags Select Box */
 /* styles tableTagsContainer when child of tableCell */
 .tableCell .tableTagsContainer {
     flex-wrap: wrap;
-    margin-left: 1rem;
+    /*margin-left: 1rem;*/
 }
 
 /* styles tagsChipTable when child of tableTagsContainer */
 .tableTagsContainer .tagChipTable {
-    height: 1rem;
-    line-height: 2rem;
+    /*height: 1rem;*/
+    /*line-height: 2rem;*/
     background-color: var(--secondary-chips);
     color: #ffffff;
     font-weight: bold;
     border-radius: 0.3rem;
     padding: 0.625rem;
     margin: 0rem 0.5rem 0 1rem;
-    min-width: 4em;
-    max-width: 100%;
+    min-width: 80%;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -149,7 +148,7 @@ Table Header Tags Select Box */
     margin-left: 0.5rem;
 }
 
-/* adjust to grid for screens smaller than desktop */
+/* prevent table overflowing */
 @media (max-width: 1370px) {
     th {
         display: none;
@@ -164,6 +163,7 @@ Table Header Tags Select Box */
     td::before {
         font-weight: 700;
         text-transform: capitalize;
+       
     }
 
     td:nth-of-type(1)::before {
@@ -185,6 +185,36 @@ Table Header Tags Select Box */
     td:nth-of-type(5)::before {
         content: "Updated on";
     }
+
+    /* styles tableTagsContainer when child of tableCell */
+.tableCell .tableTagsContainer {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 5%;
+    /*white-space: nowrap;*/
+    /*margin-left: 1rem;*/
+}
+    
+    /* current code issue is keeps elipsis in center and wastes whitespace */
+    .tableCell .tableTagsContainer .tagChipTable {
+        min-width: 10%;
+        display: block;
+        max-width: fit-content;  
+        overflow: hidden; 
+        margin: 0;
+        text-align: start;
+        white-space: nowrap;
+    }
+
+    /* repositions tags to start of row, limits width */
+    .centerTableTags {
+    display: block;
+    text-align: center;
+    white-space: normal;
+    overflow: hidden;
+    }
 }
 
 /* limit width of any table cell for very small screens */
@@ -192,4 +222,20 @@ Table Header Tags Select Box */
     td {
         max-width: 15rem;
     }
+     /* styles tagsChipTable when child of tableTagsContainer */
+.tableCell .tableTagsContainer .tagChipTable {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 0;
+}       
+
+/* repositions tags to start of row, limits width */
+.centerTableTags {
+    display: block;
+    text-align: center;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 80%;
 }
+}   
