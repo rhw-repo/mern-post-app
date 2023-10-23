@@ -144,6 +144,11 @@ content as if on an elevated surface*/
 
 /* Prevent table overflowing */
 @media (max-width: 1370px) {
+    /* Separation of documents when rows display: grid on smaller screens */
+    .tableRow :nth-of-type(6) {
+        border-bottom: 0.5rem solid var(--secondary-light);
+    }
+
     th {
         display: none;
     }
