@@ -10,7 +10,6 @@ import { useMemo, useState, useEffect, useRef, forwardRef, useImperativeHandle }
 import Select from "react-select";
 import { Link } from "react-router-dom";
 import DeleteButton from "./DeleteButton";
-// icons
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import {
     faCalendarDays,
@@ -20,15 +19,15 @@ import {
     faForward,
     faBackward,
 } from "@fortawesome/free-solid-svg-icons"
-// function formats date fields 
+// Formats date fields 
 import { format } from "date-fns";
 
-// filter table rows according to selected options (all the tags in document collection)
+// Filter table rows according to selected options (all the tags in document collection)
 const TagsSelect = forwardRef(({
     column: { filterValue, setFilter, preFilteredRows, id }
 }, ref) => {
-    // Calculate the options for filtering
-    // using the preFilteredRows
+    /* Calculate the options for filtering
+    using the preFilteredRows */
     const options = useMemo(() => {
         const options = new Set()
         preFilteredRows.forEach((row) => {
@@ -121,7 +120,7 @@ const TagsSelect = forwardRef(({
     );
 });
 
-// returns an object with properties to apply to every column in table  
+// Returns an object with properties to apply to every column in table  
 function Table({ data }) {
 
     const filterTypes = useMemo(
@@ -134,7 +133,7 @@ function Table({ data }) {
                         let mutualItems = []
                         let rowTags = row.values[id]
                         for (const tag of filterValue) {
-                            //collects tags present in both filterValue and rowTags
+                            // Collects tags present in both filterValue and rowTags
                             if (rowTags.includes(tag)) {
                                 mutualItems.push(tag)
                             }
@@ -173,7 +172,7 @@ function Table({ data }) {
             displayedTags = value.slice(0, limit)
             ellipsis = true
         }
-        // limit width of displayed tag in tag column
+        // Limit width of displayed tag in tag column
         const trimText = (text, maxLength) => {
             if (text.length > maxLength) {
                 return text.substring(0, maxLength) + "..."
@@ -247,8 +246,8 @@ function Table({ data }) {
         []
     )
 
-    /* destructure from the table instance 
-    access props & functions, simplify managing state */
+    /* Destructure from the table instance 
+    Access props & functions, simplify managing state */
     const {
         getTableProps,
         getTableBodyProps,
@@ -297,16 +296,16 @@ function Table({ data }) {
         gotoPage(0)
     }
 
-    // create a ref for the TagsSelect component
+    // Create a ref for the TagsSelect component
     const tagsSelectRef = useRef();
 
-    /* use the ref to clear the tags in the TagsSelect 
+    /* Use the ref to clear the tags in the TagsSelect 
     component using Reset Table button */
     const clearChildTags = () => {
         tagsSelectRef.current.clearTags();
     };
 
-    // combine to pass into return statement, to avoid inline event handlers
+    // Combine to pass into return statement, to avoid inline event handlers
     const handleResetClick = () => {
         resetTable();
         clearChildTags();
@@ -322,7 +321,7 @@ function Table({ data }) {
     const forwardsIcon = <FontAwesomeIcon icon={faForward} />
     const backwardsIcon = <FontAwesomeIcon icon={faBackward} />
 
-    /* pagination functions */
+    /* Pagination functions */
     const handlePageSizeChange = (e) => {
         const selectedPageSize = e.target.value === ""
             ? undefined : Number(e.target.value)
@@ -350,7 +349,7 @@ function Table({ data }) {
         gotoPage(pageCount - 1);
     };
 
-    // rendering options before table aims for easy user experience
+    // Rendering options before table aims for easy user experience
     return (
         <>
             <div className={styles.optionsContainer}>
@@ -456,11 +455,12 @@ function Table({ data }) {
                         ))}
                     </select>
                     <button
-                        className={`${styles.tablePaginationButton} table-pagination-button`}
+                        className={`${styles.tablePaginationButton} ${styles.tablePaginationReset} table-pagination-button`}
                         onClick={handleResetClick}>
                         {resetIcon} RESET
                     </button>
-                    <span aria-label="Display current page number out of total pages">
+                    <span className={styles.tablePageNumbering}
+                    aria-label="Display current page number out of total pages">
                         Page{" "}
                         <strong>
                             {pageIndex + 1} of {pageOptions.length}
@@ -475,22 +475,24 @@ function Table({ data }) {
                         />
                     </span>
                     <button
-                        className={`${styles.tablePaginationButton} table-pagination-button`}
-                        aria-label="Go to previous page"
-                        onClick={goToFirstPage}
+                         className={`${styles.tablePaginationButton} ${styles.tablePaginationGoToFirst} table-pagination-button`}
+                         aria-label="Go to first page"
+                         onClick={goToFirstPage}
+
                         disabled={!canPreviousPage}
                     >
                         {backwardsIcon}
                     </button>
                     <button
-                        className={`${styles.tablePaginationButton} table-pagination-button`}
+                        className={`${styles.tablePaginationButton} ${styles.tablePaginationPrevious} table-pagination-button`}
+                        aria-label="Go to previous page"
                         onClick={goToPreviousPage}
                         disabled={!canPreviousPage}
                     >
                         Previous
                     </button>
                     <button
-                        className={`${styles.tablePaginationButton} table-pagination-button`}
+                        className={`${styles.tablePaginationButton} ${styles.tablePaginationNext} table-pagination-button`}
                         aria-label="Go to next page"
                         onClick={goToNextPage}
                         disabled={!canNextPage}
@@ -498,8 +500,8 @@ function Table({ data }) {
                         Next
                     </button>
                     <button
-                        className={`${styles.tablePaginationButton} table-pagination-button`}
-                        aria-label="Go to next page"
+                        className={`${styles.tablePaginationButton} ${styles.tablePaginationGoToLast} table-pagination-button`}
+                        aria-label="Go to last page"
                         onClick={goToLastPage}
                         disabled={!canNextPage}
                     >
