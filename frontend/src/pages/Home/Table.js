@@ -367,11 +367,11 @@ function Table({ data }) {
                     <DateRangeFilter handleFilter={handleDateFilter} />
                 </ModalDateRangeFilter>
 
-                <span>
+                <span className={styles.globalFilter}>
                     <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
                 </span>
 
-                <span>
+                <span className={styles.resetBtnSpan}>
                     <button
                         className={`${styles.resetTableBtn} reset-table-btn`}
                         onClick={() => {
@@ -382,7 +382,7 @@ function Table({ data }) {
                         {resetIcon} RESET
                     </button>
                 </span>
-                <span>
+                <span className={styles.createNewSpan}>
                     <Link to="/create_new">
                         <button
                             className={`${styles.createNewBtn} create-new-btn`}

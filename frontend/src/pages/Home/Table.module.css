@@ -144,8 +144,50 @@ content as if on an elevated surface*/
 }
 
 /* Prevent table overflowing */
-@media (max-width: 1370px) {
-    /* Separation of documents when rows display: grid on smaller screens */
+
+@media (max-width: 870px) {   
+    .optionsContainer {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto auto;
+        justify-items: start;
+        justify-content: space-between;
+        margin: 1rem auto;
+    }
+    
+    * {
+        box-sizing: border-box;
+    }
+
+    .dateRangeBtn {
+        grid-column: 1;
+        grid-row: 1;
+    }
+
+    .createNewSpan {
+        grid-row: 1;
+        grid-column: 2;
+        justify-self: start;
+        
+    }
+    
+    .resetBtnSpan {
+         grid-row: 2;
+         grid-column: 1;
+         justify-self: start;
+    }
+
+    .resetTableBtn {
+        margin-left: 0;
+    }
+
+    .globalFilter {
+        grid-row: 2;
+        grid-column: 2;
+    }
+
+  
+/* Separation of documents when rows display: grid on smaller screens */
     .tableRow :nth-of-type(6) {
         border-bottom: 0.5rem solid var(--secondary-light);
     }
@@ -167,6 +209,7 @@ content as if on an elevated surface*/
         font-size: 1.3rem;
     }
 
+    /* Replace hidden table headers */
     td:nth-of-type(1)::before {
         content: "Title";
     }
@@ -304,11 +347,7 @@ content as if on an elevated surface*/
     .tableCell .tableTagsContainer .tagChipTable {
         white-space: nowrap;
         overflow: hidden;
-        text-overflow: ellipsis;
+       text-overflow: ellipsis;
         margin: 0;
-    }
-
-    .centerTableTags {    
-        max-width: 80%;
     }
 }
