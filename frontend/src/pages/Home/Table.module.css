@@ -144,11 +144,17 @@ content as if on an elevated surface*/
     margin-left: 0.5rem;
 }
 
-/* Prevent pagination overflowing or wrapping inappropriately */
+/* Prevent overflowing or wrapping inappropriately */
 @media (max-width: 1007px) {
 
     * {
         box-sizing: border-box;
+    }
+
+    .createNewBtn {
+        font-size: 1.75vw;
+        white-space: nowrap;
+        overflow: hidden;
     }
 
     .pagination {
@@ -254,6 +260,10 @@ content as if on an elevated surface*/
 
     }
 
+    .createNewBtn {
+        font-size: 1rem;
+    }
+
     .resetBtnSpan {
         grid-row: 2;
         grid-column: 1;
@@ -345,8 +355,8 @@ content as if on an elevated surface*/
     }
 }
 
-
 @media (max-width: 592px) {
+
     /* Options Container Buttons become circles @ 592px screen width or less  */
     .createNewBtn,
     .resetTableBtn,
@@ -359,10 +369,17 @@ content as if on an elevated surface*/
         height: 4rem;
         border-radius: 50%;
         font-size: 0.75rem;
-        padding: 2.5rem;
-       
+        padding: 0.25rem;
+        white-space: normal;
+        overflow: hidden;
     }
-     /* Table Header fonts smaller */
+
+    .dateRangeBtn {
+        font-size: 0.625rem;
+        padding: 1.5rem;
+    }
+
+    /* Table Header fonts smaller */
     td::before {
         font-size: 1rem;
     }
