@@ -94,11 +94,11 @@
   margin-right: 0.5rem;
 }
 
+/* Custom breakpoints specific to table delete button */
 @media (max-width: 1370px) {
   .deleteDiv {
     margin: 0;
     max-height: 80%;
-    margin: 0;
   }
 
   .deleteSpan {
@@ -107,11 +107,15 @@
     height: 1.6rem;
     width: 1.6rem;
     padding: 0.5rem;
-
   }
 }
 
-/* Custom breakpoint specific to table delete button */
+@media (max-width: 1007px) {
+  .deleteSpan {
+    padding: 1rem;
+  }
+}
+
 @media (min-width: 352px) and (max-width: 400px) {
   .deleteDiv {
     margin-left: 1rem;

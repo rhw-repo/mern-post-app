@@ -20,11 +20,13 @@
     padding: 0.625rem;
   }
 
+  /* Prevent input overflowing Options Container */
   @media (max-width: 420px) {
     .globalFilterInput {
       width: 80%;
     }
   }
   
+ 
 
   

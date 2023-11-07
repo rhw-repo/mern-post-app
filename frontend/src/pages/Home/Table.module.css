@@ -233,9 +233,12 @@ content as if on an elevated surface*/
     }
 }
 
-/* Prevent table overflowing */
-
+/* Prevent table overflow */
 @media (max-width: 870px) {
+    * {
+        box-sizing: border-box;
+    }
+    
     .optionsContainer {
         display: grid;
         grid-template-columns: 1fr 2fr;
@@ -243,10 +246,7 @@ content as if on an elevated surface*/
         justify-items: start;
         justify-content: space-between;
         margin: 1rem auto;
-    }
-
-    * {
-        box-sizing: border-box;
+        gap: 5%;
     }
 
     .dateRangeBtn {
@@ -279,7 +279,6 @@ content as if on an elevated surface*/
         grid-row: 2;
         grid-column: 2;
     }
-
 
     /* Separation of documents when rows display: grid on smaller screens */
     .tableRow :nth-of-type(6) {

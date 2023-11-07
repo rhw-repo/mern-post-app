@@ -71,7 +71,7 @@ const GlobalFilter = ({ filter, setFilter }) => {
                     {filterIcon}
                     <input
                         type="text"
-                        placeholder="Search in all columns..."
+                        placeholder="Search all"
                         value={value || ""}
                         onChange= {handleInputChange}
                         className={styles.globalFilterInput}
