@@ -1,3 +1,4 @@
+/* TODO place items within grid at media breakpoint */
 /* Styles specific to navbar */
 .header {
     position: sticky;
@@ -33,9 +34,26 @@
   }
   
   @media (max-width: 800px) {
-    .header,
+   /* .header,
     .container {
       flex-wrap: nowrap;
       justify-content: space-between;
+    }*/
+
+   .header,
+   .container {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-rows: auto;
+   } 
+
+
+   .link, 
+   h1 {
+      font-size: 1.5rem;
+      grid-row: 1 / 2;
+      grid-column: 1 / 3;
     }
   }
+
+  

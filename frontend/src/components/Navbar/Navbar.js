@@ -1,3 +1,5 @@
+// TODO refactor to place all elements in containers for media queries styling 
+
 import { Link, useNavigate } from "react-router-dom";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import { useLogout } from "../../hooks/useLogout";
