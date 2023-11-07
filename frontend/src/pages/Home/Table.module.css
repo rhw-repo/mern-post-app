@@ -238,46 +238,39 @@ content as if on an elevated surface*/
     * {
         box-sizing: border-box;
     }
-    
+
     .optionsContainer {
         display: grid;
-        grid-template-columns: 1fr 2fr;
+        grid-template-columns: repeat(3, 1fr);
         grid-template-rows: auto auto;
-        justify-items: start;
-        justify-content: space-between;
-        margin: 1rem auto;
-        gap: 5%;
+        justify-items: center;
+        align-items: center;
     }
 
     .dateRangeBtn {
-        grid-column: 1;
-        grid-row: 1;
+        /*font-size: 0.625rem;*/
+        /*padding: 1.5rem;*/
+        grid-row: 1 / 2;
+        grid-column: 1 / 2;
     }
 
+    .createNewBtn,
     .createNewSpan {
-        grid-row: 1;
-        grid-column: 2;
-        justify-self: start;
-
-    }
-
-    .createNewBtn {
+        grid-row: 1 /2;
+        grid-column: 3 / 3;
         font-size: 1rem;
     }
 
+    .resetTableBtn,
     .resetBtnSpan {
-        grid-row: 2;
-        grid-column: 1;
-        justify-self: start;
+        grid-row: 1 / 2;
+        grid-column: 2 / 3;
     }
 
-    .resetTableBtn {
-        margin-left: 0;
-    }
-
-    .globalFilter {
-        grid-row: 2;
-        grid-column: 2;
+    .optionsContainer .globalFilterInput,
+    .optionsContainer .globalFilter {
+        grid-row: 2 / 3;
+        grid-column: 1 / -1;
     }
 
     /* Separation of documents when rows display: grid on smaller screens */
@@ -356,12 +349,6 @@ content as if on an elevated surface*/
 }
 
 @media (max-width: 592px) {
-    .optionsContainer {
-        display: grid;
-        grid-template-columns: 1fr 2fr;
-        grid-template-rows: auto auto;
-    }
-
     /* Options Container Buttons become circles @ 592px screen width or less  */
     .createNewBtn,
     .resetTableBtn,
@@ -382,6 +369,11 @@ content as if on an elevated surface*/
     .dateRangeBtn {
         font-size: 0.625rem;
         padding: 1.5rem;
+    }
+
+    .resetTableBtn,
+    .resetBtnSpan {
+        margin: auto;
     }
 
     /* Table Header fonts smaller */
