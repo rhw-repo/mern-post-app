@@ -26,16 +26,16 @@ const Navbar = () => {
                 <Link to="/" className={styles.link}>
                     <h1>ONLINE POST MANAGER</h1>
                 </Link>
-                <nav>
+                <nav className={styles.nav}>
                     {user && (
-                        <div>
-                            <span>{user.email}</span>
+                        <>
+                            <span className={styles.userEmail}>{user.email}</span>
                             <button
                                 onClick={handleClick}
                                 className={styles.button}
                             >
                                 {logoutIcon} Log Out</button>
-                        </div>
+                        </>
                     )}
                 </nav>
                 {logoutError && <div className="error">{logoutError}</div>}
