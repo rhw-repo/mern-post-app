@@ -1,7 +1,9 @@
 /* Styles specific to footer */
 .footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     line-height: 0.3rem;
-    text-align: center;
     position: fixed;
     left: 0;
     bottom: 0;
@@ -16,4 +18,11 @@
     color: #ffffff;
     font-weight: 600;
   }
+
+  @media (max-width: 400px) {
+    .footer {
+      font-size: 0.625rem;
+    }
+  }
   
+ 
