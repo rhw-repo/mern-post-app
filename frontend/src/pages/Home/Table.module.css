@@ -234,7 +234,7 @@ content as if on an elevated surface*/
 }
 
 /* Prevent table overflow */
-@media (max-width: 870px) {
+@media (max-width: 895px) {
     * {
         box-sizing: border-box;
     }

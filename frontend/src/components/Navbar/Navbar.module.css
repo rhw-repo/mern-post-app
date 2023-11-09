@@ -18,7 +18,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 3rem;
+    /*height: 3rem;*/
   }
   
   /* colors text logout button, removes links underline*/
@@ -39,7 +39,6 @@
     /* content size unknown for userEmail element */
     grid-template-columns: auto auto auto;
     grid-template-rows: auto;
-    margin-bottom: 1rem;
    } 
 
    .link, 
@@ -47,11 +46,16 @@
       font-size: 1.5rem;
       grid-row: 1 / 2;
       grid-column: 1;
-      justify-self: left;
+      /*justify-self: left;*/
+      margin: auto;
     }
 
   .nav {
-      display: contents;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
     }
 
   .userEmail {
@@ -63,7 +67,21 @@
   nav .button {
     grid-row: 1 / 2;
     grid-column: 3 / 4;
+    justify-self: center;
   }
   }
 
-  
+  @media (max-width: 560px) {
+    .container {
+      gap: 5px;
+    }
+
+    h1,
+    .link {
+      font-size: 1rem;
+    }
+
+    .userEmail {
+      font-size: 0.75rem;
+    }
+  }
