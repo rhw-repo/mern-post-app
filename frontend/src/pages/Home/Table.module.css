@@ -169,12 +169,12 @@ content as if on an elevated surface*/
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         grid-template-rows: repeat(3, auto);
-        justify-content: space-between;
-        align-content: center;
-        align-items: center;
+       /*justify-content: space-between;*/
+       align-content: center;
+        /*align-items: center;*/
         width: 80%;
         margin: 0 auto;
-        gap: 5%;
+        /*gap: 5%;*/
     }
 
     .tablePaginationButton {
