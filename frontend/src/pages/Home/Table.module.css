@@ -123,7 +123,9 @@ content as if on an elevated surface*/
 
 /* Table Pagination section */
 .pagination {
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .tablePaginationButton,
@@ -133,6 +135,11 @@ content as if on an elevated surface*/
     margin: 1rem;
     /*min-width: 6em;*/
     /*min-width: 3%;*/
+}
+
+/* uniform looking width */
+.tablePaginationNext {
+    padding: 0.625rem 1.5rem;
 }
 
 .goToPageText {
@@ -167,6 +174,7 @@ content as if on an elevated surface*/
         align-items: center;
         width: 80%;
         margin: 0 auto;
+        gap: 5%;
     }
 
     .tablePaginationButton {
@@ -176,14 +184,15 @@ content as if on an elevated surface*/
 
     .tablePageNumbering {
         grid-row: 1;
-        grid-column: 1;
+        grid-column: 1 / 2;
         justify-items: center;
-        margin-top: 0.75rem;
+        /*margin-top: 0.75rem;*/
+        font-size: 0.75rem;
     }
 
     .tablePaginationReset {
         grid-row: 1;
-        grid-column: 4;
+        grid-column: 4 / 4;
     }
 
     .tablePageNumbering,
@@ -210,22 +219,23 @@ content as if on an elevated surface*/
 
     .tablePaginationGoToFirst {
         grid-row: 3;
-        grid-column: 1;
+        grid-column: 1 / 2;
+        /*justify-self: end;*/
     }
 
     .tablePaginationNext {
         grid-row: 3;
-        grid-column: 2;
+        grid-column: 4 / 4;
     }
 
     .tablePaginationPrevious {
         grid-row: 3;
-        grid-column: 3;
+        grid-column: 3 / 4;
     }
 
     .tablePaginationGoToLast {
         grid-row: 3;
-        grid-column: 4;
+        grid-column: 2 / 3;
     }
 
     .goToPageText {
@@ -349,6 +359,7 @@ content as if on an elevated surface*/
 }
 
 @media (max-width: 592px) {
+
     /* Options Container Buttons become circles @ 592px screen width or less  */
     .createNewBtn,
     .resetTableBtn,
@@ -380,4 +391,72 @@ content as if on an elevated surface*/
     td::before {
         font-size: 1rem;
     }
+
+    .pagination,
+    .Table_pagination {
+        display: grid;
+        grid-template-rows: repeat(4, 1fr);
+        grid-template-columns: 50% 50%;
+        gap: 2%;
+        margin: 0 0.1rem;
+        width: 100%;
+        justify-self: center;
+    }
+
+
+    .SelectBox,
+    .tablePaginationGoToFirst,
+    .tablePaginationGoToLast,
+    .tablePaginationNext,
+    .tablePaginationPrevious {
+        margin-bottom: 0;
+    }
+
+
+
+    .tablePageNumbering,
+    .tablePaginationReset {
+        justify-self: center;
+        align-self: center;
+        margin-top: 0.5rem;
+    }
+
+    .tablePaginationReset {
+        grid-column: 2 / 2;
+        grid-row: 1;
+        align-self: center;
+    }
+
+    .tablePaginationPrevious {
+        grid-row: 4;
+        grid-column: 1 / 2;
+        margin-bottom: 0.5rem;
+    }
+
+    .tablePaginationNext {
+        grid-column: 2 / 2;
+        grid-row: 4;
+        margin-bottom: 0.5rem;
+    }
+
+    .SelectBox {
+        font-size: 0.75rem;
+        grid-row: 2;
+        grid-column: 1 / span 2;
+        margin-bottom: 0;
+    }
+
+    .tablePaginationGoToFirst
+    /*.tablePaginationPrevious*/ {
+        grid-row: 3; 
+        grid-column: 1; 
+    }
+
+    .tablePaginationGoToLast {
+        grid-row: 3;
+        grid-column: 2;
+    }
+
+
+    
 }
