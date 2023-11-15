@@ -21,9 +21,9 @@
   }
 
   /* Prevent input overflowing Options Container */
-  @media (max-width: 420px) {
+  @media (max-width: 592px) {
     .globalFilterInput {
-      width: 80%;
+      width: 100%;
     }
   }
   

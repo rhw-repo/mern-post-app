@@ -11,10 +11,10 @@
     height: 0.3rem;
     width: 100vw;
     padding: 1.33rem 0.66rem;
-    margin-top: 1.25rem;
+   /* margin-top: 1.25rem;*/
     background-color: var(--secondary);
     font-family: "Lexend Deca", Helvetica, Arial, Lucida, sans-serif;
-    font-size: 1rem;
+    font-size: 0.75rem;
     color: #ffffff;
     font-weight: 600;
   }

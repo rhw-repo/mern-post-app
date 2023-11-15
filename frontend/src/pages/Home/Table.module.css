@@ -101,7 +101,6 @@ content as if on an elevated surface*/
     border-radius: 0.3rem;
     padding: 0.625rem;
     margin: 0rem 0.5rem 0 1rem;
-    /*min-width: 80%;*/
     width: fit-content;
     white-space: nowrap;
     overflow: hidden;
@@ -133,11 +132,9 @@ content as if on an elevated surface*/
     font-size: 1rem;
     padding: 0.625rem;
     margin: 1rem;
-    /*min-width: 6em;*/
-    /*min-width: 3%;*/
 }
 
-/* uniform looking width */
+/* Matches width to 'Reset' & 'Previous' buttons for uniform UI appearance*/
 .tablePaginationNext {
     padding: 0.625rem 1.5rem;
 }
@@ -152,9 +149,8 @@ content as if on an elevated surface*/
     margin-left: 0.5rem;
 }
 
-/* Prevent overflowing or wrapping inappropriately */
+/* Prevent overflowing, poor alignment or inappropriate wrapping  */
 @media (max-width: 1007px) {
-
     * {
         box-sizing: border-box;
     }
@@ -165,90 +161,83 @@ content as if on an elevated surface*/
         overflow: hidden;
     }
 
-    .pagination {
+    /* Pagination section grid layout & resizing prevent overflow */
+    .pagination,
+    .Table_pagination {
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        grid-template-rows: repeat(3, auto);
-       /*justify-content: space-between;*/
-       align-content: center;
-        /*align-items: center;*/
-        width: 80%;
-        margin: 0 auto;
-        /*gap: 5%;*/
+        grid-template-rows: repeat(2, 1fr);
+        grid-template-columns: repeat(10, 1fr);
+        width: 100%;
     }
 
-    .tablePaginationButton {
-        margin: 0 auto;
-        font-size: 0.75rem;
+    .tablePaginationButton,
+    .SelectBox,
+    .tablePageNumbering {
+        max-width: fit-content;
     }
 
     .tablePageNumbering {
         grid-row: 1;
-        grid-column: 1 / 2;
-        justify-items: center;
-        /*margin-top: 0.75rem;*/
-        font-size: 0.75rem;
+        grid-column: 3 / 4;
+        justify-self: center;
+        text-align: center;
     }
 
     .tablePaginationReset {
         grid-row: 1;
-        grid-column: 4 / 4;
-    }
-
-    .tablePageNumbering,
-    .tablePaginationReset {
-        margin-top: 0.75rem;
+        grid-column: 8 / 9;
+        justify-self: center;
     }
 
     .SelectBox {
-        grid-row: 2;
-        grid-column: 2 / span 2;
-        place-self: center;
-        max-width: fit-content;
-        font-size: 0.75rem;
-        text-align: center;
-        margin: 0 0 0.75rem 0;
-    }
-
-    .tablePaginationGoToFirst,
-    .tablePaginationNext,
-    .tablePaginationPrevious,
-    .tablePaginationGoToLast {
-        margin-bottom: 0.75rem;
+        grid-row: 1;
+        grid-column: 4 / span 4;
+        justify-self: center;
     }
 
     .tablePaginationGoToFirst {
-        grid-row: 3;
-        grid-column: 1 / 2;
-        /*justify-self: end;*/
-    }
-
-    .tablePaginationNext {
-        grid-row: 3;
-        grid-column: 4 / 4;
-    }
-
-    .tablePaginationPrevious {
-        grid-row: 3;
-        grid-column: 3 / 4;
+        grid-row: 2;
+        grid-column: 2 / 3;
+        justify-self: end;
+        margin-bottom: 0.5rem;
     }
 
     .tablePaginationGoToLast {
-        grid-row: 3;
-        grid-column: 2 / 3;
+        grid-row: 2;
+        grid-column: 9 / 10;
+        justify-self: start;
+        margin-bottom: 0.5rem;
+    }
+
+    .tablePaginationPrevious {
+        grid-row: 2;
+        grid-column: 3 / 4;
+        justify-self: end;
+        margin-bottom: 0.5rem;
+
+    }
+
+    .tablePaginationNext {
+        grid-row: 2;
+        grid-column: 8/ 9;
+        margin-bottom: 0.5rem;
+        justify-self: start;
     }
 
     .goToPageText {
-        display: none;
+        grid-row: 2;
+        grid-column: 5 / span 2;
+        justify-self: center;
     }
 }
 
-/* Prevent table overflow */
-@media (max-width: 895px) {
+/* Prevent table overflow and poor alignment with grid & resizing */
+@media (max-width: 916px) {
     * {
         box-sizing: border-box;
     }
 
+    /* Prevent overflowing and poor alignment: Options Container */
     .optionsContainer {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
@@ -257,30 +246,38 @@ content as if on an elevated surface*/
         align-items: center;
     }
 
+    .createNewBtn,
+    .resetTableBtn,
     .dateRangeBtn {
-        /*font-size: 0.625rem;*/
-        /*padding: 1.5rem;*/
-        grid-row: 1 / 2;
-        grid-column: 1 / 2;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 4rem;
+        height: 4rem;
+        border-radius: 50%;
+        font-size: 0.75rem;
+        padding: 0.25rem;
+        white-space: normal;
+        overflow: hidden;
     }
 
-    .createNewBtn,
-    .createNewSpan {
-        grid-row: 1 /2;
-        grid-column: 3 / 3;
-        font-size: 1rem;
+    .dateRangeBtn {
+        grid-row: 1 / 2;
+        grid-column: 1 / 2;
+        font-size: 0.625rem;
+        padding: 1.5rem;
     }
 
     .resetTableBtn,
     .resetBtnSpan {
-        grid-row: 1 / 2;
-        grid-column: 2 / 3;
+        margin: auto;
     }
 
     .optionsContainer .globalFilterInput,
     .optionsContainer .globalFilter {
-        grid-row: 2 / 3;
-        grid-column: 1 / -1;
+        grid-row: 2;
+        grid-column: 2 / 3;
     }
 
     /* Separation of documents when rows display: grid on smaller screens */
@@ -358,61 +355,25 @@ content as if on an elevated surface*/
     }
 }
 
-@media (max-width: 592px) {
-
-    /* Options Container Buttons become circles @ 592px screen width or less  */
-    .createNewBtn,
-    .resetTableBtn,
-    .dateRangeBtn {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        width: 4rem;
-        height: 4rem;
-        border-radius: 50%;
-        font-size: 0.75rem;
-        padding: 0.25rem;
-        white-space: normal;
-        overflow: hidden;
-    }
-
-    .dateRangeBtn {
-        font-size: 0.625rem;
-        padding: 1.5rem;
-    }
-
-    .resetTableBtn,
-    .resetBtnSpan {
-        margin: auto;
-    }
-
-    /* Table Header fonts smaller */
-    td::before {
-        font-size: 1rem;
-    }
-
+@media (max-width: 826px) {
+    /* Prevent pagination overflowing horizontal axis */
     .pagination,
     .Table_pagination {
         display: grid;
         grid-template-rows: repeat(4, 1fr);
-        grid-template-columns: 50% 50%;
-        gap: 2%;
-        margin: 0 0.1rem;
+        grid-template-columns: repeat(2, 1fr);
         width: 100%;
-        justify-self: center;
     }
 
-
+    .tablePaginationReset,
     .SelectBox,
     .tablePaginationGoToFirst,
     .tablePaginationGoToLast,
     .tablePaginationNext,
     .tablePaginationPrevious {
         margin-bottom: 0;
+        align-self: center;
     }
-
-
 
     .tablePageNumbering,
     .tablePaginationReset {
@@ -420,11 +381,33 @@ content as if on an elevated surface*/
         align-self: center;
         margin-top: 0.5rem;
     }
+    .tablePageNumbering {
+        grid-row: 1;
+        grid-column: 1 / 2;
+        justify-self: end;
+    }
 
     .tablePaginationReset {
         grid-column: 2 / 2;
         grid-row: 1;
-        align-self: center;
+        justify-self: start;
+    }
+
+    .SelectBox {
+        font-size: 0.75rem;
+        grid-row: 2;
+        grid-column: 1 / span 2;
+        margin-bottom: 0;
+    }
+
+    .tablePaginationGoToFirst {
+        grid-row: 3;
+        grid-column: 1 / 2;
+    }
+
+    .tablePaginationGoToLast {
+        grid-row: 3;
+        grid-column: 2 / 3;
     }
 
     .tablePaginationPrevious {
@@ -439,24 +422,38 @@ content as if on an elevated surface*/
         margin-bottom: 0.5rem;
     }
 
-    .SelectBox {
-        font-size: 0.75rem;
-        grid-row: 2;
-        grid-column: 1 / span 2;
-        margin-bottom: 0;
+    .goToPageText {
+        display: none;
+    }
+}
+
+@media (max-width: 592px) {
+
+    /* Options Container: Prevent overflowing and poor alignment  */
+    .createNewBtn,
+    .resetTableBtn,
+    .dateRangeBtn {
+        width: 3rem;
+        height: 3rem;
+        font-size: 0.65rem;
+        padding: 0.2rem;
     }
 
-    .tablePaginationGoToFirst
-    /*.tablePaginationPrevious*/ {
-        grid-row: 3; 
-        grid-column: 1; 
+    .dateRangeBtn {
+        font-size: 0.50rem;
     }
 
-    .tablePaginationGoToLast {
-        grid-row: 3;
-        grid-column: 2;
+    .optionsContainer .globalFilterInput,
+    .optionsContainer .globalFilter {
+        grid-column: 1 / span 3;
+        justify-self: center;
+        max-height: fit-content;
+        max-width: fit-content;
+        font-size: 0.65rem;
     }
 
-
-    
+    /* Table Header fonts smaller */
+    td::before {
+        font-size: 1rem;
+    }
 }
