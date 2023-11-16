@@ -14,7 +14,7 @@ contains the global filter, date range picker, a reset table btn
 /* Please note - closeDateRangeBtn in ModalDateRangeFilter, 
 globalFilter in GlobalFilter */
 
-/* DateRangeFilter modal toggle buttons */
+/* DateRangeFilter modal toggle button */
 .dateRangeBtn {
     padding: 0.625rem;
 }
@@ -23,7 +23,6 @@ globalFilter in GlobalFilter */
     color: var(--secondary-light);
 }
 
-/* Reset table button */
 .resetTableBtn {
     width: 9rem;
     padding: 0.625rem;
@@ -114,7 +113,7 @@ content as if on an elevated surface*/
     white-space: nowrap;
 }
 
-/* Table sort buttons */
+/* Table sort buttons date columns*/
 .sortIcon {
     color: var(--secondary-light);
     cursor: pointer;
@@ -149,31 +148,36 @@ content as if on an elevated surface*/
     margin-left: 0.5rem;
 }
 
-/* Prevent overflowing, poor alignment or inappropriate wrapping  */
+/* Prevents overflow, poor alignment or inappropriate wrapping  */
 @media (max-width: 1007px) {
     * {
         box-sizing: border-box;
     }
 
+    /* within Options Container */
     .createNewBtn {
         font-size: 1.75vw;
         white-space: nowrap;
         overflow: hidden;
     }
 
-    /* Pagination section grid layout & resizing prevent overflow */
+    /* Pagination section */
     .pagination,
     .Table_pagination {
         display: grid;
         grid-template-rows: repeat(2, 1fr);
         grid-template-columns: repeat(10, 1fr);
+        align-items: center;
         width: 100%;
+        gap: 1rem;
     }
 
     .tablePaginationButton,
     .SelectBox,
     .tablePageNumbering {
         max-width: fit-content;
+        margin: 0;
+        align-self: center;
     }
 
     .tablePageNumbering {
@@ -231,13 +235,12 @@ content as if on an elevated surface*/
     }
 }
 
-/* Prevent table overflow and poor alignment with grid & resizing */
+/* Prevent overflow and poor alignment using  grid layout & element resizing */
 @media (max-width: 916px) {
     * {
         box-sizing: border-box;
     }
 
-    /* Prevent overflowing and poor alignment: Options Container */
     .optionsContainer {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
@@ -246,6 +249,7 @@ content as if on an elevated surface*/
         align-items: center;
     }
 
+    /* Circular and smaller buttons within optionsContainer div */
     .createNewBtn,
     .resetTableBtn,
     .dateRangeBtn {
@@ -280,11 +284,6 @@ content as if on an elevated surface*/
         grid-column: 2 / 3;
     }
 
-    /* Separation of documents when rows display: grid on smaller screens */
-    .tableRow :nth-of-type(6) {
-        border-bottom: 0.5rem solid var(--secondary-light);
-    }
-
     th {
         display: none;
     }
@@ -302,7 +301,7 @@ content as if on an elevated surface*/
         font-size: 1.3rem;
     }
 
-    /* Replace hidden table headers */
+    /* Replaces hidden table headers */
     td:nth-of-type(1)::before {
         content: "Title";
     }
@@ -325,6 +324,11 @@ content as if on an elevated surface*/
 
     td:nth-of-type(6)::before {
         content: "Delete item?";
+    }
+
+    /* Separates documents with solid 'line' under each row's last column*/
+    .tableRow :nth-of-type(6) {
+        border-bottom: 0.5rem solid var(--secondary-light);
     }
 
     /* Styles tableTagsContainer when child of tableCell */
@@ -356,31 +360,26 @@ content as if on an elevated surface*/
 }
 
 @media (max-width: 826px) {
-    /* Prevent pagination overflowing horizontal axis */
+      /* Prevent horizontal overflow */
     .pagination,
     .Table_pagination {
         display: grid;
         grid-template-rows: repeat(4, 1fr);
         grid-template-columns: repeat(2, 1fr);
         width: 100%;
+        align-items: center;
     }
 
-    .tablePaginationReset,
-    .SelectBox,
-    .tablePaginationGoToFirst,
-    .tablePaginationGoToLast,
-    .tablePaginationNext,
-    .tablePaginationPrevious {
+    .tablePaginationButton,
+    .SelectBox {
         margin-bottom: 0;
-        align-self: center;
     }
 
     .tablePageNumbering,
     .tablePaginationReset {
-        justify-self: center;
-        align-self: center;
         margin-top: 0.5rem;
     }
+
     .tablePageNumbering {
         grid-row: 1;
         grid-column: 1 / 2;
@@ -397,7 +396,6 @@ content as if on an elevated surface*/
         font-size: 0.75rem;
         grid-row: 2;
         grid-column: 1 / span 2;
-        margin-bottom: 0;
     }
 
     .tablePaginationGoToFirst {
@@ -410,16 +408,19 @@ content as if on an elevated surface*/
         grid-column: 2 / 3;
     }
 
+    .tablePaginationPrevious,
+    .tablePaginationNext {
+        margin-bottom: 0.5rem;
+    }
+
     .tablePaginationPrevious {
         grid-row: 4;
         grid-column: 1 / 2;
-        margin-bottom: 0.5rem;
     }
 
     .tablePaginationNext {
         grid-column: 2 / 2;
         grid-row: 4;
-        margin-bottom: 0.5rem;
     }
 
     .goToPageText {
@@ -428,8 +429,7 @@ content as if on an elevated surface*/
 }
 
 @media (max-width: 592px) {
-
-    /* Options Container: Prevent overflowing and poor alignment  */
+    /* Options Container: prevent overflowing and poor alignment  */
     .createNewBtn,
     .resetTableBtn,
     .dateRangeBtn {
@@ -452,7 +452,7 @@ content as if on an elevated surface*/
         font-size: 0.65rem;
     }
 
-    /* Table Header fonts smaller */
+    /* Table Header font smaller for uniform UI appearance */
     td::before {
         font-size: 1rem;
     }

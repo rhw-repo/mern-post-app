@@ -1,6 +1,6 @@
 /* TODO: Refactor to make responsive across different devices */
 /* Styling Note - all styles aim to meet Material Design 3 guidelines.*/
- 
+
 @import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@400;500;600;700&family=Open+Sans:wght@300;400&display=swap');
 
 /* Global color scheme */
@@ -114,9 +114,9 @@ nav button:active,
 
 /* All pages */
 .pages {
-  max-height: 75vh;
+  min-height: 75vh;
   padding: 1.25rem;
-  margin: 0 auto;
+  margin: 0 auto 3rem;
   overflow-x: hidden;
   overflow-y: auto;
 }
@@ -165,7 +165,8 @@ textarea:focus {
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }
 
-label,label,
+label,
+label,
 input,
 textarea,
 p {
@@ -235,6 +236,7 @@ p {
   margin: auto;
   padding: 2rem;
 }
+
 /* Layout Cancel & Save buttons */
 .content-detail-edit-create-btns {
   display: flex;
