@@ -27,6 +27,14 @@
   padding: 1rem 3.29rem;
 }
 
+@media (max-width: 1007px) {
+  .tags,
+  .tagChip {
+    padding: 1rem;
+    background-color: pink;
+  }
+}
+
 @media (max-width: 400px) {
   .goToEditBtn {
     width: 5rem;
@@ -38,4 +46,5 @@
     white-space: normal;
     overflow: hidden;
   }
+
 }

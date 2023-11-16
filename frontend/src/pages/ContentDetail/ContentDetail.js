@@ -42,7 +42,7 @@ const ContentDetail = () => {
                                 <div className={`${styles.contentDetailTagsLabel} document-form-headings`}>Tags:</div>
                                 <div className="content-detail-tags-container">
                                     {material.tags.map((tag, index) => (
-                                        <span key={index} className=" tags tag-chip">{tag}</span>
+                                        <span key={index} className={` ${styles.tags} ${styles.tagChip} tags tag-chip`}>{tag}</span>
                                     ))}
                                 </div>
                             </article>
