@@ -1,25 +1,41 @@
 /* Styles specific to content detail page */
-  .contentDetailTitle {
-    font-size: 1.5rem;
-    font-weight: bold;
-    margin: 1.3rem;
-    max-height: 2rem;
-    max-width: 100%;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
+.contentDetailTitle {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 1.3rem;
+  max-height: 2rem;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 
-  .contentDetailContent {
-    font-size: 1.25rem;
-    max-width: 100%;
+.contentDetailContent {
+  font-size: 1.25rem;
+  max-width: 100%;
+  white-space: normal;
+  margin: 1.3rem;
+  white-space: pre-wrap;
+}
+
+.contentDetailTagsLabel {
+  margin: 1rem 0 1rem 1.3rem;
+}
+
+/* creates uniform width for this primary button */
+.goToEditBtn {
+  padding: 1rem 3.29rem;
+}
+
+@media (max-width: 400px) {
+  .goToEditBtn {
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+    font-size: 1rem;
+    font-weight: 800;
+    padding: 0.5rem;
     white-space: normal;
-    margin: 1.3rem;
-    white-space: pre-wrap;
+    overflow: hidden;
   }
-
-  .contentDetailTagsLabel {
-    margin: 1rem 0 1rem 1.3rem;
-  }
-
-  
+}

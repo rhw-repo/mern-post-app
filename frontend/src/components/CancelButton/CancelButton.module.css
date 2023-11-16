@@ -3,3 +3,15 @@
     padding: 0.625rem;
     width: 6rem;
 }
+
+@media (max-width: 400px) {
+    .cancelBtn {
+        width: 4rem;
+        height: 4rem;
+        border-radius: 50%;
+        font-size: 0.75rem;
+        padding: 0.25rem;
+        white-space: normal;
+        overflow: hidden;
+    }
+}

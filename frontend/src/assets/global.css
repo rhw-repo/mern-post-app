@@ -231,10 +231,11 @@ p {
 /* Create, ContentDetail, Edit pages: */
 /* Center and limit width */
 .content-detail-edit-create-containers {
-  max-width: 87.5rem;
   display: block;
+  max-width: 100%;
   margin: auto;
   padding: 2rem;
+  gap: 5%;
 }
 
 /* Layout Cancel & Save buttons */
@@ -243,6 +244,7 @@ p {
   justify-content: space-between;
   align-items: center;
   margin-top: 2rem;
+  gap: 5%;
 }
 
 /* Headings for all fields */

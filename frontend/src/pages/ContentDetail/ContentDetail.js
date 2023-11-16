@@ -50,7 +50,7 @@ const ContentDetail = () => {
                         <div className="content-detail-edit-create-btns">
                             <CancelButton />
                             <button
-                                className="go-to-edit-btn"
+                                className={`go-to-edit-btn ${styles.goToEditBtn}`}
                                 onClick={handleUpdateClick}>
                                 {editIcon} Edit
                             </button>
