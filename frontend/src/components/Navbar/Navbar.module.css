@@ -1,59 +1,61 @@
 /* Styles specific to navbar */
 .header {
-    position: sticky;
-    top: 0rem;
-    z-index: 1;
-    background-color: #ffffff;
-    color: var(--secondary);
-    font-family: "Lexend Deca", Helvetica, Arial, sans-serif;
-    font-weight: bold;
-    margin-top: 1rem;
-  }
-  
+  position: sticky;
+  top: 0rem;
+  z-index: 1;
+  background-color: #ffffff;
+  color: var(--secondary);
+  font-family: "Lexend Deca", Helvetica, Arial, sans-serif;
+  font-weight: bold;
+  margin-top: 1rem;
+}
+
+.container {
+  margin: 0 1rem;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+/* colors text logout button, removes links underline*/
+.link {
+  color: #BD7374;
+  text-decoration: none;
+}
+
+.button {
+  margin-left: 1rem;
+  padding: 0.625rem;
+  min-width: 8rem;
+  margin: 1rem;
+  /*justify-self: end;*/
+}
+
+/* Replace flexbox with grid layout, resize elements prevent overflow */
+@media (max-width: 800px) {
   .container {
-    margin: 0 1rem;
-    padding: 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-  }
-  
-  /* colors text logout button, removes links underline*/
-  .link {
-    color: #BD7374;
-    text-decoration: none;
-  }
-  
- .button {
-    margin-left: 1rem;
-    padding: 0.625rem;
-    min-width: 8rem;
-  }
-  
-  @media (max-width: 800px) {
-   .container {
     display: grid;
-    /* content size unknown for userEmail element */
+    /* auto since content size unknown for userEmail element */
     grid-template-columns: auto auto auto;
     grid-template-rows: auto;
-   } 
+  }
 
-   .link, 
-   h1 {
-      font-size: 1.5rem;
-      grid-row: 1 / 2;
-      grid-column: 1;
-      margin: auto;
-    }
+  .link,
+  h1 {
+    font-size: 1.5rem;
+    grid-row: 1 / 2;
+    grid-column: 1;
+    margin: auto;
+  }
 
   .nav {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      align-items: center;
-      gap: 1rem;
-    }
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
 
   .userEmail {
     grid-row: 1 / 2;
@@ -65,20 +67,25 @@
     grid-row: 1 / 2;
     grid-column: 3 / 4;
     justify-self: center;
+    font-size: 0.75rem;
+    padding: 0.47rem;
+    min-width: fit-content;
+    margin: 0.5rem;
   }
+}
+
+@media (max-width: 560px) {
+  /* Prevent elements overlapping */
+  .container {
+    gap: 5px;
   }
 
-  @media (max-width: 560px) {
-    .container {
-      gap: 5px;
-    }
-
-    h1,
-    .link {
-      font-size: 1rem;
-    }
-
-    .userEmail {
-      font-size: 0.75rem;
-    }
+  h1,
+  .link {
+    font-size: 1rem;
   }
+
+  .userEmail {
+    font-size: 0.75rem;
+  }
+}
