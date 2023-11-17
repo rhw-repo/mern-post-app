@@ -16,7 +16,7 @@ globalFilter in GlobalFilter */
 
 /* DateRangeFilter modal toggle button */
 .dateRangeBtn {
-    padding: 0.625rem;
+    padding: 1rem;
 }
 
 .calendarIcon {
@@ -245,11 +245,12 @@ content as if on an elevated surface*/
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         grid-template-rows: auto auto;
-        justify-items: center;
+        /*justify-items: center;*/
         align-items: center;
     }
 
-    /* Circular and smaller buttons within optionsContainer div */
+    /* Redundant - not comply MUI guidelines to keep button design uniform */
+    /* Circular and smaller buttons within optionsContainer div 
     .createNewBtn,
     .resetTableBtn,
     .dateRangeBtn {
@@ -264,18 +265,27 @@ content as if on an elevated surface*/
         padding: 0.25rem;
         white-space: normal;
         overflow: hidden;
-    }
+    }*/
 
     .dateRangeBtn {
         grid-row: 1 / 2;
         grid-column: 1 / 2;
-        font-size: 0.625rem;
-        padding: 1.5rem;
+        font-size: small;
+        padding: 2vw;
     }
 
-    .resetTableBtn,
-    .resetBtnSpan {
-        margin: auto;
+    .resetTableBtn {
+        grid-row: 1;
+        grid-column: 1 / span 2;
+        margin: 0;
+        padding: 1.5vw;
+        font-size:small;
+        justify-self: start;
+    }
+
+    .createNewBtn {
+        padding: 2.5vw;
+        font-size: medium;
     }
 
     .optionsContainer .globalFilterInput,
@@ -428,8 +438,8 @@ content as if on an elevated surface*/
     }
 }
 
-@media (max-width: 592px) {
-    /* Options Container: prevent overflowing and poor alignment  */
+@media (max-width: 593px) {
+    /* Options Container: prevent overflowing and poor alignment  
     .createNewBtn,
     .resetTableBtn,
     .dateRangeBtn {
@@ -437,10 +447,12 @@ content as if on an elevated surface*/
         height: 3rem;
         font-size: 0.65rem;
         padding: 0.2rem;
-    }
+    }*/
 
     .dateRangeBtn {
-        font-size: 0.50rem;
+        /*font-size: 0.50rem;*/
+        font-size: 2vw;
+        padding: 2vw;
     }
 
     .optionsContainer .globalFilterInput,

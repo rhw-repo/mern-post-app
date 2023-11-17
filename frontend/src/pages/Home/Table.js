@@ -358,7 +358,7 @@ function Table({ data }) {
                         className={`${styles.dateRangeBtn} date-range-btn`}
                         onClick={() => setIsOpen(true)}
                     >
-                        {calendarIcon} Search Date Range 
+                        {calendarIcon} Search Dates
                     </button>
                 </span>
                 <ModalDateRangeFilter
