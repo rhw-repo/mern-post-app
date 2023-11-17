@@ -115,6 +115,7 @@ nav button:active,
 /* All pages */
 .pages {
   min-height: 75vh;
+  min-height: 75dvh;
   padding: 1.25rem;
   margin: 0 auto 3rem;
   overflow-x: hidden;

@@ -353,25 +353,25 @@ function Table({ data }) {
     return (
         <>
             <div className={styles.optionsContainer}>
-                <span>
+                <div>
                     <button
                         className={`${styles.dateRangeBtn} date-range-btn`}
                         onClick={() => setIsOpen(true)}
                     >
                         {calendarIcon} Search Dates
                     </button>
-                </span>
+                </div>
                 <ModalDateRangeFilter
                     open={isOpen}
                     onClose={() => setIsOpen(false)}>
                     <DateRangeFilter handleFilter={handleDateFilter} />
                 </ModalDateRangeFilter>
 
-                <span className={styles.globalFilter}>
+                <div className={styles.globalFilter}>
                     <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
-                </span>
+                </div>
 
-                <span className={styles.resetBtnSpan}>
+                <div className={styles.resetTableBtnSpan}>
                     <button
                         className={`${styles.resetTableBtn} reset-table-btn`}
                         onClick={() => {
@@ -381,8 +381,8 @@ function Table({ data }) {
                     >
                         {resetIcon} RESET
                     </button>
-                </span>
-                <span className={styles.createNewSpan}>
+                </div>
+                <div className={styles.createNewSpan}>
                     <Link to="/create_new">
                         <button
                             className={`${styles.createNewBtn} create-new-btn`}
@@ -390,7 +390,7 @@ function Table({ data }) {
                             {createNewIcon} Create New
                         </button>
                     </Link>
-                </span>
+                </div>
             </div>
 
             <div className={styles.tableContainer}>

@@ -16,7 +16,7 @@ globalFilter in GlobalFilter */
 
 /* DateRangeFilter modal toggle button */
 .dateRangeBtn {
-    padding: 1rem;
+    padding: 0.625rem 1rem;
 }
 
 .calendarIcon {
@@ -243,55 +243,67 @@ content as if on an elevated surface*/
 
     .optionsContainer {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(6, 1fr);
         grid-template-rows: auto auto;
         /*justify-items: center;*/
         align-items: center;
+        gap: 2%;
     }
 
-    /* Redundant - not comply MUI guidelines to keep button design uniform */
-    /* Circular and smaller buttons within optionsContainer div 
-    .createNewBtn,
-    .resetTableBtn,
-    .dateRangeBtn {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        width: 4rem;
-        height: 4rem;
-        border-radius: 50%;
-        font-size: 0.75rem;
-        padding: 0.25rem;
-        white-space: normal;
-        overflow: hidden;
-    }*/
+    .optionsContainer button {
+        display: block;
+    }
 
-    .dateRangeBtn {
+
+    /* .dateRangeBtn*/
+    .optionsContainer>div:nth-child(1) {
         grid-row: 1 / 2;
         grid-column: 1 / 2;
-        font-size: small;
-        padding: 2vw;
+        background-color: rgb(15, 221, 240);
+    }
+
+    .dateRangeBtn {
+        /*font-size: small;*/
+        padding: 1.5vw;
+        justify-self: end;
+        white-space: nowrap;
+        background-color: yellow;
+    }
+
+    /*.resetTableBtn */
+    .optionsContainer>div:nth-child(3) {
+        grid-row: 1 / 2;
+        grid-column: 2 / 3;
+        background-color: purple;
     }
 
     .resetTableBtn {
-        grid-row: 1;
-        grid-column: 1 / span 2;
         margin: 0;
         padding: 1.5vw;
-        font-size:small;
+        font-size: small;
         justify-self: start;
+        background-color: pink;
+    }
+
+    /*.createNewBtn */
+    .optionsContainer>div:nth-child(4) {
+        grid-row: 1 / 2;
+        grid-column: 5 / span 2;
+        background-color: aquamarine;
     }
 
     .createNewBtn {
         padding: 2.5vw;
         font-size: medium;
+        background-color: orange;
     }
 
-    .optionsContainer .globalFilterInput,
-    .optionsContainer .globalFilter {
+    /* .optionsContainer .globalFilterInput,
+    .optionsContainer .globalFilter */
+    .optionsContainer>div:nth-child(2) {
         grid-row: 2;
-        grid-column: 2 / 3;
+        grid-column: 3 / span 2;
+        background-color: teal;
     }
 
     th {
@@ -370,7 +382,8 @@ content as if on an elevated surface*/
 }
 
 @media (max-width: 826px) {
-      /* Prevent horizontal overflow */
+
+    /* Prevent horizontal overflow */
     .pagination,
     .Table_pagination {
         display: grid;
