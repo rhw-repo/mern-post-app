@@ -5,21 +5,17 @@
     align-items: flex-start;
   }
   
-  .globalFilterInput {
+  .globalFilterInput
+  /*.globalFilterSpan */{
     outline: none;
     box-shadow: none;
     /*width: 20rem;*/
     width: fit-content;
-    font-size: 1rem;
+    font-size: 1.25rem;
     margin-left: 0.625rem;
+    
   }
   
-  .globalFilterSpan {
-    font-weight: bold;
-    font-size: 1.25rem;
-    padding: 0.625rem;
-  }
-
   /* Prevent input overflowing Options Container */
   @media (max-width: 592px) {
     .globalFilterInput {

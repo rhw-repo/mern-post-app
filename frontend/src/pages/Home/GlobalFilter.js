@@ -57,16 +57,16 @@ const GlobalFilter = ({ filter, setFilter }) => {
         setFilter(value || undefined)
     }, 300)
 
-    const filterIcon = <FontAwesomeIcon icon={faFilter} className="filter-icon" />
+    const filterIcon = <FontAwesomeIcon icon={faFilter} size="lg" className="filter-icon" />
 
     const handleInputChange = (e) => {
         setValue(e.target.value)
          onChange(e.target.value)
       }
 
-    return (
-        <div className={styles.globalFilterDiv}>
-            <span className={styles.globalFilterSpan}>
+      return (
+       
+            <div className={`${styles.globalFilterDiv} ${styles.globalFilter}`}>
                 <SearchBox>
                     {filterIcon}
                     <input
@@ -77,7 +77,7 @@ const GlobalFilter = ({ filter, setFilter }) => {
                         className={styles.globalFilterInput}
                     />
                 </SearchBox>
-            </span>
+           
         </div>
     )
 }

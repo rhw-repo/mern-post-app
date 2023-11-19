@@ -243,23 +243,22 @@ content as if on an elevated surface*/
 
     .optionsContainer {
         display: grid;
-        grid-template-columns: repeat(6, 1fr);
+        grid-template-columns: 150px 150px 150px;
         grid-template-rows: auto auto;
-        /*justify-items: center;*/
         align-items: center;
-        gap: 2%;
+        overflow: hidden;
     }
 
     .optionsContainer button {
         display: block;
     }
 
-
     /* .dateRangeBtn*/
     .optionsContainer>div:nth-child(1) {
         grid-row: 1 / 2;
         grid-column: 1 / 2;
         background-color: rgb(15, 221, 240);
+        justify-self: start;
     }
 
     .dateRangeBtn {
@@ -288,7 +287,7 @@ content as if on an elevated surface*/
     /*.createNewBtn */
     .optionsContainer>div:nth-child(4) {
         grid-row: 1 / 2;
-        grid-column: 5 / span 2;
+        grid-column: 3 / 4;
         background-color: aquamarine;
     }
 
@@ -302,8 +301,7 @@ content as if on an elevated surface*/
     .optionsContainer .globalFilter */
     .optionsContainer>div:nth-child(2) {
         grid-row: 2;
-        grid-column: 3 / span 2;
-        background-color: teal;
+        grid-column: 1 / span 3;
     }
 
     th {
