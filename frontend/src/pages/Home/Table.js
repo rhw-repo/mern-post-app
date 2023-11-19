@@ -382,7 +382,7 @@ function Table({ data }) {
                         {resetIcon} RESET
                     </button>
                 </div>
-                <div className={styles.createNewSpan}>
+                <div className={styles.createNewDiv}>
                     <Link to="/create_new">
                         <button
                             className={`${styles.createNewBtn} create-new-btn`}
