@@ -371,7 +371,7 @@ function Table({ data }) {
                     <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
                 </div>
 
-                <div className={styles.resetTableBtnSpan}>
+                <div className={styles.resetTableBtnDiv}>
                     <button
                         className={`${styles.resetTableBtn} reset-table-btn`}
                         onClick={() => {
