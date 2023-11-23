@@ -29,17 +29,23 @@
 }
 
 @media (max-width: 1007px) {
+  .contentDetailTitle,
+  .contentDetailContent,
+  .contentDetailTagsLabel {
+    font-size: 1.25rem;
+  }
+
   .tags,
   .tagChip {
     min-width: fit-content;
+    min-height: fit-content;
     line-height: normal;
   }
 }
 
 @media (max-width: 400px) {
   .goToEditBtn {
-    white-space: normal;
+    white-space: nowrap;
     overflow: hidden;
   }
-
 }
