@@ -67,8 +67,8 @@
     grid-row: 1 / 2;
     grid-column: 3 / 4;
     justify-self: center;
-    font-size: 0.75rem;
-    padding: 0.47rem;
+    font-size: 1rem;
+    padding: 1rem;
     min-width: fit-content;
     margin: 0.5rem;
   }
@@ -86,6 +86,6 @@
   }
 
   .userEmail {
-    font-size: 0.75rem;
+    font-size: 1rem;
   }
 }

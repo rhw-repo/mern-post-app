@@ -13,3 +13,11 @@
   .closeDateRangeBtnIcon {
     color: var(--secondary-light);
   }
+
+ /* hides as per client spec */
+@media (max-width: 780px) {
+  .closeDateRangeBtn,
+  .closeDateRangeBtnIcon  {
+     display: none;
+   }
+ }

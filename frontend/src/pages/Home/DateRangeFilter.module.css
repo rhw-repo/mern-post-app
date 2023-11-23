@@ -1,17 +1,28 @@
 /* Styles specific to DateRangePicker div in DateRangeFilter, 
 z index simple positioning */
 .modal {
-    position: absolute;
-    top: 53%;
-    left: 38%;
-    transform: translate(-50%, -50%);
-    border: solid 1px #778DA5;
-    border-radius: 1rem;
-    box-shadow:
-      0rem 0.125rem 0.25rem 0rem rgba(0, 0, 0, 0.2),
-      0rem 0.25rem 0.3125rem 0rem rgba(0, 0, 0, 0.14),
-      0rem 0.0625rem 0.625rem 0rem rgba(0, 0, 0, 0.12),
-      0.3125rem 0.3125rem 0.3125rem 0.3125rem #778DA5;
-    z-index: 1;
+  max-width: fit-content;
+  max-height: fit-content;
+  position: absolute;
+  top: 53%;
+  left: 38%;
+  transform: translate(-50%, -50%);
+  border: solid 1px #778DA5;
+  border-radius: 1rem;  
+  box-shadow:
+    0rem 0.125rem 0.25rem 0rem rgba(0, 0, 0, 0.2),
+    0rem 0.25rem 0.3125rem 0rem rgba(0, 0, 0, 0.14),
+    0rem 0.0625rem 0.625rem 0rem rgba(0, 0, 0, 0.12),
+    0.3125rem 0.3125rem 0.3125rem 0.3125rem #778DA5;
+  z-index: 1;
+}
+
+/* hides as per client spec */
+/* alternative: display: flexbox; flex-direction: column
+has issues with z-index - larger task */
+@media (max-width: 780px) {
+ .modal {
+    display: none;
   }
-  
+
+}

@@ -16,7 +16,7 @@ globalFilter in GlobalFilter */
 
 /* DateRangeFilter modal toggle button */
 .dateRangeBtn {
-    padding: 0.625rem 1rem;
+    padding: 1rem;
 }
 
 .calendarIcon {
@@ -24,14 +24,15 @@ globalFilter in GlobalFilter */
 }
 
 .resetTableBtn {
-    width: 9rem;
-    padding: 0.625rem;
+    min-width: 100%;
+    padding: 1rem;
     margin: 1rem;
 }
 
 .createNewBtn {
     padding: 1rem;
     min-width: 100%;
+    margin-bottom: 0.5rem;
 }
 
 /* Table layout and container style rules for displaying 
@@ -148,17 +149,11 @@ content as if on an elevated surface*/
     margin-left: 0.5rem;
 }
 
-/* Prevents overflow, poor alignment or inappropriate wrapping  */
+/* Pagination: Grid layout prevent overflow, 
+poor alignment or btn wrapping  */
 @media (max-width: 1007px) {
     * {
         box-sizing: border-box;
-    }
-
-    /* within Options Container */
-    .createNewBtn {
-        font-size: 1.25rem;
-        white-space: nowrap;
-        overflow: hidden;
     }
 
     /* Pagination section */
@@ -235,7 +230,8 @@ content as if on an elevated surface*/
     }
 }
 
-/* Prevent overflow and poor alignment using  grid layout & element resizing */
+/* Options Container & Table grid layout 
+Prevent overflow, wrapping and poor alignment */
 @media (max-width: 916px) {
     * {
         box-sizing: border-box;
@@ -257,7 +253,6 @@ content as if on an elevated surface*/
     }
 
     .dateRangeBtn {
-        padding: 1.5vw;
         justify-self: end;
         white-space: nowrap;
     }
@@ -271,9 +266,8 @@ content as if on an elevated surface*/
 
     .resetTableBtn {
         margin: 0;
-        padding: 1.5vw;
-        font-size: small;
         justify-self: start;
+        white-space: nowrap;
     }
 
     /*.createNewBtn */
@@ -439,44 +433,30 @@ content as if on an elevated surface*/
     }
 }
 
-@media (max-width: 593px) {
-    /* Options Container: prevent overflowing and poor alignment */
-    .optionsContainer {
+@media (max-width: 780px) {
+   .optionsContainer {
         display: grid;
-        grid-template-columns: minmax(5rem, 1fr) minmax(2rem, 1fr) minmax(6rem, 1fr);
-        grid-template-rows: auto auto auto;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: auto auto;
         align-items: center;
         overflow: hidden;
     }
 
-    .dateRangeBtn,
+    /* Client request */
+    .dateRangeBtn {
+        display: none;
+    }
+
+     /*.resetTableBtn */
+     .optionsContainer>div:nth-child(3) {
+        grid-row: 1 / 1;
+        grid-column: 1 / 2;
+     }
+}
+ 
+@media (max-width: 593px) {
     .resetTableBtn {
-        font-size: 0.75rem;
-        padding: 1.5vw;
-        max-width: fit-content;
         margin-bottom: 0.5rem;
-    }
-
-    /*.createNewDiv */
-    .optionsContainer>div:nth-child(4) {
-        grid-row: 1 / 2;
-        grid-column: 3 / 4;
-        justify-self: end;
-    }
-
-    .createNewBtn {
-        padding: 2vh 1.5vw;
-        font-size: 1rem;
-    }
-
-    /*.optionsContainer .globalFilterInput,
-    .optionsContainer .globalFilter */
-    .optionsContainer>div:nth-child(2) .globalFilter {
-        justify-self: center;
-        max-height: fit-content;
-        max-width: 90%;
-        font-size: 0.65em;
-        margin-top: 0.5rem;
     }
 
     .globalFilter input {
@@ -498,12 +478,8 @@ content as if on an elevated surface*/
         align-items: center;
     }
 
-    .optionsContainer .resetTableBtn,
-    .dateRangeBtn {
+    .optionsContainer .resetTableBtn {
         padding: 0.75rem 1rem;
-    }
-
-    .resetTableBtn {
         width: 100%;
         margin-top: 0.5rem;
     }
