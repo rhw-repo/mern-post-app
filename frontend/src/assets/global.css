@@ -239,7 +239,7 @@ p {
   gap: 5%;
 }
 
-/* Layout Cancel & Save buttons */
+/* Layout Cancel & Save button container */
 .content-detail-edit-create-btns {
   display: flex;
   justify-content: space-between;
@@ -356,4 +356,11 @@ div.content-detail div.edit textarea.error {
 .switch-form-btn {
   padding: 0.625rem;
   min-width: 8rem;
+}
+
+@media (max-width: 400px) {
+  .content-detail-edit-create-btns {
+    flex-direction: column-reverse;
+    gap: 1rem;
+  }
 }

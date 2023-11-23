@@ -187,10 +187,8 @@ const Edit = ({ material }) => {
 
       <div className="content-detail-edit-create-btns">
         <CancelButton />
-        <button className="save-btn" type="submit">{saveIcon} Save</button>
+        <button className={`${styles.saveBtn} save-btn`} type="submit">{saveIcon} Save</button>
       </div>
-
-
     </form>
   )
 }

@@ -25,24 +25,19 @@
 /* creates uniform width for this primary button */
 .goToEditBtn {
   padding: 1rem 3.29rem;
+  white-space: nowrap;
 }
 
 @media (max-width: 1007px) {
   .tags,
   .tagChip {
-    padding: 1rem;
-    background-color: pink;
+    min-width: fit-content;
+    line-height: normal;
   }
 }
 
 @media (max-width: 400px) {
   .goToEditBtn {
-    width: 5rem;
-    height: 5rem;
-    border-radius: 50%;
-    font-size: 1rem;
-    font-weight: 800;
-    padding: 0.5rem;
     white-space: normal;
     overflow: hidden;
   }

@@ -13,7 +13,7 @@ import DeleteButton from "./DeleteButton";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import {
     faCalendarDays,
-    faPlus,
+    faFile,
     faUndo,
     faSort,
     faForward,
@@ -315,7 +315,7 @@ function Table({ data }) {
     const [isOpen, setIsOpen] = useState(false)
 
     const calendarIcon = <FontAwesomeIcon icon={faCalendarDays} className={styles.calendarIcon} />
-    const createNewIcon = <FontAwesomeIcon icon={faPlus} />
+    const createNewIconFile = <FontAwesomeIcon icon={faFile} />
     const resetIcon = <FontAwesomeIcon icon={faUndo} />
     const sortIcon = <FontAwesomeIcon icon={faSort} size="2xl" className={styles.sortIcon} />
     const forwardsIcon = <FontAwesomeIcon icon={faForward} />
@@ -387,7 +387,7 @@ function Table({ data }) {
                         <button
                             className={`${styles.createNewBtn} create-new-btn`}
                         >
-                            {createNewIcon} Create New
+                           {createNewIconFile} Create New
                         </button>
                     </Link>
                 </div>
