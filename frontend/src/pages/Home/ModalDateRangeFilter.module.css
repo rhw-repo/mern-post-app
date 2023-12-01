@@ -1,7 +1,7 @@
 /* Styles specific to opened modal for DateRangeFilter */
 .closeDateRangeBtn {
     border: none;
-    background-color: none;
+   /* background-color: none;*/
     margin: 0.5rem 0;
     cursor: pointer;
     padding: 0;
@@ -13,6 +13,22 @@
   .closeDateRangeBtnIcon {
     color: var(--secondary-light);
   }
+
+  .closeDateRangeBtn,
+  .closeDateRangeBtnIcon {
+    position: absolute; 
+    left: 1%;
+    top: 0%;
+    z-index: 999;
+  }
+
+ /* hides as per client spec */
+@media (max-width: 780px) {
+  .closeDateRangeBtn,
+  .closeDateRangeBtnIcon  {
+     display: none;
+   }
+ }
 
  /* hides as per client spec */
 @media (max-width: 780px) {
