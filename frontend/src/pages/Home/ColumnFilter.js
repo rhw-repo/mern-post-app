@@ -65,7 +65,7 @@ const ColumnFilter = ({ column }) => {
                         {filterIcon}
                         <input
                             type="text"
-                            placeholder="Search this column..."
+                            placeholder="Search column"
                             value={filterValue || ""}
                             onChange={e => setFilter(e.target.value)}
                         />

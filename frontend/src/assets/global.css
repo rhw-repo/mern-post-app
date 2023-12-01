@@ -325,7 +325,6 @@ div.content-detail div.edit textarea.error {
 .signup-form,
 .login-form {
   max-width: 30rem;
-  /*margin: 2rem auto;*/
   padding: 3rem;
 }
 
@@ -358,7 +357,60 @@ div.content-detail div.edit textarea.error {
   min-width: 8rem;
 }
 
-@media (max-width: 400px) { 
+/* Positions form vertically */
+@media (max-width: 920px) {
+  .loginWrapper {
+      min-height: 75dvh;
+      min-height: 75vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+  }
+}
+
+/* Specific screens such as Nest Hub */
+@media (max-width: 1024px) and (max-height:600px) {
+  /* Specific to fit form into screen height */
+  .pages {
+    padding-top: 0;
+  }
+
+  /* Reduce height to fit screen size */
+  .login-form,
+  .signup-form {
+    font-size: 1rem;
+    padding: 1.5rem 3rem;
+    margin: 0 auto 1rem;
+  }
+
+  /* Flex row not column prevents vertical overflow */
+  .login-btn,
+  .signup-btn {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 1rem auto 0 auto;
+    gap: 1rem;
+    font-size: 1rem;
+  }
+  
+  /* Flex-direction: row instead of block columns */
+  .switch-form-btns {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem; 
+  }
+
+  /* Prevent it's margins misaligning .switch-forms-btns div */
+  .switch-form-text-prompt {
+    margin: 0;
+  }
+}
+
+/* Prevent overflow */
+@media (max-width: 400px) {
   .content-detail-edit-create-btns {
     flex-direction: column-reverse;
     gap: 1rem;

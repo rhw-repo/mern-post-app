@@ -103,7 +103,7 @@ const Login = () => {
                     </div>
                 ) : null}
 
-                <h1>Welcome. Login here:</h1>
+                <h1 className={styles.loginFormTitle}>Welcome. Login here:</h1>
                 <label>Email*</label>
                 <input
                     aria-label="Enter your email address"
@@ -144,7 +144,7 @@ const Login = () => {
                     {error && <div className="error">{error}</div>}
                 </div>
             </form>
-            <div className="switch-form-btns">
+            <div className={`${styles.loginSwitchFormsBtns} switch-form-btns`}>
                 <div className="switch-form-text-prompt">Need an account?</div>
                 <button
                     className="switch-form-btn"

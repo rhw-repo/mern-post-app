@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useSignup } from "../../hooks/useSignup";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUserPlus, faRightToBracket } from "@fortawesome/free-solid-svg-icons"
+import styles from "./Signup.module.css"
 
 // custom hook manages input fields error handling
 const useInput = (initialValue, externalError) => {
@@ -88,6 +89,7 @@ const Signup = () => {
 
     return (
         <>
+        <div className={styles.signupWrapper}>
             <form className="signup-form" onSubmit={handleSubmit}>
                 {(trySubmit && !isFormValid) || error ? (
                     <div className="error">
@@ -147,6 +149,7 @@ const Signup = () => {
                 >
                     {loginIcon} Login
                 </button>
+            </div>
             </div>
         </>
     )

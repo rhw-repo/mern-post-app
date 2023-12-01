@@ -1,0 +1,22 @@
+/* Centres form */
+.signupWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Retains centering vertically */
+@media (max-width: 920px) {
+    .signupWrapper {
+        min-height: 75dvh;
+        min-height: 75vh;
+    }
+}
+
+/* Specific screens such as Nest Hub, prevent vertical overflow */
+@media (max-width: 1024px) and (max-height:600px) {
+    .signupWrapper {
+        margin-bottom: 0;
+    }
+}
