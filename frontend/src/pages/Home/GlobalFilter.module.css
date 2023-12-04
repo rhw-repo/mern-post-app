@@ -13,11 +13,13 @@
     width: fit-content;
     font-size: 1.25rem;
     margin-left: 0.625rem;
+    /* Accessibility: touch target above 44x44px all screen sizes */
+    padding: 1rem;
     
   }
   
   /* Prevent input overflowing Options Container */
-  @media (max-width: 592px) {
+  @media (max-width: 593px) {
     .globalFilterInput {
       width: 100%;
     }

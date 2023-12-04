@@ -23,6 +23,8 @@ const SearchBox = styled.div`
         outline: none; 
         font-size: 1rem;
         margin-left: 0.625rem;
+        padding-top: 0.9rem;
+        padding-bottom: 0.9rem;
     }
 
     & .filter-icon {

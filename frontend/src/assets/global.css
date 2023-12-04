@@ -29,7 +29,7 @@ body {
   border: 0;
   color: #fff;
   text-align: center;
-  padding: 1rem;
+  padding: 1rem 2rem;
   font-family: "Lexend Deca", Helvetica, Arial, sans-serif;
   font-size: 1.25rem;
   font-weight: bold;
@@ -82,6 +82,7 @@ nav button,
   font-family: "Lexend Deca", Helvetica, Arial, sans-serif;
   font-weight: 800;
   font-size: 1rem;
+  padding: 1rem 1rem;
   cursor: pointer;
   transition: background 0.3s, color 0.3s, transform 0.3s;
 }
@@ -352,9 +353,17 @@ div.content-detail div.edit textarea.error {
   color: #435362;
 }
 
-.switch-form-btn {
+/*.switch-form-btn {
   padding: 0.625rem;
   min-width: 8rem;
+}*/
+
+/* Select clearIndicator close button container */
+.css-12a83d4-MultiValueRemove {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 /* Positions form vertically */

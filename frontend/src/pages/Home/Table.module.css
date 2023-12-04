@@ -30,7 +30,6 @@ globalFilter in GlobalFilter */
 }
 
 .createNewBtn {
-    padding: 1rem;
     min-width: 100%;
     margin-bottom: 0.5rem;
 }
@@ -118,6 +117,7 @@ content as if on an elevated surface*/
 .sortIcon {
     color: var(--secondary-light);
     cursor: pointer;
+    padding: 0.5rem 1rem;
 }
 
 /* Table Pagination section */
@@ -132,6 +132,10 @@ content as if on an elevated surface*/
     font-size: 1rem;
     padding: 0.625rem;
     margin: 1rem;
+}
+
+.tablePaginationButton {
+    white-space: nowrap;
 }
 
 /* Matches width to 'Reset' & 'Previous' buttons for uniform UI appearance*/
@@ -351,10 +355,6 @@ Prevent overflow, wrapping and poor alignment */
         grid-column: 3 / 4;
         width: fit-content;
         justify-self: end;
-    }
-
-    .createNewBtn {
-        padding: 1rem;
     }
 
     /* .optionsContainer .globalFilterInput,

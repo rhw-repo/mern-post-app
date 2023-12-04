@@ -63,6 +63,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  white-space: nowrap;
 }
 
 .yesDeleteBtn {
@@ -102,17 +103,18 @@
   }
 
   .deleteSpan {
-    font-size: 0.8rem;
+    font-size: 1rem;
     grid: end;
     height: 1.6rem;
     width: 1.6rem;
-    padding: 0.5rem;
+    padding: 0.75rem;
   }
 }
 
 @media (max-width: 1007px) {
+  /* Accesibility: retain 48x48px touch target */
   .deleteSpan {
-    padding: 1rem;
+    padding: 1.5rem;
   }
 }
 
