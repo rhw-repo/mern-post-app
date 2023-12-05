@@ -3,6 +3,7 @@
   margin: auto;
 }
 
+/* Container for trash can icon in table */
 .deleteSpan {
   display: flex;
   justify-content: center;
@@ -118,9 +119,30 @@
   }
 }
 
-@media (min-width: 352px) and (max-width: 400px) {
-  .deleteDiv {
-    margin-left: 1rem;
+/* Custom breakpoint specific to open delete dialog box */
+/* Prevent horizontal overflow */
+@media (max-width: 370px) {
+  .dialogConfirmDelete {
+    max-width: 90%;
+    max-height: 90%;
+    padding: 0rem 1rem 2rem;
   }
-}
 
+  /* Readability: space inbetween important paragraphs */
+   p {
+    margin: auto auto 0.5rem;
+  }
+
+  /* Prevent horizontal overflow */
+  .confirmDeleteBtns {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 10%;
+  }
+
+  .noCancelDeleteBtn {
+    grid-row: 2 / 3;
+  }
+
+}
