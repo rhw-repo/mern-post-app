@@ -30,7 +30,7 @@ const Navbar = () => {
                             <span className={styles.userEmail}>username15chars</span>
                             <button
                                 onClick={handleClick}
-                                className={styles.button}
+                                className={styles.navLogoutButton}
                             >
                                 {logoutIcon} Log Out</button>
                         </>

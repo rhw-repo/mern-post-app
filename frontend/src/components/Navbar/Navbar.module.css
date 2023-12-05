@@ -29,12 +29,11 @@ h1 {
   text-decoration: none;
 }
 
-.button {
+.navLogoutButton {
   margin-left: 1rem;
-  padding: 0.625rem;
+  padding: 0.9rem 1rem;
   min-width: 8rem;
   margin: 1rem;
-  /*justify-self: end;*/
 }
 
 /* Replace flexbox with grid layout, resize elements prevent overflow */
@@ -67,12 +66,11 @@ h1 {
     justify-self: center;
   }
 
-  nav .button {
+  nav .navLogoutButton {
     grid-row: 1 / 2;
     grid-column: 3 / 4;
     justify-self: center;
     font-size: 1rem;
-    padding: 1rem;
     min-width: fit-content;
     margin: 0.5rem;
   }
