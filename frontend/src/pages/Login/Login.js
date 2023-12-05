@@ -103,7 +103,7 @@ const Login = () => {
                     </div>
                 ) : null}
 
-                <h1 className={styles.loginFormTitle}>Welcome. Login here:</h1>
+                <h1 className="login-signup-title">Hello, log in</h1>
                 <label>Email*</label>
                 <input
                     aria-label="Enter your email address"

@@ -130,7 +130,6 @@ content as if on an elevated surface*/
 .tablePaginationButton,
 .SelectBox {
     font-size: 1rem;
-    padding: 0.625rem;
     margin: 1rem;
 }
 
@@ -138,9 +137,14 @@ content as if on an elevated surface*/
     white-space: nowrap;
 }
 
+/* Must preserve to retain gap before .goToPageText */
+.tablePageNumbering {
+    margin-right: 1rem;
+}
+
 /* Matches width to 'Reset' & 'Previous' buttons for uniform UI appearance*/
 .tablePaginationNext {
-    padding: 0.625rem 1.5rem;
+    padding: 1rem 2rem;
 }
 
 .goToPageText {
@@ -148,19 +152,33 @@ content as if on an elevated surface*/
     align-items: center;
 }
 
+/* Margin-left provides spacing between goToPageText & pageInput */
 .pageInput {
     width: 3.125rem;
+    padding: 1rem;
     margin-left: 0.5rem;
+    text-align: center;
 }
 
-/* Pagination: Grid layout prevent overflow, 
-poor alignment or btn wrapping  */
+/*.SelectBox ::before  { 
+    display: block;
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: auto;
+    width: 0;
+    */
+
+/* Removes dropdown arrow as too close to right border */
+select {
+    appearance: none;
+}
+
 @media (max-width: 1007px) {
     * {
         box-sizing: border-box;
     }
 
-    /*TODO prevent table overflowing  */
+    /* OptionsContainer & Table - Display: grid prevents horizontal overflow */
     th {
         display: none;
     }
@@ -235,7 +253,8 @@ poor alignment or btn wrapping  */
         overflow: hidden;
     }
 
-    /* Pagination section */
+    /* Pagination: prevents overflow, 
+    poor alignment or btn wrapping  */
     .pagination,
     .Table_pagination {
         display: grid;
@@ -309,8 +328,7 @@ poor alignment or btn wrapping  */
     }
 }
 
-/* Options Container & Table grid layout 
-Prevent overflow, wrapping and poor alignment */
+/* Options Container prevent overflow, wrapping & poor alignment */
 @media (max-width: 916px) {
     * {
         box-sizing: border-box;
@@ -435,6 +453,7 @@ Prevent overflow, wrapping and poor alignment */
     }
 }
 
+/* Reconfigure OptionsContainer grid layout & hide DateRangeBtn */
 @media (max-width: 780px) {
     .optionsContainer {
         display: grid;

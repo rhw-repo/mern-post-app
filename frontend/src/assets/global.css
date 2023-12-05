@@ -329,6 +329,10 @@ div.content-detail div.edit textarea.error {
   padding: 3rem;
 }
 
+.login-signup-title {
+  margin:auto;
+}
+
 .login-btn,
 .signup-btn {
   display: flex;
@@ -352,11 +356,6 @@ div.content-detail div.edit textarea.error {
   text-align: center;
   color: #435362;
 }
-
-/*.switch-form-btn {
-  padding: 0.625rem;
-  min-width: 8rem;
-}*/
 
 /* Select clearIndicator close button container */
 .css-12a83d4-MultiValueRemove {

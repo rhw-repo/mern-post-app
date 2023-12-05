@@ -90,7 +90,7 @@ const Signup = () => {
     return (
         <>
         <div className={styles.signupWrapper}>
-            <form className="signup-form" onSubmit={handleSubmit}>
+            <form className={`${styles.signupForm} signup-form`} onSubmit={handleSubmit}>
                 {(trySubmit && !isFormValid) || error ? (
                     <div className="error">
                         {trySubmit && !isFormValid ? (
@@ -103,7 +103,7 @@ const Signup = () => {
                     </div>
                 ) : null}
 
-                <h1>Create your account here:</h1>
+                <h1 className="login-signup-title">Sign up here:</h1>
                 <label>Email*</label>
                 <input
                     aria-label="Enter your email address"
@@ -142,7 +142,7 @@ const Signup = () => {
                 </div>
             </form>
             <div className="switch-form-btns">
-                <div className="switch-form-text-prompt">Click below if you already have an account:</div>
+                <div className="switch-form-text-prompt">Already have an account?</div>
                 <button
                     className="switch-form-btn"
                     onClick={goToLogin}

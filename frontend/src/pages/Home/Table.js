@@ -17,7 +17,7 @@ import {
     faUndo,
     faSort,
     faForward,
-    faBackward,
+    faBackward
 } from "@fortawesome/free-solid-svg-icons"
 // Formats date fields 
 import { format } from "date-fns";
@@ -447,7 +447,7 @@ function Table({ data }) {
                         value={pageSize}
                         onChange={handlePageSizeChange}
                     >
-                        <option value={""}>-- Show Me More --</option>
+                        <option value={""}>Show Me More</option>
                         {[5, 10, 20, 50].map(size => (
                             <option key={size} value={size}>
                                 Show {size} Rows
@@ -467,7 +467,7 @@ function Table({ data }) {
                         </strong>{" "}
                     </span>
                     <span className={styles.goToPageText} aria-label="Go to specific page">
-                        | Go to page: {" "}
+                        Go to page: {" "}
                         <input className={styles.pageInput} aria-label="Page number"
                             type="number"
                             defaultValue={pageIndex + 1}
