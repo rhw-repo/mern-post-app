@@ -1,5 +1,7 @@
 .loginForm {
     margin: 0 auto;
+    width: 28rem;
+    max-width: 100%;
 }
 
 /* Specific screens such as Nest Hub */
