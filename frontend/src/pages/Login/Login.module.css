@@ -29,6 +29,14 @@
     }
 }
 
+/* Resizes form for tablets */
+@media (min-width: 768px) and (max-width: 912px) and (min-height: 1024px) and (max-height: 1368px) {
+    .loginWrapper {
+    transform: scale(1.65);
+    margin: 4rem auto;
+    }
+}
+
 /* Retain form's centering for narrower screen widths */
 @media (max-width: 300px) {
     .loginForm {

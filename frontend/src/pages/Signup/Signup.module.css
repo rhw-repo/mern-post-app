@@ -1,3 +1,7 @@
+.signupForm {
+    margin: 0 auto;
+}
+
 .signupWrapper {
     display: flex;
     flex-direction: column;
@@ -21,6 +25,14 @@
 
     .signupForm {
         margin-bottom: 1rem;
+    }
+}
+
+/* Resizes form for tablets */
+@media (min-width: 768px) and (max-width: 912px) and (min-height: 1024px) and (max-height: 1368px) {
+    .signupWrapper {
+    transform: scale(1.65);
+    margin: 4rem auto;
     }
 }
 
