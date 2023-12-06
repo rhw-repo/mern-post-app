@@ -16,7 +16,7 @@ const Navbar = () => {
         navigate("/login")
     }
 
-    const logoutIcon = <FontAwesomeIcon icon={faRightFromBracket} />
+    const logoutIcon = <FontAwesomeIcon icon={faRightFromBracket} className={styles.navLogoutIcon}/>
 
     return (
         <header className={styles.header}>

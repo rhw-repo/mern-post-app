@@ -29,10 +29,20 @@ h1 {
 }
 
 .navLogoutButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin-left: 1rem;
   padding: 0.9rem 1rem;
   min-width: 8rem;
   margin: 1rem;
+  white-space: nowrap;
+}
+
+.navLogoutIcon {
+  font-size: 1.5rem;
+  padding-right: 0.3rem;
+  color: var(--secondary-light);
 }
 
 /* Replace flexbox with grid layout, resize elements prevent overflow */
@@ -76,9 +86,9 @@ h1 {
 }
 
 @media (max-width: 560px) {
-  /* Prevent elements overlapping */
+  /* Prevent overlapping & accidental taps */
   .container {
-    gap: 5px;
+    gap: 0.5rem;
   }
 
   h1,

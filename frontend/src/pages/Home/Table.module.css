@@ -175,7 +175,58 @@ select {
         box-sizing: border-box;
     }
 
-    /* OptionsContainer & Table - Display: grid prevents horizontal overflow */
+    /* Options Container grid layout prevent overlapping 
+    elements, overflow into other elements & poor alignment */
+    .optionsContainer {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: auto auto;
+        align-items: center;
+        overflow: hidden;
+        row-gap: 0.8rem;
+    }
+
+    /* .dateRangeBtn*/
+    .optionsContainer>div:nth-child(1) {
+        grid-row: 1 / 2;
+        grid-column: 1 / 2;
+        justify-self: start;
+    }
+
+    .dateRangeBtn {
+        justify-self: end;
+        white-space: nowrap;
+    }
+
+    /*.resetTableBtn */
+    .optionsContainer>div:nth-child(3) {
+        grid-row: 1 / 2;
+        grid-column: 2 / 3;
+        justify-self: start;
+    }
+
+    .resetTableBtn {
+        margin: 0;
+        justify-self: start;
+        white-space: nowrap;
+    }
+
+    /*.createNewBtn */
+    .optionsContainer>div:nth-child(4) {
+        grid-row: 1 / 2;
+        grid-column: 3 / 4;
+        width: fit-content;
+        justify-self: end;
+    }
+
+    /* .optionsContainer .globalFilterInput,
+    .optionsContainer .globalFilter */
+    .optionsContainer>div:nth-child(2) {
+        grid-row: 2;
+        grid-column: 1 / span 3;
+    }
+
+    /* Table - Display: grid prevents horizontal overflow */
     th {
         display: none;
     }
