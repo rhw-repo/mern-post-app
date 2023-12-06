@@ -420,7 +420,7 @@ select {
     }
 
     .SelectBox {
-        font-size: 0.75rem;
+        font-size: 1rem;
         grid-row: 2;
         grid-column: 1 / span 2;
     }

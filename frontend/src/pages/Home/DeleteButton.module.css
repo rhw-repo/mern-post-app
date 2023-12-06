@@ -54,7 +54,7 @@
   border: none;
   border-radius: 1.875rem;
   font-weight: 500;
-  font-size: 0.875rem;
+  font-size: 1rem;
   font-family: "Lexend Deca", Helvetica, Arial, sans-serif;
   padding: 1rem;
   margin: 0.25rem;
@@ -70,6 +70,7 @@
 .yesDeleteBtn {
   background-color: var(--error);
   color: #ffffff;
+  font-weight: 800;
 }
 
 .noCancelDeleteBtn {
