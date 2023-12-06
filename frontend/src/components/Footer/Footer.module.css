@@ -3,24 +3,27 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    line-height: 0.3rem;
+    line-height: 1rem;
     position: fixed;
     left: 0;
     bottom: 0;
     right: 0;
-    height: 0.3rem;
+    height: auto;
     width: 100vw;
-    padding: 1.33rem 0.66rem;
+    padding: 1rem 0;
     background-color: var(--secondary);
     font-family: "Lexend Deca", Helvetica, Arial, Lucida, sans-serif;
-    font-size: 0.75rem;
+    font-size: 1rem;
     color: #ffffff;
-    font-weight: 600;
+    font-weight: 800;
+    gap: 0.3rem;
   }
 
-  @media (max-width: 400px) {
+  @media (max-width: 415px) {
     .footer {
-      font-size: 0.625rem;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
     }
   }
   

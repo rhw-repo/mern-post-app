@@ -71,6 +71,8 @@ content as if on an elevated surface*/
 .tableHeader {
     white-space: nowrap;
     border-bottom: solid 3px #BD7374;
+     /* Testing for New color scheme #1 
+    border-bottom: solid 3px 	hsl(37, 98%, 53%);*/
     background: white;
     color: #435362;
     font-weight: bold;

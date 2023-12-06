@@ -3,7 +3,7 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@400;500;600;700&family=Open+Sans:wght@300;400&display=swap');
 
-/* Global color scheme */
+/* Original Global color scheme */
 :root {
   --primary: #BD7374;
   --error: #A2262C;
@@ -11,6 +11,16 @@
   --secondary-light: #667B99;
   --secondary-chips: #5C6D84;
 }
+
+/* WIP: testing for New Global color scheme #1
+TODO: dark mode 
+:root {
+  --primary: #023047;
+  --error: #A2262C;
+  --secondary: #054a91;
+  --secondary-light: #667B99;
+  --secondary-chips: #5C6D84;
+}*/
 
 /* Global rules */
 body {
@@ -27,7 +37,7 @@ body {
 .save-btn {
   background: var(--primary);
   border: 0;
-  color: #fff;
+  color: #ffffff;
   text-align: center;
   padding: 1rem 2rem;
   font-family: "Lexend Deca", Helvetica, Arial, sans-serif;
@@ -125,7 +135,8 @@ nav button:active,
 
 h1 {
   color: #435362;
-  font-weight: 900;
+  /* Testing for New color scheme #1 
+  color: #1178f2;*/
   text-align: center;
   font-family: "Lexend Deca", Helvetica, Arial, sans-serif;
 }

@@ -4,7 +4,8 @@ const Footer = () => {
     return (
         <footer>
             <div className={styles.footer}>
-                    © 2023 R Westnidge Brown. All rights reserved.             
+                <span >© 2023 R Westnidge Brown.</span>
+                <span >All rights reserved.</span>
             </div>
         </footer>
     )
