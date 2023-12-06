@@ -314,7 +314,7 @@ function Table({ data }) {
     // Toggle visbility DateRangeFilter, too large for UI
     const [isOpen, setIsOpen] = useState(false)
 
-    const calendarIcon = <FontAwesomeIcon icon={faCalendarDays} className={styles.calendarIcon} />
+    const calendarIcon = <FontAwesomeIcon icon={faCalendarDays} size="2xl" className={styles.calendarIcon} />
     const createNewIconFile = <FontAwesomeIcon icon={faFile} />
     const resetIcon = <FontAwesomeIcon icon={faUndo} />
     const sortIcon = <FontAwesomeIcon icon={faSort} size="2xl" className={styles.sortIcon} />

@@ -21,6 +21,7 @@ globalFilter in GlobalFilter */
 
 .calendarIcon {
     color: var(--secondary-light);
+    padding-right: 0.3rem;
 }
 
 .resetTableBtn {
@@ -108,6 +109,7 @@ content as if on an elevated surface*/
     text-overflow: ellipsis;
 }
 
+/* Table data rows */
 .tableLinkedCellContainer {
     max-width: 35rem;
     overflow: hidden;
@@ -162,20 +164,13 @@ content as if on an elevated surface*/
     text-align: center;
 }
 
-/*.SelectBox ::before  { 
-    display: block;
-    margin-top: 0;
-    margin-bottom: 0;
-    margin-left: auto;
-    width: 0;
-    */
-
-/* Removes dropdown arrow as too close to right border */
+/* Removes dropdown arrow prevent 
+overflow into rounded border*/
 select {
     appearance: none;
 }
 
-@media (max-width: 1007px) {
+@media (max-width: 1060px) {
     * {
         box-sizing: border-box;
     }
@@ -482,13 +477,11 @@ select {
         margin-bottom: 0.5rem;
     }
 
-    .globalFilter input {
+    /* Table Header font smaller prevent 
+     horizontal overlap with table data */
+     td::before {
         font-size: 1rem;
-    }
-
-    /* Table Header font smaller for uniform UI appearance */
-    td::before {
-        font-size: 1rem;
+        margin-right: 1rem;
     }
 }
 
@@ -511,5 +504,12 @@ select {
     .createNewBtn {
         padding: 1rem 1.5rem;
         margin-bottom: 1rem;
+    }
+
+    /* Pagination section Reset button prevent 
+   overflow into right side border of container  */
+   
+    .tablePaginationReset {
+       transform: scaleX(0.9);
     }
 }

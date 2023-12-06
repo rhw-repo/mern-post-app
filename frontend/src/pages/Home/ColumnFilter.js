@@ -31,6 +31,7 @@ const SearchBox = styled.div`
         color: var(--secondary-light); 
         margin-right: 0.312rem;
         transition: color 0.3s, transform 0.3s; 
+        font-size: 2rem;
     }
 
     &:hover {
@@ -48,7 +49,7 @@ const SearchBox = styled.div`
     }
     }
 `
-const filterIcon = <FontAwesomeIcon icon={faFilter} className="filter-icon" />
+const filterIcon = <FontAwesomeIcon icon={faFilter} /*size="2xl"*/ className="filter-icon"/>
 
 const ColumnFilter = ({ column }) => {
     // console.log(column)
