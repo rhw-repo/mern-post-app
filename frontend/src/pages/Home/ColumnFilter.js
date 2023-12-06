@@ -31,7 +31,7 @@ const SearchBox = styled.div`
         color: var(--secondary-light); 
         margin-right: 0.312rem;
         transition: color 0.3s, transform 0.3s; 
-        font-size: 2rem;
+        font-size: 1.5rem;
     }
 
     &:hover {

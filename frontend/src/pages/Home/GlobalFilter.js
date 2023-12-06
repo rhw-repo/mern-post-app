@@ -25,7 +25,7 @@ const SearchBox = styled.div`
     & .filter-icon {
         color: var(--secondary-light); 
         transition: color 0.3s, transform 0.3s; 
-        font-size: 2rem;
+        font-size: 1.5rem;
     }
 
     &:hover {

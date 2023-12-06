@@ -62,6 +62,10 @@ const TagsSelect = forwardRef(({
                 border: state.isFocused ? "1px solid var(--secondary-light)" : "1px solid #e6e6e6",
             }
         }),
+        menu: (baseStyles, state) => ({
+            ...baseStyles,
+            width: "14rem",
+        }),
         placeholder: (baseStyles) => ({
             ...baseStyles,
             color: "var(--secondary)",
@@ -84,12 +88,19 @@ const TagsSelect = forwardRef(({
                 ...baseStyles,
                 backgroundColor: "var(--secondary-chips)",
                 color: "white",
+                /* new experiment */
+                whiteSpace: "nowrap",
+                overflow: "hidden",
             }
         },
         multiValueLabel: (baseStyles, state) => {
             return {
                 ...baseStyles,
                 color: "white",
+                /* new experiment */
+                whiteSpace: "nowrap",
+                overflow: "hidden",
+                textOverflow: "ellipsis"
             }
         }
     }
@@ -109,14 +120,17 @@ const TagsSelect = forwardRef(({
     }))
 
     return (
-        <Select
-            ref={selectorRef}
-            onChange={changeHandler}
-            options={selectOptions}
-            isMulti
-            styles={customStyles}
-            aria-label="Select tags"
-        />
+        <div className={styles.tableSelectWrapper}>
+            <Select
+                /*className={styles.tableSelect}*/
+                ref={selectorRef}
+                onChange={changeHandler}
+                options={selectOptions}
+                isMulti
+                styles={customStyles}
+                aria-label="Select tags"
+            />
+        </div>
     );
 });
 
@@ -314,9 +328,9 @@ function Table({ data }) {
     // Toggle visbility DateRangeFilter, too large for UI
     const [isOpen, setIsOpen] = useState(false)
 
-    const calendarIcon = <FontAwesomeIcon icon={faCalendarDays} size="2xl" className={styles.calendarIcon} />
-    const createNewIconFile = <FontAwesomeIcon icon={faFile} />
-    const resetIcon = <FontAwesomeIcon icon={faUndo} />
+    const calendarIcon = <FontAwesomeIcon icon={faCalendarDays} className={styles.calendarIcon} />
+    const createNewIconFile = <FontAwesomeIcon icon={faFile} className={styles.createNewIconFile} />
+    const resetIcon = <FontAwesomeIcon icon={faUndo} className={styles.resetTableBtnIcon} />
     const sortIcon = <FontAwesomeIcon icon={faSort} size="2xl" className={styles.sortIcon} />
     const forwardsIcon = <FontAwesomeIcon icon={faForward} />
     const backwardsIcon = <FontAwesomeIcon icon={faBackward} />
@@ -387,7 +401,7 @@ function Table({ data }) {
                         <button
                             className={`${styles.createNewBtn} create-new-btn`}
                         >
-                           {createNewIconFile} Create New
+                            {createNewIconFile} Create New
                         </button>
                     </Link>
                 </div>
@@ -460,7 +474,7 @@ function Table({ data }) {
                         {resetIcon} RESET
                     </button>
                     <span className={styles.tablePageNumbering}
-                    aria-label="Display current page number out of total pages">
+                        aria-label="Display current page number out of total pages">
                         Page{" "}
                         <strong>
                             {pageIndex + 1} of {pageOptions.length}
@@ -475,9 +489,9 @@ function Table({ data }) {
                         />
                     </span>
                     <button
-                         className={`${styles.tablePaginationButton} ${styles.tablePaginationGoToFirst} table-pagination-button`}
-                         aria-label="Go to first page"
-                         onClick={goToFirstPage}
+                        className={`${styles.tablePaginationButton} ${styles.tablePaginationGoToFirst} table-pagination-button`}
+                        aria-label="Go to first page"
+                        onClick={goToFirstPage}
 
                         disabled={!canPreviousPage}
                     >

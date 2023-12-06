@@ -19,20 +19,37 @@ globalFilter in GlobalFilter */
     padding: 1rem;
 }
 
-.calendarIcon {
-    color: var(--secondary-light);
+.calendarIcon,
+.resetTableBtnIcon, 
+.createNewIconFile {
     padding-right: 0.3rem;
+    font-size: 1.25rem;
+}
+
+.calendarIcon,
+.resetTableBtnIcon {
+    color: var(--secondary-light);
 }
 
 .resetTableBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     min-width: 100%;
     padding: 1rem;
     margin: 1rem;
 }
 
 .createNewBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     min-width: 100%;
     margin-bottom: 0.5rem;
+}
+
+.createNewIconFile {
+  padding-right: 0.4rem;
 }
 
 /* Table layout and container style rules for displaying 
@@ -81,6 +98,10 @@ content as if on an elevated surface*/
     font-family: "Lexend Deca", Helvetica, Arial, Lucida, sans-serif;
     padding: 1rem 0.1rem;
     text-align: center;
+}
+
+.tableSelectWrapper {
+   max-width: 14rem;
 }
 
 /* Align content of each tag */
@@ -373,61 +394,6 @@ select {
         grid-row: 2;
         grid-column: 5 / span 2;
         justify-self: center;
-    }
-}
-
-/* Options Container prevent overflow, wrapping & poor alignment */
-@media (max-width: 916px) {
-    * {
-        box-sizing: border-box;
-    }
-
-    .optionsContainer {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        grid-template-rows: auto auto;
-        align-items: center;
-        overflow: hidden;
-    }
-
-    /* .dateRangeBtn*/
-    .optionsContainer>div:nth-child(1) {
-        grid-row: 1 / 2;
-        grid-column: 1 / 2;
-        justify-self: start;
-    }
-
-    .dateRangeBtn {
-        justify-self: end;
-        white-space: nowrap;
-    }
-
-    /*.resetTableBtn */
-    .optionsContainer>div:nth-child(3) {
-        grid-row: 1 / 2;
-        grid-column: 2 / 3;
-        justify-self: start;
-    }
-
-    .resetTableBtn {
-        margin: 0;
-        justify-self: start;
-        white-space: nowrap;
-    }
-
-    /*.createNewBtn */
-    .optionsContainer>div:nth-child(4) {
-        grid-row: 1 / 2;
-        grid-column: 3 / 4;
-        width: fit-content;
-        justify-self: end;
-    }
-
-    /* .optionsContainer .globalFilterInput,
-    .optionsContainer .globalFilter */
-    .optionsContainer>div:nth-child(2) {
-        grid-row: 2;
-        grid-column: 1 / span 3;
     }
 }
 
