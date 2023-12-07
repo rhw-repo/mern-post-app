@@ -132,7 +132,7 @@ content as if on an elevated surface*/
 
 /* Table data rows */
 .tableLinkedCellContainer {
-    max-width: 35rem;
+    max-width: 20rem;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -191,7 +191,7 @@ select {
     appearance: none;
 }
 
-@media (max-width: 1060px) {
+@media (max-width: 1279px) {
     * {
         box-sizing: border-box;
     }
@@ -290,11 +290,18 @@ select {
         content: "Delete item?";
     }
 
-    /* Separates documents with solid 'line' under each row's last column*/
+    /* Separates documents with solid 'line' 
+    under each row's last column*/
     .tableRow :nth-of-type(6) {
         border-bottom: 0.5rem solid var(--secondary-light);
     }
 
+    /* Prevent 'unused' column whitespace for 
+    medium width screen sizes */
+    .tableLinkedCellContainer {
+        max-width: 100%;
+    }
+    
     /* Styles tableTagsContainer when child of tableCell */
     .tableCell .tableTagsContainer {
         display: flex;
