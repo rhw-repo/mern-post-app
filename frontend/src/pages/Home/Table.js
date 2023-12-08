@@ -62,9 +62,14 @@ const TagsSelect = forwardRef(({
                 border: state.isFocused ? "1px solid var(--secondary-light)" : "1px solid #e6e6e6",
             }
         }),
+        /*menuPortal: (baseStyles, state) => ({
+            ...baseStyles,
+            zIndex: 999,
+        }),*/
         menu: (baseStyles, state) => ({
             ...baseStyles,
             width: "14rem",
+            zIndex: 999,
         }),
         placeholder: (baseStyles) => ({
             ...baseStyles,
@@ -99,9 +104,6 @@ const TagsSelect = forwardRef(({
         multiValueLabel: (baseStyles, state) => {
             return {
                 ...baseStyles,
-               /* display: "flex",
-                justifyContent: "center",
-                alignItems: "center",*/
                 color: "#fffffff",
                 fontSize: "1rem",
         }
@@ -112,18 +114,6 @@ const TagsSelect = forwardRef(({
             maxWidth: "16rem",
         }
     },
-    /*menuPortalTarget: (baseStyles, state) => {
-        return {
-            ...baseStyles,
-            zIndex: "9999", 
-        }
-    },
-    menu: (baseStyles, state) => {
-        return {
-            ...baseStyles,
-            zIndex: "9999",
-        }
-    },*/
     }
 
 
@@ -145,8 +135,8 @@ const TagsSelect = forwardRef(({
             <Select
                 /*className={styles.tableSelect}*/
                 ref={selectorRef}
-               /* menuPortalTarget={document.body}
-                menuPosition="fixed"*/
+               /*menuPortalTarget={document.body}*/
+               menuPosition="fixed"
                 onChange={changeHandler}
                 options={selectOptions}
                 isMulti
