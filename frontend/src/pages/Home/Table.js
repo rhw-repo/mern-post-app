@@ -97,6 +97,7 @@ const TagsSelect = forwardRef(({
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
+                padding: "0 0.2rem",
             }
         },
         /* Text of displayed selected options */
@@ -107,6 +108,14 @@ const TagsSelect = forwardRef(({
                 fontSize: "1rem",
         }
     },
+    multiValueRemove: (baseStyles, state) => {
+        return {
+          ...baseStyles,
+          color: "#fffffff",
+          fontSize: "1rem",
+          padding: "0.9rem",
+        }
+      },
     /* Limits height of container displaying selected options, scrolling */
     /* maxWidth ensures they fill container widthways */
     valueContainer: (baseStyles, state) => {

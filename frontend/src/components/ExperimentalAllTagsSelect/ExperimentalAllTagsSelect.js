@@ -88,6 +88,9 @@ function ExperimentalAllTagsSelect({ onTagsChange }) {
     control: (baseStyles, state) => ({
       ...baseStyles,
       cursor: "pointer",
+      width: "100%",
+       /* Prevents Select containers expanding widthways without limit */
+       maxWidth: "16rem",
       border: state.isFocused ? '1px solid #667B99' : '1px solid #e6e6e6',
       boxShadow: state.isFocused ? '0 0 0 1px #667B99' : baseStyles.boxShadow,
       '&:hover': {
@@ -112,14 +115,42 @@ function ExperimentalAllTagsSelect({ onTagsChange }) {
         ...baseStyles,
         backgroundColor: '#667B99',
         color: 'white',
+        /* Centers text within displayed selected options */
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        padding: "0 0.2rem",
       }
     },
     multiValueLabel: (baseStyles, state) => {
       return {
         ...baseStyles,
-        color: 'white',
+        color: "#fffffff",
+        fontSize: "1rem",
       }
-    }
+    },
+    multiValueRemove: (baseStyles, state) => {
+      return {
+        ...baseStyles,
+        color: "#fffffff",
+        fontSize: "1rem",
+        padding: "0.9rem",
+      }
+    },
+    dropdownIndicator: (baseStyles, state) => {
+      return {
+        ...baseStyles,
+        color: "var(--secondary)",
+        padding: "0.9rem",
+      }
+    },
+    clearIndicator: (baseStyles, state) => {
+      return {
+        ...baseStyles,
+        color: "var(--secondary)",
+        padding: "0.9rem",
+      }
+    },
   }
 
   return (
