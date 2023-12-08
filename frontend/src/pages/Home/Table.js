@@ -117,6 +117,20 @@ const TagsSelect = forwardRef(({
             overflowY: "auto",
         }
     },
+    dropdownIndicator: (baseStyles, state) => {
+        return {
+            ...baseStyles,
+            padding: "0.9rem",
+            color: "var(--secondary)",
+        }
+    },
+    clearIndicator:(baseStyles, state) => {
+        return {
+            ...baseStyles,
+            padding: "0.9rem",
+            color: "var(--secondary)",
+        }
+    },
     }
 
     const selectorRef = useRef();
