@@ -54,7 +54,8 @@ const TagsSelect = forwardRef(({
             ...baseStyles,
             cursor: "pointer",
             width: "100%",
-            maxWidth: "100%",
+            /* Prevents Select containers expanding widthways without limit */
+            maxWidth: "16rem",
             border: state.isFocused ? "1px solid var(--secondary-light)" : "1px solid #e6e6e6",
             margin: "1rem auto",
             boxShadow: state.isFocused ? "0 0 0 1px var(--secondary-light)" : baseStyles.boxShadow,
@@ -62,10 +63,6 @@ const TagsSelect = forwardRef(({
                 border: state.isFocused ? "1px solid var(--secondary-light)" : "1px solid #e6e6e6",
             }
         }),
-        /*menuPortal: (baseStyles, state) => ({
-            ...baseStyles,
-            zIndex: 999,
-        }),*/
         menu: (baseStyles, state) => ({
             ...baseStyles,
             width: "14rem",
@@ -93,14 +90,16 @@ const TagsSelect = forwardRef(({
                 ...baseStyles,
                 backgroundColor: "var(--secondary-chips)",
                 color: "white",
-                /*new experiment */
+                /*Limits width of displayed selected options */
                 whiteSpace: "nowrap",
                 overflow: "ellipsis",
+                /* Centers text within displayed selected options */
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
             }
         },
+        /* Text of displayed selected options */
         multiValueLabel: (baseStyles, state) => {
             return {
                 ...baseStyles,
@@ -108,14 +107,17 @@ const TagsSelect = forwardRef(({
                 fontSize: "1rem",
         }
     },
+    /* Limits height of container displaying selected options, scrolling */
+    /* maxWidth ensures they fill container widthways */
     valueContainer: (baseStyles, state) => {
         return {
             ...baseStyles,
-            maxWidth: "16rem",
+            maxWidth: "100%",
+            maxHeight: "7.375rem",
+            overflowY: "auto",
         }
     },
     }
-
 
     const selectorRef = useRef();
 
@@ -133,9 +135,7 @@ const TagsSelect = forwardRef(({
 
     return (
             <Select
-                /*className={styles.tableSelect}*/
                 ref={selectorRef}
-               /*menuPortalTarget={document.body}*/
                menuPosition="fixed"
                 onChange={changeHandler}
                 options={selectOptions}
