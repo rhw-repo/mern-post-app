@@ -88,22 +88,44 @@ const TagsSelect = forwardRef(({
                 ...baseStyles,
                 backgroundColor: "var(--secondary-chips)",
                 color: "white",
-                /* new experiment */
+                /*new experiment */
                 whiteSpace: "nowrap",
-                overflow: "hidden",
+                overflow: "ellipsis",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
             }
         },
         multiValueLabel: (baseStyles, state) => {
             return {
                 ...baseStyles,
-                color: "white",
-                /* new experiment */
-                whiteSpace: "nowrap",
-                overflow: "hidden",
-                textOverflow: "ellipsis"
-            }
+               /* display: "flex",
+                justifyContent: "center",
+                alignItems: "center",*/
+                color: "#fffffff",
+                fontSize: "1rem",
         }
+    },
+    valueContainer: (baseStyles, state) => {
+        return {
+            ...baseStyles,
+            maxWidth: "16rem",
+        }
+    },
+    /*menuPortalTarget: (baseStyles, state) => {
+        return {
+            ...baseStyles,
+            zIndex: "9999", 
+        }
+    },
+    menu: (baseStyles, state) => {
+        return {
+            ...baseStyles,
+            zIndex: "9999",
+        }
+    },*/
     }
+
 
     const selectorRef = useRef();
 
@@ -120,17 +142,17 @@ const TagsSelect = forwardRef(({
     }))
 
     return (
-        <div className={styles.tableSelectWrapper}>
             <Select
                 /*className={styles.tableSelect}*/
                 ref={selectorRef}
+               /* menuPortalTarget={document.body}
+                menuPosition="fixed"*/
                 onChange={changeHandler}
                 options={selectOptions}
                 isMulti
                 styles={customStyles}
                 aria-label="Select tags"
             />
-        </div>
     );
 });
 
