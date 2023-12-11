@@ -5,3 +5,9 @@
     justify-content: space-between;
     align-items: center;
   }
+
+   /* Creates uniform width for this primary button */
+   .saveBtn {
+    padding: 1rem 3.29rem;
+    white-space: nowrap;
+  }

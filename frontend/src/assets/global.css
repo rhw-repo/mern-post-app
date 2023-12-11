@@ -27,16 +27,17 @@ body {
   background-color: #ffffff;
   margin: 0;
   font-family: "Open Sans", "Helvetica", Arial, sans-serif;
-  /* Firefox & cross browser support */
+  /* Firefox & cross browser support 
+  not possible to extend width for accessiblity 12/2023 */
   scrollbar-width: auto;
   scrollbar-color: var(--secondary-light) #f1f1f1;;
   scrollbar-gutter: stable both-edges;
 }
 
 /* Chrome, Edge, Safari (12/2023) */
-/* Width */
+/* Intentionally extra wide for touch target accessibilty*/
 ::-webkit-scrollbar {
-  width: 1rem;
+  width: 2.75rem;
 }
 
 /* Track */
@@ -46,19 +47,14 @@ body {
  
 /* Thumb */
 ::-webkit-scrollbar-thumb {
-  background: var(--secondary-light);
+  background: var(--secondary);
   border-radius: 0.3rem; 
 }
 
-/* Thumb on hover */
+/* Thumb on hover, indicates it's 
+"selected" / "active" */
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--secondary); 
-}
-
-/* Buttons indicating top & bottom of scroll */
-::-webkit-scrollbar-button {
-  background: #37404b;
-  border-radius: 0.3rem; 
+  background: #151a1e;
 }
 
 /* Primary buttons */

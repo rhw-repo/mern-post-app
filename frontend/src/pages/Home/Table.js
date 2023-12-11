@@ -68,6 +68,13 @@ const TagsSelect = forwardRef(({
             width: "14rem",
             zIndex: 999,
         }),
+        /* Adds space between options & scrollbar */
+        menuList: 
+        (baseStyles, state) => ({
+            ...baseStyles,
+            padding: "0.5rem",
+            
+        }),
         placeholder: (baseStyles) => ({
             ...baseStyles,
             color: "var(--secondary)",
@@ -76,6 +83,9 @@ const TagsSelect = forwardRef(({
         option: (baseStyles, state) => ({
             ...baseStyles,
             maxWidth: "100%",
+            padding: "1rem 0.5rem",
+           /* paddingTop: "1rem",
+            paddingBottom: "1rem",*/
             overflow: "hidden",
             textOverflow: "ellipsis",
             whiteSpace: "nowrap",
@@ -159,7 +169,8 @@ const TagsSelect = forwardRef(({
     return (
             <Select
                 ref={selectorRef}
-               menuPosition="fixed"
+                menuPosition="fixed"
+                placeholder="Click tags"
                 onChange={changeHandler}
                 options={selectOptions}
                 isMulti

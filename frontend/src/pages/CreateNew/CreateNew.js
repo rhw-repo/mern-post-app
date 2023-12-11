@@ -142,7 +142,7 @@ const CreateNew = () => {
                 </div>
                 <div className="content-detail-edit-create-btns">
                     <CancelButton />
-                    <button className="save-btn" type="submit">Save</button>
+                    <button className={`${styles.saveBtn} save-btn`} type="submit">Save</button>
                 </div>
             </form>
         </>

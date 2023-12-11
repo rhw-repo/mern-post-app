@@ -11,12 +11,14 @@
     border-radius: 4px;
   }
 
-  /* Hides div containing existing tags if all are deleted */
+  /* Hides div containing existing tags 
+  when they are all are deleted */
 .hideEmptyTagsDiv {
     display: none;
   }
 
-  /* creates uniform width for this primary button */
+  /* Creates uniform width for this 
+  primary button */
   .saveBtn {
     padding: 1rem 3.29rem;
     white-space: nowrap;
