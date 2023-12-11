@@ -88,38 +88,60 @@ function ExperimentalAllTagsSelect({ onTagsChange }) {
     control: (baseStyles, state) => ({
       ...baseStyles,
       cursor: "pointer",
+      /* Select containers stay within container width */
       width: "100%",
-       /* Select containers stay within container width */
       maxWidth: "100%",
+      marginTop: "1rem",
+      marginLeft: "auto",
+      marginRight: "auto",
       border: state.isFocused ? '1px solid #667B99' : '1px solid #e6e6e6',
       boxShadow: state.isFocused ? '0 0 0 1px #667B99' : baseStyles.boxShadow,
       '&:hover': {
         border: state.isFocused ? '1px solid #667B99' : '1px solid #e6e6e6',
       }
     }),
+    /* Horizontal space between options & scrollbar,
+    limit height prevent overlaying navbar */
+    menuList: (baseStyles, state) => ({
+      ...baseStyles,
+      padding: "0.5rem",
+    }),
+    /* Limit height prevent overlaying navbar */
+    menu: (baseStyles, state) => ({
+      ...baseStyles,
+    }),
     placeholder: (baseStyles) => ({
       ...baseStyles,
-      color: '#435362',
+      color: "var(--secondary)",
       fontSize: '1rem',
     }),
     option: (baseStyles, state) => ({
       ...baseStyles,
-      backgroundColor: state.isFocused ? '#667B99' : baseStyles.backgroundColor,
+      maxWidth: "100%",
+      padding: "1rem 0.5rem",
+      overflow: "hidden",
+      textOverflow: "ellipsis",
+      whiteSpace: "nowrap",
+      backgroundColor: state.isFocused ? "var(--secondary-light)" : baseStyles.backgroundColor,
       color: state.isFocused ? 'white' : baseStyles.color,
       ':hover': {
-        backgroundColor: '#667B99',
-        color: 'white',
+        backgroundColor: "var(--secondary-light)",
       }
-    }), multiValue: (baseStyles, state) => {
+    }),
+    multiValue: (baseStyles, state) => {
       return {
         ...baseStyles,
-        backgroundColor: '#667B99',
+        backgroundColor: "var(--secondary-chips)",
         color: 'white',
+        /*Limits width of displayed selected options */
+        maxWidth: "100%",
+        whiteSpace: "nowrap",
         /* Centers text within displayed selected options */
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
         padding: "0 0.2rem",
+        overflow: "hidden"
       }
     },
     multiValueLabel: (baseStyles, state) => {
@@ -127,6 +149,9 @@ function ExperimentalAllTagsSelect({ onTagsChange }) {
         ...baseStyles,
         color: "#fffffff",
         fontSize: "1rem",
+        overflow: "hidden",
+        textOverflow: "ellipsis",
+        whiteSpace: "nowrap",
       }
     },
     multiValueRemove: (baseStyles, state) => {
@@ -135,6 +160,18 @@ function ExperimentalAllTagsSelect({ onTagsChange }) {
         color: "#fffffff",
         fontSize: "1rem",
         padding: "0.9rem",
+      }
+    },
+    /* Limits height of container displaying 
+    selected options to avoid affecting parent container height */
+    /* maxWidth ensures they fill container widthways */
+    valueContainer: (baseStyles, state) => {
+      return {
+        ...baseStyles,
+        maxWidth: "100%",
+        maxHeight: "7.375rem",
+        overflowY: "auto",
+        boxSizing: "border-box",
       }
     },
     dropdownIndicator: (baseStyles, state) => {
@@ -158,7 +195,7 @@ function ExperimentalAllTagsSelect({ onTagsChange }) {
       Click the arrow to select or create tags:
       <div className={styles.selectContainer}>
         {allTags ? (
-          <Creatable
+          <Creatable className={styles.creatableSelect}
             isMulti
             options={allTags.map((tag) => ({
               value: tag,
@@ -168,6 +205,7 @@ function ExperimentalAllTagsSelect({ onTagsChange }) {
             onChange={handleChange}
             isValidNewOption={isValidNewOption}
             styles={customCreatableStyles}
+            menuPlacement="top"
           />
         ) : (
           <div>No tags available</div>

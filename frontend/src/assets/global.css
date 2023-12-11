@@ -468,3 +468,12 @@ div.content-detail div.edit textarea.error {
     gap: 1rem;
   }
 }
+
+@media (max-width: 350px) {
+/* Chrome, Edge, Safari (12/2023) */
+/* Reducing to a standard width allows
+space for Select selected options */
+::-webkit-scrollbar {
+  width: 1rem;
+}
+}

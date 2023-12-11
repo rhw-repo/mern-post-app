@@ -1,13 +1,23 @@
 /* Styles specific to CreateNew page */
 /* Display tags in CreateNew */
 .tagsSectionContainer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
+  display: flex;
+  justify-content: space-between;
 
-   /* Creates uniform width for this primary button */
-   .saveBtn {
-    padding: 1rem 3.29rem;
-    white-space: nowrap;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Creates uniform width for this primary button */
+.saveBtn {
+  padding: 1rem 3.29rem;
+  white-space: nowrap;
+}
+
+/* Centres ExperimentalAllTagsSelect display */
+@media (max-width: 430px) {
+  .tagsSectionContainer {
+    justify-content: center;
   }
+}

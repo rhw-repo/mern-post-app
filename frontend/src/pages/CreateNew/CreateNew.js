@@ -41,7 +41,7 @@ const CreateNew = () => {
             // Update only if selectedTags not already empty array
             // Also prevent submission if all selected tags deleted 
             if (selectedTags.length !== 0) {
-                 setSelectedTags([])
+                setSelectedTags([])
             }
         }
     }

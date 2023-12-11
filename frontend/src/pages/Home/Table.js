@@ -68,7 +68,7 @@ const TagsSelect = forwardRef(({
             width: "14rem",
             zIndex: 999,
         }),
-        /* Adds space between options & scrollbar */
+        /* Horizontal space between options & scrollbar */
         menuList: 
         (baseStyles, state) => ({
             ...baseStyles,
@@ -84,8 +84,6 @@ const TagsSelect = forwardRef(({
             ...baseStyles,
             maxWidth: "100%",
             padding: "1rem 0.5rem",
-           /* paddingTop: "1rem",
-            paddingBottom: "1rem",*/
             overflow: "hidden",
             textOverflow: "ellipsis",
             whiteSpace: "nowrap",

@@ -1,10 +1,35 @@
 /* Static css styles specific to ExperimentalAllTagsSelect */
+/* Wrapper supports controlling width & height */
 .selectContainer {
-    border-radius: 0.625rem;
-    margin: 1rem 0;
-  }
-  
-  /* Note! - further custom styles defined within component: 
- using functions that customize appearance based on component state.
- */
+  border-radius: 0.625rem;
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+}
 
+@media (max-width: 750px) {
+  .selectContainer {
+    margin: 0 auto;
+    width: 27rem;
+    box-sizing: border-box;
+  }
+}
+
+@media (max-width: 515px) {
+  .selectContainer {
+    width: 18rem;
+  }
+}
+
+/* Note: app intended primarily for desktop use */
+/* Component functional with reduced display selected options */
+@media (max-width: 350px) {
+  .selectContainer {
+    width: 12rem;
+    margin: 0 auto;
+  }
+}
+
+/* Note! - further custom styles defined within component: 
+library specific functions customize appearance based on component state.
+ */

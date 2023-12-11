@@ -528,7 +528,6 @@ select {
 
     /* Pagination section Reset button prevent 
    overflow into right side border of container  */
-   
     .tablePaginationReset {
        transform: scaleX(0.9);
     }
