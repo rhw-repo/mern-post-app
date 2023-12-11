@@ -89,8 +89,8 @@ function ExperimentalAllTagsSelect({ onTagsChange }) {
       ...baseStyles,
       cursor: "pointer",
       width: "100%",
-       /* Prevents Select containers expanding widthways without limit */
-       maxWidth: "16rem",
+       /* Select containers stay within container width */
+      maxWidth: "100%",
       border: state.isFocused ? '1px solid #667B99' : '1px solid #e6e6e6',
       boxShadow: state.isFocused ? '0 0 0 1px #667B99' : baseStyles.boxShadow,
       '&:hover': {
