@@ -532,3 +532,12 @@ select {
        transform: scaleX(0.9);
     }
 }
+
+/* Client requests a desktop first approach */
+/* Display of CreateNew page select imparied by 
+shortened display of selected options */
+@media (max-width: 300px) {
+    .createNewBtn {
+        display: none;
+    }
+}

@@ -25,7 +25,7 @@
 /* Component functional with reduced display selected options */
 @media (max-width: 350px) {
   .selectContainer {
-    width: 12rem;
+    width: 16rem;
     margin: 0 auto;
   }
 }
