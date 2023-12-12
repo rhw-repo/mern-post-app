@@ -105,6 +105,7 @@ const CreateNew = () => {
 
     return (
         <>
+        <div className={styles.createNewFormWrapper}>
             <form className="content-detail-edit-create-containers" onSubmit={handleSubmit}>
                 {(trySubmit && !isFormValid) || error ? (
                     <div className="error">
@@ -145,6 +146,7 @@ const CreateNew = () => {
                     <button className={`${styles.saveBtn} save-btn`} type="submit">Save</button>
                 </div>
             </form>
+            </div>
         </>
     )
 }

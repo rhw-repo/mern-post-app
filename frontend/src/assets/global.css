@@ -199,6 +199,10 @@ textarea {
   transition: border-color 0.3s, color 0.3s, transform 0.3s;
 }
 
+textarea {
+  resize: none;
+}
+
 input:hover,
 textarea:hover {
   border-color: var(--secondary);
@@ -276,8 +280,8 @@ p {
 /* Center and limit width */
 .content-detail-edit-create-containers {
   display: block;
-  max-width: 100%;
-  margin: auto;
+  width: 100%;
+  margin: 0 auto 1rem;
   padding: 2rem;
   gap: 5%;
 }
