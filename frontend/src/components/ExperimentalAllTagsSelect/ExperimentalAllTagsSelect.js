@@ -13,7 +13,6 @@ function ExperimentalAllTagsSelect({ onTagsChange }) {
   const [dataLoaded, setDataLoaded] = useState(false)
   const [userInteracted, setUserInteracted] = useState(false);
 
-
   /* Added for debugging session. 
   Uncomment block to log the materials Prop every time it changes:
   useEffect(() => {
@@ -65,6 +64,8 @@ function ExperimentalAllTagsSelect({ onTagsChange }) {
   const isValidNewOption = (inputValue, selectValue, selectOptions) => {
     if (
       inputValue.trim().length === 0 ||
+      // Prevent excessively long options affecting layout 
+      inputValue.length > 50 ||
       allTags.find((option) => option.value === inputValue)
     ) {
       return false
@@ -195,7 +196,8 @@ function ExperimentalAllTagsSelect({ onTagsChange }) {
       Click the arrow to select or create tags:
       <div className={styles.selectContainer}>
         {allTags ? (
-          <Creatable className={styles.creatableSelect}
+          <Creatable
+            className={styles.creatableSelect}
             isMulti
             options={allTags.map((tag) => ({
               value: tag,
@@ -205,7 +207,7 @@ function ExperimentalAllTagsSelect({ onTagsChange }) {
             onChange={handleChange}
             isValidNewOption={isValidNewOption}
             styles={customCreatableStyles}
-            menuPlacement="top"
+            menuPlacement="top"  
           />
         ) : (
           <div>No tags available</div>

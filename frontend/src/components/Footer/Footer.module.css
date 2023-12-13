@@ -4,6 +4,7 @@
     justify-content: center;
     align-items: center;
     line-height: 1rem;
+    /* relative to viewport */
     position: fixed;
     left: 0;
     bottom: 0;
