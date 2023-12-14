@@ -31,7 +31,7 @@ body {
   not possible to extend width for accessiblity 12/2023 */
   scrollbar-width: auto;
   scrollbar-color: var(--secondary-light) #f1f1f1;;
-  scrollbar-gutter: stable both-edges;
+ /* scrollbar-gutter: stable both-edges;*/
 }
 
 /* Chrome, Edge, Safari (12/2023) */
@@ -153,8 +153,8 @@ nav button:active,
 
 /* All pages */
 .pages {
-  min-height: 75vh;
-  min-height: 75dvh;
+ /* min-height: 75vh;
+  min-height: 75dvh;*/
   padding: 1.25rem;
   margin: 0 auto 3rem;
   overflow-x: hidden;
