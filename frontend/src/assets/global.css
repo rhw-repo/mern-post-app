@@ -24,6 +24,7 @@ TODO: dark mode
 
 /* Global rules */
 body {
+  max-width: 100%;
   background-color: #ffffff;
   margin: 0;
   font-family: "Open Sans", "Helvetica", Arial, sans-serif;
@@ -153,8 +154,7 @@ nav button:active,
 
 /* All pages */
 .pages {
- /* min-height: 75vh;
-  min-height: 75dvh;*/
+  max-width: 100%;;
   padding: 1.25rem;
   margin: 0 auto 3rem;
   overflow-x: hidden;
@@ -191,7 +191,7 @@ textarea {
   min-height: 2.75rem;
   padding: 0.625rem;
   margin: 0.312rem auto;
-  width: 100%;
+  /*width: 100%;*/
   border: 1px solid #ddd;
   border-radius: 0.5rem;
   box-sizing: border-box;
@@ -281,9 +281,11 @@ p {
 .content-detail-edit-create-containers {
   display: block;
   width: 100%;
+  max-width: 100%;
   margin: 0 auto 1rem;
   padding: 2rem;
-  gap: 5%;
+  /*gap: 5%;*/
+  max-width: 100%;
 }
 
 /* Layout Cancel & Save button container */
@@ -412,19 +414,14 @@ div.content-detail div.edit textarea.error {
   padding-right: 1rem;
 }
 
-/* Positions form vertically */
-@media (max-width: 920px) {
-  .loginWrapper {
-    min-height: 75dvh;
-    min-height: 75vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+/* Prevent overflow on widest screens */
+@media (min-width: 1280px) {
+  .content-detail-edit-create-containers {
+    max-width: 90%;
   }
 }
 
-/* Specific screens such as Nest Hub */
+/* Tablets, Nest Hub etc */
 @media (max-width: 1024px) and (max-height:600px) {
 
   /* Specific to fit form into screen height */
@@ -457,12 +454,20 @@ div.content-detail div.edit textarea.error {
     justify-content: center;
     align-items: center;
     gap: 0.5rem;
+    margin-top: 1rem;
   }
 
   /* Prevent it's margins misaligning .switch-forms-btns div */
   .switch-form-text-prompt {
     margin: 0;
   }
+}
+
+/* Scales down prevent unneccesary vertical scrolling */
+@media (min-height:600px) and (max-height: 670px) {
+    .pages {
+      transform:scale(0.80);
+    }
 }
 
 /* Prevent overflow */

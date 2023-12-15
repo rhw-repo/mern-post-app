@@ -1,29 +1,28 @@
+/* Styles specific to Login page  */
 .loginForm {
     margin: 0 auto;
     width: 28rem;
     max-width: 100%;
 }
 
-/* Specific screens such as Nest Hub */
-@media (max-width: 1024px) and (max-height:600px) {
+@media (max-width: 920px) {
     .loginWrapper {
+        min-height: 75dvh;
         display: flex;
         flex-direction: column;
-        justify-content: flex-start;
+        justify-content: center;
         align-items: center;
     }
 
-    /* Prevent loss margin-top for LoginForm */
     .loginSwitchFormsBtns {
         margin-top: 1.5rem;
     }
 }
 
-/* Positions form vertically */
-@media (max-width: 920px) {
+@media (min-width: 921px) and (max-width: 1023px) {
     .loginWrapper {
-        min-height: 75dvh;
-        min-height: 75vh;
+        transform: scale(1.16);
+        margin: 4rem auto;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -31,15 +30,6 @@
     }
 }
 
-/* Resizes form for tablets */
-@media (min-width: 768px) and (max-width: 912px) and (min-height: 1024px) and (max-height: 1368px) {
-    .loginWrapper {
-    transform: scale(1.65);
-    margin: 4rem auto;
-    }
-}
-
-/* Retain form's centering for narrower screen widths */
 @media (max-width: 300px) {
     .loginForm {
         margin: 0 0.3rem;
