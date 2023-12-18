@@ -506,7 +506,6 @@ select {
 }
 
 @media (max-width: 390px) {
-
     /* Options Container: prevent overflowing and poor alignment */
     .optionsContainer {
         display: flex;
@@ -539,5 +538,20 @@ shortened display of selected options */
 @media (max-width: 300px) {
     .createNewBtn {
         display: none;
+    }
+
+    /* Helps centering otherwise too large for cell*/
+    .tablePaginationPrevious {
+        transform: scale(0.8);
+        grid-row: 4;
+        justify-self: center;
+        grid-column: 1 / 2;
+    }
+    /* Keeps size uniform with above button same row */
+    .tablePaginationNext {
+        transform: scale(0.8);
+        grid-column: 2 / 2;
+        justify-self: center;
+        grid-row: 4;
     }
 }

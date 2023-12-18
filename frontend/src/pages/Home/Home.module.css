@@ -1,9 +1,18 @@
 /* Styles specific to homepage */
 .home {
     display: block;
+   margin: 0 auto;
+    /* max-width: fit-content;*/
   }
  
 .home a {
     color: inherit;
     text-decoration: none;
   }
+
+/* Stop uncomfortably wide display on wider screens*/
+@media (min-width: 1500px) {
+  .home {
+    max-width: fit-content;
+  }
+}

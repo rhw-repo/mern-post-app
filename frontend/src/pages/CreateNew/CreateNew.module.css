@@ -22,11 +22,13 @@
   }
 }
 
-/* TODO: center form for tall screens */
-/*@media (min-height: 950px) {
+/* Vertical centering on taller screens */
+@media (min-height: 950px) {
   .createNewFormWrapper {
-    margin: 0 auto;
-    height: 100%;
-    width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 75dvh;
+  height: 75vh;
   }
-}*/
+}

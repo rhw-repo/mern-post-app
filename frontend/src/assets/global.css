@@ -154,10 +154,11 @@ nav button:active,
 
 /* All pages */
 .pages {
-  max-width: 100%;;
+  max-width: 100%;
   padding: 1.25rem;
   margin: 0 auto 3rem;
-  overflow-x: hidden;
+  /* clip not hidden ensures both axis can be set */
+  overflow-x: clip;
   overflow-y: auto;
 }
 

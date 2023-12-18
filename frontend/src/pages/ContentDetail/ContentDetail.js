@@ -27,6 +27,7 @@ const ContentDetail = () => {
 
     return (
         <>
+        <div className={styles.contentDetailWrapper}>
             <div className="content-detail-edit-create-containers">
                 {isEditing ? (
                     <Edit material={material} onUpdateComplete={handleUpdateComplete} />
@@ -58,6 +59,7 @@ const ContentDetail = () => {
                     </div>
                 )}
 
+            </div>
             </div>
         </>
     )

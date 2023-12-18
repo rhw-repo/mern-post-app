@@ -29,6 +29,7 @@
 }
 
 @media (max-width: 1007px) {
+
   .contentDetailTitle,
   .contentDetailContent,
   .contentDetailTagsLabel {
@@ -40,6 +41,18 @@
     min-width: fit-content;
     min-height: fit-content;
     line-height: normal;
+  }
+}
+
+/* Vertical centering ContentDetail 
+and Edit on taller screens */
+@media (min-height: 950px) {
+  .contentDetailWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    padding: 1rem;
   }
 }
 
