@@ -20,7 +20,7 @@ const Navbar = () => {
 
     return (
         <header className={styles.header}>
-            <div className={styles.container}>
+            <div className={styles.navbarContainer}>
                 <Link to="/" className={styles.link}>
                     <h1>ONLINE POST MANAGER</h1>
                 </Link>
