@@ -1,29 +1,30 @@
 /* Styles specific to navbar */
-.header {
+/* Fixes to top & styles */
+.navbarContainer {
   position: sticky;
   top: 0rem;
   z-index: 1;
-  background-color: #ffffff;
-  color: var(--secondary);
-  font-family: "Lexend Deca", Helvetica, Arial, sans-serif;
-  font-weight: bold;
-  margin-top: 1rem;
-}
-
-.navbarContainer {
   margin: 0 1rem;
   padding: 1rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
+  color: var(--secondary);
+  font-family: "Lexend Deca", Helvetica, Arial, sans-serif;
+  font-weight: bold;
 }
 
 h1 {
   margin-left: 2rem;
 }
 
-/* colors text logout button, removes links underline*/
+/* Removes bullet points */
+.navList {
+  list-style: none;
+}
+
+/* Removes underline*/
 .link {
   text-decoration: none;
 }
@@ -45,11 +46,12 @@ h1 {
   color: var(--secondary-light);
 }
 
-/* Replace flexbox with grid layout, resize elements prevent overflow */
+/* Adjusts layout, resize elements prevent overflow */
 @media (max-width: 800px) {
-  .container {
+  .navbarContainer {
     display: grid;
-    /* auto since content size unknown for userEmail element */
+    /* auto since character length unknown 
+    for userEmail element, limit 15 chars*/
     grid-template-columns: auto auto auto;
     grid-template-rows: auto;
   }
@@ -60,13 +62,6 @@ h1 {
     grid-row: 1 / 2;
     grid-column: 1;
     margin: auto;
-  }
-
-  .nav {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
   }
 
   .userEmail {
@@ -85,18 +80,49 @@ h1 {
   }
 }
 
-@media (max-width: 560px) {
-  /* Prevent overlapping & accidental taps */
-  .container {
-    gap: 0.5rem;
-  }
+/* Hamburger menu toggles user email & 
+logout button on smaller screens */
+@media (max-width: 560px),
+(max-height: 640px) {
 
-  h1,
-  .link {
+  h1 {
     font-size: 1rem;
   }
 
-  .userEmail {
-    font-size: 1rem;
+
+  nav ul {
+    display: none;
+  }
+
+  /* Toggles dropdown */
+  nav ul.open {
+    display: flex;
+    flex-direction: column;
+    margin-top: 2.5rem;
+  }
+
+  /* Creates hamburger menu symbol */
+  nav .navMenu {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 1.75rem;
+    height: 1.5rem;
+  }
+
+  nav .navMenu span {
+    height: 0.4rem;
+    width: 100%;
+    background-color: var(--secondary);
+    border-radius: 0.2rem;
+  }
+
+  /* Layout in dropdown */
+  nav ul li {
+    width: 100%;
+    margin: 0.2rem 0.5rem;
   }
 }
