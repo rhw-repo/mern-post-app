@@ -85,6 +85,14 @@ logout button on smaller screens */
 @media (max-width: 560px),
 (max-height: 640px) {
 
+  nav .navbarContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: var(--secondary);
+    color: #ffffff;
+  }
+
   h1 {
     font-size: 1rem;
   }
@@ -96,9 +104,17 @@ logout button on smaller screens */
 
   /* Toggles dropdown */
   nav ul.open {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    max-width: 100%;
+    z-index: 10;
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
+    justify-content: space-between;
+    align-items: stretch;
     margin-top: 2.5rem;
+    margin-left: 2rem;
   }
 
   /* Creates hamburger menu symbol */
@@ -121,8 +137,19 @@ logout button on smaller screens */
   }
 
   /* Layout in dropdown */
-  nav ul li {
+  nav .navLogoutButton
+  {
+    margin: 0.2rem 0;
+    background-color: var(--secondary);
+    color: white;
+    display: flex;
+    justify-content: stretch;
     width: 100%;
-    margin: 0.2rem 0.5rem;
+    align-items: center;
+  }
+
+  nav .navLogoutIcon,
+  nav .userEmail {
+    display: none;
   }
 }

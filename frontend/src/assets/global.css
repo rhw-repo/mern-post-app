@@ -464,6 +464,20 @@ div.content-detail div.edit textarea.error {
   }
 }
 
+@media (max-width: 560px),(max-height: 640px) {
+
+  nav button {
+   /* border: 3px solid red;*/
+   border: none;
+   border-radius: 0;
+   width: 100%;
+  /* justify-content: stretch;*/
+  }
+}
+
+
+
+
 /* Prevent overflow */
 @media (max-width: 400px) {
   .content-detail-edit-create-btns {
