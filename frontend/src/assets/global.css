@@ -28,28 +28,27 @@ body {
   background-color: #ffffff;
   margin: 0;
   font-family: "Open Sans", "Helvetica", Arial, sans-serif;
-  /* Firefox & cross browser support 
-  not possible to extend width for accessiblity 12/2023 */
+  /* Firefox & cross browser support no wide scroll option */
   scrollbar-width: auto;
-  scrollbar-color: var(--secondary-light) #f1f1f1;;
- /* scrollbar-gutter: stable both-edges;*/
+  scrollbar-color: var(--secondary-light) #f1f1f1;
+  ;
 }
 
 /* Chrome, Edge, Safari (12/2023) */
-/* Intentionally extra wide for touch target accessibilty*/
+/* Extra wide for touch target accessibilty*/
 ::-webkit-scrollbar {
   width: 2.75rem;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: #f1f1f1; 
+  background: #f1f1f1;
 }
- 
+
 /* Thumb */
 ::-webkit-scrollbar-thumb {
   background: var(--secondary);
-  border-radius: 0.3rem; 
+  border-radius: 0.3rem;
 }
 
 /* Thumb on hover, indicates it's 
@@ -106,8 +105,8 @@ body {
   transform: scale(0.98);
 }
 
-/* Secondary buttons */
-nav button,
+/* Secondary buttons (except Logout 
+button: see Navbar css module)*/
 .reset-table-btn,
 .table-pagination-button,
 .select-box,
@@ -127,7 +126,6 @@ nav button,
 }
 
 /* Secondary buttons hover state slightly darker */
-nav button:hover,
 .reset-table-btn:hover,
 .table-pagination-button:hover,
 .select-box:hover,
@@ -140,7 +138,6 @@ nav button:hover,
 }
 
 /* Secondary buttons active darker still */
-nav button:active,
 .reset-table-btn:active,
 .table-pagination-button:active,
 .select-box:active,
@@ -151,6 +148,12 @@ nav button:active,
   color: #2c333b;
   transform: scale(0.98);
 }
+
+/*nav button {
+  border: none;
+  color: #ffffff;
+  background-color: inherit;
+}*/
 
 /* All pages */
 .pages {
@@ -464,13 +467,12 @@ div.content-detail div.edit textarea.error {
   }
 }
 
-@media (max-width: 560px),(max-height: 640px) {
+@media (max-width: 560px),
+(max-height: 640px) {
 
   nav button {
-   /* border: 3px solid red;*/
-   border: none;
-   border-radius: 0;
-   /*width: 100%;*/
+    border: none;
+    border-radius: 0;
   }
 }
 
@@ -483,10 +485,11 @@ div.content-detail div.edit textarea.error {
 }
 
 @media (max-width: 350px) {
-/* Chrome, Edge, Safari (12/2023) */
-/* Reducing to a standard width allows
+
+  /* Chrome, Edge, Safari (12/2023) */
+  /* Reducing to a standard width allows
 space for Select selected options */
-::-webkit-scrollbar {
-  width: 1rem;
-}
+  ::-webkit-scrollbar {
+    width: 1rem;
+  }
 }

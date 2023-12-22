@@ -17,6 +17,7 @@
 
 h1 {
   margin-left: 2rem;
+  margin-right: 2rem;
   color: #ffffff;
 }
 
@@ -49,16 +50,44 @@ ul {
   padding: 0.9rem 1rem;
   min-width: 8rem;
   white-space: nowrap;
+  transition: box-shadow 0.3s ease-in-out;
+  color: #ffffff;
+  background-color: inherit;
+  font-family: "Lexend Deca", Helvetica, Arial, sans-serif;
+  font-weight: 800;
+  font-size: 1rem;
+  padding: 1rem 1rem;
+  cursor: pointer;
+  border: none;
+  /* Shows on hover effect */
+  border-radius: 1.875rem;
 }
 
 .navLogoutIcon {
   font-size: 1.5rem;
   padding-right: 0.3rem;
-  color: var(--secondary-light);
+  color: #ffffff;
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.navLogoutButton:hover {
+  box-shadow: 0 0 0.5rem 0.125rem #ffffff;
+  border-radius: 1.875rem;
+}
+
+.navLogoutButton:active {
+  transform: scale(0.9);
 }
 
 .userEmail {
   color: #ffffff;
+}
+
+/* Prevent overflow */
+@media (max-width: 640px) {
+  h1 {
+    font-size: 1rem;
+  }
 }
 
 /* Hamburger menu toggles dropdown containing
@@ -99,7 +128,7 @@ logout button, restyled as an option  */
     margin: 0;
   }
 
-    /* Appears when menu open, to close it onclick */
+  /* Appears when menu open, to close it onclick */
   .closeNavMenu {
     position: absolute;
     top: 0.1rem;
@@ -137,21 +166,15 @@ logout button, restyled as an option  */
     border-radius: 0.2rem;
   }
 
-  /* Appearance like an option in dropdown instead of button */
-  /* Border removed in global.css media query */
+  /* Styled like an option in dropdown instead of button */
   nav .navLogoutButton {
     margin: 0;
     background-color: var(--secondary-light);
     color: white;
     /* Hides CreateNew button when open */
     width: 14rem;
-    height: 4.5rem;
+    height: 5.5rem;
   }
-
-  /* WIP TODO add microaction effects
-nav .navLogoutButton:active {
-    background-color: var(--secondary);
-  } */
 
   nav .navLogoutIcon {
     color: #ffffff;
