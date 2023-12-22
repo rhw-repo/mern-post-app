@@ -470,13 +470,9 @@ div.content-detail div.edit textarea.error {
    /* border: 3px solid red;*/
    border: none;
    border-radius: 0;
-   width: 100%;
-  /* justify-content: stretch;*/
+   /*width: 100%;*/
   }
 }
-
-
-
 
 /* Prevent overflow */
 @media (max-width: 400px) {

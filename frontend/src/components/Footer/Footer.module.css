@@ -12,7 +12,8 @@
     height: auto;
     width: 100vw;
     padding: 1rem 0;
-    background-color: var(--secondary);
+    /* 7% darker than --secondary due to color contrast effect */ 
+    background-color: #34404c;
     font-family: "Lexend Deca", Helvetica, Arial, Lucida, sans-serif;
     font-size: 1rem;
     color: #ffffff;

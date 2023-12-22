@@ -4,16 +4,15 @@
   position: sticky;
   top: 0rem;
   z-index: 1;
-  margin: 0 1rem;
-  /*padding: 1rem;*/
+  margin: 0;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-evenly;
   gap: 1rem;
-  /*color: var(--secondary);*/
   background-color: var(--secondary);
   font-family: "Lexend Deca", Helvetica, Arial, sans-serif;
   font-weight: bold;
+  max-height: 4rem;
 }
 
 h1 {
@@ -34,6 +33,10 @@ ul {
   margin-right: 2rem;
 }
 
+.closeNavMenu {
+  display: none;
+}
+
 /* Removes underline*/
 .link {
   text-decoration: none;
@@ -45,7 +48,6 @@ ul {
   align-items: center;
   padding: 0.9rem 1rem;
   min-width: 8rem;
-  /*margin: 1rem;*/
   white-space: nowrap;
 }
 
@@ -63,10 +65,11 @@ ul {
 logout button, restyled as an option  */
 @media (max-width: 560px),
 (max-height: 640px) {
-
   .navbarContainer {
+    position: static;
+    justify-content: space-between;
     padding: 0 1rem;
-    margin: 0;
+    margin: 0 0 0.3rem 0;
     height: 3rem;
     width: 100%;
   }
@@ -87,12 +90,31 @@ logout button, restyled as an option  */
     position: absolute;
     top: 3rem;
     right: 0;
-    max-width: 100%;
+    width: 100%;
     z-index: 10;
     display: flex;
     flex-direction: column-reverse;
-    justify-content: space-between;
+    justify-content: flex-end;
+    align-items: flex-end;
     margin: 0;
+  }
+
+    /* Appears when menu open, to close it onclick */
+  .closeNavMenu {
+    position: absolute;
+    top: 0.1rem;
+    right: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: 50%;
+    background-color: var(--secondary-light);
+    color: #ffffff;
+    font-size: 1.5rem;
+    font-weight: 800;
+    cursor: pointer;
   }
 
   /* Position, size & layout hamburger menu symbol */
@@ -121,7 +143,9 @@ logout button, restyled as an option  */
     margin: 0;
     background-color: var(--secondary-light);
     color: white;
-    width: 100%;
+    /* Hides CreateNew button when open */
+    width: 14rem;
+    height: 4.5rem;
   }
 
   /* WIP TODO add microaction effects
@@ -133,11 +157,7 @@ nav .navLogoutButton:active {
     color: #ffffff;
   }
 
-/* TODO: place in navbar o/s ul */ 
-/*nav .userEmail {
-    position: absolute;
-    top: -40px;
-    right: 65px;
-    color: #ffffff;
-  }*/
+  .userEmail {
+    display: none;
+  }
 }

@@ -24,6 +24,9 @@ const Navbar = () => {
                 <Link to="/" className={styles.link}>
                     <h1>ONLINE POST MANAGER</h1>
                 </Link>
+                <span className={styles.navList}>
+                    <span className={styles.userEmail}>username15chars</span>
+                </span>
                 {user && (
                     <div
                         className={styles.navMenu}
@@ -35,12 +38,19 @@ const Navbar = () => {
                         <span></span>
                     </div>
                 )}
+                {menuOpen && (
+                    <button
+                        className={styles.closeNavMenu}
+                        onClick={() => {
+                            setMenuOpen(false);
+                        }}>
+                        X
+                    </button>
+                )}
+
                 <ul className={menuOpen ? styles.open : ""}>
                     {user && (
                         <>
-                            <li className={styles.navList}>
-                                <span className={styles.userEmail}>username15chars</span>
-                            </li>
                             <li className={styles.navList}>
                                 <button
                                     onClick={handleClick}
