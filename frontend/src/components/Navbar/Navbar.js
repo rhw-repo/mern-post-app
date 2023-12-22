@@ -24,15 +24,17 @@ const Navbar = () => {
                 <Link to="/" className={styles.link}>
                     <h1>ONLINE POST MANAGER</h1>
                 </Link>
-                <div
-                    className={styles.navMenu}
-                    onClick={() => {
-                        setMenuOpen(!menuOpen)
-                    }}>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
+                {user && (
+                    <div
+                        className={styles.navMenu}
+                        onClick={() => {
+                            setMenuOpen(!menuOpen)
+                        }}>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                )}
                 <ul className={menuOpen ? styles.open : ""}>
                     {user && (
                         <>
