@@ -69,12 +69,12 @@ const TagsSelect = forwardRef(({
             zIndex: 999,
         }),
         /* Horizontal space between options & scrollbar */
-        menuList: 
-        (baseStyles, state) => ({
-            ...baseStyles,
-            padding: "0.5rem",
-            
-        }),
+        menuList:
+            (baseStyles, state) => ({
+                ...baseStyles,
+                padding: "0.5rem",
+
+            }),
         placeholder: (baseStyles) => ({
             ...baseStyles,
             color: "var(--secondary)",
@@ -114,40 +114,40 @@ const TagsSelect = forwardRef(({
                 ...baseStyles,
                 color: "#fffffff",
                 fontSize: "1rem",
-        }
-    },
-    multiValueRemove: (baseStyles, state) => {
-        return {
-          ...baseStyles,
-          color: "#fffffff",
-          fontSize: "1rem",
-          padding: "0.9rem",
-        }
-      },
-    /* Limits height of container displaying selected options, scrolling */
-    /* maxWidth ensures they fill container widthways */
-    valueContainer: (baseStyles, state) => {
-        return {
-            ...baseStyles,
-            maxWidth: "100%",
-            maxHeight: "7.375rem",
-            overflowY: "auto",
-        }
-    },
-    dropdownIndicator: (baseStyles, state) => {
-        return {
-            ...baseStyles,
-            padding: "0.9rem",
-            color: "var(--secondary)",
-        }
-    },
-    clearIndicator:(baseStyles, state) => {
-        return {
-            ...baseStyles,
-            padding: "0.9rem",
-            color: "var(--secondary)",
-        }
-    },
+            }
+        },
+        multiValueRemove: (baseStyles, state) => {
+            return {
+                ...baseStyles,
+                color: "#fffffff",
+                fontSize: "1rem",
+                padding: "0.9rem",
+            }
+        },
+        /* Limits height of container displaying selected options, scrolling */
+        /* maxWidth ensures they fill container widthways */
+        valueContainer: (baseStyles, state) => {
+            return {
+                ...baseStyles,
+                maxWidth: "100%",
+                maxHeight: "7.375rem",
+                overflowY: "auto",
+            }
+        },
+        dropdownIndicator: (baseStyles, state) => {
+            return {
+                ...baseStyles,
+                padding: "0.9rem",
+                color: "var(--secondary)",
+            }
+        },
+        clearIndicator: (baseStyles, state) => {
+            return {
+                ...baseStyles,
+                padding: "0.9rem",
+                color: "var(--secondary)",
+            }
+        },
     }
 
     const selectorRef = useRef();
@@ -165,21 +165,26 @@ const TagsSelect = forwardRef(({
     }))
 
     return (
-            <Select
-                ref={selectorRef}
-                menuPosition="fixed"
-                placeholder="Click tags"
-                onChange={changeHandler}
-                options={selectOptions}
-                isMulti
-                styles={customStyles}
-                aria-label="Select tags"
-            />
+        <Select
+            ref={selectorRef}
+            menuPosition="fixed"
+            placeholder="Click tags"
+            onChange={changeHandler}
+            options={selectOptions}
+            isMulti
+            styles={customStyles}
+            aria-label="Select tags"
+        />
     );
 });
 
 // Returns an object with properties to apply to every column in table  
 function Table({ data }) {
+
+    // Function to toggle the visibility
+    const toggleOptionsVisibility = () => {
+        setIsOptionsVisible(prevState => !prevState)
+    }
 
     const filterTypes = useMemo(
         function () {
@@ -371,6 +376,7 @@ function Table({ data }) {
 
     // Toggle visbility DateRangeFilter, too large for UI
     const [isOpen, setIsOpen] = useState(false)
+    const [isOptionsVisible, setIsOptionsVisible] = useState(false)
 
     const calendarIcon = <FontAwesomeIcon icon={faCalendarDays} className={styles.calendarIcon} />
     const createNewIconFile = <FontAwesomeIcon icon={faFile} className={styles.createNewIconFile} />
@@ -408,9 +414,17 @@ function Table({ data }) {
     };
 
     // Rendering options before table aims for easy user experience
+    // replaced this line 
+    //     <div className={styles.optionsContainer}>
     return (
         <>
-            <div className={styles.optionsContainer}>
+            <button className={styles.seeTableOptionsButton}
+                onClick={toggleOptionsVisibility}
+                aria-expanded={isOptionsVisible}
+            >
+                See Table Options
+            </button>
+            <div className={`${styles.optionsContainer} ${isOptionsVisible ? styles.visible : ''}`}>
                 <div>
                     <button
                         className={`${styles.dateRangeBtn} date-range-btn`}

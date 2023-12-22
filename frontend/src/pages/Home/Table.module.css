@@ -3,6 +3,7 @@
 /* Table-related options container, positioned above table
 contains the global filter, date range picker, a reset table btn
 & the create new button */
+
 .optionsContainer {
     display: flex;
     justify-content: space-between;
@@ -13,6 +14,10 @@ contains the global filter, date range picker, a reset table btn
 
 /* Please note - closeDateRangeBtn in ModalDateRangeFilter, 
 globalFilter in GlobalFilter */
+
+.seeTableOptionsButton {
+    display: none;
+}
 
 /* DateRangeFilter modal toggle button */
 .dateRangeBtn {
@@ -502,6 +507,24 @@ select {
      td::before {
         font-size: 1rem;
         margin-right: 1rem;
+    }
+}
+
+@media (max-width: 560px),
+(max-height: 640px) {
+    .optionsContainer {
+        max-height: 0; 
+        overflow: hidden; 
+        transition: max-height 0.3s ease; 
+        margin-top: 1rem;
+    }
+
+    .optionsContainer.visible {
+        max-height: 20rem; 
+    }
+
+    .seeTableOptionsButton {
+        display: block;
     }
 }
 
