@@ -5,23 +5,33 @@
   top: 0rem;
   z-index: 1;
   margin: 0 1rem;
-  padding: 1rem;
+  /*padding: 1rem;*/
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  color: var(--secondary);
+  /*color: var(--secondary);*/
+  background-color: var(--secondary);
   font-family: "Lexend Deca", Helvetica, Arial, sans-serif;
   font-weight: bold;
 }
 
 h1 {
   margin-left: 2rem;
+  color: #ffffff;
 }
 
 /* Removes bullet points */
 .navList {
   list-style: none;
+}
+
+ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-right: 2rem;
 }
 
 /* Removes underline*/
@@ -33,10 +43,9 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-left: 1rem;
   padding: 0.9rem 1rem;
   min-width: 8rem;
-  margin: 1rem;
+  /*margin: 1rem;*/
   white-space: nowrap;
 }
 
@@ -46,58 +55,29 @@ h1 {
   color: var(--secondary-light);
 }
 
-/* Adjusts layout, resize elements prevent overflow */
-@media (max-width: 800px) {
-  .navbarContainer {
-    display: grid;
-    /* auto since character length unknown 
-    for userEmail element, limit 15 chars*/
-    grid-template-columns: auto auto auto;
-    grid-template-rows: auto;
-  }
-
-  .link,
-  h1 {
-    font-size: 1.5rem;
-    grid-row: 1 / 2;
-    grid-column: 1;
-    margin: auto;
-  }
-
-  .userEmail {
-    grid-row: 1 / 2;
-    grid-column: 2 / 3;
-    justify-self: center;
-  }
-
-  nav .navLogoutButton {
-    grid-row: 1 / 2;
-    grid-column: 3 / 4;
-    justify-self: center;
-    font-size: 1rem;
-    min-width: fit-content;
-    margin: 0.5rem;
-  }
+.userEmail {
+  color: #ffffff;
 }
 
-/* Hamburger menu toggles user email & 
-logout button on smaller screens */
+/* Hamburger menu toggles dropdown containing
+logout button, restyled as an option  */
 @media (max-width: 560px),
 (max-height: 640px) {
 
-  nav .navbarContainer {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    background-color: var(--secondary);
-    color: #ffffff;
+  .navbarContainer {
+    padding: 0 1rem;
+    margin: 0;
+    height: 3rem;
+    width: 100%;
   }
 
   h1 {
     font-size: 1rem;
+    color: #ffffff;
+    margin: 0;
   }
 
-
+  /* Replaced by hamburger menu until toggled open */
   nav ul {
     display: none;
   }
@@ -105,23 +85,21 @@ logout button on smaller screens */
   /* Toggles dropdown */
   nav ul.open {
     position: absolute;
-    top: 100%;
+    top: 3rem;
     right: 0;
     max-width: 100%;
     z-index: 10;
     display: flex;
     flex-direction: column-reverse;
     justify-content: space-between;
-    align-items: stretch;
-    margin-top: 2.5rem;
-    margin-left: 2rem;
+    margin: 0;
   }
 
-  /* Creates hamburger menu symbol */
+  /* Position, size & layout hamburger menu symbol */
   nav .navMenu {
     position: absolute;
     top: 0.75rem;
-    right: 0.5rem;
+    right: 1rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -129,27 +107,37 @@ logout button on smaller screens */
     height: 1.5rem;
   }
 
+  /* Creates the 3 hamburger 'bars' */
   nav .navMenu span {
     height: 0.4rem;
     width: 100%;
-    background-color: var(--secondary);
+    background-color: #ffffff;
     border-radius: 0.2rem;
   }
 
-  /* Layout in dropdown */
-  nav .navLogoutButton
-  {
-    margin: 0.2rem 0;
-    background-color: var(--secondary);
+  /* Appearance like an option in dropdown instead of button */
+  /* Border removed in global.css media query */
+  nav .navLogoutButton {
+    margin: 0;
+    background-color: var(--secondary-light);
     color: white;
-    display: flex;
-    justify-content: stretch;
     width: 100%;
-    align-items: center;
   }
 
-  nav .navLogoutIcon,
-  nav .userEmail {
-    display: none;
+  /* WIP TODO add microaction effects
+nav .navLogoutButton:active {
+    background-color: var(--secondary);
+  } */
+
+  nav .navLogoutIcon {
+    color: #ffffff;
   }
+
+/* TODO: place in navbar o/s ul */ 
+/*nav .userEmail {
+    position: absolute;
+    top: -40px;
+    right: 65px;
+    color: #ffffff;
+  }*/
 }
