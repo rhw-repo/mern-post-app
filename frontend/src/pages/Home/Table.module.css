@@ -17,6 +17,13 @@ globalFilter in GlobalFilter */
 
 .seeTableOptionsButton {
     display: none;
+    color: var(--secondary);
+    font-weight: 800;
+    font-size: 1rem;
+    padding: 1rem;
+    border: none;
+    background-color: inherit;
+    font-family: "Lexend Deca", Helvetica, Arial, sans-serif;
 }
 
 /* DateRangeFilter modal toggle button */
@@ -527,6 +534,8 @@ select {
         display: block;
     }
 }
+
+
 
 @media (max-width: 390px) {
     /* Options Container: prevent overflowing and poor alignment */

@@ -12,6 +12,7 @@ import { Link } from "react-router-dom";
 import DeleteButton from "./DeleteButton";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import {
+    faChevronDown,
     faCalendarDays,
     faFile,
     faUndo,
@@ -378,6 +379,7 @@ function Table({ data }) {
     const [isOpen, setIsOpen] = useState(false)
     const [isOptionsVisible, setIsOptionsVisible] = useState(false)
 
+    const seeTableOptionsButtonIcon = <FontAwesomeIcon icon={faChevronDown} />
     const calendarIcon = <FontAwesomeIcon icon={faCalendarDays} className={styles.calendarIcon} />
     const createNewIconFile = <FontAwesomeIcon icon={faFile} className={styles.createNewIconFile} />
     const resetIcon = <FontAwesomeIcon icon={faUndo} className={styles.resetTableBtnIcon} />
@@ -422,7 +424,7 @@ function Table({ data }) {
                 onClick={toggleOptionsVisibility}
                 aria-expanded={isOptionsVisible}
             >
-                See Table Options
+                Search Table {seeTableOptionsButtonIcon}
             </button>
             <div className={`${styles.optionsContainer} ${isOptionsVisible ? styles.visible : ''}`}>
                 <div>
