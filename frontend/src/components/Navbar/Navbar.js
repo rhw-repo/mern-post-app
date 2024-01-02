@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import { useLogout } from "../../hooks/useLogout";
@@ -17,6 +17,13 @@ const Navbar = () => {
         navigate("/login")
     }
     const logoutIcon = <FontAwesomeIcon icon={faRightFromBracket} className={styles.navLogoutIcon} />
+
+    // Clean up prevents menu close button displaying in Navbar after logout
+    useEffect(() => {
+        if (!user) {
+          setMenuOpen(false);
+        }
+      }, [user]);
 
     return (
         <>
@@ -38,7 +45,7 @@ const Navbar = () => {
                         <span></span>
                     </div>
                 )}
-                {menuOpen && (
+                {menuOpen && user && (
                     <button
                         className={styles.closeNavMenu}
                         onClick={() => {
