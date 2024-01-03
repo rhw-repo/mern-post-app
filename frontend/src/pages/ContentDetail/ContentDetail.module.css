@@ -1,4 +1,12 @@
 /* Styles specific to content detail page */
+.contentDetailWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  padding: 1rem;
+}
+
 .contentDetailTitle {
   font-size: 1.5rem;
   font-weight: bold;
@@ -29,7 +37,6 @@
 }
 
 @media (max-width: 1007px) {
-
   .contentDetailTitle,
   .contentDetailContent,
   .contentDetailTagsLabel {
@@ -41,18 +48,6 @@
     min-width: fit-content;
     min-height: fit-content;
     line-height: normal;
-  }
-}
-
-/* Vertical centering ContentDetail 
-and Edit on taller screens */
-@media (min-height: 950px) {
-  .contentDetailWrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 80vh;
-    padding: 1rem;
   }
 }
 
