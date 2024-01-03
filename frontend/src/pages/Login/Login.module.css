@@ -1,4 +1,13 @@
 /* Styles specific to Login page  */
+.loginWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 85vh;
+    padding: 1rem;
+}
+
 .loginForm {
     margin: 0 auto;
     width: 28rem;
@@ -6,14 +15,6 @@
 }
 
 @media (max-width: 920px) {
-    .loginWrapper {
-        min-height: 75dvh;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-
     .loginSwitchFormsBtns {
         margin-top: 1.5rem;
     }
@@ -23,10 +24,10 @@
     .loginWrapper {
         transform: scale(1.16);
         margin: 4rem auto;
-        display: flex;
+       /* display: flex;
         flex-direction: column;
         justify-content: center;
-        align-items: center;
+        align-items: center;*/
     }
 }
 
