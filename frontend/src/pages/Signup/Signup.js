@@ -132,8 +132,8 @@ const Signup = () => {
                 />
 
                 <div >
-                    <button
-                        className="signup-btn"
+                    <button    
+                        className={`${styles.signupButton} signup-btn`}
                         disabled={isLoading}
                     >
                         {signupIcon} Signup
@@ -141,7 +141,7 @@ const Signup = () => {
                     {error && <div className="error">{error}</div>}
                 </div>
             </form>
-            <div className="switch-form-btns">
+            <div className={`${styles.signupSwitchFormsBtns} switch-form-btns`}>
                 <div className="switch-form-text-prompt">Already have an account?</div>
                 <button
                     className="switch-form-btn"

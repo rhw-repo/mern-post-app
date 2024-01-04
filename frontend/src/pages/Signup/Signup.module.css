@@ -1,47 +1,24 @@
-.signupForm {
-    margin: 0 auto;
-    max-width: 100%;
-    width: 28rem;
-}
-
+/* Styles specific to Signup Page */
 .signupWrapper {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    min-height: 85vh;
+    padding: 1rem;
 }
 
-/* Retains centering vertically */
+
 @media (max-width: 920px) {
+    .signupSwitchFormsBtns {
+        margin-top: 1.5rem;
+    }
+}
+
+@media (min-width: 921px) and (max-width: 1023px) {
     .signupWrapper {
-        min-height: 75dvh;
-        min-height: 75vh;
+        transform: scale(1.16);
+        margin: 4rem auto;
     }
 }
 
-/* Specific screens such as Nest Hub, prevent vertical overflow */
-@media (max-width: 1024px) and (max-height:600px) {
-    .signupWrapper {
-        margin-bottom: 0;
-    }
-
-    .signupForm {
-        margin-bottom: 1rem;
-    }
-}
-
-/* Resizes form for tablets */
-@media (min-width: 768px) and (max-width: 912px) and (min-height: 1024px) and (max-height: 1368px) {
-    .signupWrapper {
-/* transform: scale(1);*/
-   margin: 0 auto;
-   }
-}
-
-/* Retain form centering at low screen widths */
-@media (max-width: 300px) {
-    .signupForm {
-        margin: 0 1rem;
-        padding: 2rem 1.7rem;
-    }
-}

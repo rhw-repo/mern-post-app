@@ -378,7 +378,9 @@ div.content-detail div.edit textarea.error {
 /* Login & Signup forms */
 .signup-form,
 .login-form {
-  max-width: 30rem;
+  margin: 0 auto;
+  width: 28rem;
+  max-width: 100%;
   padding: 3rem;
 }
 
@@ -427,7 +429,6 @@ div.content-detail div.edit textarea.error {
 
 /* Tablets, Nest Hub etc */
 @media (max-width: 1024px) and (max-height:600px) {
-
   /* Specific to fit form into screen height */
   .pages {
     padding-top: 0;
@@ -469,7 +470,6 @@ div.content-detail div.edit textarea.error {
 
 @media (max-width: 560px),
 (max-height: 640px) {
-
   nav button {
     border: none;
     border-radius: 0;
@@ -485,11 +485,27 @@ div.content-detail div.edit textarea.error {
 }
 
 @media (max-width: 350px) {
-
   /* Chrome, Edge, Safari (12/2023) */
   /* Reducing to a standard width allows
 space for Select selected options */
   ::-webkit-scrollbar {
     width: 1rem;
+  }
+}
+
+/* Centering on very narrow screens */
+@media (max-width: 319px) {
+
+  .login-form, 
+  .signup-form {
+      display: flex;
+      flex-direction: column;
+      margin: 0 1rem;
+      padding: 2rem;
+  }
+
+  .login-btn,
+  .signup-btn {
+    padding: 1rem;
   }
 }
