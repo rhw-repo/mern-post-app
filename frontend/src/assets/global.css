@@ -35,9 +35,8 @@ body {
 }
 
 /* Chrome, Edge, Safari (12/2023) */
-/* Extra wide for touch target accessibilty*/
 ::-webkit-scrollbar {
-  width: 2.75rem;
+  width: 1rem;
 }
 
 /* Track */
@@ -321,10 +320,8 @@ p {
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-wrap: nowrap;
   height: fit-content;
-  max-height: 2rem;
-  /*line-height: 2rem;*/
+  line-height: 2rem;
   background-color: var(--secondary-chips);
   color: #ffffff;
   font-weight: bold;
@@ -353,6 +350,7 @@ p {
   justify-content: flex-start;
   flex-wrap: wrap;
   row-gap: 1rem;
+  max-width: 100%;
 }
 
 /* Global Error styling */
@@ -466,14 +464,6 @@ div.content-detail div.edit textarea.error {
   /* Prevent it's margins misaligning .switch-forms-btns div */
   .switch-form-text-prompt {
     margin: 0;
-  }
-}
-
-@media (max-width: 560px),
-(max-height: 640px) {
-  nav button {
-    border: none;
-    border-radius: 0;
   }
 }
 
