@@ -287,7 +287,6 @@ p {
   max-width: 100%;
   margin: 0 auto 1rem;
   padding: 2rem;
-  /*gap: 5%;*/
   max-width: 100%;
 }
 
@@ -328,7 +327,12 @@ p {
   border-radius: 0.3rem;
   padding: 0.625rem;
   margin: 0rem 0.5rem 0 1rem;
+  width: fit-content;
+  max-width: 100%;
   min-width: 4em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .tag-chip button {

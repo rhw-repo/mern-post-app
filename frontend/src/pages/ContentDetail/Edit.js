@@ -120,6 +120,14 @@ const Edit = ({ material }) => {
 
   const saveIcon = <FontAwesomeIcon icon={faFloppyDisk} />
 
+   // Limit width of displayed tag 
+   const trimText = (text, maxLength) => {
+    if (text.length > maxLength) {
+        return text.substring(0, maxLength) + "..."
+    }
+    return text
+}
+
   return (
     <form onSubmit={handleSubmit}>
       {(trySubmit && !isFormValid) || error ? (
@@ -171,8 +179,8 @@ const Edit = ({ material }) => {
             <p>Tags you already have here - click on the x to delete any you don't want:</p>
             <span className="edit-document-tags">
               {tags.map((tag, index) => (
-                <span key={index} className="tag-chip">
-                  {tag}
+                <span key={index} className={`${styles.editExistingTags} tag-chip`}>
+                 {trimText(tag, 16)}
                   <button type="button" onClick={() => deleteTag(index)}>X</button>
                 </span>
               ))}

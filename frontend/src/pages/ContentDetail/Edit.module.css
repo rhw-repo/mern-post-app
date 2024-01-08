@@ -9,6 +9,8 @@
     border: none;
     padding: 0.25rem;
     border-radius: 4px;
+    /* set parent container to not exceed width */
+    max-width: 100%;
   }
 
   /* Hides div containing existing tags 
@@ -24,3 +26,20 @@
     white-space: nowrap;
   }
   
+@media (max-width: 420px) {
+  .editExistingTags {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+    width: 11rem;
+    max-width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: smaller;
+    line-height: 1rem;
+    height: 5rem;
+    margin-right: 3rem;
+  }
+}
