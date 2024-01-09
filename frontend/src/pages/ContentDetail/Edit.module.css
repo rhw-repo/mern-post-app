@@ -1,45 +1,50 @@
 /* Styles specific to Edit page */
 /* handles display of Creatable & existing tags in Edit */
 .inputTagsContainer {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: flex-start;
-    border: none;
-    padding: 0.25rem;
-    border-radius: 4px;
-    /* set parent container to not exceed width */
-    max-width: 100%;
-  }
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  border: none;
+  padding: 0.25rem;
+  border-radius: 4px;
+  /* set parent container to not exceed width */
+  max-width: 100%;
+  outline: 1px solid red;
+}
 
-  /* Hides div containing existing tags 
+p {
+  margin: 0; 
+  padding: 0.5rem;
+}
+
+.editExistingTags {
+  padding-left: 0.5rem;
+  margin: 0.25rem;
+}
+
+/* Hides div containing existing tags 
   when they are all are deleted */
 .hideEmptyTagsDiv {
-    display: none;
+  display: none;
+}
+
+/* Creates uniform width for this 
+  primary button */
+.saveBtn {
+  padding: 1rem 3.29rem;
+  white-space: nowrap;
+}
+
+@media (max-width: 350px) {
+  .inputTagsContainer {
+    padding: 0;
+    width: fit-content
   }
 
-  /* Creates uniform width for this 
-  primary button */
-  .saveBtn {
-    padding: 1rem 3.29rem;
-    white-space: nowrap;
-  }
-  
-@media (max-width: 420px) {
   .editExistingTags {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: nowrap;
-    width: 11rem;
-    max-width: 100%;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    font-size: smaller;
-    line-height: 1rem;
-    height: 5rem;
-    margin-right: 3rem;
+    font-size: 0.9rem;
   }
-}
+  }
+
