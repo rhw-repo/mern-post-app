@@ -51,6 +51,10 @@
   .tagSectionLabel {
     font-size: 0.8rem;
   }
+
+  .css-b62m3t-container {
+    width: 10rem;
+  }
 }
 
 /* Note! - further custom styles defined within component: 
