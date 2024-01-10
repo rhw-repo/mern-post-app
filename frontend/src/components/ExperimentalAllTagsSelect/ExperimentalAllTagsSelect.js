@@ -65,7 +65,7 @@ function ExperimentalAllTagsSelect({ onTagsChange }) {
     if (
       inputValue.trim().length === 0 ||
       // Prevent excessively long options affecting layout 
-      inputValue.length > 50 ||
+      inputValue.length > 16 ||
       allTags.find((option) => option.value === inputValue)
     ) {
       return false
@@ -192,8 +192,8 @@ function ExperimentalAllTagsSelect({ onTagsChange }) {
   }
 
   return (
-    <label>
-      Click the arrow to select or create tags:
+    <label className={styles.tagSectionLabel}>
+      Select or create tags:
       <div className={styles.selectContainer}>
         {allTags ? (
           <Creatable

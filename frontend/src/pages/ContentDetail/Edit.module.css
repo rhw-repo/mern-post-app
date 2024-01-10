@@ -40,7 +40,7 @@ p {
 @media (max-width: 350px) {
   .inputTagsContainer {
     padding: 0;
-    width: fit-content
+   /*width: fit-content;*/
   }
 
   .editExistingTags {

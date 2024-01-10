@@ -424,7 +424,7 @@ function Table({ data }) {
                 onClick={toggleOptionsVisibility}
                 aria-expanded={isOptionsVisible}
             >
-                Search Table {seeTableOptionsButtonIcon}
+                Search & Options {seeTableOptionsButtonIcon}
             </button>
             <div className={`${styles.optionsContainer} ${isOptionsVisible ? styles.visible : ''}`}>
                 <div>

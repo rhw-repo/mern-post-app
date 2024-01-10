@@ -135,7 +135,7 @@ const CreateNew = () => {
                     value={content}
                     className={(trySubmit && !content) || emptyFields.includes("content") ? "error" : "primary"}
                 />
-                <label className="document-form-headings">Add tags here:</label>
+                <label className="document-form-headings">Add tags here (max. 15 chars):</label>
                 <div className={styles.tagsSectionContainer}>
                     <div className={trySubmit && selectedTags.length === 0 ? "error" : ""}>
                         <ExperimentalAllTagsSelect onTagsChange={handleTagsChange} />
