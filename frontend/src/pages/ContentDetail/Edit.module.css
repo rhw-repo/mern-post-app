@@ -11,7 +11,7 @@
   border-radius: 4px;
   /* set parent container to not exceed width */
   max-width: 100%;
-  outline: 1px solid red;
+  /*outline: 1px solid red;*/
 }
 
 p {
@@ -37,14 +37,22 @@ p {
   white-space: nowrap;
 }
 
-@media (max-width: 350px) {
+/* Desktop first app: reduced features */
+  @media (max-width: 400px) {
+    .editTagsSection {
+      display: none;
+    }
+  }
+
+
+  /*@media (max-width: 350px) {
   .inputTagsContainer {
     padding: 0;
-   /*width: fit-content;*/
   }
 
   .editExistingTags {
     font-size: 0.9rem;
   }
-  }
-
+  }*/
+  
+  

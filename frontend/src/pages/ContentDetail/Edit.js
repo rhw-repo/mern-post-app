@@ -170,12 +170,12 @@ const Edit = ({ material }) => {
         </textarea>
       </div>
 
-      <label htmlFor="tags" className="document-form-headings">Edit Tags:</label>
+      <label htmlFor="tags" className={`${styles.editTagsSection} document-form-headings`}>Edit Tags:</label>
 <div className={styles.inputTagsContainer}>
   {tags.length > 0 && (
-    <p>Tags you already have here - click on the x to delete any you don't want:</p>
+    <p className={styles.editTagsSection}>Tags you already have here - click on the x to delete any you don't want:</p>
   )}
-  <div className="edit-document-tags">
+  <div className={`${styles.editTagsSection} edit-document-tags`}>
     {tags.length > 0 && tags.map((tag, index) => (
       <span key={index} className={`${styles.editExistingTags} tag-chip`}>
         {trimText(tag, 16)}

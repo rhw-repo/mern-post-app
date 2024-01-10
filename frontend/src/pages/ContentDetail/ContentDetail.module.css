@@ -57,10 +57,3 @@
     overflow: hidden;
   }
 }
-
-/* Access to Edit page denied under 310px */
-@media (max-width: 310px) {
-  .goToEditBtn {
-    display: none;
-  }
-}

@@ -51,9 +51,13 @@
   .tagSectionLabel {
     font-size: 0.8rem;
   }
+}
 
-  .css-b62m3t-container {
-    width: 10rem;
+@media (max-width: 400px) {
+  /*.selectContainer*/
+  /*.creatableSelect,*/
+  .tagSectionLabel {
+    display: none;
   }
 }
 
