@@ -14,9 +14,11 @@
     }
 }
 
-@media (min-width: 921px) and (max-width: 1023px) {
+/* Increase size of component for 
+portrait in iPads, Surface Pro7 etc */
+@media (min-width: 767px) and (max-width: 1024px) and (min-height: 1024px) and (max-height: 1369px) {
     .signupWrapper {
-        transform: scale(1.16);
+        transform: scale(1.5);
         margin: 4rem auto;
     }
 }
