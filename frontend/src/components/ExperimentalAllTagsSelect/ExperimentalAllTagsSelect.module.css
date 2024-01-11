@@ -1,4 +1,5 @@
 /* Static css styles specific to ExperimentalAllTagsSelect */
+/* Desktop first app */
 /* Wrapper supports controlling width & height */
 .selectContainer {
   border-radius: 0.625rem;
@@ -26,7 +27,7 @@
     width: 16rem;
   }
 
- .tagSectionLabel {
+  .tagSectionLabel {
     text-align: center;
   }
 }
@@ -38,13 +39,12 @@
   }
 }
 
+/* Retain centering */
 @media (max-width: 349px) {
-  /*.selectContainer*/
-  /*.creatableSelect,*/
   .tagSectionLabel {
-   display: grid;
-   justify-content: center;
-   align-items: center;
+    display: grid;
+    justify-content: center;
+    align-items: center;
   }
 }
 

@@ -9,12 +9,11 @@
   border: none;
   padding: 0.25rem;
   border-radius: 4px;
-  /* set parent container to not exceed width */
   max-width: 100%;
 }
 
 p {
-  margin: 0; 
+  margin: 0;
   padding: 0.5rem;
 }
 
@@ -24,41 +23,31 @@ p {
 }
 
 .tag
+
 /* Hides div containing existing tags 
-  when they are all are deleted */
+  when all are deleted */
 .hideEmptyTagsDiv {
   display: none;
 }
 
-/* Creates uniform width for this 
-  primary button */
+/* Uniform width with other
+  primary buttons */
 .saveBtn {
   padding: 1rem 3.29rem;
   white-space: nowrap;
 }
 
+/* Support centering */
 @media (max-width: 350px) {
   .editTagsSelect {
-   width: 11rem;
+    width: 11rem;
   }
 }
+
 /* Desktop first app: reduced features */
-  @media (max-width: 320px) {
-    .editTagsSection,
-    .editTagsSelect {
-      display: none;
-    }
+@media (max-width: 320px) {
+  .editTagsSection,
+  .editTagsSelect {
+    display: none;
   }
-
-
-  /*@media (max-width: 350px) {
-  .inputTagsContainer {
-    padding: 0;
-  }
-
-  .editExistingTags {
-    font-size: 0.9rem;
-  }
-  }*/
-  
-  
+}

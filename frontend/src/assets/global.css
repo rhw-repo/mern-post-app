@@ -28,7 +28,6 @@ body {
   background-color: #ffffff;
   margin: 0;
   font-family: "Open Sans", "Helvetica", Arial, sans-serif;
-  /* Firefox & cross browser support no wide scroll option */
   scrollbar-width: auto;
   scrollbar-color: var(--secondary-light) #f1f1f1;
   ;
@@ -194,7 +193,6 @@ textarea {
   min-height: 2.75rem;
   padding: 0.625rem;
   margin: 0.312rem auto;
-  /*width: 100%;*/
   border: 1px solid #ddd;
   border-radius: 0.5rem;
   box-sizing: border-box;
@@ -264,9 +262,7 @@ p {
   color: var(--secondary);
 }
 
-/* Login & Signup forms, and all pages:
-   Mimics paper, as if displaying content on a piece of 
-   paper that casts shadows */
+/* Mimics paper */
 .login-form,
 .signup-form,
 .content-detail-edit-create-containers {
@@ -445,7 +441,7 @@ div.content-detail div.edit textarea.error {
     margin: 0 auto 1rem;
   }
 
-  /* Flex row not column prevents vertical overflow */
+  /* Flex row prevents vertical overflow */
   .login-btn,
   .signup-btn {
     display: flex;
@@ -465,7 +461,8 @@ div.content-detail div.edit textarea.error {
     margin-top: 1rem;
   }
 
-  /* Prevent it's margins misaligning .switch-forms-btns div */
+  /* Prevent .switch-forms-btns div margins 
+  misaligning */
   .switch-form-text-prompt {
     margin: 0;
   }
@@ -479,24 +476,14 @@ div.content-detail div.edit textarea.error {
   }
 }
 
-@media (max-width: 350px) {
-  /* Chrome, Edge, Safari (12/2023) */
-  /* Reducing to a standard width allows
-space for Select selected options */
-  ::-webkit-scrollbar {
-    width: 1rem;
-  }
-}
-
-/* Centering on very narrow screens */
+/* Centering */
 @media (max-width: 319px) {
-
-  .login-form, 
+  .login-form,
   .signup-form {
-      display: flex;
-      flex-direction: column;
-      margin: 0 1rem;
-      padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    margin: 0 1rem;
+    padding: 2rem;
   }
 
   .login-btn,
