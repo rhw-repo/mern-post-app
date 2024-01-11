@@ -26,38 +26,25 @@
     width: 16rem;
   }
 
-  .tagSectionLabel {
+ .tagSectionLabel {
     text-align: center;
   }
 }
 
 @media (max-width: 400px) {
   .selectContainer {
-    width: 12rem;
+    width: 14rem;
+    transform: scale(0.9);
   }
 }
 
-@media (max-width: 330px) {
-  .selectContainer,
-  .tagSectionLabel {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    text-align: start;
-    width: 10rem;
-  }
-
-  .tagSectionLabel {
-    font-size: 0.8rem;
-  }
-}
-
-@media (max-width: 400px) {
+@media (max-width: 349px) {
   /*.selectContainer*/
   /*.creatableSelect,*/
   .tagSectionLabel {
-    display: none;
+   display: grid;
+   justify-content: center;
+   align-items: center;
   }
 }
 

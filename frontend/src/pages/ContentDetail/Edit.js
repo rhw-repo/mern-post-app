@@ -186,7 +186,9 @@ const Edit = ({ material }) => {
   {trySubmit && selectedTags.length === 0 && tags.length === 0 && (
     <div className="error">Please add some tags!</div>
   )}
+  <div className={styles.editTagsSelect}>
   <ExperimentalAllTagsSelect onTagsChange={handleTagsChange} />
+</div>
 </div>
       <div className="content-detail-edit-create-btns">
         <CancelButton />

@@ -11,7 +11,6 @@
   border-radius: 4px;
   /* set parent container to not exceed width */
   max-width: 100%;
-  /*outline: 1px solid red;*/
 }
 
 p {
@@ -24,6 +23,7 @@ p {
   margin: 0.25rem;
 }
 
+.tag
 /* Hides div containing existing tags 
   when they are all are deleted */
 .hideEmptyTagsDiv {
@@ -37,9 +37,15 @@ p {
   white-space: nowrap;
 }
 
+@media (max-width: 350px) {
+  .editTagsSelect {
+   width: 11rem;
+  }
+}
 /* Desktop first app: reduced features */
-  @media (max-width: 400px) {
-    .editTagsSection {
+  @media (max-width: 320px) {
+    .editTagsSection,
+    .editTagsSelect {
       display: none;
     }
   }
