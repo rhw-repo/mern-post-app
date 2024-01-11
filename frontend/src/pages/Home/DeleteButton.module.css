@@ -25,7 +25,7 @@
 /* Styles for dialog box to confirm delete button action */
 .dialogConfirmDelete {
   text-align: center;
-  border: 1px solid #BD7374;
+  border: 3px solid #BD7374;
   border-radius: 0.625rem;
   padding: 1.5rem 2rem 2rem 2rem;
   position: fixed;
@@ -98,6 +98,13 @@
 }
 
 /* Custom breakpoints specific to table delete button */
+
+@media (min-width: 375px) and (max-width: 915px) and (min-height: 280px) and (max-height: 896px) {
+  .dialogConfirmDelete {
+    padding: 0.5rem; 
+    /*   padding: 1.5rem 2rem 2rem 2rem; */
+  } 
+}
 @media (max-width: 1370px) {
   .deleteDiv {
     margin: 0;
@@ -139,4 +146,24 @@
     grid-row: 2 / 3;
   }
 
+}
+
+@media (max-height: 420px) {
+  .dialogConfirmDelete {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5rem;
+    position: fixed;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  h2,
+  p, 
+  .confirmDeleteBtns {
+    margin: 0;
+  }
 }
