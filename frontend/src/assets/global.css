@@ -315,13 +315,10 @@ p {
   display: flex;
   align-items: center;
   justify-content: center;
-  /*height: fit-content;*/
-  /*line-height: 2rem;*/
   background-color: var(--secondary-chips);
   color: #ffffff;
   font-weight: bold;
   border-radius: 0.3rem;
-  /*padding: 0.625rem;*/
   margin: 0rem 0.5rem 0 1rem;
   width: fit-content;
   max-width: 100%;
@@ -333,7 +330,6 @@ p {
 
 .tag-chip button {
   display: flex;
-  /* Touch target 48 x 48px */
   padding: 1rem;
   border: none;
   background-color: unset;
@@ -428,6 +424,7 @@ div.content-detail div.edit textarea.error {
 
 /* Tablets, Nest Hub etc */
 @media (max-width: 1024px) and (max-height:600px) {
+
   /* Specific to fit form into screen height */
   .pages {
     padding-top: 0;
@@ -478,6 +475,7 @@ div.content-detail div.edit textarea.error {
 
 /* Centering */
 @media (max-width: 319px) {
+
   .login-form,
   .signup-form {
     display: flex;

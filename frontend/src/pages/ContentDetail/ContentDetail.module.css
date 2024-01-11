@@ -36,6 +36,11 @@
   white-space: nowrap;
 }
 
+.tags,
+.tagChip {
+  padding: 0.625rem;
+}
+
 @media (max-width: 1007px) {
   .contentDetailTitle,
   .contentDetailContent,
@@ -43,8 +48,7 @@
     font-size: 1.25rem;
   }
 
-  .tags,
-  .tagChip {
+  .tags .tagChip {
     min-width: fit-content;
     min-height: fit-content;
     line-height: normal;
