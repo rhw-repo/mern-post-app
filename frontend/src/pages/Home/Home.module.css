@@ -11,8 +11,19 @@
   }
 
 /* Stop uncomfortably wide display on wider screens*/
-@media (min-width: 1500px) {
+@media (min-width: 1670px) {
   .home {
-    max-width: fit-content;
+    max-width: 80%;
   }
 }
+
+@media /*(min-width: 1366px) and (max-width: 1370px) 
+and (min-height: 912px) and (max-height: 1026px)*/
+(min-width: 1360px) {
+  .home {
+   margin-top: 2rem;
+  }
+}
+
+
+

@@ -101,10 +101,11 @@
 
 @media (min-width: 375px) and (max-width: 915px) and (min-height: 280px) and (max-height: 896px) {
   .dialogConfirmDelete {
-    padding: 0.5rem; 
+    padding: 0.5rem;
     /*   padding: 1.5rem 2rem 2rem 2rem; */
-  } 
+  }
 }
+
 @media (max-width: 1370px) {
   .deleteDiv {
     margin: 0;
@@ -130,7 +131,7 @@
   }
 
   /* Readability: space inbetween important paragraphs */
-   p {
+  p {
     margin: auto auto 0.5rem;
   }
 
@@ -162,7 +163,7 @@
   }
 
   h2,
-  p, 
+  p,
   .confirmDeleteBtns {
     margin: 0;
   }
