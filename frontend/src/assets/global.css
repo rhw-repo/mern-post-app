@@ -407,14 +407,6 @@ div.content-detail div.edit textarea.error {
   color: #435362;
 }
 
-/* Select clearIndicator close button container */
-.css-12a83d4-MultiValueRemove {
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
-}
-
 /* Prevent overflow on widest screens */
 @media (min-width: 1280px) {
   .content-detail-edit-create-containers {
@@ -466,6 +458,7 @@ div.content-detail div.edit textarea.error {
 }
 
 @media (max-width: 400px) {
+
   /* Widen space for content */
   .content-detail-edit-create-containers {
     padding: 1rem;
