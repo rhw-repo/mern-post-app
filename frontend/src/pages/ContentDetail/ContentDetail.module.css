@@ -61,3 +61,18 @@
     overflow: hidden;
   }
 }
+
+@media (max-width: 320px) {
+  .contentDetailTitle {
+    margin: 0; 
+  }
+
+  .contentDetailTagsLabel {
+    margin: 0 0 1rem 1rem;
+  }
+
+  .tags,
+  .tagChip {
+    font-size: small;
+  }
+}
