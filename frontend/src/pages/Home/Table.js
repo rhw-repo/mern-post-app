@@ -546,6 +546,7 @@ function Table({ data }) {
                             type="number"
                             defaultValue={pageIndex + 1}
                             onChange={handlePageChange}
+                            min="1"
                         />
                     </span>
                     <button
