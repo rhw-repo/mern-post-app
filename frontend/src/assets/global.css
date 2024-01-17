@@ -465,8 +465,13 @@ div.content-detail div.edit textarea.error {
   }
 }
 
-/* Prevent overflow */
 @media (max-width: 400px) {
+  /* Widen space for content */
+  .content-detail-edit-create-containers {
+    padding: 1rem;
+  }
+
+  /* Prevent overflow */
   .content-detail-edit-create-btns {
     flex-direction: column-reverse;
     gap: 1rem;

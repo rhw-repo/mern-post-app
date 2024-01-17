@@ -64,7 +64,7 @@
 
 @media (max-width: 320px) {
   .contentDetailTitle {
-    margin: 0; 
+    margin: 0 0 0 1rem; 
   }
 
   .contentDetailTagsLabel {
