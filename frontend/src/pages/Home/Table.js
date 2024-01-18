@@ -482,13 +482,16 @@ function Table({ data }) {
                                         {
                                             column.canSort
                                                 ? (
-                                                    column.isSorted
-                                                        ? (column.isSortedDesc ? sortIcon : sortIcon)
-                                                        : sortIcon
+                                                    <button
+                                                        {...column.getSortByToggleProps()}
+                                                        aria-label={`Sort by ${column.Header}`}
+                                                        className={styles.sortButton}
+                                                    >
+                                                        <FontAwesomeIcon icon={faSort} size="2xl" className={styles.sortIcon} />
+                                                    </button>
                                                 )
                                                 : null
                                         }
-
                                     </th>
                                 ))}
                             </tr>

@@ -50,8 +50,9 @@ const DeleteButton = ({ _id }) => {
     return (
         <div className={styles.deleteDiv}>
             <button
-                className={styles.deleteSpan}
+                className={styles.deleteTableButton}
                 onClick={handleDeleteClick}
+                aria-label="Delete"
             >
                 {deleteIcon}
             </button>

@@ -4,7 +4,7 @@
 }
 
 /* Container for trash can icon in table */
-.deleteSpan {
+.deleteTableButton {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -17,7 +17,7 @@
   color: var(--secondary)
 }
 
-.deleteSpan:hover {
+.deleteTableButton:hover {
   background-color: var(--error);
   color: #ffffff;
 }
@@ -112,7 +112,7 @@
     max-height: 80%;
   }
 
-  .deleteSpan {
+  .deleteTableButton {
     font-size: 1rem;
     grid: end;
     height: 1.6rem;
