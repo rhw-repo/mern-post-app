@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useAuthContext } from "../../hooks/useAuthContext";
 import { useLogout } from "../../hooks/useLogout";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -10,6 +10,9 @@ const Navbar = () => {
     const [menuOpen, setMenuOpen] = useState(false)
     const { logout, logoutError } = useLogout()
     const { user } = useAuthContext()
+    const location = useLocation()
+    // flag to check if user is on homepage or not 
+    const isHomepage = location.pathname === '/'
     const navigate = useNavigate()
     const handleClick = () => {
         logout()
@@ -21,23 +24,27 @@ const Navbar = () => {
     // Clean up prevents menu close button displaying in Navbar after logout
     useEffect(() => {
         if (!user) {
-          setMenuOpen(false);
+            setMenuOpen(false);
         }
-      }, [user]);
+    }, [user]);
 
     return (
         <>
             <nav className={styles.navbarContainer}>
                 {user ? (
-                    <Link to="/" className={styles.link}>
-                    <h1>ONLINE POST MANAGER</h1>
-                </Link>
+                    isHomepage ? (
+                        <h1>ONLINE POST MANAGER</h1>
+                    ) : (
+                        <Link to="/" className={styles.link}>
+                            <h1>ONLINE POST MANAGER</h1>
+                        </Link>
+                    )
                 ) : (
                     <h1>ONLINE POST MANAGER</h1>
                 )}
                 <span className={styles.navList}>
                     {user && (
-                         <span className={styles.userEmail}>username15chars</span>
+                        <span className={styles.userEmail}>username15chars</span>
                     )}
                 </span>
                 {user && (
