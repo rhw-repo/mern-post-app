@@ -28,11 +28,17 @@ const Navbar = () => {
     return (
         <>
             <nav className={styles.navbarContainer}>
-                <Link to="/" className={styles.link}>
+                {user ? (
+                    <Link to="/" className={styles.link}>
                     <h1>ONLINE POST MANAGER</h1>
                 </Link>
+                ) : (
+                    <h1>ONLINE POST MANAGER</h1>
+                )}
                 <span className={styles.navList}>
-                    <span className={styles.userEmail}>username15chars</span>
+                    {user && (
+                         <span className={styles.userEmail}>username15chars</span>
+                    )}
                 </span>
                 {user && (
                     <div
