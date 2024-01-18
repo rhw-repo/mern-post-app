@@ -147,6 +147,11 @@ content as if on an elevated surface*/
 }
 
 /* Table sort buttons date columns*/
+.sortButton {
+    background-color: transparent;
+    border: none;
+}
+
 .sortIcon {
     color: var(--secondary-light);
     cursor: pointer;
