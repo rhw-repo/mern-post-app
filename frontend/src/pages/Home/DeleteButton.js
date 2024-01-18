@@ -46,15 +46,15 @@ const DeleteButton = ({ _id }) => {
     const deleteIcon = <FontAwesomeIcon icon={faTrashCan} size="xl" />
     const saveIcon = <FontAwesomeIcon icon={faFloppyDisk} className={styles.dialogBtnIcon} />
     const confirmYesDeleteIcon = <FontAwesomeIcon icon={faTrash} className={styles.dialogBtnIcon} />
-    
+
     return (
         <div className={styles.deleteDiv}>
-            <span
+            <button
                 className={styles.deleteSpan}
                 onClick={handleDeleteClick}
             >
                 {deleteIcon}
-            </span>
+            </button>
 
             {showDialog && (
                 <dialog open className={styles.dialogConfirmDelete}>
