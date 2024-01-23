@@ -36,10 +36,17 @@ function DateRangeFilter({ handleFilter }) {
   const rangeColors = ["#667B99"]
 
   /* Workaround known library bug no visual indicator
-  on (keyboard) focus */
+  on focus */
   useEffect(() => {
     const handleFocusIn = (e) => {
       if (e.target.classList.contains("rdrNextPrevButton")) {
+        e.target.style.outline = "2px solid black"
+      }
+      // Target select elements within spans 
+      // className .rdrMonthPicker or .rdrYearPicker
+      if (e.target.tagName === 'SELECT' &&
+        (e.target.parentNode.classList.contains("rdrMonthPicker") ||
+          e.target.parentNode.classList.contains("rdrYearPicker"))) {
         e.target.style.outline = "2px solid black"
       }
     }
@@ -48,17 +55,24 @@ function DateRangeFilter({ handleFilter }) {
       if (e.target.classList.contains("rdrNextPrevButton")) {
         e.target.style.outline = ""
       }
+
+      if (e.target.tagName === 'SELECT' &&
+        (e.target.parentNode.classList.contains("rdrMonthPicker") ||
+          e.target.parentNode.classList.contains("rdrYearPicker"))) {
+        e.target.style.outline = ""
+      }
     }
 
-    document.addEventListener('focusin', handleFocusIn);
-    document.addEventListener('focusout', handleFocusOut);
+    document.addEventListener('focusin', handleFocusIn)
+    document.addEventListener('focusout', handleFocusOut)
 
-    // Clean up the event listeners
+    // Clean up event listeners
     return () => {
-      document.removeEventListener('focusin', handleFocusIn);
-      document.removeEventListener('focusout', handleFocusOut);
-    };
+      document.removeEventListener('focusin', handleFocusIn)
+      document.removeEventListener('focusout', handleFocusOut)
+    }
   }, [])
+
 
   /* rangeColors prop sets the color scheme of DateRangePicker 
   to match the app's primary color */
