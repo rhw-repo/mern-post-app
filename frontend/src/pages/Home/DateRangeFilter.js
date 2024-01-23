@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { DateRangePicker } from "react-date-range";
 // function required for filtering by selected date range
 import { isWithinInterval } from "date-fns"
@@ -34,6 +34,31 @@ function DateRangeFilter({ handleFilter }) {
   // TODO would need unique exception to CSP: 
   // library seem to inject style into HTML
   const rangeColors = ["#667B99"]
+
+  /* Workaround known library bug no visual indicator
+  on (keyboard) focus */
+  useEffect(() => {
+    const handleFocusIn = (e) => {
+      if (e.target.classList.contains("rdrNextPrevButton")) {
+        e.target.style.outline = "2px solid black"
+      }
+    }
+
+    const handleFocusOut = (e) => {
+      if (e.target.classList.contains("rdrNextPrevButton")) {
+        e.target.style.outline = ""
+      }
+    }
+
+    document.addEventListener('focusin', handleFocusIn);
+    document.addEventListener('focusout', handleFocusOut);
+
+    // Clean up the event listeners
+    return () => {
+      document.removeEventListener('focusin', handleFocusIn);
+      document.removeEventListener('focusout', handleFocusOut);
+    };
+  }, [])
 
   /* rangeColors prop sets the color scheme of DateRangePicker 
   to match the app's primary color */
