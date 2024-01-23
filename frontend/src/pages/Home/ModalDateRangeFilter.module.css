@@ -14,7 +14,7 @@
     position: absolute; 
     top: 8.75rem;
     right: 0;
-    left: 15rem;
+    left: 14.5rem;
     border: none;
     margin: 0.5rem 0;
     cursor: pointer;
@@ -33,6 +33,16 @@
   .closeDateRangeBtnIcon {
     z-index: 1001;
   }
+
+  /* Retains close button in bottom left corner */
+@media (min-width: 1280px) and (max-width: 1370px) and (min-height: 800px) and (max-height: 1025px) {
+  .closeDateRangeBtn {
+    position: absolute; 
+    top: 8.75rem;
+    right: 0;
+    left: 15rem;
+  }
+}
 
  /* hides as per client spec */
 @media (max-width: 780px) {
