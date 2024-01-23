@@ -1,7 +1,21 @@
 /* Styles specific to opened modal for DateRangeFilter */
+.modalContainer {
+  position: absolute; 
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000; 
+  background: white;
+  padding: 1rem;
+  border-radius: 10%;
+}
+
 .closeDateRangeBtn {
+    position: absolute; 
+    top: 8.25rem;
+    right: 0;
+    left: 14rem;
     border: none;
-   /* background-color: none;*/
     margin: 0.5rem 0;
     cursor: pointer;
     padding: 0;
@@ -14,21 +28,11 @@
     color: var(--secondary-light);
   }
 
+  /* Overlays modal */
   .closeDateRangeBtn,
   .closeDateRangeBtnIcon {
-    position: absolute; 
-    left: 1%;
-    top: 0%;
-    z-index: 999;
+    z-index: 1001;
   }
-
- /* hides as per client spec */
-@media (max-width: 780px) {
-  .closeDateRangeBtn,
-  .closeDateRangeBtnIcon  {
-     display: none;
-   }
- }
 
  /* hides as per client spec */
 @media (max-width: 780px) {

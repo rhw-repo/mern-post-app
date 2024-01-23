@@ -482,12 +482,12 @@ function Table({ data }) {
                                         {
                                             column.canSort
                                                 ? (
-                                                    <button className={styles.dateSortToggleButtons}
+                                                    <button
                                                         {...column.getSortByToggleProps()}
                                                         aria-label={`Sort by ${column.Header}`}
-                                                        className={styles.sortButton}
+                                                        className={`${styles.dateSortToggleButtons} ${styles.sortButton}`}
                                                     >
-                                                        <FontAwesomeIcon icon={faSort} size="2xl" className={styles.sortIcon} />
+                                                        {sortIcon}
                                                     </button>
                                                 )
                                                 : null

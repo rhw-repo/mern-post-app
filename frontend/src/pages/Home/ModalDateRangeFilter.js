@@ -9,9 +9,15 @@ function ModalDateRangeFilter({ open, children, onClose }) {
   const closeIcon = <FontAwesomeIcon icon={faCircleXmark} className={styles.closeDateRangeBtnIcon} size='4x' />
 
   return (
-    <div>
+    <div className={styles.modalContainer}>
       {children}
-      <button className={styles.closeDateRangeBtn } onClick={onClose} aria-label="Close">{closeIcon}</button>
+      <button
+        className={styles.closeDateRangeBtn}
+        onClick={onClose}
+        aria-label="Close"
+      >
+        {closeIcon}
+      </button>
     </div>
   )
 }
