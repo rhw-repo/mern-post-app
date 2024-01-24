@@ -30,6 +30,7 @@ const Edit = ({ material }) => {
   // check - frontend validation prevents form submission with empty fields 
   const [isFormValid, setIsFormValid] = useState(false)
   const [trySubmit, setTrySubmit] = useState(false)
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false)
 
   console.log(emptyFields)
   // synchronise state when material prop updates 
@@ -128,8 +129,20 @@ const Edit = ({ material }) => {
     return text
   }
 
+  /* Prevent form submission on accidental double 
+  "Enter" key down for ExperimentalAllTagsSelect */
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      const type = document.activeElement.type
+      if (isDropdownOpen || type === "submit" || type === "button") {
+        return
+      }
+      e.preventDefault()
+    }
+  }
+
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} onKeyDown={handleKeyDown}>
       {(trySubmit && !isFormValid) || error ? (
         <div className="error">
           {trySubmit && !isFormValid ? (
@@ -187,12 +200,21 @@ const Edit = ({ material }) => {
           <div className="error">Please add some tags!</div>
         )}
         <div className={styles.editTagsSelect}>
-          <ExperimentalAllTagsSelect onTagsChange={handleTagsChange} />
+          <ExperimentalAllTagsSelect
+            onTagsChange={handleTagsChange}
+            onMenuOpen={() => setIsDropdownOpen(true)}
+            onMenuClose={() => setIsDropdownOpen(false)}
+          />
         </div>
       </div>
       <div className="content-detail-edit-create-btns">
         <CancelButton />
-        <button className={`${styles.saveBtn} save-btn`} type="submit">{saveIcon} Save</button>
+        <button
+          className={`${styles.saveBtn} save-btn`}
+          type="submit"
+        >
+          {saveIcon} Save
+        </button>
       </div>
     </form>
   )
