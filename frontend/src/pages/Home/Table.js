@@ -524,7 +524,7 @@ function Table({ data }) {
                         value={pageSize}
                         onChange={handlePageSizeChange}
                     >
-                        <option value={""}>Show Me More</option>
+                        <option value={""}>Show More Table Rows</option>
                         {[5, 10, 20, 50].map(size => (
                             <option key={size} value={size}>
                                 Show {size} Rows
