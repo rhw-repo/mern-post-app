@@ -10,7 +10,13 @@ const CancelButton = () => {
   }
 
   return (
-    <button className={`${styles.cancelBtn} cancel-btn`} onClick={cancel}>Cancel</button>
+    <button
+      type="button"
+      className={`${styles.cancelBtn} cancel-btn`}
+      onClick={cancel}
+    >
+      Cancel
+    </button>
   )
 }
 
