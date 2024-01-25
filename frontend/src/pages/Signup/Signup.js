@@ -89,7 +89,7 @@ const Signup = () => {
 
     return (
         <>
-        <div className={styles.signupWrapper}>
+        <main className={styles.signupWrapper}>
             <form className={`${styles.signupForm} signup-form`} onSubmit={handleSubmit}>
                 {(trySubmit && !isFormValid) || error ? (
                     <div className="error">
@@ -143,7 +143,7 @@ const Signup = () => {
                     {error && <div className="error">{error}</div>}
                 </div>
             </form>
-            <div className={`${styles.signupSwitchFormsBtns} switch-form-btns`}>
+            <section className={`${styles.signupSwitchFormsBtns} switch-form-btns`}>
                 <div className="switch-form-text-prompt">Already have an account?</div>
                 <button
                     className="switch-form-btn"
@@ -151,8 +151,8 @@ const Signup = () => {
                 >
                     {loginIcon} Login
                 </button>
-            </div>
-            </div>
+            </section>
+            </main>
         </>
     )
 }

@@ -89,7 +89,7 @@ const Login = () => {
 
     return (
         <>
-        <div className={styles.loginWrapper}>
+        <main className={styles.loginWrapper}>
             <form className={`${styles.loginForm} login-form`} onSubmit={handleSubmit}>
                 {(trySubmit && !isFormValid) || error ? (
                     <div className="error">
@@ -144,7 +144,7 @@ const Login = () => {
                     {error && <div className="error">{error}</div>}
                 </div>
             </form>
-            <div className={`${styles.loginSwitchFormsBtns} switch-form-btns`}>
+            <section className={`${styles.loginSwitchFormsBtns} switch-form-btns`}>
                 <div className="switch-form-text-prompt">Need an account?</div>
                 <button
                     className="switch-form-btn"
@@ -152,8 +152,8 @@ const Login = () => {
                 >
                     {signupIcon} Signup
                 </button>
-            </div>
-            </div>
+            </section>
+            </main>
         </>
     )
 }
