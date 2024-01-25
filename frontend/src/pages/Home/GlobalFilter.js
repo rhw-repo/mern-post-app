@@ -62,24 +62,23 @@ const GlobalFilter = ({ filter, setFilter }) => {
 
     const handleInputChange = (e) => {
         setValue(e.target.value)
-         onChange(e.target.value)
-      }
+        onChange(e.target.value)
+    }
 
-      return (
-       
-            <div className={`${styles.globalFilterDiv} ${styles.globalFilter}`}>
-                <SearchBox>
-                    {filterIcon}
-                    <input
-                        type="text"
-                        placeholder="Search all"
-                        value={value || ""}
-                        onChange= {handleInputChange}
-                        className={styles.globalFilterInput}
-                    />
-                </SearchBox>
-           
-        </div>
+    return (
+        <section className={`${styles.globalFilterDiv} ${styles.globalFilter}`}>
+            <label htmlFor="global-filter">Search all table</label>
+            <SearchBox>
+                {filterIcon}
+                <input
+                    id="global-filter"
+                    type="text"
+                    value={value || ""}
+                    onChange={handleInputChange}
+                    className={styles.globalFilterInput}
+                />
+            </SearchBox>
+        </section>
     )
 }
 

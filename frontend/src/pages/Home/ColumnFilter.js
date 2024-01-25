@@ -49,7 +49,7 @@ const SearchBox = styled.div`
     }
     }
 `
-const filterIcon = <FontAwesomeIcon icon={faFilter} /*size="2xl"*/ className="filter-icon"/>
+const filterIcon = <FontAwesomeIcon icon={faFilter} /*size="2xl"*/ className="filter-icon" />
 
 const ColumnFilter = ({ column }) => {
     // console.log(column)
@@ -63,17 +63,18 @@ const ColumnFilter = ({ column }) => {
     if (column.Header !== "Created At" && column.Header !== "Updated At" && column.Header !== "Delete") {
         return (
             <div>
-                <span>
+                <section>
                     <SearchBox>
                         {filterIcon}
                         <input
+                            aria-label="Search this column only"
+                            placeholder="Search column only"
                             type="text"
-                            placeholder="Search column"
                             value={filterValue || ""}
                             onChange={e => setFilter(e.target.value)}
                         />
                     </SearchBox>
-                </span>
+                </section>
             </div>
         )
     } else {
