@@ -169,7 +169,7 @@ const TagsSelect = forwardRef(({
         <Select
             ref={selectorRef}
             menuPosition="fixed"
-            placeholder="Click tags"
+            placeholder="Click tags to select"
             onChange={changeHandler}
             options={selectOptions}
             isMulti

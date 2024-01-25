@@ -103,8 +103,8 @@ const Login = () => {
                     </div>
                 ) : null}
 
-                <h1 className="login-signup-title">Hello, log in</h1>
-                <label>Email*</label>
+                <h2 className="login-signup-title">Login here:</h2>
+                <label htmlFor="email">Email*</label>
                 <input
                     aria-label="Enter your email address"
                     id="email"
@@ -119,7 +119,7 @@ const Login = () => {
                     value={email}
                     className={(trySubmit && !email) || emailInput.error ? "error" : "primary"}
                 />
-                <label>Password*</label>
+                <label htmlFor="password">Password*</label>
                 <input
                     aria-label="Enter your password"
                     id="password"

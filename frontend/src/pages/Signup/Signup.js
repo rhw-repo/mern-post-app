@@ -103,11 +103,12 @@ const Signup = () => {
                     </div>
                 ) : null}
 
-                <h1 className="login-signup-title">Sign up here:</h1>
-                <label>Email*</label>
+                <h2 className="login-signup-title">Signup here:</h2>
+                <label htmlFor="email">Email*</label>
                 <input
                     aria-label="Enter your email address"
                     type="email"
+                    id="email"
                     autoComplete="off"
                     onChange={(e) => {
                         setEmail(e.target.value)
@@ -117,10 +118,11 @@ const Signup = () => {
                     value={email}
                     className={(trySubmit && !email) || emailInput.error ? "error" : "primary"}
                 />
-                <label>Password*</label>
+                <label htmlFor="password">Password*</label>
                 <input
                     aria-label="Enter your password"
                     type="password"
+                    id="password"
                     autoComplete="off"
                     onChange={(e) => {
                         setPassword(e.target.value)
