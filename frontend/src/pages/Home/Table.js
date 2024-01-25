@@ -442,7 +442,7 @@ function Table({ data }) {
                     Search & Options {seeTableOptionsButtonIcon}
                 </button>
             </section>
-            <section className={`${styles.optionsContainer} ${isOptionsVisible ? styles.visible : ''}`}>
+            <section aria-label="Table Filtering Options Section" className={`${styles.optionsContainer} ${isOptionsVisible ? styles.visible : ''}`}>
                 <div>
                     <button
                         className={`${styles.dateRangeBtn} date-range-btn`}
