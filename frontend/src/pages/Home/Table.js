@@ -18,7 +18,8 @@ import {
     faUndo,
     faSort,
     faForward,
-    faBackward
+    faBackward,
+    faTrashCan
 } from "@fortawesome/free-solid-svg-icons"
 // Formats date fields 
 import { format } from "date-fns";
@@ -299,7 +300,7 @@ function Table({ data }) {
                 Cell: ({ value }) => { return format(new Date(value), "dd/MM/yyyy") },
             },
             {
-                Header: "",
+                Header: "Delete?",
                 accessor: "_id",
                 disableSortBy: true,
                 disableFilters: true,
@@ -384,8 +385,15 @@ function Table({ data }) {
     const createNewIconFile = <FontAwesomeIcon icon={faFile} className={styles.createNewIconFile} />
     const resetIcon = <FontAwesomeIcon icon={faUndo} className={styles.resetTableBtnIcon} />
     const sortIcon = <FontAwesomeIcon icon={faSort} size="2xl" className={styles.sortIcon} />
+    const deleteIcon = <FontAwesomeIcon icon={faTrashCan} size="xl" />
+
+    /*const deleteIconElement = (
+        <span className={styles.tableHeaderDeleteIcon}>{deleteIcon}</span>
+    )*/
+
     const forwardsIcon = <FontAwesomeIcon icon={faForward} />
     const backwardsIcon = <FontAwesomeIcon icon={faBackward} />
+
 
     /* Pagination functions */
     const handlePageSizeChange = (e) => {
@@ -478,6 +486,7 @@ function Table({ data }) {
                                         className={styles.tableHeader}
                                     >
                                         {column.render("Header")}
+                                        {column.Header === 'Delete?' ? <div className={styles.headerDeleteIcon}>{deleteIcon}</div> : null}
                                         <div>{column.canFilter ? column.render("Filter") : null}</div>
                                         {
                                             column.canSort

@@ -32,7 +32,7 @@ globalFilter in GlobalFilter */
 }
 
 .calendarIcon,
-.resetTableBtnIcon, 
+.resetTableBtnIcon,
 .createNewIconFile {
     padding-right: 0.3rem;
     font-size: 1.25rem;
@@ -61,7 +61,7 @@ globalFilter in GlobalFilter */
 }
 
 .createNewIconFile {
-  padding-right: 0.4rem;
+    padding-right: 0.4rem;
 }
 
 /* Table layout and container style rules for displaying 
@@ -101,7 +101,7 @@ content as if on an elevated surface*/
 .tableHeader {
     white-space: nowrap;
     border-bottom: solid 3px #BD7374;
-     /* Testing for New color scheme #1 
+    /* Testing for New color scheme #1 
     border-bottom: solid 3px 	hsl(37, 98%, 53%);*/
     background: white;
     color: #435362;
@@ -110,6 +110,11 @@ content as if on an elevated surface*/
     font-family: "Lexend Deca", Helvetica, Arial, Lucida, sans-serif;
     padding: 1rem 0.1rem;
     text-align: center;
+}
+
+.headerDeleteIcon {
+    margin-top: 0.9rem;
+    margin-right: 2.5rem;
 }
 
 /* Align content of each tag */
@@ -314,7 +319,7 @@ select {
     .tableLinkedCellContainer {
         max-width: 100%;
     }
-    
+
     /* Styles tableTagsContainer when child of tableCell */
     .tableCell .tableTagsContainer {
         display: flex;
@@ -522,7 +527,7 @@ select {
 
     /* Table Header font smaller prevent 
      horizontal overlap with table data */
-     td::before {
+    td::before {
         font-size: 1rem;
         margin-right: 1rem;
     }
@@ -531,14 +536,14 @@ select {
 @media (max-width: 560px),
 (max-height: 640px) {
     .optionsContainer {
-        max-height: 0; 
-        overflow: hidden; 
-        transition: max-height 0.3s ease; 
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
         margin-top: 1rem;
     }
 
     .optionsContainer.visible {
-        max-height: 20rem; 
+        max-height: 20rem;
     }
 
     .seeTableOptionsButton {
@@ -547,6 +552,7 @@ select {
 }
 
 @media (max-width: 390px) {
+
     /* Options Container: prevent overflowing and poor alignment */
     .optionsContainer {
         display: flex;
@@ -569,7 +575,7 @@ select {
     /* Pagination section Reset button prevent 
    overflow into right side border of container  */
     .tablePaginationReset {
-       transform: scaleX(0.9);
+        transform: scaleX(0.9);
     }
 }
 
@@ -588,6 +594,7 @@ shortened display of selected options */
         justify-self: center;
         grid-column: 1 / 2;
     }
+
     /* Keeps size uniform with above button same row */
     .tablePaginationNext {
         transform: scale(0.8);
