@@ -170,7 +170,7 @@ const TagsSelect = forwardRef(({
         <Select
             ref={selectorRef}
             menuPosition="fixed"
-            placeholder="Click tags to select"
+            placeholder="Search by tags"
             onChange={changeHandler}
             options={selectOptions}
             isMulti
@@ -263,6 +263,12 @@ function Table({ data }) {
         </div>
     )
 
+    const TextCell = ({ value}) => (
+        <div className={styles.tableTextCellContainer}>
+            {value}
+        </div>
+    )
+
     // useMemo prevents unnecessary recalculations (better performance)
     const columns = useMemo(
         () => [
@@ -276,7 +282,7 @@ function Table({ data }) {
                 Header: "Content",
                 accessor: "content",
                 disableSortBy: true,
-                Cell: LinkedCell,
+                Cell: TextCell,
             },
             {
                 Header: "Tags",

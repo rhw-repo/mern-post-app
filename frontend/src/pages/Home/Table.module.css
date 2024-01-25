@@ -144,7 +144,8 @@ content as if on an elevated surface*/
 }
 
 /* Table data rows */
-.tableLinkedCellContainer {
+.tableLinkedCellContainer,
+.tableTextCellContainer {
     max-width: 20rem;
     overflow: hidden;
     text-overflow: ellipsis;
