@@ -263,7 +263,7 @@ function Table({ data }) {
         </div>
     )
 
-    const TextCell = ({ value}) => (
+    const TextCell = ({ value }) => (
         <div className={styles.tableTextCellContainer}>
             {value}
         </div>
@@ -433,14 +433,16 @@ function Table({ data }) {
     // replaced this line 
     //     <div className={styles.optionsContainer}>
     return (
-        <>
-            <button className={styles.seeTableOptionsButton}
-                onClick={toggleOptionsVisibility}
-                aria-expanded={isOptionsVisible}
-            >
-                Search & Options {seeTableOptionsButtonIcon}
-            </button>
-            <div className={`${styles.optionsContainer} ${isOptionsVisible ? styles.visible : ''}`}>
+        <main>
+            <section>
+                <button className={styles.seeTableOptionsButton}
+                    onClick={toggleOptionsVisibility}
+                    aria-expanded={isOptionsVisible}
+                >
+                    Search & Options {seeTableOptionsButtonIcon}
+                </button>
+            </section>
+            <section className={`${styles.optionsContainer} ${isOptionsVisible ? styles.visible : ''}`}>
                 <div>
                     <button
                         className={`${styles.dateRangeBtn} date-range-btn`}
@@ -454,11 +456,9 @@ function Table({ data }) {
                     onClose={() => setIsOpen(false)}>
                     <DateRangeFilter handleFilter={handleDateFilter} />
                 </ModalDateRangeFilter>
-
                 <div className={styles.globalFilter}>
                     <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
                 </div>
-
                 <div className={styles.resetTableBtnDiv}>
                     <button
                         className={`${styles.resetTableBtn} reset-table-btn`}
@@ -479,7 +479,7 @@ function Table({ data }) {
                         </button>
                     </Link>
                 </div>
-            </div>
+            </section>
 
             <div className={styles.tableContainer}>
                 <table {...getTableProps()} className={styles.tableNoGaps}>
@@ -533,7 +533,7 @@ function Table({ data }) {
                         })}
                     </tbody>
                 </table>
-                <div className={styles.pagination}>
+                <section aria-label="Table Pagination Options" className={styles.pagination}>
                     <select
                         className={`${styles.SelectBox} select-box`}
                         value={pageSize}
@@ -600,9 +600,9 @@ function Table({ data }) {
                     >
                         {forwardsIcon}
                     </button>
-                </div>
+                </section>
             </div>
-        </>
+        </main>
     )
 }
 
