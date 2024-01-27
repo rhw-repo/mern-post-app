@@ -183,24 +183,47 @@ const Edit = ({ material }) => {
         </textarea>
       </div>
 
-      <label htmlFor="tags" className={`${styles.editTagsSection} document-form-headings`}>Edit Tags:</label>
       <div className={styles.inputTagsContainer}>
+        <h2
+          id="edit-tags-heading"
+          className={`${styles.editTagsSection} document-form-headings`}
+        >
+          Edit Tags:
+        </h2>
         {tags.length > 0 && (
-          <p className={styles.editTagsSection}>Tags you already have here - click on the x to delete any you don't want:</p>
+          <p
+            id="tags-desc"
+            className={styles.editTagsSection}
+            aria-describedby="edit-tags-heading"
+          >
+            Tags you already have here - click on the x to delete any you don't want:
+          </p>
         )}
-        <div className={`${styles.editTagsSection} edit-document-tags`}>
+        <div role="group" aria-labelledby="edit-tags-heading" className={`${styles.editTagsSection} edit-document-tags`}>
           {tags.length > 0 && tags.map((tag, index) => (
             <span key={index} className={`${styles.editExistingTags} tag-chip`}>
               {trimText(tag, 16)}
-              <button type="button" onClick={() => deleteTag(index)}>X</button>
+              <button
+                type="button"
+                aria-label={`Delete tag ${tag}`}
+                onClick={() => deleteTag(index)}
+              >
+                X
+              </button>
             </span>
           ))}
         </div>
         {trySubmit && selectedTags.length === 0 && tags.length === 0 && (
           <div className="error">Please add some tags!</div>
         )}
+        <label
+          htmlFor="tags-select"
+        >
+          Add tags here (max. 15 chars):
+        </label>
         <div className={styles.editTagsSelect}>
           <ExperimentalAllTagsSelect
+            id="tags-select"
             onTagsChange={handleTagsChange}
             onMenuOpen={() => setIsDropdownOpen(true)}
             onMenuClose={() => setIsDropdownOpen(false)}
