@@ -105,7 +105,7 @@ const CreateNew = () => {
 
     return (
         <>
-            <div className={styles.createNewFormWrapper}>
+            <main className={styles.createNewFormWrapper}>
                 <form className="content-detail-edit-create-containers" onSubmit={handleSubmit}>
                     {(trySubmit && !isFormValid) || error ? (
                         <div className="error">
@@ -137,18 +137,31 @@ const CreateNew = () => {
                         value={content}
                         className={(trySubmit && !content) || emptyFields.includes("content") ? "error" : "primary"}
                     />
-                    <label htmlFor="tags-select" className={`${styles.createNewTagLabel} document-form-headings`}>Add tags here (max. 15 chars):</label>
+                    <label
+                        htmlFor="tags-select"
+                        className={`${styles.createNewTagLabel} document-form-headings`}
+                    >
+                        Add tags here (max. 15 chars):
+                    </label>
                     <div className={styles.tagsSectionContainer}>
                         <div className={trySubmit && selectedTags.length === 0 ? "error" : ""}>
-                            <ExperimentalAllTagsSelect id="tags-select" onTagsChange={handleTagsChange} />
+                            <ExperimentalAllTagsSelect
+                                id="tags-select"
+                                onTagsChange={handleTagsChange}
+                            />
                         </div>
                     </div>
-                    <div className="content-detail-edit-create-btns">
+                    <section className="content-detail-edit-create-btns">
                         <CancelButton />
-                        <button className={`${styles.saveBtn} save-btn`} type="submit">Save</button>
-                    </div>
+                        <button
+                            className={`${styles.saveBtn} save-btn`}
+                            type="submit"
+                        >
+                            Save
+                        </button>
+                    </section>
                 </form>
-            </div>
+            </main>
         </>
     )
 }
