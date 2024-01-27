@@ -35,7 +35,7 @@ const Navbar = () => {
                     isHomepage ? (
                         <h1>ONLINE POST MANAGER</h1>
                     ) : (
-                        <Link to="/" className={styles.link}>
+                        <Link to="/" className={styles.link} aria-label="Go to dashboard homepage">
                             <h1>ONLINE POST MANAGER</h1>
                         </Link>
                     )
