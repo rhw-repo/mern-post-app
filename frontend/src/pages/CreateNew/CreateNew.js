@@ -119,26 +119,28 @@ const CreateNew = () => {
                         </div>
                     ) : null}
 
-                    <label className="document-form-headings">
+                    <label htmlFor="title" className="document-form-headings">
                         Type or paste the title here:
                     </label>
                     <textarea
+                        id="title"
                         rows={3}
                         onChange={(e) => setTitle(e.target.value)}
                         value={title}
                         className={(trySubmit && !title) || emptyFields.includes("title") ? "error" : "primary"}
                     />
-                    <label className="document-form-headings">Type or paste content here:</label>
+                    <label htmlFor="content" className="document-form-headings">Type or paste content here:</label>
                     <textarea
+                        id="content"
                         rows={8}
                         onChange={(e) => setContent(e.target.value)}
                         value={content}
                         className={(trySubmit && !content) || emptyFields.includes("content") ? "error" : "primary"}
                     />
-                    <label className={`${styles.createNewTagLabel} document-form-headings`}>Add tags here (max. 15 chars):</label>
+                    <label htmlFor="tags-select" className={`${styles.createNewTagLabel} document-form-headings`}>Add tags here (max. 15 chars):</label>
                     <div className={styles.tagsSectionContainer}>
                         <div className={trySubmit && selectedTags.length === 0 ? "error" : ""}>
-                            <ExperimentalAllTagsSelect onTagsChange={handleTagsChange} />
+                            <ExperimentalAllTagsSelect id="tags-select" onTagsChange={handleTagsChange} />
                         </div>
                     </div>
                     <div className="content-detail-edit-create-btns">

@@ -3,7 +3,7 @@ import Creatable from "react-select/creatable";
 import { useMaterialsContext } from "../../hooks/useMaterialsContext";
 import styles from "./ExperimentalAllTagsSelect.module.css";
 
-function ExperimentalAllTagsSelect({ onTagsChange }) {
+function ExperimentalAllTagsSelect({ onTagsChange, id }) {
   console.log('ExperimentalAllTagsSelect rendered!');
   console.log('All props:', { onTagsChange });
   const { materials } = useMaterialsContext();
@@ -192,11 +192,12 @@ function ExperimentalAllTagsSelect({ onTagsChange }) {
   }
 
   return (
-    <label className={styles.tagSectionLabel}>
+    <div className={styles.tagSectionLabel}>
       Select or create tags:
       <div className={styles.selectContainer}>
         {allTags ? (
           <Creatable
+          inputId = {id}
             className={styles.creatableSelect}
             isMulti
             options={allTags.map((tag) => ({
@@ -213,7 +214,7 @@ function ExperimentalAllTagsSelect({ onTagsChange }) {
           <div>No tags available</div>
         )}
       </div>
-    </label>
+    </div>
   )
 }
 
