@@ -26,7 +26,9 @@
   white-space: pre-wrap;
 }
 
-.contentDetailTagsLabel {
+.contentDetailTagsLabel,
+.contentDetailTitleLabel,
+.contentDetailContentLabel {
   margin: 1rem 0 1rem 1.3rem;
 }
 
@@ -42,7 +44,10 @@
 }
 
 @media (max-width: 1007px) {
+
+  .contentDetailTitleLabel,
   .contentDetailTitle,
+  .contentDetailContentLabel,
   .contentDetailContent,
   .contentDetailTagsLabel {
     font-size: 1.25rem;
@@ -63,8 +68,10 @@
 }
 
 @media (max-width: 320px) {
+
+
   .contentDetailTitle {
-    margin: 0 0 0 1rem; 
+    margin: 0 0 0 1rem;
   }
 
   .contentDetailTagsLabel {
@@ -74,5 +81,16 @@
   .tags,
   .tagChip {
     font-size: small;
+  }
+}
+
+@media (max-width: 319px) {
+
+  .contentDetailTitleLabel,
+  .contentDetailTitle,
+  .contentDetailContentLabel,
+  .contentDetailContent,
+  .contentDetailTagsLabel {
+    font-size: 1rem;
   }
 }
