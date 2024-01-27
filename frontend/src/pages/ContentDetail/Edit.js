@@ -155,7 +155,7 @@ const Edit = ({ material }) => {
         </div>
       ) : null}
 
-      <div>
+      <section>
         <label
           htmlFor="title"
           className="document-form-headings"
@@ -169,9 +169,9 @@ const Edit = ({ material }) => {
           onChange={(e) => setTitle(e.target.value)}
           className={(trySubmit && !title) || emptyFields.includes("title") ? "error" : "primary"}
         />
-      </div>
+      </section>
 
-      <div>
+      <section>
         <label htmlFor="content" className="document-form-headings">Edit Content:</label>
         <textarea
           id="content"
@@ -181,9 +181,9 @@ const Edit = ({ material }) => {
           className={(trySubmit && !content) || emptyFields.includes("content") ? "error" : "primary"}
         >
         </textarea>
-      </div>
+      </section>
 
-      <div className={styles.inputTagsContainer}>
+      <section className={styles.inputTagsContainer}>
         <h2
           id="edit-tags-heading"
           className={`${styles.editTagsSection} document-form-headings`}
@@ -194,7 +194,6 @@ const Edit = ({ material }) => {
           <p
             id="tags-desc"
             className={styles.editTagsSection}
-            aria-describedby="edit-tags-heading"
           >
             Tags you already have here - click on the x to delete any you don't want:
           </p>
@@ -229,8 +228,9 @@ const Edit = ({ material }) => {
             onMenuClose={() => setIsDropdownOpen(false)}
           />
         </div>
-      </div>
-      <div className="content-detail-edit-create-btns">
+      </section>
+
+      <section className="content-detail-edit-create-btns">
         <CancelButton />
         <button
           className={`${styles.saveBtn} save-btn`}
@@ -238,7 +238,7 @@ const Edit = ({ material }) => {
         >
           {saveIcon} Save
         </button>
-      </div>
+      </section>
     </form>
   )
 }
