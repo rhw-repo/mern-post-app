@@ -118,7 +118,8 @@ const CreateNew = () => {
                             )}
                         </div>
                     ) : null}
-
+                    
+                    <section>
                     <label htmlFor="title" className="document-form-headings">
                         Type or paste the title here:
                     </label>
@@ -129,6 +130,9 @@ const CreateNew = () => {
                         value={title}
                         className={(trySubmit && !title) || emptyFields.includes("title") ? "error" : "primary"}
                     />
+                    </section>
+
+                    <section>
                     <label htmlFor="content" className="document-form-headings">Type or paste content here:</label>
                     <textarea
                         id="content"
@@ -137,6 +141,9 @@ const CreateNew = () => {
                         value={content}
                         className={(trySubmit && !content) || emptyFields.includes("content") ? "error" : "primary"}
                     />
+                    </section>
+
+                    <section>
                     <label
                         htmlFor="tags-select"
                         className={`${styles.createNewTagLabel} document-form-headings`}
@@ -151,6 +158,8 @@ const CreateNew = () => {
                             />
                         </div>
                     </div>
+                    </section>
+                    
                     <section className="content-detail-edit-create-btns">
                         <CancelButton />
                         <button
