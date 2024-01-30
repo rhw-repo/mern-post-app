@@ -89,70 +89,73 @@ const Login = () => {
 
     return (
         <>
-        <main className={styles.loginWrapper}>
-            <form className={`${styles.loginForm} login-form`} onSubmit={handleSubmit}>
-                {(trySubmit && !isFormValid) || error ? (
-                    <div className="error">
-                        {trySubmit && !isFormValid ? (
+            <main className={styles.loginWrapper}>
+                <form className={`${styles.loginForm} login-form`} onSubmit={handleSubmit}>
+                    <div aria-live="polite">
+                        {(trySubmit && !isFormValid) || error ? (
                             <>
-                                Please fill in the following fields: {missingFields().join(", ")}
+                                {trySubmit && !isFormValid ? (
+                                    <div className="error">
+                                        Please fill in the following fields: {missingFields().join(", ")}
+                                    </div>
+                                ) : (
+                                    <div className="error">{error}</div>
+                                )}
                             </>
-                        ) : (
-                            error
-                        )}
+                        ) : null}
                     </div>
-                ) : null}
+                    <h2 className="login-signup-title">Login here:</h2>
+                    <label htmlFor="email">Email*</label>
+                    <input
+                        aria-label="Enter your email address"
+                        id="email"
+                        type="email"
+                        autoComplete="off"
+                        onChange={(e) => {
+                            setEmail(e.target.value)
+                            emailInput.handleInputChange(e)
+                            clearError()
+                        }}
 
-                <h2 className="login-signup-title">Login here:</h2>
-                <label htmlFor="email">Email*</label>
-                <input
-                    aria-label="Enter your email address"
-                    id="email"
-                    type="email"
-                    autoComplete="off"
-                    onChange={(e) => {
-                        setEmail(e.target.value)
-                        emailInput.handleInputChange(e)
-                        clearError()
-                    }}
+                        value={email}
+                        className={(trySubmit && !email) || emailInput.error ? "error" : "primary"}
+                        aria-required
+                    />
+                    <label htmlFor="password">Password*</label>
+                    <input
+                        aria-label="Enter your password"
+                        id="password"
+                        type="password"
+                        autoComplete="off"
+                        onChange={(e) => {
+                            setPassword(e.target.value)
+                            passwordInput.handleInputChange(e)
+                            clearError()
+                        }}
+                        value={password}
+                        className={(trySubmit && !password) || passwordInput.error ? "error" : "primary"}
+                        aria-required
+                    />
 
-                    value={email}
-                    className={(trySubmit && !email) || emailInput.error ? "error" : "primary"}
-                />
-                <label htmlFor="password">Password*</label>
-                <input
-                    aria-label="Enter your password"
-                    id="password"
-                    type="password"
-                    autoComplete="off"
-                    onChange={(e) => {
-                        setPassword(e.target.value)
-                        passwordInput.handleInputChange(e)
-                        clearError()
-                    }}
-                    value={password}
-                    className={(trySubmit && !password) || passwordInput.error ? "error" : "primary"}
-                />
-
-                <div >
+                    <div >
+                        <button
+                            className="login-btn"
+                            disabled={isLoading}
+                        >
+                            {loginIcon} Login
+                        </button>
+                        {error && <div className="error">{error}</div>}
+                    </div>
+                </form>
+                <section className={`${styles.loginSwitchFormsBtns} switch-form-btns`}>
+                    <div className="switch-form-text-prompt">Need an account?</div>
                     <button
-                        className="login-btn"
-                        disabled={isLoading}
+                        className="switch-form-btn"
+                        onClick={goToSignup}
                     >
-                        {loginIcon} Login
+                        {signupIcon} Signup
                     </button>
-                    {error && <div className="error">{error}</div>}
-                </div>
-            </form>
-            <section className={`${styles.loginSwitchFormsBtns} switch-form-btns`}>
-                <div className="switch-form-text-prompt">Need an account?</div>
-                <button
-                    className="switch-form-btn"
-                    onClick={goToSignup}
-                >
-                    {signupIcon} Signup
-                </button>
-            </section>
+                </section>
             </main>
         </>
     )
