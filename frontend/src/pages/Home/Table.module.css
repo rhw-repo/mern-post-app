@@ -177,6 +177,17 @@ content as if on an elevated surface*/
     margin: 1rem;
 }
 
+.hiddenPaginationSelectLabel {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    border: 0;
+}
+
 .tablePaginationButton {
     white-space: nowrap;
 }

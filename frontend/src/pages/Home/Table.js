@@ -534,6 +534,7 @@ function Table({ data }) {
                     </tbody>
                 </table>
                 <section aria-label="Table Pagination Options" className={styles.pagination}>
+                <label htmlFor="table-pagination-select" className={styles.hiddenPaginationSelectLabel}>Rows per page:</label>
                     <select
                         className={`${styles.SelectBox} select-box`}
                         value={pageSize}
