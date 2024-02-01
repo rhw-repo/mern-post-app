@@ -55,6 +55,7 @@ const Navbar = () => {
                         }}
                         aria-expanded={menuOpen}
                         aria-controls="navigation"
+                        aria-label="Menu"
                         tabIndex={0}
                     >
                         <span></span>
