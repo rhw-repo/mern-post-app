@@ -83,6 +83,7 @@ body {
 .go-to-edit-btn:hover,
 .save-btn:hover {
   background: #A96669;
+  border: 0.13rem solid #151a1e;
   box-shadow:
     0rem 0.1875rem 0.375rem 0rem rgba(0, 0, 0, 0.2),
     0rem 0.5rem 0.625rem 0rem rgba(0, 0, 0, 0.14),
@@ -96,6 +97,7 @@ body {
 .go-to-edit-btn:active,
 .save-btn:active {
   background: #954B4C;
+  border: 0.13rem solid #151a1e;
   box-shadow:
     0rem 0.0625rem 0.125rem 0rem rgba(0, 0, 0, 0.2),
     0rem 0.125rem 0.15625rem 0rem rgba(0, 0, 0, 0.14),
@@ -132,6 +134,7 @@ button: see Navbar css module)*/
 .switch-form-btn:hover {
   background: rgba(119, 141, 165, 0.15);
   color: #37404b;
+  border: 0.13rem solid #151a1e;
   box-shadow: 0rem 0.125rem 0.25rem 0rem rgba(0, 0, 0, 0.1);
 }
 
@@ -144,6 +147,7 @@ button: see Navbar css module)*/
 .switch-form-btn:active {
   background: rgba(67, 83, 98, 0.2);
   color: #2c333b;
+  border: 0.13rem solid #151a1e;
   transform: scale(0.98);
 }
 
