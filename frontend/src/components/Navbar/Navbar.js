@@ -48,30 +48,25 @@ const Navbar = () => {
                     )}
                 </span>
                 {user && (
-                    <div
+                    <button
                         className={styles.navMenu}
                         onClick={() => {
                             setMenuOpen(!menuOpen)
-                        }}>
+                        }}
+                        aria-expanded={menuOpen}
+                        aria-controls="navigation"
+                        tabIndex={0}
+                    >
                         <span></span>
                         <span></span>
                         <span></span>
-                    </div>
-                )}
-                {menuOpen && user && (
-                    <button
-                        className={styles.closeNavMenu}
-                        onClick={() => {
-                            setMenuOpen(false);
-                        }}>
-                        X
                     </button>
                 )}
-
                 <ul className={menuOpen ? styles.open : ""}>
                     {user && (
                         <>
-                            <li className={styles.navList}>
+                            <li className={styles.navList}
+                                id="navigation">
                                 <button
                                     onClick={handleClick}
                                     className={styles.navLogoutButton}
@@ -81,6 +76,16 @@ const Navbar = () => {
                         </>
                     )}
                 </ul>
+                {menuOpen && user && (
+                    <button
+                        className={styles.closeNavMenu}
+                        onClick={() => {
+                            setMenuOpen(false);
+                        }}
+                        aria-label="Close menu">
+                        X
+                    </button>
+                )}
                 {logoutError && <div className="error">{logoutError}</div>}
             </nav>
         </>

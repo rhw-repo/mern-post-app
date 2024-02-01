@@ -148,18 +148,23 @@ logout button, restyled as an option  */
 
   /* Position, size & layout hamburger menu symbol */
   nav .navMenu {
+    background: none;
+    border: none;
+    cursor: pointer;
     position: absolute;
     top: 0.75rem;
     right: 1rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: 1.75rem;
+    width: 2.5rem;
     height: 1.5rem;
+    gap: 0.3rem;
   }
 
   /* Creates the 3 hamburger 'bars' */
   nav .navMenu span {
+    display: block;
     height: 0.4rem;
     width: 100%;
     background-color: #ffffff;
