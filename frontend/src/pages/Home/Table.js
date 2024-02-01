@@ -6,6 +6,7 @@ import DateRangeFilter, { filterByDateRange } from "./DateRangeFilter";
 import ModalDateRangeFilter from "./ModalDateRangeFilter";
 import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
+import { useNavigate } from "react-router-dom";
 import { useMemo, useState, useEffect, useRef, forwardRef, useImperativeHandle } from "react";
 import Select from "react-select";
 import { Link } from "react-router-dom";
@@ -392,14 +393,15 @@ function Table({ data }) {
     const resetIcon = <FontAwesomeIcon icon={faUndo} className={styles.resetTableBtnIcon} />
     const sortIcon = <FontAwesomeIcon icon={faSort} size="2xl" className={styles.sortIcon} />
     const deleteIcon = <FontAwesomeIcon icon={faTrashCan} size="xl" />
-
-    /*const deleteIconElement = (
-        <span className={styles.tableHeaderDeleteIcon}>{deleteIcon}</span>
-    )*/
-
     const forwardsIcon = <FontAwesomeIcon icon={faForward} />
     const backwardsIcon = <FontAwesomeIcon icon={faBackward} />
 
+    /* Handles navigation to CreateNew.js */
+    const navigate = useNavigate()
+
+    const handleNavigation = () => {
+        navigate("/create_new")
+    }
 
     /* Pagination functions */
     const handlePageSizeChange = (e) => {
@@ -442,6 +444,7 @@ function Table({ data }) {
                     Search & Options {seeTableOptionsButtonIcon}
                 </button>
             </section>
+
             <section aria-label="Table Filtering Options Section" className={`${styles.optionsContainer} ${isOptionsVisible ? styles.visible : ''}`}>
                 <div>
                     <button
@@ -471,13 +474,13 @@ function Table({ data }) {
                     </button>
                 </div>
                 <div className={styles.createNewDiv}>
-                    <Link to="/create_new">
-                        <button
-                            className={`${styles.createNewBtn} create-new-btn`}
-                        >
-                            {createNewIconFile} Create New
-                        </button>
-                    </Link>
+                    <button
+                        className={`${styles.createNewBtn} create-new-btn`}
+                        onClick={handleNavigation}
+                        aria-label="Go to Create new item page"
+                    >
+                        {createNewIconFile} Create New
+                    </button>
                 </div>
             </section>
 
@@ -534,9 +537,9 @@ function Table({ data }) {
                     </tbody>
                 </table>
                 <section aria-label="Table Pagination Options" className={styles.pagination}>
-                <label htmlFor="table-pagination-select" className={styles.hiddenPaginationSelectLabel}>Rows per page:</label>
+                    <label htmlFor="table-pagination-select" className={styles.hiddenPaginationSelectLabel}>Rows per page:</label>
                     <select
-                    id="table-pagination-select"
+                        id="table-pagination-select"
                         className={`${styles.SelectBox} select-box`}
                         value={pageSize}
                         onChange={handlePageSizeChange}
