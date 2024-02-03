@@ -7,7 +7,7 @@ import ModalDateRangeFilter from "./ModalDateRangeFilter";
 import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
 import { useNavigate } from "react-router-dom";
-import { useMemo, useState, useEffect, useRef, forwardRef, useImperativeHandle } from "react";
+import { useMemo, useState, useEffect, useRef, forwardRef, useImperativeHandle, Fragment } from "react";
 import Select from "react-select";
 import { Link } from "react-router-dom";
 import DeleteButton from "./DeleteButton";
@@ -278,12 +278,14 @@ function Table({ data }) {
                 accessor: "title",
                 disableSortBy: true,
                 Cell: LinkedCell,
+                meta: { ariaLabel: "Title of documents" },
             },
             {
                 Header: "Content",
                 accessor: "content",
                 disableSortBy: true,
                 Cell: TextCell,
+                meta: { ariaLabel: "Content of documents" },
             },
             {
                 Header: "Tags",
@@ -294,17 +296,20 @@ function Table({ data }) {
                 // Filter: TagsSelect
                 // No forwardRef needed, just pass the ref
                 Filter: (props) => <TagsSelect {...props} ref={tagsSelectRef} />,
+                meta: { ariaLabel: "Tags of documents" },
             },
             {
                 Header: "Created At",
                 accessor: "createdAt",
                 Cell: ({ value }) => format(new Date(value), "dd/MM/yyyy"),
                 filter: filterByDateRange,
+                meta: { ariaLabel: "Documents Created At" },
             },
             {
                 Header: "Updated At",
                 accessor: "updatedAt",
                 Cell: ({ value }) => { return format(new Date(value), "dd/MM/yyyy") },
+                meta: { ariaLabel: "Documents Updated At" },
             },
             {
                 Header: "Delete?",
@@ -313,6 +318,7 @@ function Table({ data }) {
                 disableFilters: true,
                 // TODO refactor into component, pass in, avoid code smell
                 Cell: ({ value }) => <DeleteButton _id={value} />,
+                meta: { ariaLabel: "Delete individual documents" },
             }
         ],
         []
@@ -489,14 +495,16 @@ function Table({ data }) {
 
                     <thead>
                         {headerGroups.map(headerGroup => (
-                            <>
+                            <Fragment key={headerGroup.id}>
                                 <tr {...headerGroup.getHeaderGroupProps()}>
                                     {headerGroup.headers.map(column => (
                                         <th
                                             {...column.getHeaderProps()}
                                             aria-label={column.meta?.ariaLabel || column.Header}
+
                                             className={styles.tableHeader}
                                             id={`header-${column.id}`}
+                                            tabIndex={0}
                                         >
                                             {column.render("Header")}
                                         </th>
@@ -527,7 +535,7 @@ function Table({ data }) {
                                         </th>
                                     ))}
                                 </tr>
-                            </>
+                            </Fragment>
                         ))}
                     </thead>
 
@@ -552,7 +560,7 @@ function Table({ data }) {
                         })}
                     </tbody>
                 </table>
-                
+
                 <section aria-label="Table Pagination Options" className={styles.pagination}>
                     <label htmlFor="table-pagination-select" className={styles.hiddenPaginationSelectLabel}>Rows per page:</label>
                     <select
