@@ -65,8 +65,8 @@ const ColumnFilter = ({ column }) => {
                 <SearchBox>
                     {filterIcon}
                     <input
-                        aria-label={`Search ${Header.toLowerCase()} column`}
-                        placeholder={`Search ${Header.toLowerCase()}`}
+                        aria-label={`Filter table by ${Header.toLowerCase()} column`}
+                        placeholder={`Filter table by ${Header.toLowerCase()}`}
                         type="text"
                         value={filterValue || ""}
                         onChange={e => setFilter(e.target.value)}

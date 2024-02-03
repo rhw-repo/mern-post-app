@@ -103,7 +103,7 @@ content as if on an elevated surface*/
     /* Testing for New color scheme #1 
     border-bottom: solid 3px 	hsl(37, 98%, 53%);*/
     background: white;
-    color: #435362;
+    color: #435362; 
     font-weight: bold;
     font-size: 1.25rem;
     font-family: "Lexend Deca", Helvetica, Arial, Lucida, sans-serif;
@@ -151,6 +151,11 @@ content as if on an elevated surface*/
     white-space: nowrap;
 }
 
+/* Handles color in linked cells */
+a {
+    color: black;
+}
+
 /* Table sort buttons date columns*/
 .sortButton {
     background-color: transparent;
@@ -183,7 +188,7 @@ content as if on an elevated surface*/
     margin: -1px;
     padding: 0;
     overflow: hidden;
-    clip: rect(0,0,0,0);
+    clip: rect(0, 0, 0, 0);
     border: 0;
 }
 
@@ -277,6 +282,19 @@ select {
     }
 
     /* Table - Display: grid prevents horizontal overflow */
+    .tableHiddenCaption {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        margin: -1px;
+        border: 0;
+        padding: 0;
+        white-space: nowrap;
+        clip: rect(0 0 0 0);
+        clip-path: inset(50%);
+        overflow: hidden;
+    }
+
     th {
         display: none;
     }

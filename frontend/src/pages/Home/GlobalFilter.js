@@ -76,6 +76,7 @@ const GlobalFilter = ({ filter, setFilter }) => {
                     value={value || ""}
                     onChange={handleInputChange}
                     className={styles.globalFilterInput}
+                    aria-label="Filter table by search terms"
                 />
             </SearchBox>
         </section>

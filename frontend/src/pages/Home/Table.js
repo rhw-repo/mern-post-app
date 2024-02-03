@@ -456,6 +456,7 @@ function Table({ data }) {
                     <button
                         className={`${styles.dateRangeBtn} date-range-btn`}
                         onClick={() => setIsOpen(true)}
+                        aria-label="Filter the table by dates"
                     >
                         {calendarIcon} Search Dates
                     </button>
@@ -475,6 +476,7 @@ function Table({ data }) {
                             resetTable()
                             clearChildTags()
                         }}
+                        aria-label="Reset the table after filtering"
                     >
                         {resetIcon} RESET
                     </button>
@@ -492,6 +494,7 @@ function Table({ data }) {
 
             <div className={styles.tableContainer}>
                 <table {...getTableProps()} className={styles.tableNoGaps}>
+                    <caption className={styles.tableHiddenCaption}>Table of saved documents</caption>
 
                     <thead>
                         {headerGroups.map(headerGroup => (
@@ -556,6 +559,7 @@ function Table({ data }) {
                                             <td
                                                 {...cell.getCellProps()}
                                                 className={styles.tableCell}
+                                                tabIndex={0}
                                             >
                                                 {cell.render("Cell")}
                                             </td>
