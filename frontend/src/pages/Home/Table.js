@@ -517,7 +517,13 @@ function Table({ data }) {
                                             className={styles.filterHeader}
                                         >
                                             {column.Header === 'Delete?' ? (
-                                                <div className={styles.headerDeleteIcon}>{deleteIcon}</div>
+                                                <div
+                                                    className={styles.headerDeleteIcon}
+                                                    aria-label="Column of delete buttons"
+                                                    tabIndex={0}
+                                                >
+                                                   {deleteIcon}
+                                                </div>
                                             ) : (
                                                 <div aria-labelledby={`header-${column.id}`}>
                                                     {column.canFilter ? column.render("Filter") : null}
