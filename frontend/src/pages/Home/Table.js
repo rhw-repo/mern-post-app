@@ -299,17 +299,17 @@ function Table({ data }) {
                 meta: { ariaLabel: "Document tags" },
             },
             {
-                Header: "Created At",
+                Header: "Created On",
                 accessor: "createdAt",
                 Cell: ({ value }) => format(new Date(value), "dd/MM/yyyy"),
                 filter: filterByDateRange,
-                meta: { ariaLabel: "Documents Created At" },
+                meta: { ariaLabel: "Date documents created on" },
             },
             {
-                Header: "Updated At",
+                Header: "Updated On",
                 accessor: "updatedAt",
                 Cell: ({ value }) => { return format(new Date(value), "dd/MM/yyyy") },
-                meta: { ariaLabel: "Documents Updated At" },
+                meta: { ariaLabel: "Date documents updated on" },
             },
             {
                 Header: "Delete?",
@@ -530,7 +530,7 @@ function Table({ data }) {
                                                     {column.canSort ? (
                                                         <button
                                                             {...column.getSortByToggleProps()}
-                                                            aria-label={`Sort by ${column.Header}`}
+                                                            aria-label={`Sort by date ${column.Header}`}
                                                             className={`${styles.dateSortToggleButtons} ${styles.sortButton}`}
                                                         >
                                                             {sortIcon}

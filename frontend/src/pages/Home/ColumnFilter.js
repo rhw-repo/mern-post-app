@@ -59,7 +59,7 @@ const ColumnFilter = ({ column }) => {
    const { filterValue, setFilter, Header } = column;
 
     // hides input in date columns (DateRangeFilter used instead or no filter)
-    if (column.Header !== "Created At" && column.Header !== "Updated At" && column.Header !== "Delete") {
+    if (column.Header !== "Created On" && column.Header !== "Updated On" && column.Header !== "Delete") {
         return (
             <section>
                 <SearchBox>
