@@ -63,6 +63,11 @@ ul {
   border-radius: 1.875rem;
 }
 
+/* Hides for wider screens */
+.navMenu {
+  display: none;
+}
+
 .navLogoutIcon {
   font-size: 1.5rem;
   padding-right: 0.3rem;
