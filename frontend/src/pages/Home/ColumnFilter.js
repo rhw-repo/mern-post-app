@@ -56,26 +56,23 @@ const ColumnFilter = ({ column }) => {
     useEffect(() => {
         console.log('Component updated')
     }, [])
-
-    const { filterValue, setFilter } = column
+   const { filterValue, setFilter, Header } = column;
 
     // hides input in date columns (DateRangeFilter used instead or no filter)
     if (column.Header !== "Created At" && column.Header !== "Updated At" && column.Header !== "Delete") {
         return (
-            <div>
-                <section>
-                    <SearchBox>
-                        {filterIcon}
-                        <input
-                            aria-label="Search this column only"
-                            placeholder="Search column only"
-                            type="text"
-                            value={filterValue || ""}
-                            onChange={e => setFilter(e.target.value)}
-                        />
-                    </SearchBox>
-                </section>
-            </div>
+            <section>
+                <SearchBox>
+                    {filterIcon}
+                    <input
+                        aria-label={`Search ${Header.toLowerCase()} column`}
+                        placeholder={`Search ${Header.toLowerCase()}`}
+                        type="text"
+                        value={filterValue || ""}
+                        onChange={e => setFilter(e.target.value)}
+                    />
+                </SearchBox>
+            </section>
         )
     } else {
         return null

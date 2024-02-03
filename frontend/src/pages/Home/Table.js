@@ -278,14 +278,14 @@ function Table({ data }) {
                 accessor: "title",
                 disableSortBy: true,
                 Cell: LinkedCell,
-                meta: { ariaLabel: "Title of documents" },
+                meta: { ariaLabel: "Document Titles" },
             },
             {
                 Header: "Content",
                 accessor: "content",
                 disableSortBy: true,
                 Cell: TextCell,
-                meta: { ariaLabel: "Content of documents" },
+                meta: { ariaLabel: "Document Contents" },
             },
             {
                 Header: "Tags",
@@ -296,7 +296,7 @@ function Table({ data }) {
                 // Filter: TagsSelect
                 // No forwardRef needed, just pass the ref
                 Filter: (props) => <TagsSelect {...props} ref={tagsSelectRef} />,
-                meta: { ariaLabel: "Tags of documents" },
+                meta: { ariaLabel: "Document tags" },
             },
             {
                 Header: "Created At",
