@@ -436,7 +436,7 @@ function Table({ data }) {
     //     <div className={styles.optionsContainer}>
     return (
         <main>
-            <section>
+            <section aria-label="Table Filtering Options Section">
                 <button className={styles.seeTableOptionsButton}
                     onClick={toggleOptionsVisibility}
                     aria-expanded={isOptionsVisible}
@@ -486,35 +486,51 @@ function Table({ data }) {
 
             <div className={styles.tableContainer}>
                 <table {...getTableProps()} className={styles.tableNoGaps}>
+
                     <thead>
                         {headerGroups.map(headerGroup => (
-                            <tr {...headerGroup.getHeaderGroupProps()}>
-                                {headerGroup.headers.map(column => (
-                                    <th
-                                        {...column.getHeaderProps(column.getSortByToggleProps())}
-                                        className={styles.tableHeader}
-                                    >
-                                        {column.render("Header")}
-                                        {column.Header === 'Delete?' ? <div className={styles.headerDeleteIcon}>{deleteIcon}</div> : null}
-                                        <div>{column.canFilter ? column.render("Filter") : null}</div>
-                                        {
-                                            column.canSort
-                                                ? (
-                                                    <button
-                                                        {...column.getSortByToggleProps()}
-                                                        aria-label={`Sort by ${column.Header}`}
-                                                        className={`${styles.dateSortToggleButtons} ${styles.sortButton}`}
-                                                    >
-                                                        {sortIcon}
-                                                    </button>
-                                                )
-                                                : null
-                                        }
-                                    </th>
-                                ))}
-                            </tr>
+                            <>
+                                <tr {...headerGroup.getHeaderGroupProps()}>
+                                    {headerGroup.headers.map(column => (
+                                        <th
+                                            {...column.getHeaderProps()}
+                                            aria-label={column.meta?.ariaLabel || column.Header}
+                                            className={styles.tableHeader}
+                                            id={`header-${column.id}`}
+                                        >
+                                            {column.render("Header")}
+                                        </th>
+                                    ))}
+                                </tr>
+                                <tr>
+                                    {headerGroup.headers.map(column => (
+                                        <th
+                                            {...column.getHeaderProps()}
+                                            className={styles.filterHeader}
+                                        >
+                                            {column.Header === 'Delete?' ? (
+                                                <div className={styles.headerDeleteIcon}>{deleteIcon}</div>
+                                            ) : (
+                                                <div aria-labelledby={`header-${column.id}`}>
+                                                    {column.canFilter ? column.render("Filter") : null}
+                                                    {column.canSort ? (
+                                                        <button
+                                                            {...column.getSortByToggleProps()}
+                                                            aria-label={`Sort by ${column.Header}`}
+                                                            className={`${styles.dateSortToggleButtons} ${styles.sortButton}`}
+                                                        >
+                                                            {sortIcon}
+                                                        </button>
+                                                    ) : null}
+                                                </div>
+                                            )}
+                                        </th>
+                                    ))}
+                                </tr>
+                            </>
                         ))}
                     </thead>
+
                     <tbody {...getTableBodyProps()}>
                         {page.map(row => {
                             prepareRow(row)
@@ -536,6 +552,7 @@ function Table({ data }) {
                         })}
                     </tbody>
                 </table>
+                
                 <section aria-label="Table Pagination Options" className={styles.pagination}>
                     <label htmlFor="table-pagination-select" className={styles.hiddenPaginationSelectLabel}>Rows per page:</label>
                     <select
