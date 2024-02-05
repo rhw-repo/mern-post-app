@@ -506,7 +506,7 @@ function Table({ data }) {
 
                                             className={styles.tableHeader}
                                             id={`header-${column.id}`}
-                                            tabIndex={0}
+                                            
                                         >
                                             {column.render("Header")}
                                         </th>
@@ -558,7 +558,7 @@ function Table({ data }) {
                                             <td
                                                 {...cell.getCellProps()}
                                                 className={styles.tableCell}
-                                                tabIndex={0}
+                                 
                                             >
                                                 {cell.render("Cell")}
                                             </td>
