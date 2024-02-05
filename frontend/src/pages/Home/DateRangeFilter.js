@@ -36,21 +36,19 @@ function DateRangeFilter({ handleFilter }) {
   const rangeColors = ["#667B99"]
 
   /* Workaround known library bug no visual indicator
-  on focus */
+  on focus, no aria-labels month & year selection section */
   useEffect(() => {
-
-    /* Library bug - these Buttons lack aria-label */
     const updateAriaLabels = () => {
-    const nextButtons = document.querySelectorAll(".rdrNextButton")
-    const prevButtons = document.querySelectorAll(".rdrPrevButton")
+      const nextButtons = document.querySelectorAll(".rdrNextButton")
+      const prevButtons = document.querySelectorAll(".rdrPrevButton")
 
-    nextButtons.forEach(button => {
-      button.setAttribute("aria-label", "Next Month")
-    })
+      nextButtons.forEach(button => {
+        button.setAttribute("aria-label", "Next Month")
+      })
 
-    prevButtons.forEach(button => {
-      button.setAttribute("aria-label", "Previous Month")
-    })
+      prevButtons.forEach(button => {
+        button.setAttribute("aria-label", "Previous Month")
+      })
     }
 
     const handleFocusIn = (e) => {
