@@ -107,7 +107,7 @@ const Signup = () => {
                     <h2 className="login-signup-title">Signup here:</h2>
                     <label htmlFor="email">Email*</label>
                     <input
-                        aria-label="Enter your email address"
+                        aria-label="Signup form: focused on email input box."
                         type="email"
                         id="email"
                         autoComplete="off"
@@ -118,10 +118,11 @@ const Signup = () => {
                         }}
                         value={email}
                         className={(trySubmit && !email) || emailInput.error ? "error" : "primary"}
+                        aria-required
                     />
                     <label htmlFor="password">Password*</label>
                     <input
-                        aria-label="Enter your password"
+                        aria-label="Signup form: focused on password input box."
                         type="password"
                         id="password"
                         autoComplete="off"
@@ -132,6 +133,7 @@ const Signup = () => {
                         }}
                         value={password}
                         className={(trySubmit && !password) || passwordInput.error ? "error" : "primary"}
+                        aria-required
                     />
 
                     <div >

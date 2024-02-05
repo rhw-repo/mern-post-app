@@ -89,7 +89,7 @@ const Login = () => {
 
     return (
         <>
-            <main className={styles.loginWrapper}>
+            <main className={styles.loginWrapper} >
                 <form className={`${styles.loginForm} login-form`} onSubmit={handleSubmit}>
                     <div aria-live="polite">
                         {(trySubmit && !isFormValid) || error ? (
@@ -104,10 +104,11 @@ const Login = () => {
                             </>
                         ) : null}
                     </div>
-                    <h2 className="login-signup-title">Login here:</h2>
+                    <h2 id="formTitle" className="login-signup-title">Login here:</h2>
+
                     <label htmlFor="email">Email*</label>
                     <input
-                        aria-label="Enter your email address"
+                        aria-label="Login form: focused on email input box."
                         id="email"
                         type="email"
                         autoComplete="off"
@@ -123,7 +124,7 @@ const Login = () => {
                     />
                     <label htmlFor="password">Password*</label>
                     <input
-                        aria-label="Enter your password"
+                        aria-label="Login form: focused on password input box."
                         id="password"
                         type="password"
                         autoComplete="off"
@@ -152,6 +153,7 @@ const Login = () => {
                     <button
                         className="switch-form-btn"
                         onClick={goToSignup}
+                        aria-label="Go to signup for account page"
                     >
                         {signupIcon} Signup
                     </button>
