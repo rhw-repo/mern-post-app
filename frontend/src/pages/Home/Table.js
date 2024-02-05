@@ -495,7 +495,6 @@ function Table({ data }) {
             <div className={styles.tableContainer}>
                 <table {...getTableProps()} className={styles.tableNoGaps}>
                     <caption className={styles.tableHiddenCaption}>Table of saved documents</caption>
-
                     <thead>
                         {headerGroups.map(headerGroup => (
                             <Fragment key={headerGroup.id}>

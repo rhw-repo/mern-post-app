@@ -86,7 +86,8 @@ content as if on an elevated surface*/
     border: 0;
     padding: 0;
     white-space: nowrap;
-    clip: rect(0 0 0 0);
+    /* deprecated, use clip-path instead 
+    clip: rect(0 0 0 0);*/
     clip-path: inset(50%);
     overflow: hidden;
 }
