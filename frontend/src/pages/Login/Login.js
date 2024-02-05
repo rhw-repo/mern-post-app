@@ -50,6 +50,10 @@ const Login = () => {
     const [isFormValid, setIsFormValid] = useState(false)
     const [trySubmit, setTrySubmit] = useState(false)
 
+    // set up for aria-live region when switching between
+    // Login & Signup forms
+    const [liveMessage, setLiveMessage] = useState("")
+
     // update form validity based on email and password prescence
     useEffect(() => {
         if (email && password) {
@@ -72,8 +76,12 @@ const Login = () => {
 
     const navigate = useNavigate()
 
+    /* Navigate & screen reader announcement of new page*/
     const goToSignup = () => {
-        navigate("/Signup")
+        setLiveMessage("Now on the signup form.")
+        setTimeout(() => {
+            navigate("/Signup")
+        }, 100)
     }
 
     // client-side - set error display according to missing fields 
@@ -149,6 +157,9 @@ const Login = () => {
                     </div>
                 </form>
                 <section className={`${styles.loginSwitchFormsBtns} switch-form-btns`}>
+                    <div aria-live="polite" aria-atomic="true" className={styles.hiddenAriaLiveMessages}>
+                        {liveMessage}
+                    </div>
                     <div className="switch-form-text-prompt">Need an account?</div>
                     <button
                         className="switch-form-btn"
@@ -157,6 +168,7 @@ const Login = () => {
                     >
                         {signupIcon} Signup
                     </button>
+
                 </section>
             </main>
         </>
