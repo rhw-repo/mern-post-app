@@ -506,7 +506,8 @@ function Table({ data }) {
 
                                             className={styles.tableHeader}
                                             id={`header-${column.id}`}
-                                            
+                                            scope="col"
+
                                         >
                                             {column.render("Header")}
                                         </th>
@@ -517,14 +518,14 @@ function Table({ data }) {
                                         <th
                                             {...column.getHeaderProps()}
                                             className={styles.filterHeader}
+                                            scope="col"
                                         >
                                             {column.Header === 'Delete?' ? (
                                                 <div
                                                     className={styles.headerDeleteIcon}
                                                     aria-label="Column of delete buttons"
-                                                    tabIndex={0}
                                                 >
-                                                   {deleteIcon}
+                                                    {deleteIcon}
                                                 </div>
                                             ) : (
                                                 <div aria-labelledby={`header-${column.id}`}>
@@ -558,7 +559,7 @@ function Table({ data }) {
                                             <td
                                                 {...cell.getCellProps()}
                                                 className={styles.tableCell}
-                                 
+
                                             >
                                                 {cell.render("Cell")}
                                             </td>

@@ -38,6 +38,21 @@ function DateRangeFilter({ handleFilter }) {
   /* Workaround known library bug no visual indicator
   on focus */
   useEffect(() => {
+
+    /* Library bug - these Buttons lack aria-label */
+    const updateAriaLabels = () => {
+    const nextButtons = document.querySelectorAll(".rdrNextButton")
+    const prevButtons = document.querySelectorAll(".rdrPrevButton")
+
+    nextButtons.forEach(button => {
+      button.setAttribute("aria-label", "Next Month")
+    })
+
+    prevButtons.forEach(button => {
+      button.setAttribute("aria-label", "Previous Month")
+    })
+    }
+
     const handleFocusIn = (e) => {
       if (e.target.classList.contains("rdrNextPrevButton")) {
         e.target.style.outline = "2px solid black"
@@ -63,16 +78,17 @@ function DateRangeFilter({ handleFilter }) {
       }
     }
 
-    document.addEventListener('focusin', handleFocusIn)
-    document.addEventListener('focusout', handleFocusOut)
+    document.addEventListener("focusin", handleFocusIn)
+    document.addEventListener("focusout", handleFocusOut)
+
+    updateAriaLabels()
 
     // Clean up event listeners
     return () => {
-      document.removeEventListener('focusin', handleFocusIn)
-      document.removeEventListener('focusout', handleFocusOut)
+      document.removeEventListener("focusin", handleFocusIn)
+      document.removeEventListener("focusout", handleFocusOut)
     }
   }, [])
-
 
   /* rangeColors prop sets the color scheme of DateRangePicker 
   to match the app's primary color */
