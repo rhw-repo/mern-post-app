@@ -102,7 +102,9 @@ function DateRangeFilter({ handleFilter }) {
         onChange={handleSelect}
         startDatePlaceholder="start date"
         endDatePlaceholder="end date"
-        />
+        editableDateInputs
+        dateDisplayFormat="dd-MM-yyyy"
+      />
     </div>
   )
 }
