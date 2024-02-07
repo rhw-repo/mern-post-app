@@ -88,6 +88,8 @@ function DateRangeFilter({ handleFilter }) {
     }
   }, [])
 
+
+
   /* rangeColors prop sets the color scheme of DateRangePicker 
   to match the app's primary color */
   return (
@@ -97,7 +99,10 @@ function DateRangeFilter({ handleFilter }) {
         rangeColors={rangeColors}
         showSelectionPreview={false}
         ranges={[dateRange]}
-        onChange={handleSelect} />
+        onChange={handleSelect}
+        startDatePlaceholder="start date"
+        endDatePlaceholder="end date"
+        />
     </div>
   )
 }
