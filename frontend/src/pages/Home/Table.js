@@ -437,9 +437,10 @@ function Table({ data }) {
         gotoPage(pageCount - 1);
     };
 
+    // state for aria-live messages
+    const [liveMessage, setLiveMessage] = useState("")
+
     // Rendering options before table aims for easy user experience
-    // replaced this line 
-    //     <div className={styles.optionsContainer}>
     return (
         <main>
             <section aria-label="Table Filtering Options Section">
@@ -450,7 +451,9 @@ function Table({ data }) {
                     Search & Options {seeTableOptionsButtonIcon}
                 </button>
             </section>
-
+            <div aria-live="polite" className={styles.ariaLiveHidden}>
+                {liveMessage}
+            </div>
             <section aria-label="Table Filtering Options Section" className={`${styles.optionsContainer} ${isOptionsVisible ? styles.visible : ''}`}>
                 <div>
                     <button
@@ -463,7 +466,10 @@ function Table({ data }) {
                 </div>
                 <ModalDateRangeFilter
                     open={isOpen}
-                    onClose={() => setIsOpen(false)}>
+                    onClose={() => {
+                        setIsOpen(false);
+                        setLiveMessage("Date Range Filtering Section closed");
+                    }}>
                     <DateRangeFilter handleFilter={handleDateFilter} />
                 </ModalDateRangeFilter>
                 <div className={styles.globalFilter}>

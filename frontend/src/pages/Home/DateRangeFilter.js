@@ -101,7 +101,7 @@ function DateRangeFilter({ handleFilter }) {
   return (
     <>
     <div className={styles.modal}>
-    <div aria-live="polite" className={styles.ariaLiveHidden}>
+    <div aria-live="polite" className="aria-live-hidden">
        {liveMessage}
         </div>
       <DateRangePicker
