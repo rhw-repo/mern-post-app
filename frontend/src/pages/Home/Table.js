@@ -451,7 +451,7 @@ function Table({ data }) {
                     Search & Options {seeTableOptionsButtonIcon}
                 </button>
             </section>
-            <div aria-live="polite" className={styles.ariaLiveHidden}>
+            <div aria-live="polite" className="aria-live-hidden">
                 {liveMessage}
             </div>
             <section aria-label="Table Filtering Options Section" className={`${styles.optionsContainer} ${isOptionsVisible ? styles.visible : ''}`}>
