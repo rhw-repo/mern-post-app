@@ -39,15 +39,15 @@ function DateRangeFilter({ handleFilter }) {
   on focus, no aria-labels month & year selection section */
   useEffect(() => {
     const updateAriaLabels = () => {
+      const prevButtons = document.querySelectorAll(".rdrPprevButton")
       const nextButtons = document.querySelectorAll(".rdrNextButton")
-      const prevButtons = document.querySelectorAll(".rdrPrevButton")
+      
+      prevButtons.forEach(button => {
+        button.setAttribute("aria-label", "Previous Month")
+      })
 
       nextButtons.forEach(button => {
         button.setAttribute("aria-label", "Next Month")
-      })
-
-      prevButtons.forEach(button => {
-        button.setAttribute("aria-label", "Previous Month")
       })
     }
 
