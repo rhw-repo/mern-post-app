@@ -25,12 +25,20 @@ function DateRangeFilter({ handleFilter }) {
     key: "selection"
   })
 
+  // state for aria-live messages
+  const [liveMessage, setLiveMessage] = useState("")
+
   // filter table rows by calling handleFilter() after selecting date range
+  // aria-live messages announce selected date range
   const handleSelect = (ranges) => {
+    const { startDate, endDate } = ranges.selection
     setDateRange(ranges.selection)
     handleFilter(ranges.selection)
+    const formattedStartDate = startDate.toDateString();
+    const formattedEndDate = endDate.toDateString();
+    setLiveMessage(`Selected date range from ${formattedStartDate} to ${formattedEndDate}.`)
   }
-
+  
   // TODO would need unique exception to CSP: 
   // library seem to inject style into HTML
   const rangeColors = ["#667B99"]
@@ -88,12 +96,14 @@ function DateRangeFilter({ handleFilter }) {
     }
   }, [])
 
-
-
   /* rangeColors prop sets the color scheme of DateRangePicker 
   to match the app's primary color */
   return (
+    <>
     <div className={styles.modal}>
+    <div aria-live="polite" className={styles.ariaLiveHidden}>
+       {liveMessage}
+        </div>
       <DateRangePicker
         className={styles.modal}
         rangeColors={rangeColors}
@@ -106,6 +116,7 @@ function DateRangeFilter({ handleFilter }) {
         dateDisplayFormat="dd-MM-yyyy"
       />
     </div>
+    </>
   )
 }
 
