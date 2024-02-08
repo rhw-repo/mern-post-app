@@ -455,11 +455,21 @@ function Table({ data }) {
             <div aria-live="polite" className="aria-live-hidden">
                 {liveMessage}
             </div>
-            <section aria-label="Table Filtering Options Section" className={`${styles.optionsContainer} ${isOptionsVisible ? styles.visible : ''}`}>
+            <section
+                aria-label="Table Filtering Options Section"
+                className={`${styles.optionsContainer} ${isOptionsVisible ? styles.visible : ''}`}
+            >
                 <div>
                     <button
                         className={`${styles.dateRangeBtn} date-range-btn`}
-                        onClick={() => setIsOpen(true)}
+                        onClick={() => {
+                            setIsOpen(true);
+                            setMessageVersion(prevVersion => !prevVersion)
+                            setLiveMessage(
+                                messageVersion
+                                    ? "Date Range Filter Section is open."
+                                    : "Date Range Filtering Section opened.")
+                        }}
                         aria-label="Filter the table by dates"
                     >
                         {calendarIcon} Search Dates
@@ -470,7 +480,10 @@ function Table({ data }) {
                     onClose={() => {
                         setIsOpen(false);
                         setMessageVersion(prevVersion => !prevVersion);
-                        setLiveMessage(messageVersion ? "Date Range Filtering Section closed." : "Date Range Filter has been closed.")
+                        setLiveMessage(
+                            messageVersion 
+                            ? "Date Range Filtering Section closed." 
+                            : "Date Range Filter has been closed.")
                     }}>
                     <DateRangeFilter handleFilter={handleDateFilter} />
                 </ModalDateRangeFilter>
