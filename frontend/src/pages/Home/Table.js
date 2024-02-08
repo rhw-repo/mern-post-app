@@ -439,6 +439,7 @@ function Table({ data }) {
 
     // state for aria-live messages
     const [liveMessage, setLiveMessage] = useState("")
+    const [messageVersion, setMessageVersion] = useState(false)
 
     // Rendering options before table aims for easy user experience
     return (
@@ -468,7 +469,8 @@ function Table({ data }) {
                     open={isOpen}
                     onClose={() => {
                         setIsOpen(false);
-                        setLiveMessage("Date Range Filtering Section closed");
+                        setMessageVersion(prevVersion => !prevVersion);
+                        setLiveMessage(messageVersion ? "Date Range Filtering Section closed." : "Date Range Filter has been closed.")
                     }}>
                     <DateRangeFilter handleFilter={handleDateFilter} />
                 </ModalDateRangeFilter>
