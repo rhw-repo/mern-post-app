@@ -345,6 +345,11 @@ select {
         border-bottom: 0.5rem solid var(--secondary-light);
     }
 
+    /* Tidier appearance in grid layout */
+    .tableCell {
+        border: none; 
+    }
+
     /* Prevent 'unused' column whitespace for 
     medium width screen sizes */
     .tableLinkedCellContainer {

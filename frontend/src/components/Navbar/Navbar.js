@@ -33,14 +33,14 @@ const Navbar = () => {
             <nav className={styles.navbarContainer}>
                 {user ? (
                     isHomepage ? (
-                        <h1>ONLINE POST MANAGER</h1>
+                        <h1 role="header">ONLINE POST MANAGER</h1>
                     ) : (
                         <Link to="/" className={styles.link} aria-label="Go to dashboard homepage">
                             <h1>ONLINE POST MANAGER</h1>
                         </Link>
                     )
                 ) : (
-                    <h1>ONLINE POST MANAGER</h1>
+                    <h1 role="header">ONLINE POST MANAGER</h1>
                 )}
                 <span className={styles.navList}>
                     {user && (
