@@ -441,6 +441,15 @@ function Table({ data }) {
     const [liveMessage, setLiveMessage] = useState("")
     const [messageVersion, setMessageVersion] = useState(false)
 
+    function generateAriaLabelForCell(cell) {
+        if (cell.column.Header === 'Content') {
+            return `Content: ${cell.value}`;
+        } else if (cell.column.Header === 'Tags') {
+            return `Tags: ${cell.value}`;
+        }
+        return null;
+    }
+
     // Rendering options before table aims for easy user experience
     return (
         <main>
@@ -481,9 +490,9 @@ function Table({ data }) {
                         setIsOpen(false);
                         setMessageVersion(prevVersion => !prevVersion);
                         setLiveMessage(
-                            messageVersion 
-                            ? "Date Range Filtering Section closed." 
-                            : "Date Range Filter has been closed.")
+                            messageVersion
+                                ? "Date Range Filtering Section closed."
+                                : "Date Range Filter has been closed.")
                     }}>
                     <DateRangeFilter handleFilter={handleDateFilter} />
                 </ModalDateRangeFilter>
@@ -571,23 +580,25 @@ function Table({ data }) {
 
                     <tbody {...getTableBodyProps()}>
                         {page.map(row => {
-                            prepareRow(row)
+                            prepareRow(row);
                             return (
-                                <tr {...row.getRowProps()}
-                                    className={styles.tableRow}>
+                                <tr {...row.getRowProps()} className={styles.tableRow}>
                                     {row.cells.map(cell => {
+                                        const ariaLabel = generateAriaLabelForCell(cell)
+                                        const headerId = `header-${cell.column.id}`
                                         return (
                                             <td
                                                 {...cell.getCellProps()}
                                                 className={styles.tableCell}
-
+                                                headers={headerId}
+                                                {...(ariaLabel ? { 'aria-label': ariaLabel } : {})}
                                             >
                                                 {cell.render("Cell")}
                                             </td>
-                                        )
+                                        );
                                     })}
                                 </tr>
-                            )
+                            );
                         })}
                     </tbody>
                 </table>
