@@ -441,6 +441,35 @@ function Table({ data }) {
     const [liveMessage, setLiveMessage] = useState("")
     const [messageVersion, setMessageVersion] = useState(false)
 
+    // Handles opening DateRangeFilterModal
+    const handleOpenDateRangeFilter = () => {
+        setIsOpen(true);
+        setMessageVersion(prevVersion => !prevVersion)
+        setLiveMessage(
+            messageVersion
+                ? "Date Range Filter Section is open."
+                : "Date Range Filtering Section opened.")
+    }
+
+    // Handles closing DateRangeFilterModal
+    const handleCloseDateRangeFilter = () => {
+        setIsOpen(false);
+        setMessageVersion(prevVersion => !prevVersion);
+        setLiveMessage(
+            messageVersion
+                ? "Date Range Filtering Section closed."
+                : "Date Range Filter has been closed.")
+    }
+
+    function generateAriaLabelForCell(cell) {
+        if (cell.column.Header === 'Content') {
+            return `Content: ${cell.value}`;
+        } else if (cell.column.Header === 'Tags') {
+            return `Tags: ${cell.value}`;
+        }
+        return null;
+    }
+
     // Rendering options before table aims for easy user experience
     return (
         <main>
@@ -462,14 +491,7 @@ function Table({ data }) {
                 <div>
                     <button
                         className={`${styles.dateRangeBtn} date-range-btn`}
-                        onClick={() => {
-                            setIsOpen(true);
-                            setMessageVersion(prevVersion => !prevVersion)
-                            setLiveMessage(
-                                messageVersion
-                                    ? "Date Range Filter Section is open."
-                                    : "Date Range Filtering Section opened.")
-                        }}
+                        onClick={handleOpenDateRangeFilter}
                         aria-label="Filter the table by dates"
                     >
                         {calendarIcon} Search Dates
@@ -477,14 +499,7 @@ function Table({ data }) {
                 </div>
                 <ModalDateRangeFilter
                     open={isOpen}
-                    onClose={() => {
-                        setIsOpen(false);
-                        setMessageVersion(prevVersion => !prevVersion);
-                        setLiveMessage(
-                            messageVersion 
-                            ? "Date Range Filtering Section closed." 
-                            : "Date Range Filter has been closed.")
-                    }}>
+                    onClose={handleCloseDateRangeFilter}>
                     <DateRangeFilter handleFilter={handleDateFilter} />
                 </ModalDateRangeFilter>
                 <div className={styles.globalFilter}>
@@ -493,10 +508,7 @@ function Table({ data }) {
                 <div className={styles.resetTableBtnDiv}>
                     <button
                         className={`${styles.resetTableBtn} reset-table-btn`}
-                        onClick={() => {
-                            resetTable()
-                            clearChildTags()
-                        }}
+                        onClick={handleResetClick}
                         aria-label="Reset the table after filtering"
                     >
                         {resetIcon} RESET
@@ -571,23 +583,25 @@ function Table({ data }) {
 
                     <tbody {...getTableBodyProps()}>
                         {page.map(row => {
-                            prepareRow(row)
+                            prepareRow(row);
                             return (
-                                <tr {...row.getRowProps()}
-                                    className={styles.tableRow}>
+                                <tr {...row.getRowProps()} className={styles.tableRow}>
                                     {row.cells.map(cell => {
+                                        const ariaLabel = generateAriaLabelForCell(cell)
+                                        const headerId = `header-${cell.column.id}`
                                         return (
                                             <td
                                                 {...cell.getCellProps()}
                                                 className={styles.tableCell}
-
+                                                headers={headerId}
+                                                {...(ariaLabel ? { 'aria-label': ariaLabel } : {})}
                                             >
                                                 {cell.render("Cell")}
                                             </td>
-                                        )
+                                        );
                                     })}
                                 </tr>
-                            )
+                            );
                         })}
                     </tbody>
                 </table>
