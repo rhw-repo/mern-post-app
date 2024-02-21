@@ -442,13 +442,23 @@ function Table({ data }) {
     const [messageVersion, setMessageVersion] = useState(false)
 
     // Handles opening DateRangeFilterModal
-    const toggleDateRangeFilterVisibility = () => {
+    const handleOpenDateRangeFilter = () => {
         setIsOpen(true);
         setMessageVersion(prevVersion => !prevVersion)
         setLiveMessage(
             messageVersion
                 ? "Date Range Filter Section is open."
                 : "Date Range Filtering Section opened.")
+    }
+
+        // Handles closing DateRangeFilterModal
+    const handleCloseDateRangeFilterModal = () => {
+        setIsOpen(false);
+        setMessageVersion(prevVersion => !prevVersion);
+        setLiveMessage(
+            messageVersion
+                ? "Date Range Filtering Section closed."
+                : "Date Range Filter has been closed.")
     }
 
     function generateAriaLabelForCell(cell) {
@@ -481,7 +491,7 @@ function Table({ data }) {
                 <div>
                     <button
                         className={`${styles.dateRangeBtn} date-range-btn`}
-                        onClick={toggleDateRangeFilterVisibility}
+                        onClick={ handleOpenDateRangeFilter}
                         aria-label="Filter the table by dates"
                     >
                         {calendarIcon} Search Dates
@@ -489,14 +499,7 @@ function Table({ data }) {
                 </div>
                 <ModalDateRangeFilter
                     open={isOpen}
-                    onClose={() => {
-                        setIsOpen(false);
-                        setMessageVersion(prevVersion => !prevVersion);
-                        setLiveMessage(
-                            messageVersion
-                                ? "Date Range Filtering Section closed."
-                                : "Date Range Filter has been closed.")
-                    }}>
+                    onClose={ handleCloseDateRangeFilterModal }>
                     <DateRangeFilter handleFilter={handleDateFilter} />
                 </ModalDateRangeFilter>
                 <div className={styles.globalFilter}>
