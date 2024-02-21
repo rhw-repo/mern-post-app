@@ -441,6 +441,16 @@ function Table({ data }) {
     const [liveMessage, setLiveMessage] = useState("")
     const [messageVersion, setMessageVersion] = useState(false)
 
+    // Handles opening DateRangeFilterModal
+    const toggleDateRangeFilterVisibility = () => {
+        setIsOpen(true);
+        setMessageVersion(prevVersion => !prevVersion)
+        setLiveMessage(
+            messageVersion
+                ? "Date Range Filter Section is open."
+                : "Date Range Filtering Section opened.")
+    }
+
     function generateAriaLabelForCell(cell) {
         if (cell.column.Header === 'Content') {
             return `Content: ${cell.value}`;
@@ -471,14 +481,7 @@ function Table({ data }) {
                 <div>
                     <button
                         className={`${styles.dateRangeBtn} date-range-btn`}
-                        onClick={() => {
-                            setIsOpen(true);
-                            setMessageVersion(prevVersion => !prevVersion)
-                            setLiveMessage(
-                                messageVersion
-                                    ? "Date Range Filter Section is open."
-                                    : "Date Range Filtering Section opened.")
-                        }}
+                        onClick={toggleDateRangeFilterVisibility}
                         aria-label="Filter the table by dates"
                     >
                         {calendarIcon} Search Dates
