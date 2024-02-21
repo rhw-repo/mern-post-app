@@ -451,8 +451,8 @@ function Table({ data }) {
                 : "Date Range Filtering Section opened.")
     }
 
-        // Handles closing DateRangeFilterModal
-    const handleCloseDateRangeFilterModal = () => {
+    // Handles closing DateRangeFilterModal
+    const handleCloseDateRangeFilter = () => {
         setIsOpen(false);
         setMessageVersion(prevVersion => !prevVersion);
         setLiveMessage(
@@ -491,7 +491,7 @@ function Table({ data }) {
                 <div>
                     <button
                         className={`${styles.dateRangeBtn} date-range-btn`}
-                        onClick={ handleOpenDateRangeFilter}
+                        onClick={handleOpenDateRangeFilter}
                         aria-label="Filter the table by dates"
                     >
                         {calendarIcon} Search Dates
@@ -499,7 +499,7 @@ function Table({ data }) {
                 </div>
                 <ModalDateRangeFilter
                     open={isOpen}
-                    onClose={ handleCloseDateRangeFilterModal }>
+                    onClose={handleCloseDateRangeFilter}>
                     <DateRangeFilter handleFilter={handleDateFilter} />
                 </ModalDateRangeFilter>
                 <div className={styles.globalFilter}>
@@ -508,10 +508,7 @@ function Table({ data }) {
                 <div className={styles.resetTableBtnDiv}>
                     <button
                         className={`${styles.resetTableBtn} reset-table-btn`}
-                        onClick={() => {
-                            resetTable()
-                            clearChildTags()
-                        }}
+                        onClick={handleResetClick}
                         aria-label="Reset the table after filtering"
                     >
                         {resetIcon} RESET
