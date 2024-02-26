@@ -1,5 +1,5 @@
 import styles from "./Table.module.css";
-import { useTable, usePagination, useSortBy, useGlobalFilter, useFilters } from "react-table";
+import { useTable, usePagination, useSortBy, useGlobalFilter, useFilters, useRowSelect } from "react-table";
 import GlobalFilter from "./GlobalFilter";
 import ColumnFilter from "./ColumnFilter";
 import DateRangeFilter, { filterByDateRange } from "./DateRangeFilter";
@@ -270,6 +270,23 @@ function Table({ data }) {
         </div>
     )
 
+   const IndeterminateCheckbox = forwardRef(
+        ({ indeterminate, ...rest }, ref) => {
+          const defaultRef = useRef()
+          const resolvedRef = ref || defaultRef
+      
+          useEffect(() => {
+            resolvedRef.current.indeterminate = indeterminate
+          }, [resolvedRef, indeterminate])
+          
+          return (
+            <>
+              <input type="checkbox" ref={resolvedRef} {...rest} />
+            </>
+          )
+        }
+      )
+
     // useMemo prevents unnecessary recalculations (better performance)
     const columns = useMemo(
         () => [
@@ -355,7 +372,30 @@ function Table({ data }) {
         useGlobalFilter,
         useSortBy,
         usePagination,
-    )
+        useRowSelect, 
+        hooks => {
+          hooks.visibleColumns.push(columns => [
+            // Column for selection for multi delete
+            {
+              id: 'selection',
+              // Header uses tanstack table's getToggleAllRowsSelectedProps method
+              // to render a select-all checkbox
+              Header: ({ getToggleAllRowsSelectedProps }) => (
+                <div>
+                  <IndeterminateCheckbox {...getToggleAllRowsSelectedProps()} />
+                </div>
+              ),
+              // Cell uses the individual row's getToggleRowSelectedProps method
+              // to render a checkbox
+              Cell: ({ row }) => (
+                <div>
+                  <IndeterminateCheckbox {...row.getToggleRowSelectedProps()} />
+                </div>
+              ),
+            },
+            ...columns,
+          ]);
+        });
 
     const { pageIndex, pageSize, globalFilter } = state
 
