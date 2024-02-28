@@ -281,7 +281,7 @@ function Table({ data }) {
           
           return (
             <>
-              <input type="checkbox" ref={resolvedRef} {...rest} />
+              <input type="checkbox" className={styles.checkbox} ref={resolvedRef} {...rest} />
             </>
           )
         }

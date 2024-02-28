@@ -131,6 +131,14 @@ content as if on an elevated surface*/
     margin-right: 2.5rem;
 }
 
+.checkbox {
+    height: 1rem;
+    width: 1rem;
+}
+
+input[type=checkbox]:checked {
+   accent-color: var(--primary);
+}
 /* Align content of each tag */
 .centerTableTags {
     display: flex;
