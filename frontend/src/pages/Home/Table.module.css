@@ -137,8 +137,9 @@ content as if on an elevated surface*/
 }
 
 input[type=checkbox]:checked {
-   accent-color: var(--primary);
+    accent-color: var(--primary);
 }
+
 /* Align content of each tag */
 .centerTableTags {
     display: flex;
@@ -305,7 +306,8 @@ select {
     }
 
     /* Table - Display: grid prevents horizontal overflow */
-    th {
+    th,
+    .checkbox {
         display: none;
     }
 
@@ -355,7 +357,7 @@ select {
 
     /* Tidier appearance in grid layout */
     .tableCell {
-        border: none; 
+        border: none;
     }
 
     /* Prevent 'unused' column whitespace for 

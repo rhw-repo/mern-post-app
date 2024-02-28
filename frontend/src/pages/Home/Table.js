@@ -270,33 +270,51 @@ function Table({ data }) {
         </div>
     )
 
-   const IndeterminateCheckbox = forwardRef(
+    const IndeterminateCheckbox = forwardRef(
         ({ indeterminate, ...rest }, ref) => {
-          const defaultRef = useRef()
-          const resolvedRef = ref || defaultRef
-      
-          useEffect(() => {
-            resolvedRef.current.indeterminate = indeterminate
-          }, [resolvedRef, indeterminate])
-          
-          return (
-            <>
-              <input type="checkbox" className={styles.checkbox} ref={resolvedRef} {...rest} />
-            </>
-          )
+            const defaultRef = useRef()
+            const resolvedRef = ref || defaultRef
+
+            useEffect(() => {
+                resolvedRef.current.indeterminate = indeterminate
+            }, [resolvedRef, indeterminate])
+
+            return (
+                <>
+                    <input type="checkbox" className={styles.checkbox} ref={resolvedRef} {...rest} />
+                </>
+            )
         }
-      )
+    )
+
+    // checkbox multi-delete available wider screens only 
+    const [isWideScreen, setIsWideScreen] = useState(window.innerWidth > 1270)
+
+    // listen for window resize events
+    useEffect(() => {
+        function handleResize() {
+            setIsWideScreen(window.innerWidth > 1270)
+        }
+
+        window.addEventListener('resize', handleResize)
+
+        // Call handler to update state with initial window size
+        handleResize()
+
+        // Cleanup 
+        return () => window.removeEventListener('resize', handleResize)
+    }, [])
 
     // useMemo prevents unnecessary recalculations (better performance)
     const columns = useMemo(
         () => [
-            {
+            ...isWideScreen ? [{
                 Header: "Title",
                 accessor: "title",
                 disableSortBy: true,
                 Cell: LinkedCell,
                 meta: { ariaLabel: "Document Titles" },
-            },
+            }] : [],
             {
                 Header: "Content",
                 accessor: "content",
@@ -338,7 +356,7 @@ function Table({ data }) {
                 meta: { ariaLabel: "Delete individual documents" },
             }
         ],
-        []
+        [isWideScreen]
     )
 
     /* Destructure from the table instance 
@@ -372,30 +390,31 @@ function Table({ data }) {
         useGlobalFilter,
         useSortBy,
         usePagination,
-        useRowSelect, 
+        useRowSelect,
         hooks => {
-          hooks.visibleColumns.push(columns => [
-            // Column for selection for multi delete
-            {
-              id: 'selection',
-              // Header uses tanstack table's getToggleAllRowsSelectedProps method
-              // to render a select-all checkbox
-              Header: ({ getToggleAllRowsSelectedProps }) => (
-                <div>
-                  <IndeterminateCheckbox {...getToggleAllRowsSelectedProps()} />
-                </div>
-              ),
-              // Cell uses the individual row's getToggleRowSelectedProps method
-              // to render a checkbox
-              Cell: ({ row }) => (
-                <div>
-                  <IndeterminateCheckbox {...row.getToggleRowSelectedProps()} />
-                </div>
-              ),
-            },
-            ...columns,
-          ]);
-        });
+            hooks.visibleColumns.push(columns => [
+                // Column for selection for multi delete
+                ...(isWideScreen ? [{
+                    id: 'selection',
+                    // Header uses Tanstack Table's getToggleAllRowsSelectedProps method
+                    // to render a select-all checkbox
+                    Header: ({ getToggleAllRowsSelectedProps }) => (
+                        <div>
+                            <IndeterminateCheckbox {...getToggleAllRowsSelectedProps()} />
+                        </div>
+                    ),
+                    // Cell uses the individual row's getToggleRowSelectedProps method
+                    // to render a checkbox
+                    Cell: ({ row }) => (
+                        <div>
+                            <IndeterminateCheckbox {...row.getToggleRowSelectedProps()} />
+                        </div>
+                    ),
+                }] : []),
+                ...columns,
+            ]);
+        }
+    )
 
     const { pageIndex, pageSize, globalFilter } = state
 
