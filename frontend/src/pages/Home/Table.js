@@ -1,5 +1,5 @@
 import styles from "./Table.module.css";
-import { useTable, usePagination, useSortBy, useGlobalFilter, useFilters } from "react-table";
+import { useTable, usePagination, useSortBy, useGlobalFilter, useFilters, useRowSelect } from "react-table";
 import GlobalFilter from "./GlobalFilter";
 import ColumnFilter from "./ColumnFilter";
 import DateRangeFilter, { filterByDateRange } from "./DateRangeFilter";
@@ -26,6 +26,7 @@ import {
 import { format } from "date-fns";
 
 // Filter table rows according to selected options (all the tags in document collection)
+// forwardRef will be deprecated for functional components soon
 const TagsSelect = forwardRef(({
     column: { filterValue, setFilter, preFilteredRows, id }
 }, ref) => {
@@ -180,6 +181,43 @@ const TagsSelect = forwardRef(({
         />
     );
 });
+
+const IndeterminateCheckbox = forwardRef(
+    ({ indeterminate, ...rest}, ref) => {
+        const defaultRef = useRef()
+        const resolvedRef = ref || defaultRef
+
+        useEffect (() => {
+            resolvedRef.current.indeterminate = indeterminate;
+        }, [resolvedRef, indeterminate])
+
+        return (
+            <>
+            <input type="checkbox" ref={resolvedRef} {...rest} />
+            </>
+        )
+    }
+)
+
+/*
+
+const IndeterminateCheckbox = React.forwardRef(
+  ({ indeterminate, ...rest }, ref) => {
+    const defaultRef = React.useRef()
+    const resolvedRef = ref || defaultRef
+
+    React.useEffect(() => {
+      resolvedRef.current.indeterminate = indeterminate
+    }, [resolvedRef, indeterminate])
+
+    return (
+      <>
+        <input type="checkbox" ref={resolvedRef} {...rest} />
+      </>
+    )
+  }
+)
+*/
 
 // Returns an object with properties to apply to every column in table  
 function Table({ data }) {
@@ -343,6 +381,10 @@ function Table({ data }) {
         setGlobalFilter,
         prepareRow,
         setFilter,
+        // new addition to access selected rows via checkbox
+        selectedFlatRows,
+        // Destructure selectedRowIds from state
+        state:  { pageIndex, pageSize, globalFilter, selectedRowIds }
     } = useTable(
         {
             columns,
@@ -355,9 +397,32 @@ function Table({ data }) {
         useGlobalFilter,
         useSortBy,
         usePagination,
-    )
+        // testing adding in collumn of checkboxes
+        useRowSelect,
+            hooks => {
+                // Add selection column as before
+                hooks.visibleColumns.push(columns => [
+                  {
+                    id: 'selection',
+                    Header: ({ getToggleAllRowsSelectedProps }) => (
+                      <div>
+                        <IndeterminateCheckbox {...getToggleAllRowsSelectedProps()} />
+                      </div>
+                    ),
+                    Cell: ({ row }) => (
+                      <div>
+                        <IndeterminateCheckbox {...row.getToggleRowSelectedProps()} />
+                      </div>
+                    ),
+                  },
+                  ...columns,
+                ]);
+            }
+        );
+        
 
-    const { pageIndex, pageSize, globalFilter } = state
+    // commented out to try moving state definition into table instance 
+    //const { pageIndex, pageSize, globalFilter } = state
 
     const handleDateFilter = (selectedRange) => {
         setFilter("createdAt", selectedRange)
