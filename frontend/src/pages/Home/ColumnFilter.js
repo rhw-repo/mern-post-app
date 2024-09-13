@@ -1,8 +1,8 @@
 // provides logical && searching and works in conjunction with global filter
 import { useEffect } from "react";
-import styled from "styled-components"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faFilter } from "@fortawesome/free-solid-svg-icons"
+import styled from "styled-components";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faFilter } from "@fortawesome/free-solid-svg-icons";
 
 // icon is SVG not CSS: styled component allows icon in placeholder
 // Note - no modules.css for ColumnFilter.js
@@ -48,39 +48,46 @@ const SearchBox = styled.div`
         transform: scale(1.2); 
     }
     }
-`
-const filterIcon = <FontAwesomeIcon icon={faFilter} /*size="2xl"*/ className="filter-icon" />
+`;
+const filterIcon = (
+  <FontAwesomeIcon icon={faFilter} /*size="2xl"*/ className="filter-icon" />
+);
 
 const ColumnFilter = ({ column }) => {
-    // console.log(column)
-    useEffect(() => {
-        console.log('Component updated')
-    }, [])
-    const { filterValue, setFilter, Header, id } = column;
+  // console.log(column)
+  useEffect(() => {
+    console.log("Component updated");
+  }, []);
+  const { filterValue, setFilter, Header, id } = column;
 
-    /* Exclude inappropriate columns 
+  /* Exclude inappropriate columns 
     (checkboxes, date columns, delete icons) from filtering */
 
-    if (id === 'selection' || Header === "Created On" || Header === "Updated On" || Header === "Delete") {
-        return null;
-    }
-    return (
-        <section>
-            <SearchBox>
-                {filterIcon}
-                <input
-                    aria-label={`Search box for ${Header.toLowerCase()} column`}
-                    placeholder={`Filter table by ${Header.toLowerCase()}`}
-                    type="text"
-                    value={filterValue || ""}
-                    onChange={e => setFilter(e.target.value)}
-                />
-            </SearchBox>
-        </section>
-    )
-    /*} else {
+  if (
+    id === "selection" ||
+    Header === "Created On" ||
+    Header === "Updated On" ||
+    Header === "Delete"
+  ) {
+    return null;
+  }
+  return (
+    <section>
+      <SearchBox>
+        {filterIcon}
+        <input
+          aria-label={`Search box for ${Header.toLowerCase()} column`}
+          placeholder={`Filter table by ${Header.toLowerCase()}`}
+          type="text"
+          value={filterValue || ""}
+          onChange={(e) => setFilter(e.target.value)}
+        />
+      </SearchBox>
+    </section>
+  );
+  /*} else {
         return null
     }*/
-}
+};
 
 export default ColumnFilter;
