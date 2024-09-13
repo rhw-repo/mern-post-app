@@ -199,6 +199,26 @@ const IndeterminateCheckbox = forwardRef(
     }
 )
 
+/*
+
+const IndeterminateCheckbox = React.forwardRef(
+  ({ indeterminate, ...rest }, ref) => {
+    const defaultRef = React.useRef()
+    const resolvedRef = ref || defaultRef
+
+    React.useEffect(() => {
+      resolvedRef.current.indeterminate = indeterminate
+    }, [resolvedRef, indeterminate])
+
+    return (
+      <>
+        <input type="checkbox" ref={resolvedRef} {...rest} />
+      </>
+    )
+  }
+)
+*/
+
 // Returns an object with properties to apply to every column in table  
 function Table({ data }) {
 
@@ -361,7 +381,7 @@ function Table({ data }) {
         setGlobalFilter,
         prepareRow,
         setFilter,
-        // Added to allow access to selected rows via checkbox
+        // new addition to access selected rows via checkbox
         selectedFlatRows,
         // Destructure selectedRowIds from state
         state:  { pageIndex, pageSize, globalFilter, selectedRowIds }
@@ -377,7 +397,7 @@ function Table({ data }) {
         useGlobalFilter,
         useSortBy,
         usePagination,
-        // Testing adding in collumn of checkboxes
+        // testing adding in collumn of checkboxes
         useRowSelect,
             hooks => {
                 // Add selection column as before
