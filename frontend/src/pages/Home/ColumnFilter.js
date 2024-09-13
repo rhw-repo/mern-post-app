@@ -56,27 +56,28 @@ const ColumnFilter = ({ column }) => {
     useEffect(() => {
         console.log('Component updated')
     }, [])
-   const { filterValue, setFilter, Header, id } = column;
+    const { filterValue, setFilter, Header, id } = column;
 
-    // hides input in date columns (DateRangeFilter used instead or no filter)
-    // if (column.Header !== "Created On" && column.Header !== "Updated On" && column.Header !== "Delete" ) {
-        if (id === 'selection' || Header === "Created On" || Header === "Updated On" || Header === "Delete") {
-            return null;
-          } 
-        return (
-            <section>
-                <SearchBox>
-                    {filterIcon}
-                    <input
-                        aria-label={`Search box for ${Header.toLowerCase()} column`}
-                        placeholder={`Filter table by ${Header.toLowerCase()}`}
-                        type="text"
-                        value={filterValue || ""}
-                        onChange={e => setFilter(e.target.value)}
-                    />
-                </SearchBox>
-            </section>
-        )
+    /* Exclude inappropriate columns 
+    (checkboxes, date columns, delete icons) from filtering */
+
+    if (id === 'selection' || Header === "Created On" || Header === "Updated On" || Header === "Delete") {
+        return null;
+    }
+    return (
+        <section>
+            <SearchBox>
+                {filterIcon}
+                <input
+                    aria-label={`Search box for ${Header.toLowerCase()} column`}
+                    placeholder={`Filter table by ${Header.toLowerCase()}`}
+                    type="text"
+                    value={filterValue || ""}
+                    onChange={e => setFilter(e.target.value)}
+                />
+            </SearchBox>
+        </section>
+    )
     /*} else {
         return null
     }*/
