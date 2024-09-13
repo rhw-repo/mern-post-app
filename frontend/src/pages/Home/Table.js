@@ -384,7 +384,7 @@ function Table({ data }) {
         // new addition to access selected rows via checkbox
         selectedFlatRows,
         // Destructure selectedRowIds from state
-        state:  { pageIndex, pageSize, globalFilter, selectedRowIds }
+        // Executes without problems on test without adding checkbox column
     } = useTable(
         {
             columns,
@@ -399,7 +399,7 @@ function Table({ data }) {
         usePagination,
         // testing adding in collumn of checkboxes
         useRowSelect,
-            hooks => {
+            (hooks) => {
                 // Add selection column as before
                 hooks.visibleColumns.push(columns => [
                   {
@@ -414,15 +414,18 @@ function Table({ data }) {
                         <IndeterminateCheckbox {...row.getToggleRowSelectedProps()} />
                       </div>
                     ),
+                    disableFilters: true,
+                    disableSortBy: true,
                   },
                   ...columns,
                 ]);
-            }
+            } 
         );
+       
         
 
     // commented out to try moving state definition into table instance 
-    //const { pageIndex, pageSize, globalFilter } = state
+    const { pageIndex, pageSize, globalFilter } = state
 
     const handleDateFilter = (selectedRange) => {
         setFilter("createdAt", selectedRange)

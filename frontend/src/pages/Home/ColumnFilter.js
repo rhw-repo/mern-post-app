@@ -56,10 +56,13 @@ const ColumnFilter = ({ column }) => {
     useEffect(() => {
         console.log('Component updated')
     }, [])
-   const { filterValue, setFilter, Header } = column;
+   const { filterValue, setFilter, Header, id } = column;
 
     // hides input in date columns (DateRangeFilter used instead or no filter)
-    if (column.Header !== "Created On" && column.Header !== "Updated On" && column.Header !== "Delete") {
+    // if (column.Header !== "Created On" && column.Header !== "Updated On" && column.Header !== "Delete" ) {
+        if (id === 'selection' || Header === "Created On" || Header === "Updated On" || Header === "Delete") {
+            return null;
+          } 
         return (
             <section>
                 <SearchBox>
@@ -74,9 +77,9 @@ const ColumnFilter = ({ column }) => {
                 </SearchBox>
             </section>
         )
-    } else {
+    /*} else {
         return null
-    }
+    }*/
 }
 
 export default ColumnFilter;
