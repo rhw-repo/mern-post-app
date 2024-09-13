@@ -1,10 +1,10 @@
-// provides logical && searching and works in conjunction with global filter
+// Provides logical && searching and works in conjunction with global filter
 import { useEffect } from "react";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFilter } from "@fortawesome/free-solid-svg-icons";
 
-// icon is SVG not CSS: styled component allows icon in placeholder
+// Icon is SVG not CSS: styled component allows icon in placeholder
 // Note - no modules.css for ColumnFilter.js
 const SearchBox = styled.div`
     border: 1px solid #ddd;
@@ -62,7 +62,6 @@ const ColumnFilter = ({ column }) => {
 
   /* Exclude inappropriate columns 
     (checkboxes, date columns, delete icons) from filtering */
-
   if (
     id === "selection" ||
     Header === "Created On" ||
@@ -85,9 +84,6 @@ const ColumnFilter = ({ column }) => {
       </SearchBox>
     </section>
   );
-  /*} else {
-        return null
-    }*/
 };
 
 export default ColumnFilter;
