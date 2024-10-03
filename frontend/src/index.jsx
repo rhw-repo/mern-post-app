@@ -4,6 +4,7 @@ import './assets/global.css'
 import App from './App';
 import { MaterialsContextProvider } from './context/MaterialContext';
 import { AuthContextProvider } from './context/AuthContext';
+import 'regenerator-runtime';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
