@@ -1,33 +1,31 @@
-/* Styles specific to footer */
 .footer {
-    display: flex;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 1rem;
+  /* relative to viewport */
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: auto;
+  width: 100vw;
+  padding: 1rem 0;
+  /* 7% darker than --secondary due 
+  to color contrast effect */
+  background-color: #34404c;
+  font-family: "Lexend Deca", Helvetica, Arial, Lucida, sans-serif;
+  font-size: 1rem;
+  color: #ffffff;
+  font-weight: 800;
+  gap: 0.3rem;
+}
+
+@media (max-width: 415px) {
+  .footer {
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    line-height: 1rem;
-    /* relative to viewport */
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    height: auto;
-    width: 100vw;
-    padding: 1rem 0;
-    /* 7% darker than --secondary due to color contrast effect */ 
-    background-color: #34404c;
-    font-family: "Lexend Deca", Helvetica, Arial, Lucida, sans-serif;
-    font-size: 1rem;
-    color: #ffffff;
-    font-weight: 800;
-    gap: 0.3rem;
+    padding: 0.5rem;
   }
-
-  @media (max-width: 415px) {
-    .footer {
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 0.5rem;
-    }
-  }
-  
- 
+}

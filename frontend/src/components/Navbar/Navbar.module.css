@@ -1,4 +1,3 @@
-/* Styles specific to navbar */
 /* Fixes to top & styles */
 .navbarContainer {
   position: sticky;
@@ -97,8 +96,7 @@ ul {
 
 /* Hamburger menu toggles dropdown containing
 logout button, restyled as an option  */
-@media (max-width: 560px),
-(max-height: 640px) {
+@media (max-width: 560px), (max-height: 640px) {
   .navbarContainer {
     position: static;
     justify-content: space-between;
@@ -114,7 +112,8 @@ logout button, restyled as an option  */
     margin: 0;
   }
 
-  /* Replaced by hamburger menu until toggled open */
+  /* Replaced by hamburger menu 
+  until toggled open */
   nav ul {
     display: none;
   }
@@ -133,7 +132,8 @@ logout button, restyled as an option  */
     margin: 0;
   }
 
-  /* Appears when menu open, to close it onclick */
+  /* Appears when menu open, 
+  to close it onclick */
   .closeNavMenu {
     position: absolute;
     top: 0.1rem;
@@ -151,7 +151,8 @@ logout button, restyled as an option  */
     cursor: pointer;
   }
 
-  /* Position, size & layout hamburger menu symbol */
+  /* Position, size & layout 
+  hamburger menu symbol */
   nav .navMenu {
     background: none;
     border: none;
@@ -176,7 +177,8 @@ logout button, restyled as an option  */
     border-radius: 0.2rem;
   }
 
-  /* Styled like an option in dropdown instead of button */
+  /* Styled like an option in 
+  dropdown instead of button */
   nav .navLogoutButton {
     margin: 0;
     background-color: var(--secondary-light);

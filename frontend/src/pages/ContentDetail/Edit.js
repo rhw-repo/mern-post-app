@@ -3,48 +3,48 @@ import { useAuthContext } from "../../hooks/useAuthContext";
 import { useMaterialsContext } from "../../hooks/useMaterialsContext";
 import { useNavigate } from "react-router-dom";
 import CancelButton from "../../components/CancelButton/CancelButton";
-import toast from "react-hot-toast"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faFloppyDisk } from "@fortawesome/free-solid-svg-icons"
-import ExperimentalAllTagsSelect from "../../components/ExperimentalAllTagsSelect/ExperimentalAllTagsSelect"
+import toast from "react-hot-toast";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faFloppyDisk } from "@fortawesome/free-solid-svg-icons";
+import ExperimentalAllTagsSelect from "../../components/ExperimentalAllTagsSelect/ExperimentalAllTagsSelect";
 import styles from "./Edit.module.css";
 
 const Edit = ({ material }) => {
-  // initialise state of title, content and tags
-  const [title, setTitle] = useState(material.title)
-  const [content, setContent] = useState(material.content)
-  // error handling 
-  const [error, setError] = useState(null)
-  // keep track of any empty form fields 
-  const [emptyFields, setEmptyFields] = useState([])
+  // Initialise state of title, content and tags
+  const [title, setTitle] = useState(material.title);
+  const [content, setContent] = useState(material.content);
+  // Error handling
+  const [error, setError] = useState(null);
+  // Keep track of any empty form fields
+  const [emptyFields, setEmptyFields] = useState([]);
 
-  // maintain state selected tags from drop-down options = other tags from user's doc collection
+  // Maintain state selected tags from drop-down options = other tags from user's doc collection
   const [selectedTags, setSelectedTags] = useState([]);
-  // context hooks for global state management of user and materials
-  const { dispatch } = useMaterialsContext()
-  const { user } = useAuthContext()
-  // navigation between routes 
-  const navigate = useNavigate()
-  // maintain  state for existing tags 
-  const [tags, setTags] = useState(material.tags)
-  // check - frontend validation prevents form submission with empty fields 
-  const [isFormValid, setIsFormValid] = useState(false)
-  const [trySubmit, setTrySubmit] = useState(false)
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false)
+  // Context hooks for global state management of user and materials
+  const { dispatch } = useMaterialsContext();
+  const { user } = useAuthContext();
+  // Navigation between routes
+  const navigate = useNavigate();
+  // Maintain  state for existing tags
+  const [tags, setTags] = useState(material.tags);
+  // Check - frontend validation prevents form submission with empty fields
+  const [isFormValid, setIsFormValid] = useState(false);
+  const [trySubmit, setTrySubmit] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
-  console.log(emptyFields)
-  // synchronise state when material prop updates 
+  console.log(emptyFields);
+  // Synchronise state when material prop updates
   useEffect(() => {
-    setTitle(material.title)
-    setContent(material.content)
-    setTags(material.tags)
-  }, [material])
+    setTitle(material.title);
+    setContent(material.content);
+    setTags(material.tags);
+  }, [material]);
 
-  // check if title, content & tags have user input 
+  // Check if title, content & tags have user input
   useEffect(() => {
-    console.log('Title:', title);
-    console.log('Content', content);
-    console.log('Selected tags', selectedTags);
+    console.log("Title:", title);
+    console.log("Content", content);
+    console.log("Selected tags", selectedTags);
     if (title && content && (selectedTags.length > 0 || tags.length > 0)) {
       setIsFormValid(true);
     } else {
@@ -52,26 +52,25 @@ const Edit = ({ material }) => {
     }
   }, [title, content, selectedTags, tags.length]);
 
-  // allow deletion of an existing tag based on it's index in Tags array
+  // Allow deletion of an existing tag based on it's index in Tags array
   const deleteTag = (index) => {
-    setTags(prevState => prevState.filter((tag, i) => i !== index))
-  }
+    setTags((prevState) => prevState.filter((tag, i) => i !== index));
+  };
 
-  // update the state when tags selected from dropdown 
+  // Update the state when tags selected from dropdown
   const handleTagsChange = (newTags) => {
     setSelectedTags(newTags);
-  }
+  };
 
-  /* temporary auth to replace with SSO local storage insecure for user */
+  /* Temporary auth to replace with SSO local storage insecure for user */
   const handleSubmit = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
-    // merge existing and new tags
-    const everyTag = Array.from(new Set([...tags, ...selectedTags]))
-    const updatedMaterial = { title, content, tags: everyTag }
+    // Merge existing and new tags
+    const everyTag = Array.from(new Set([...tags, ...selectedTags]));
+    const updatedMaterial = { title, content, tags: everyTag };
 
-
-    // Prevent form submission with empty fields 
+    // Prevent form submission with empty fields
     if (!isFormValid) {
       setTrySubmit(true);
       return;
@@ -79,67 +78,66 @@ const Edit = ({ material }) => {
 
     const response = await fetch(`/api/materials/${material._id}`, {
       method: "PATCH",
-      headers:
-      {
+      headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${user.token}`
+        Authorization: `Bearer ${user.token}`,
       },
       body: JSON.stringify(updatedMaterial),
     });
 
-    const json = await response.json()
+    const json = await response.json();
 
     if (!response.ok) {
-      // server-side error handling
-      setError(json.error)
-      setEmptyFields(json.emptyFields)
+      // Server-side error handling
+      setError(json.error);
+      setEmptyFields(json.emptyFields);
     }
 
     if (response.ok) {
-      // update global state and navigate to homepage, 
-      // show toast to confirm "work saved"
-      setError(null)
-      setEmptyFields([])
-      dispatch({ type: "UPDATE_MATERIAL", payload: json })
-      navigate("/")
-      console.log("About to show success toast")
-      toast.success("Your work is safely saved!")
+      /* Update global state and navigate to homepage, 
+       Show toast to confirm "work saved" */
+      setError(null);
+      setEmptyFields([]);
+      dispatch({ type: "UPDATE_MATERIAL", payload: json });
+      navigate("/");
+      console.log("About to show success toast");
+      toast.success("Your work is safely saved!");
     } else {
-      toast.error("Sorry, that save did not go so well, please try again")
+      toast.error("Sorry, that save did not go so well, please try again");
     }
-  }
+  };
 
-  // dynamic error message checks which fields are missing, 
-  // stores in object, passes to error message to render 
+  /* Dynamic error message checks which fields are missing, 
+   stores in object, passes to error message to render */
   const missingFields = () => {
-    let fields = []
-    if (!title) fields.push("Title")
-    if (!content) fields.push("Content")
-    if (selectedTags.length === 0 && tags.length === 0) fields.push("Tags")
-    return fields
-  }
+    let fields = [];
+    if (!title) fields.push("Title");
+    if (!content) fields.push("Content");
+    if (selectedTags.length === 0 && tags.length === 0) fields.push("Tags");
+    return fields;
+  };
 
-  const saveIcon = <FontAwesomeIcon icon={faFloppyDisk} />
+  const saveIcon = <FontAwesomeIcon icon={faFloppyDisk} />;
 
-  // Limit width of displayed tag 
+  // Limit width of displayed tag
   const trimText = (text, maxLength) => {
     if (text.length > maxLength) {
-      return text.substring(0, maxLength) + "..."
+      return text.substring(0, maxLength) + "...";
     }
-    return text
-  }
+    return text;
+  };
 
   /* Prevent form submission on accidental double 
   "Enter" key down for ExperimentalAllTagsSelect */
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
-      const type = document.activeElement.type
+      const type = document.activeElement.type;
       if (isDropdownOpen || type === "submit" || type === "button") {
-        return
+        return;
       }
-      e.preventDefault()
+      e.preventDefault();
     }
-  }
+  };
 
   return (
     <form onSubmit={handleSubmit} onKeyDown={handleKeyDown}>
@@ -156,10 +154,7 @@ const Edit = ({ material }) => {
       ) : null}
 
       <section>
-        <label
-          htmlFor="title"
-          className="document-form-headings"
-        >
+        <label htmlFor="title" className="document-form-headings">
           Edit Title:
         </label>
         <textarea
@@ -167,20 +162,29 @@ const Edit = ({ material }) => {
           rows={2}
           value={title}
           onChange={(e) => setTitle(e.target.value)}
-          className={(trySubmit && !title) || emptyFields.includes("title") ? "error" : "primary"}
+          className={
+            (trySubmit && !title) || emptyFields.includes("title")
+              ? "error"
+              : "primary"
+          }
         />
       </section>
 
       <section>
-        <label htmlFor="content" className="document-form-headings">Edit Content:</label>
+        <label htmlFor="content" className="document-form-headings">
+          Edit Content:
+        </label>
         <textarea
           id="content"
           rows={8}
           value={content}
           onChange={(e) => setContent(e.target.value)}
-          className={(trySubmit && !content) || emptyFields.includes("content") ? "error" : "primary"}
-        >
-        </textarea>
+          className={
+            (trySubmit && !content) || emptyFields.includes("content")
+              ? "error"
+              : "primary"
+          }
+        ></textarea>
       </section>
 
       <section className={styles.inputTagsContainer}>
@@ -191,35 +195,37 @@ const Edit = ({ material }) => {
           Edit Tags:
         </h2>
         {tags.length > 0 && (
-          <p
-            id="tags-desc"
-            className={styles.editTagsSection}
-          >
-            Tags you already have here - click on the x to delete any you don't want:
+          <p id="tags-desc" className={styles.editTagsSection}>
+            Tags you already have here - click on the x to delete any you don't
+            want:
           </p>
         )}
-        <div role="group" aria-labelledby="edit-tags-heading" className={`${styles.editTagsSection} edit-document-tags`}>
-          {tags.length > 0 && tags.map((tag, index) => (
-            <span key={index} className={`${styles.editExistingTags} tag-chip`}>
-              {trimText(tag, 16)}
-              <button
-                type="button"
-                aria-label={`Delete tag ${tag}`}
-                onClick={() => deleteTag(index)}
+        <div
+          role="group"
+          aria-labelledby="edit-tags-heading"
+          className={`${styles.editTagsSection} edit-document-tags`}
+        >
+          {tags.length > 0 &&
+            tags.map((tag, index) => (
+              <span
+                key={index}
+                className={`${styles.editExistingTags} tag-chip`}
               >
-                X
-              </button>
-            </span>
-          ))}
+                {trimText(tag, 16)}
+                <button
+                  type="button"
+                  aria-label={`Delete tag ${tag}`}
+                  onClick={() => deleteTag(index)}
+                >
+                  X
+                </button>
+              </span>
+            ))}
         </div>
         {trySubmit && selectedTags.length === 0 && tags.length === 0 && (
           <div className="error">Please add some tags!</div>
         )}
-        <label
-          htmlFor="tags-select"
-        >
-          Add tags here (max. 15 chars):
-        </label>
+        <label htmlFor="tags-select">Add tags here (max. 15 chars):</label>
         <div className={styles.editTagsSelect}>
           <ExperimentalAllTagsSelect
             id="tags-select"
@@ -232,15 +238,12 @@ const Edit = ({ material }) => {
 
       <section className="content-detail-edit-create-btns">
         <CancelButton />
-        <button
-          className={`${styles.saveBtn} save-btn`}
-          type="submit"
-        >
+        <button className={`${styles.saveBtn} save-btn`} type="submit">
           {saveIcon} Save
         </button>
       </section>
     </form>
-  )
-}
+  );
+};
 
 export default Edit;

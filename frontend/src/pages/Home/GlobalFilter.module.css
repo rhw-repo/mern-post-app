@@ -1,30 +1,23 @@
-/* Styles specific to table Global Filter */
-  .globalFilterDiv {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  
-  .globalFilterInput
-  /*.globalFilterSpan */{
-    outline: none;
-    box-shadow: none;
-    /*width: 20rem;*/
-    width: fit-content;
-    font-size: 1.25rem;
-    margin-left: 0.625rem;
-    /* Accessibility: touch target above 44x44px all screen sizes */
-    padding: 1rem;
-    
-  }
-  
-  /* Prevent input overflowing Options Container */
-  @media (max-width: 593px) {
-    .globalFilterInput {
-      width: 100%;
-    }
-  }
-  
- 
+.globalFilterDiv {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
 
-  
+.globalFilterInput {
+  outline: none;
+  box-shadow: none;
+  width: fit-content;
+  font-size: 1.25rem;
+  margin-left: 0.625rem;
+  /* Accessibility: touch target above 
+    44x44px all screen sizes */
+  padding: 1rem;
+}
+
+/* Prevent input overflowing Options Container */
+@media (max-width: 593px) {
+  .globalFilterInput {
+    width: 100%;
+  }
+}

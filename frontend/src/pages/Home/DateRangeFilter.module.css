@@ -1,5 +1,4 @@
-/* Styles specific to DateRangePicker div in DateRangeFilter, 
-z index simple positioning */
+/* z index simple positioning */
 .modal {
   max-width: fit-content;
   max-height: fit-content;
@@ -17,9 +16,7 @@ z index simple positioning */
   z-index: 1;
 }
 
-/* hides as per client spec */
-/* alternative: display: flexbox; flex-direction: column
-has issues with z-index - larger task */
+/* Hides as per client spec */
 @media (max-width: 780px) {
  .modal {
     display: none;

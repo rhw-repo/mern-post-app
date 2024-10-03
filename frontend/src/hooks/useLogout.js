@@ -8,26 +8,23 @@ import { useMaterialsContext } from "./useMaterialsContext";
 import { useState } from "react";
 
 export const useLogout = () => {
+  const { dispatch } = useAuthContext();
+  const { dispatch: dispatchMaterials } = useMaterialsContext();
+  const [logoutError, setLogoutError] = useState(null);
+  const logout = () => {
+    // Error handling for a synchronous function
+    try {
+      // Remove user from storage
+      localStorage.removeItem("user");
+      localStorage.removeItem("allTags");
 
-    const { dispatch } = useAuthContext()
-    const { dispatch: dispatchMaterials } = useMaterialsContext()
-    const [logoutError, setLogoutError] = useState(null);
-    const logout = () => {
-        // error handling for a synchronous function
-        try {
-            // remove user from storage 
-            localStorage.removeItem("user")
-            localStorage.removeItem("allTags")
-
-            // dispatch logout action
-            dispatch({ type: "LOGOUT" })
-            dispatchMaterials({ type: "SET_MATERIALS", payload: null })
-        }
-        catch (error) {
-            setLogoutError("An error occured. Please try again");
-        }
+      // Dispatch logout action
+      dispatch({ type: "LOGOUT" });
+      dispatchMaterials({ type: "SET_MATERIALS", payload: null });
+    } catch (error) {
+      setLogoutError("An error occured. Please try again");
     }
+  };
 
-    return { logout, logoutError }
-
-}
+  return { logout, logoutError };
+};

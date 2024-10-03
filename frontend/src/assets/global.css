@@ -1,26 +1,13 @@
-/* TODO: Refactor to make responsive across different devices */
-/* Styling Note - all styles aim to meet Material Design 3 guidelines.*/
-
-@import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@400;500;600;700&family=Open+Sans:wght@300;400&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@400;500;600;700&family=Open+Sans:wght@300;400&display=swap");
 
 /* Original Global color scheme */
 :root {
-  --primary: #BD7374;
-  --error: #A2262C;
+  --primary: #bd7374;
+  --error: #a2262c;
   --secondary: #435362;
-  --secondary-light: #667B99;
-  --secondary-chips: #5C6D84;
+  --secondary-light: #667b99;
+  --secondary-chips: #5c6d84;
 }
-
-/* WIP: testing for New Global color scheme #1
-TODO: dark mode 
-:root {
-  --primary: #023047;
-  --error: #A2262C;
-  --secondary: #054a91;
-  --secondary-light: #667B99;
-  --secondary-chips: #5C6D84;
-}*/
 
 /* Global rules */
 body {
@@ -30,7 +17,6 @@ body {
   font-family: "Open Sans", "Helvetica", Arial, sans-serif;
   scrollbar-width: auto;
   scrollbar-color: var(--secondary-light) #f1f1f1;
-  ;
 }
 
 /* Chrome, Edge, Safari (12/2023) */
@@ -82,10 +68,9 @@ body {
 .create-new-btn:hover,
 .go-to-edit-btn:hover,
 .save-btn:hover {
-  background: #A96669;
+  background: #a96669;
   border: 0.26rem solid var(--secondary);
-  box-shadow:
-    0rem 0.1875rem 0.375rem 0rem rgba(0, 0, 0, 0.2),
+  box-shadow: 0rem 0.1875rem 0.375rem 0rem rgba(0, 0, 0, 0.2),
     0rem 0.5rem 0.625rem 0rem rgba(0, 0, 0, 0.14),
     0rem 0.125rem 0.75rem 0rem rgba(0, 0, 0, 0.12);
 }
@@ -96,10 +81,9 @@ body {
 .create-new-btn:active,
 .go-to-edit-btn:active,
 .save-btn:active {
-  background: #954B4C;
+  background: #954b4c;
   border: 0.26rem solid var(--secondary);
-  box-shadow:
-    0rem 0.0625rem 0.125rem 0rem rgba(0, 0, 0, 0.2),
+  box-shadow: 0rem 0.0625rem 0.125rem 0rem rgba(0, 0, 0, 0.2),
     0rem 0.125rem 0.15625rem 0rem rgba(0, 0, 0, 0.14),
     0rem 0.03125rem 0.3125rem 0rem rgba(0, 0, 0, 0.12);
   transform: scale(0.97);
@@ -151,12 +135,6 @@ button: see Navbar css module)*/
   transform: scale(0.97);
 }
 
-/*nav button {
-  border: none;
-  color: #ffffff;
-  background-color: inherit;
-}*/
-
 /* All pages */
 .pages {
   max-width: 100%;
@@ -169,8 +147,6 @@ button: see Navbar css module)*/
 
 h1 {
   color: var(--secondary);
-  /* Testing for New color scheme #1 
-  color: #1178f2;*/
   text-align: center;
   font-family: "Lexend Deca", Helvetica, Arial, sans-serif;
 }
@@ -186,7 +162,7 @@ h1 {
   white-space: nowrap;
   clip-path: inset(50%);
   overflow: hidden;
-} 
+}
 
 /* Form text inputs */
 label,
@@ -203,7 +179,7 @@ label {
 
 input,
 textarea {
-  font-family: 'Open Sans', 'Helvetica', Arial, sans-serif;
+  font-family: "Open Sans", "Helvetica", Arial, sans-serif;
   font-size: 1rem;
   /* Min-height meets touch target 44 x 44px for accessibilty
   including any Select box control */
@@ -247,7 +223,7 @@ label {
 
 input,
 textarea {
-  font-family: 'Open Sans', 'Helvetica', Arial, sans-serif;
+  font-family: "Open Sans", "Helvetica", Arial, sans-serif;
   font-size: 1rem;
   padding: 0.625rem;
   margin: 0.312rem auto;
@@ -286,11 +262,10 @@ p {
 .content-detail-edit-create-containers {
   background: #fff;
   border-radius: 0.625rem;
-  box-shadow:
-    0rem 0.125rem 0.25rem 0rem rgba(0, 0, 0, 0.2),
+  box-shadow: 0rem 0.125rem 0.25rem 0rem rgba(0, 0, 0, 0.2),
     0rem 0.25rem 0.3125rem 0rem rgba(0, 0, 0, 0.14),
     0rem 0.0625rem 0.625rem 0rem rgba(0, 0, 0, 0.12),
-    0.3125rem 0.3125rem 0.3125rem 0.3125rem #778DA5;
+    0.3125rem 0.3125rem 0.3125rem 0.3125rem #778da5;
 }
 
 /* Create, ContentDetail, Edit pages: */
@@ -433,8 +408,7 @@ div.content-detail div.edit textarea.error {
 }
 
 /* Tablets, Nest Hub etc */
-@media (max-width: 1024px) and (max-height:600px) {
-
+@media (max-width: 1024px) and (max-height: 600px) {
   /* Specific to fit form into screen height */
   .pages {
     padding-top: 0;
@@ -476,7 +450,6 @@ div.content-detail div.edit textarea.error {
 }
 
 @media (max-width: 400px) {
-
   /* Widen space for content */
   .content-detail-edit-create-containers {
     padding: 1rem;
@@ -491,7 +464,6 @@ div.content-detail div.edit textarea.error {
 
 /* Centering */
 @media (max-width: 319px) {
-
   .login-form,
   .signup-form {
     display: flex;

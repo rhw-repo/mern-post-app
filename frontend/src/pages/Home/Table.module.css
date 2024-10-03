@@ -1,5 +1,3 @@
-/* Styles specific to table element & related options container */
-
 /* Table-related options container, positioned above table
 contains the global filter, date range picker, a reset table btn
 & the create new button */
@@ -534,7 +532,8 @@ select {
     }
 }
 
-/* Reconfigure OptionsContainer grid layout & hide DateRangeBtn */
+/* Reconfigure OptionsContainer 
+grid layout & hide DateRangeBtn */
 @media (max-width: 780px) {
     .optionsContainer {
         display: grid;
@@ -589,7 +588,8 @@ select {
 
 @media (max-width: 390px) {
 
-    /* Options Container: prevent overflowing and poor alignment */
+    /* Options Container: prevent 
+    overflowing and poor alignment */
     .optionsContainer {
         display: flex;
         flex-direction: column;

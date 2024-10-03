@@ -1,13 +1,14 @@
-// user needs a way to abandon action & return to homepage
+/* User needs a way to abandon 
+action & return to homepage */
 import { useNavigate } from "react-router-dom";
 import styles from "./CancelButton.module.css";
 
 const CancelButton = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const cancel = () => {
-    navigate("/")
-  }
+    navigate("/");
+  };
 
   return (
     <button
@@ -17,7 +18,7 @@ const CancelButton = () => {
     >
       Cancel
     </button>
-  )
-}
+  );
+};
 
 export default CancelButton;

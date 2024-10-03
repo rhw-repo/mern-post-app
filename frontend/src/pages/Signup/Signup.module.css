@@ -1,30 +1,27 @@
-/* Styles specific to Signup Page */
 .signupWrapper {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-height: 85vh;
-    padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 85vh;
+  padding: 1rem;
 }
 
-
 h2 {
-    color: var(--secondary);
+  color: var(--secondary);
 }
 
 @media (max-width: 920px) {
-    .signupSwitchFormsBtns {
-        margin-top: 1.5rem;
-    }
+  .signupSwitchFormsBtns {
+    margin-top: 1.5rem;
+  }
 }
 
 /* Increase size of component for 
 portrait in iPads, Surface Pro7 etc */
 @media (min-width: 767px) and (max-width: 1024px) and (min-height: 1024px) and (max-height: 1369px) {
-    .signupWrapper {
-        transform: scale(1.5);
-        margin: 4rem auto;
-    }
+  .signupWrapper {
+    transform: scale(1.5);
+    margin: 4rem auto;
+  }
 }
-

@@ -1,10 +1,10 @@
-// provides logical && searching and works in conjunction with global filter
+// Provides logical && searching and works in conjunction with global filter
 import { useEffect } from "react";
-import styled from "styled-components"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faFilter } from "@fortawesome/free-solid-svg-icons"
+import styled from "styled-components";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faFilter } from "@fortawesome/free-solid-svg-icons";
 
-// icon is SVG not CSS: styled component allows icon in placeholder
+// Icon is SVG not CSS: styled component allows icon in placeholder
 // Note - no modules.css for ColumnFilter.js
 const SearchBox = styled.div`
     border: 1px solid #ddd;
@@ -48,35 +48,41 @@ const SearchBox = styled.div`
         transform: scale(1.2); 
     }
     }
-`
-const filterIcon = <FontAwesomeIcon icon={faFilter} /*size="2xl"*/ className="filter-icon" />
+`;
+const filterIcon = (
+  <FontAwesomeIcon icon={faFilter} /*size="2xl"*/ className="filter-icon" />
+);
 
 const ColumnFilter = ({ column }) => {
-    // console.log(column)
-    useEffect(() => {
-        console.log('Component updated')
-    }, [])
-   const { filterValue, setFilter, Header } = column;
+  // console.log(column)
+  useEffect(() => {
+    console.log("Component updated");
+  }, []);
+  const { filterValue, setFilter, Header } = column;
 
-    // hides input in date columns (DateRangeFilter used instead or no filter)
-    if (column.Header !== "Created On" && column.Header !== "Updated On" && column.Header !== "Delete") {
-        return (
-            <section>
-                <SearchBox>
-                    {filterIcon}
-                    <input
-                        aria-label={`Search box for ${Header.toLowerCase()} column`}
-                        placeholder={`Filter table by ${Header.toLowerCase()}`}
-                        type="text"
-                        value={filterValue || ""}
-                        onChange={e => setFilter(e.target.value)}
-                    />
-                </SearchBox>
-            </section>
-        )
-    } else {
-        return null
-    }
-}
+  // Hide input in date columns (DateRangeFilter used instead or no filter)
+  if (
+    column.Header !== "Created On" &&
+    column.Header !== "Updated On" &&
+    column.Header !== "Delete"
+  ) {
+    return (
+      <section>
+        <SearchBox>
+          {filterIcon}
+          <input
+            aria-label={`Search box for ${Header.toLowerCase()} column`}
+            placeholder={`Filter table by ${Header.toLowerCase()}`}
+            type="text"
+            value={filterValue || ""}
+            onChange={(e) => setFilter(e.target.value)}
+          />
+        </SearchBox>
+      </section>
+    );
+  } else {
+    return null;
+  }
+};
 
 export default ColumnFilter;

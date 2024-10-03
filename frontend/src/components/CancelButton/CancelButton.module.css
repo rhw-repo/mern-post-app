@@ -1,12 +1,11 @@
-/* Styles specific to Cancel Button */
 .cancelBtn {
-    padding: 1rem;
-    width: 6rem;
+  padding: 1rem;
+  width: 6rem;
 }
 
 @media (max-width: 400px) {
-    .cancelBtn {
-        white-space: normal;
-        overflow: hidden;
-    }
+  .cancelBtn {
+    white-space: normal;
+    overflow: hidden;
+  }
 }

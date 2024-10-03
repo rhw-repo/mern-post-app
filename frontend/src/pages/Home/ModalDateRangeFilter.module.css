@@ -1,53 +1,52 @@
-/* Styles specific to opened modal for DateRangeFilter */
 .modalContainer {
-  position: absolute; 
+  position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 1000; 
+  z-index: 1000;
   background: white;
   padding: 1rem;
   border-radius: 10%;
 }
 
 .closeDateRangeBtn {
-    position: absolute; 
-    top: 8.75rem;
-    right: 0;
-    left: 14.5rem;
-    border: none;
-    margin: 0.5rem 0;
-    cursor: pointer;
-    padding: 0;
-    height: 2rem;
-    width: 2rem;
-    border-radius: 50%;
-  }
+  position: absolute;
+  top: 8.75rem;
+  right: 0;
+  left: 14.5rem;
+  border: none;
+  margin: 0.5rem 0;
+  cursor: pointer;
+  padding: 0;
+  height: 2rem;
+  width: 2rem;
+  border-radius: 50%;
+}
 
-  .closeDateRangeBtnIcon {
-    color: var(--secondary-light);
-  }
+.closeDateRangeBtnIcon {
+  color: var(--secondary-light);
+}
 
-  /* Overlays modal */
-  .closeDateRangeBtn,
-  .closeDateRangeBtnIcon {
-    z-index: 1001;
-  }
+/* Overlays modal */
+.closeDateRangeBtn,
+.closeDateRangeBtnIcon {
+  z-index: 1001;
+}
 
-  /* Retains close button in bottom left corner */
+/* Retains close button in bottom left corner */
 @media (min-width: 1280px) and (max-width: 1370px) and (min-height: 800px) and (max-height: 1025px) {
   .closeDateRangeBtn {
-    position: absolute; 
+    position: absolute;
     top: 8.75rem;
     right: 0;
     left: 15rem;
   }
 }
 
- /* hides as per client spec */
+/* hides as per client spec */
 @media (max-width: 780px) {
   .closeDateRangeBtn,
-  .closeDateRangeBtnIcon  {
-     display: none;
-   }
- }
+  .closeDateRangeBtnIcon {
+    display: none;
+  }
+}

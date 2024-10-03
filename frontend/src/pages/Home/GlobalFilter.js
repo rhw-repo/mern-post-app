@@ -1,12 +1,14 @@
-// multiple terms, finds match(es) in the 1st applicable column. 
+/* Filtering component accepts multiple search terms, 
+finds match(es) in the 1st applicable column. */
 import { useState, useEffect } from "react";
 import { useAsyncDebounce } from "react-table";
-import styled from "styled-components"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faFilter } from "@fortawesome/free-solid-svg-icons"
+import styled from "styled-components";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faFilter } from "@fortawesome/free-solid-svg-icons";
 import styles from "./GlobalFilter.module.css";
 
-// icon is SVG not CSS: styled component allows icon in placeholder
+/* Icon is SVG not CSS: styled component 
+allows icon in placeholder */
 const SearchBox = styled.div`
     border: 1px solid #ddd;
     border-radius: 0.5rem;
@@ -43,44 +45,46 @@ const SearchBox = styled.div`
     }
   
 }   
-`
+`;
 const GlobalFilter = ({ filter, setFilter }) => {
-    const [value, setValue] = useState(filter)
+  const [value, setValue] = useState(filter);
 
-    //  synchronise local state with prop to 
-    // ensure resetTable functions 
-    useEffect(() => {
-        setValue(filter);
-    }, [filter]);
+  //  Synchronise local state with prop to
+  // ensure resetTable functions
+  useEffect(() => {
+    setValue(filter);
+  }, [filter]);
 
-    // Delays filter execution preventing unnecessary operations
-    const onChange = useAsyncDebounce(value => {
-        setFilter(value || undefined)
-    }, 300)
+  // Delays filter execution preventing unnecessary operations
+  const onChange = useAsyncDebounce((value) => {
+    setFilter(value || undefined);
+  }, 300);
 
-    const filterIcon = <FontAwesomeIcon icon={faFilter} size="lg" className="filter-icon" />
+  const filterIcon = (
+    <FontAwesomeIcon icon={faFilter} size="lg" className="filter-icon" />
+  );
 
-    const handleInputChange = (e) => {
-        setValue(e.target.value)
-        onChange(e.target.value)
-    }
+  const handleInputChange = (e) => {
+    setValue(e.target.value);
+    onChange(e.target.value);
+  };
 
-    return (
-        <section className={`${styles.globalFilterDiv} ${styles.globalFilter}`}>
-            <label htmlFor="global-filter">Search all table</label>
-            <SearchBox>
-                {filterIcon}
-                <input
-                    id="global-filter"
-                    type="text"
-                    value={value || ""}
-                    onChange={handleInputChange}
-                    className={styles.globalFilterInput}
-                    aria-label="Filter table by search terms"
-                />
-            </SearchBox>
-        </section>
-    )
-}
+  return (
+    <section className={`${styles.globalFilterDiv} ${styles.globalFilter}`}>
+      <label htmlFor="global-filter">Search all table</label>
+      <SearchBox>
+        {filterIcon}
+        <input
+          id="global-filter"
+          type="text"
+          value={value || ""}
+          onChange={handleInputChange}
+          className={styles.globalFilterInput}
+          aria-label="Filter table by search terms"
+        />
+      </SearchBox>
+    </section>
+  );
+};
 
 export default GlobalFilter;

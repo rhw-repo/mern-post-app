@@ -1,5 +1,4 @@
-/* Styles specific to Edit page */
-/* handles display of Creatable & existing tags in Edit */
+/* Handles display of Creatable & existing tags in Edit */
 .inputTagsContainer {
   display: flex;
   flex-direction: column;
@@ -37,7 +36,7 @@ p {
   white-space: nowrap;
 }
 
-/* Support centering */
+/* Centering */
 @media (max-width: 350px) {
   .editTagsSelect {
     width: 11rem;

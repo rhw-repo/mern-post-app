@@ -1,9 +1,9 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import { useAuthContext } from './hooks/useAuthContext';
-import { Toaster } from 'react-hot-toast';
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { useAuthContext } from "./hooks/useAuthContext";
+import { Toaster } from "react-hot-toast";
 import styles from "./App.module.css";
 
-// pages and components
+// Pages and components
 import Home from "./pages/Home/Home";
 import Login from "./pages/Login/Login";
 import Signup from "./pages/Signup/Signup";
@@ -15,7 +15,7 @@ import ContentDetail from "./pages/ContentDetail/ContentDetail";
 import ErrorBoundary from "./components/ErrorBoundary/ErrorBoundary";
 
 function App() {
-  const { user } = useAuthContext()
+  const { user } = useAuthContext();
 
   return (
     <ErrorBoundary>
@@ -29,7 +29,8 @@ function App() {
                 duration: 3000,
                 className: styles.toasterSuccess,
               },
-            }} />
+            }}
+          />
           <Navbar />
           <div className="pages">
             <Routes>
@@ -59,7 +60,7 @@ function App() {
         </BrowserRouter>
       </div>
     </ErrorBoundary>
-  )
+  );
 }
 
 export default App;

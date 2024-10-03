@@ -1,6 +1,9 @@
-/* Static css styles specific to ExperimentalAllTagsSelect */
-/* Desktop first app */
-/* Wrapper supports controlling width & height */
+/* Note! - Desktop first app */
+
+/* Note! - further custom styles defined within component: 
+library specific functions customize appearance based on component state. */
+
+/* Wrapper control width & height */
 .selectContainer {
   border-radius: 0.625rem;
   margin: 0 auto;
@@ -47,7 +50,3 @@
     align-items: center;
   }
 }
-
-/* Note! - further custom styles defined within component: 
-library specific functions customize appearance based on component state.
- */
