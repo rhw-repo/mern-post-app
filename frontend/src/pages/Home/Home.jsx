@@ -6,7 +6,7 @@ import styles from "./Home.module.css";
 
 // components
 // import Table from "../components/Table";
-import Table from "./Table.js";
+import Table from "./Table.jsx";
 import ErrorBoundary from "../../components/ErrorBoundary/ErrorBoundary.jsx";
 
 const Home = () => {
