@@ -9,14 +9,15 @@ Experiments using MERN stack for an app designed to help users store and manage 
 - formatting with ESLint & Prettier 
 
 ## **Stack:**
--MongoDB with Mongoose 
---Express
+- MongoDB with Mongoose 
+- Express
 - Node.js 
--React.js 
--originally using Create React App, now migrated to Vite in a separate branch
+- React.js 
+- originally using Create React App, now migrated to Vite in a separate branch
 
--Testing requests: Postman API Platform
+- Testing requests: Postman API Platform
 - Original design files: Figma
+
 
 
 ## **Next ToDos: work in progress** 
