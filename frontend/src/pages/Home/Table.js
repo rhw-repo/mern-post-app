@@ -554,9 +554,9 @@ function Table({ data }) {
                                             scope="col"
                                         >
                                             {column.Header === 'Delete?' ? (
-                                                <div
+                                                <div 
+                                                role="presentation"
                                                     className={styles.headerDeleteIcon}
-                                                    aria-label="Column of delete buttons"
                                                 >
                                                     {deleteIcon}
                                                 </div>
