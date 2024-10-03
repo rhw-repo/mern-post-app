@@ -18,18 +18,16 @@
     "react-dom": "^18.2.0",
     "react-hot-toast": "^2.4.1",
     "react-router-dom": "^6.4.5",
-    "react-scripts": "5.0.1",
     "react-select": "^5.7.3",
     "react-table": "^7.8.0",
     "styled-components": "^6.0.4",
     "web-vitals": "^2.1.4"
   },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
+"scripts": {
+  "start": "vite",
+  "build": "vite build",
+  "serve": "vite preview"
+},
   "eslintConfig": {
     "extends": [
       "react-app",
@@ -47,5 +45,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.2",
+    "vite": "^5.4.8"
   }
 }
