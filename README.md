@@ -12,7 +12,7 @@ Experiments using MERN stack for an app designed to help users store and manage 
 MongoDB with Mongoose 
 Express
 Node.js 
-React.js (using Create React App)
+React.js (originally using Create React App, now succesfully migrated to Vite in a separate branch)
 
 Testing requests: Postman API Platform
 Original design files: Figma
@@ -28,7 +28,7 @@ Original design files: Figma
 
 ### **Home Page** 
 
-1) Add bulk delete feature for table 
+1) Add bulk delete feature for table if client requests.
 
 ### **Auth**
 1) SSO to replace current development phase JWT email & password system
