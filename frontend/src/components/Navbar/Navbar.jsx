@@ -11,17 +11,18 @@ const Navbar = () => {
     const { logout, logoutError } = useLogout()
     const { user } = useAuthContext()
     const location = useLocation()
-    // flag to check if user is on homepage or not 
+    // Flag to check if user is on homepage or not 
     const isHomepage = location.pathname === '/'
     const navigate = useNavigate()
     const handleClick = () => {
         logout()
-        // navigate to login page on logout from any page
+        // Navigate to login page on logout from any page
         navigate("/login")
     }
     const logoutIcon = <FontAwesomeIcon icon={faRightFromBracket} className={styles.navLogoutIcon} />
 
-    // Clean up prevents menu close button displaying in Navbar after logout
+    /* Clean up prevents menu close button 
+    displaying in Navbar after logout */
     useEffect(() => {
         if (!user) {
             setMenuOpen(false);
@@ -33,14 +34,14 @@ const Navbar = () => {
             <nav className={styles.navbarContainer}>
                 {user ? (
                     isHomepage ? (
-                        <h1 role="header">ONLINE POST MANAGER</h1>
+                        <h1>ONLINE POST MANAGER</h1>
                     ) : (
                         <Link to="/" className={styles.link} aria-label="Go to dashboard homepage">
                             <h1>ONLINE POST MANAGER</h1>
                         </Link>
                     )
                 ) : (
-                    <h1 role="header">ONLINE POST MANAGER</h1>
+                    <h1>ONLINE POST MANAGER</h1>
                 )}
                 <span className={styles.navList}>
                     {user && (
