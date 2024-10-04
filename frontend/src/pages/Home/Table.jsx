@@ -1,3 +1,7 @@
+/* TODO evaluate if destructuring keys from react-table props 
+reduces performance when used to avoid ESLint warning each 
+child in a list should have a unique key - keys are supplied by 
+react-table props */
 import styles from "./Table.module.css";
 import { useTable, usePagination, useSortBy, useGlobalFilter, useFilters } from "react-table";
 import GlobalFilter from "./GlobalFilter";
