@@ -1,3 +1,6 @@
+/* ESLint is warning each child in a list should have a unique key prop
+react-table v7 getProps supplies the key */
+
 import styles from "./Table.module.css";
 import { useTable, usePagination, useSortBy, useGlobalFilter, useFilters } from "react-table";
 import GlobalFilter from "./GlobalFilter";
@@ -524,87 +527,89 @@ function Table({ data }) {
                     </button>
                 </div>
             </section>
-
             <div className={styles.tableContainer}>
-                <table {...getTableProps()} className={styles.tableNoGaps}>
-                    <caption className={styles.tableHiddenCaption}>Table of saved documents</caption>
-                    <thead>
-                        {headerGroups.map(headerGroup => (
-                            <Fragment key={headerGroup.id}>
-                                <tr {...headerGroup.getHeaderGroupProps()}>
-                                    {headerGroup.headers.map(column => (
-                                        <th
-                                            {...column.getHeaderProps()}
-                                            aria-label={column.meta?.ariaLabel || column.Header}
+  <table {...getTableProps()} className={styles.tableNoGaps}>
+    <caption className={styles.tableHiddenCaption}>Table of saved documents</caption>
+    <thead>
+      {headerGroups.map(headerGroup => (
+        // No need to manually destructure the key, just spread all props directly
+        <Fragment key={headerGroup.getHeaderGroupProps().key}>
+          <tr {...headerGroup.getHeaderGroupProps()}>
+            {headerGroup.headers.map(column => (
+              <th
+                key={column.getHeaderProps().key}
+                {...column.getHeaderProps()}
+                aria-label={column.meta?.ariaLabel || column.Header}
+                className={styles.tableHeader}
+                id={`header-${column.id}`}
+                scope="col"
+              >
+                {column.render("Header")}
+              </th>
+            ))}
+          </tr>
+          <tr>
+            {headerGroup.headers.map(column => (
+              <th
+                key={column.getHeaderProps().key}
+                {...column.getHeaderProps()}
+                className={styles.filterHeader}
+                scope="col"
+              >
+                {column.Header === 'Delete?' ? (
+                  <div
+                    className={styles.headerDeleteIcon}
+                    
+                  >
+                    {deleteIcon}
+                  </div>
+                ) : (
+                  <div aria-labelledby={`header-${column.id}`}>
+                    {column.canFilter ? column.render("Filter") : null}
+                    {column.canSort ? (
+                      <button
+                        {...column.getSortByToggleProps()}
+                        aria-label={`Sort by date ${column.Header}`}
+                        className={`${styles.dateSortToggleButtons} ${styles.sortButton}`}
+                      >
+                        {sortIcon}
+                      </button>
+                    ) : null}
+                  </div>
+                )}
+              </th>
+            ))}
+          </tr>
+        </Fragment>
+      ))}
+    </thead>
+    <tbody {...getTableBodyProps()}>
+      {page.map(row => {
+        prepareRow(row);
+        return (
+          <tr {...row.getRowProps()} className={styles.tableRow}>
+            {row.cells.map(cell => {
+              const ariaLabel = generateAriaLabelForCell(cell);
+              const headerId = `header-${cell.column.id}`;
+              return (
+                <td
+                  key={cell.getCellProps().key}
+                  {...cell.getCellProps()}
+                  className={styles.tableCell}
+                  headers={headerId}
+                  {...(ariaLabel ? { 'aria-label': ariaLabel } : {})}
+                >
+                  {cell.render("Cell")}
+                </td>
+              );
+            })}
+          </tr>
+        );
+      })}
+    </tbody>
+  </table>
+</div>
 
-                                            className={styles.tableHeader}
-                                            id={`header-${column.id}`}
-                                            scope="col"
-
-                                        >
-                                            {column.render("Header")}
-                                        </th>
-                                    ))}
-                                </tr>
-                                <tr>
-                                    {headerGroup.headers.map(column => (
-                                        <th
-                                            {...column.getHeaderProps()}
-                                            className={styles.filterHeader}
-                                            scope="col"
-                                        >
-                                            {column.Header === 'Delete?' ? (
-                                                <div
-                                                    className={styles.headerDeleteIcon}
-                                                    aria-label="Column of delete buttons"
-                                                >
-                                                    {deleteIcon}
-                                                </div>
-                                            ) : (
-                                                <div aria-labelledby={`header-${column.id}`}>
-                                                    {column.canFilter ? column.render("Filter") : null}
-                                                    {column.canSort ? (
-                                                        <button
-                                                            {...column.getSortByToggleProps()}
-                                                            aria-label={`Sort by date ${column.Header}`}
-                                                            className={`${styles.dateSortToggleButtons} ${styles.sortButton}`}
-                                                        >
-                                                            {sortIcon}
-                                                        </button>
-                                                    ) : null}
-                                                </div>
-                                            )}
-                                        </th>
-                                    ))}
-                                </tr>
-                            </Fragment>
-                        ))}
-                    </thead>
-
-                    <tbody {...getTableBodyProps()}>
-                        {page.map(row => {
-                            prepareRow(row);
-                            return (
-                                <tr {...row.getRowProps()} className={styles.tableRow}>
-                                    {row.cells.map(cell => {
-                                        const ariaLabel = generateAriaLabelForCell(cell)
-                                        const headerId = `header-${cell.column.id}`
-                                        return (
-                                            <td
-                                                {...cell.getCellProps()}
-                                                className={styles.tableCell}
-                                                headers={headerId}
-                                                {...(ariaLabel ? { 'aria-label': ariaLabel } : {})}
-                                            >
-                                                {cell.render("Cell")}
-                                            </td>
-                                        );
-                                    })}
-                                </tr>
-                            );
-                        })}
-                    </tbody>
-                </table>
 
                 <section aria-label="Table Pagination Options" className={styles.pagination}>
                     <label htmlFor="table-pagination-select" className={styles.hiddenPaginationSelectLabel}>Rows per page:</label>
@@ -676,7 +681,7 @@ function Table({ data }) {
                         {forwardsIcon}
                     </button>
                 </section>
-            </div>
+       
         </main>
     )
 }
