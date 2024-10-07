@@ -1,9 +1,9 @@
 import { useEffect, useMemo } from "react";
-import { useMaterialsContext } from "../../hooks/useMaterialsContext";
-import { useAuthContext } from "../../hooks/useAuthContext";
+import { useMaterialsContext } from "../../hooks/useMaterialsContext.jsx";
+import { useAuthContext } from "../../hooks/useAuthContext.jsx";
 import styles from "./Home.module.css";
-import Table from "./Table.js";
-import ErrorBoundary from "../../components/ErrorBoundary/ErrorBoundary";
+import Table from "./Table.jsx";
+import ErrorBoundary from "../../components/ErrorBoundary/ErrorBoundary.jsx";
 
 const Home = () => {
   const { materials, dispatch } = useMaterialsContext();
