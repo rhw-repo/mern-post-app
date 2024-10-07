@@ -23,5 +23,7 @@ portrait in iPads, Surface Pro7 etc */
   .loginWrapper {
     transform: scale(1.5);
     margin: 4rem auto;
+    overflow-y: hidden;
   }
 }
+
