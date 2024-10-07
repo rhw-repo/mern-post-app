@@ -507,7 +507,7 @@ function Table({ data }) {
   // Rendering options before table aims for easy user experience
   return (
     <main>
-      <section aria-label="Table Filtering Options Section">
+      <section aria-label="Table Filtering Options">
         <button
           className={styles.seeTableOptionsButton}
           onClick={toggleOptionsVisibility}
@@ -566,24 +566,24 @@ function Table({ data }) {
       <div className={styles.tableContainer}>
         <table {...getTableProps()} className={styles.tableNoGaps}>
           <caption className={styles.tableHiddenCaption}>
-            Table of saved documents
+            Saved documents
           </caption>
-          <thead>
+          <thead> 
+            {/*Header row one*/}
             {headerGroups.map((headerGroup) => (
               <Fragment key={headerGroup.id}>
                 <tr {...headerGroup.getHeaderGroupProps()}>
                   {headerGroup.headers.map((column) => (
                     <th
                       {...column.getHeaderProps()}
-                      aria-label={column.meta?.ariaLabel || column.Header}
                       className={styles.tableHeader}
-                      id={`header-${column.id}`}
-                      scope="col"
+                      id={`header-${column.id}`}                 
                     >
                       {column.render("Header")}
                     </th>
                   ))}
                 </tr>
+                    {/*Header row two*/}
                 <tr>
                   {headerGroup.headers.map((column) => (
                     <th
@@ -599,12 +599,12 @@ function Table({ data }) {
                           {deleteIcon}
                         </div>
                       ) : (
-                        <div aria-labelledby={`header-${column.id}`}>
+                        <div>
                           {column.canFilter ? column.render("Filter") : null}
                           {column.canSort ? (
                             <button
                               {...column.getSortByToggleProps()}
-                              aria-label={`Sort by date ${column.Header}`}
+                              aria-label={`Sort by date`}
                               className={`${styles.dateSortToggleButtons} ${styles.sortButton}`}
                             >
                               {sortIcon}
