@@ -70,13 +70,14 @@ const Navbar = () => {
             <span></span>
           </button>
         )}
-        <ul className={menuOpen ? styles.open : ""}>
+        <ul  className={menuOpen ? styles.open : ""}>
           {user && (
             <>
               <li className={styles.navList} id="navigation">
                 <button
                   onClick={handleClick}
                   className={styles.navLogoutButton}
+                  aria-label="Log out button"
                 >
                   {logoutIcon} Log Out
                 </button>

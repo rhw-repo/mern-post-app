@@ -60,8 +60,7 @@ const DeleteButton = ({ _id }) => {
       <button
         className={styles.deleteTableButton}
         onClick={handleDeleteClick}
-        aria-label="Opens confirm deletion dialog"
-      >
+        aria-label="Opens confirm deletion dialog">
         {deleteIcon}
       </button>
 
@@ -75,14 +74,12 @@ const DeleteButton = ({ _id }) => {
           <div className={styles.confirmDeleteBtns}>
             <button
               className={styles.yesDeleteBtn}
-              onClick={handleConfirmDelete}
-            >
+              onClick={handleConfirmDelete}>
               {confirmYesDeleteIcon} Yes, delete
             </button>
             <button
               className={styles.noCancelDeleteBtn}
-              onClick={handleCancelDelete}
-            >
+              onClick={handleCancelDelete}>
               {saveIcon} No - Keep it
             </button>
           </div>

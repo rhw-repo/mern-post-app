@@ -190,8 +190,8 @@ const TagsSelect = forwardRef(
       clearTags,
     }));
 
-    /* Accessibiliry note - any placeholder will be announced
-for each individual table body cell, creates disorientation */
+    /* Accessibility note - any placeholder will be announced
+    for each individual table body cell, creates disorientation */
     return (
       <>
         <Select
@@ -303,7 +303,6 @@ function Table({ data }) {
         disableSortBy: true,
         Cell: LinkedCell,
         meta: {
-         // ariaLabel: "Document Titles",
           taxIndex: 0,
         },
       },
@@ -313,7 +312,6 @@ function Table({ data }) {
         disableSortBy: true,
         Cell: TextCell,
         meta: {
-         // ariaLabel: "Document Contents",
           taxIndex: 0,
         },
       },
@@ -323,11 +321,9 @@ function Table({ data }) {
         Cell: (props) => <TagCell {...props} limit={1} />,
         disableSortBy: true,
         filter: "contains",
-        /* Filter: TagsSelect
-        No forwardRef needed, just pass the ref */
+        /* Filter: No forwardRef needed, just pass the ref */
         Filter: (props) => <TagsSelect {...props} ref={tagsSelectRef} />,
         meta: {
-         // ariaLabel: "Document tags",
           taxIndex: 0,
         },
       },
@@ -337,7 +333,6 @@ function Table({ data }) {
         Cell: ({ value }) => format(new Date(value), "dd/MM/yyyy"),
         filter: filterByDateRange,
         meta: {
-          //ariaLabel: "Date documents created on",
           taxIndex: 0,
         },
       },
@@ -348,7 +343,6 @@ function Table({ data }) {
           return format(new Date(value), "dd/MM/yyyy");
         },
         meta: {
-         // ariaLabel: "Date documents updated on",
           taxIndex: 0,
         },
       },
@@ -357,11 +351,9 @@ function Table({ data }) {
         accessor: "_id",
         disableSortBy: true,
         disableFilters: true,
-        //ariaLabel: "Delete button",
         // TODO refactor into component, pass in, avoid code smell
         Cell: ({ value }) => <DeleteButton _id={value} />,
         meta: {
-         // ariaLabel: "Delete individual documents",
           taxIndex: 0,
         },
       },
@@ -579,8 +571,9 @@ function Table({ data }) {
             {/*Header row one*/}
             {headerGroups.map((headerGroup) => (
               <Fragment key={headerGroup.id}>
-                <tr key={`${headerGroup.id}-row1`}
-                 {...headerGroup.getHeaderGroupProps()}>
+                <tr
+                  key={`${headerGroup.id}-row1`}
+                  {...headerGroup.getHeaderGroupProps()}>
                   {headerGroup.headers.map((column) => (
                     <th
                       {...column.getHeaderProps()}
@@ -591,7 +584,7 @@ function Table({ data }) {
                   ))}
                 </tr>
                 {/*Header row two*/}
-                <tr key={`${headerGroup.id}-row2`} >
+                <tr key={`${headerGroup.id}-row2`}>
                   {headerGroup.headers.map((column) => (
                     <th
                       {...column.getHeaderProps()}
@@ -638,7 +631,7 @@ function Table({ data }) {
                         {...cell.getCellProps({
                           tabIndex: 0,
                           //headers: headerId,
-                          "aria-labelledby": headerId
+                          "aria-labelledby": headerId,
                         })}
                         className={styles.tableCell}>
                         {cell.render("Cell")}
