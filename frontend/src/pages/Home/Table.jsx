@@ -193,6 +193,7 @@ const TagsSelect = forwardRef(
     return (
       <Select
         ref={selectorRef}
+        q
         menuPosition="fixed"
         placeholder="Search by tags"
         onChange={changeHandler}
@@ -271,8 +272,7 @@ function Table({ data }) {
         {displayedTags.map((tag, index) => (
           <div
             key={index}
-            className={` ${styles.tagChipTable} ${styles.centerTableTags}`}
-          >
+            className={` ${styles.tagChipTable} ${styles.centerTableTags}`}>
             {trimText(tag, 16)}
           </div>
         ))}
@@ -299,11 +299,11 @@ function Table({ data }) {
         accessor: "title",
         disableSortBy: true,
         Cell: LinkedCell,
-        meta: { 
+        meta: {
           ariaLabel: "Document Titles",
           //  role: "cell",
-          role: "columnheader",
-          taxIndex: 0
+          //role: "columnheader",
+          taxIndex: 0,
         },
       },
       {
@@ -311,11 +311,11 @@ function Table({ data }) {
         accessor: "content",
         disableSortBy: true,
         Cell: TextCell,
-        meta: { 
+        meta: {
           ariaLabel: "Document Contents",
-        //role: "cell",
-        role: "columnheader",
-        taxIndex: 0
+          //role: "cell",
+          //role: "columnheader",
+          taxIndex: 0,
         },
       },
       {
@@ -327,22 +327,24 @@ function Table({ data }) {
         /* Filter: TagsSelect
         No forwardRef needed, just pass the ref */
         Filter: (props) => <TagsSelect {...props} ref={tagsSelectRef} />,
-        meta: { 
+        meta: {
           ariaLabel: "Document tags",
           //role: "cell",
-          role: "columnheader",
-          taxIndex: 0 },
+          //role: "columnheader",
+          taxIndex: 0,
+        },
       },
       {
         Header: "Created On",
         accessor: "createdAt",
         Cell: ({ value }) => format(new Date(value), "dd/MM/yyyy"),
         filter: filterByDateRange,
-        meta: { 
+        meta: {
           ariaLabel: "Date documents created on",
           //role: "cell",
-          role: "columnheader",
-          taxIndex: 0 },
+          //role: "columnheader",
+          taxIndex: 0,
+        },
       },
       {
         Header: "Updated On",
@@ -350,11 +352,12 @@ function Table({ data }) {
         Cell: ({ value }) => {
           return format(new Date(value), "dd/MM/yyyy");
         },
-        meta: { 
+        meta: {
           ariaLabel: "Date documents updated on",
           //role: "cell",
-          role: "columnheader",
-          taxIndex: 0 },
+          //role: "columnheader",
+          taxIndex: 0,
+        },
       },
       {
         Header: "Delete?",
@@ -363,11 +366,12 @@ function Table({ data }) {
         disableFilters: true,
         // TODO refactor into component, pass in, avoid code smell
         Cell: ({ value }) => <DeleteButton _id={value} />,
-        meta: { 
+        meta: {
           ariaLabel: "Delete individual documents",
           //role: "cell",
-          role: "columnheader",
-          taxIndex: 0 },
+          //role: "columnheader",
+          taxIndex: 0,
+        },
       },
     ],
     []
@@ -521,7 +525,7 @@ function Table({ data }) {
     );
   };
 
- /* function generateAriaLabelForCell(cell) {
+  /* function generateAriaLabelForCell(cell) {
     if (cell.column.Header === "Content") {
       return `Content: ${cell.value}`;
     } else if (cell.column.Header === "Tags") {
@@ -537,8 +541,7 @@ function Table({ data }) {
         <button
           className={styles.seeTableOptionsButton}
           onClick={toggleOptionsVisibility}
-          aria-expanded={isOptionsVisible}
-        >
+          aria-expanded={isOptionsVisible}>
           Search & Options {seeTableOptionsButtonIcon}
         </button>
       </section>
@@ -549,21 +552,18 @@ function Table({ data }) {
         aria-label="Table Filtering Options Section"
         className={`${styles.optionsContainer} ${
           isOptionsVisible ? styles.visible : ""
-        }`}
-      >
+        }`}>
         <div>
           <button
             className={`${styles.dateRangeBtn} date-range-btn`}
             onClick={handleOpenDateRangeFilter}
-            aria-label="Filter the table by dates"
-          >
+            aria-label="Filter the table by dates">
             {calendarIcon} Search Dates
           </button>
         </div>
         <ModalDateRangeFilter
           open={isOpen}
-          onClose={handleCloseDateRangeFilter}
-        >
+          onClose={handleCloseDateRangeFilter}>
           <DateRangeFilter handleFilter={handleDateFilter} />
         </ModalDateRangeFilter>
         <div className={styles.globalFilter}>
@@ -573,8 +573,7 @@ function Table({ data }) {
           <button
             className={`${styles.resetTableBtn} reset-table-btn`}
             onClick={handleResetClick}
-            aria-label="Reset the table after filtering"
-          >
+            aria-label="Reset the table after filtering">
             {resetIcon} RESET
           </button>
         </div>
@@ -582,8 +581,7 @@ function Table({ data }) {
           <button
             className={`${styles.createNewBtn} create-new-btn`}
             onClick={handleNavigation}
-            aria-label="Go to Create new item page"
-          >
+            aria-label="Go to Create new item page">
             {createNewIconFile} Create New
           </button>
         </div>
@@ -594,7 +592,7 @@ function Table({ data }) {
           <caption className={styles.tableHiddenCaption}>
             Saved documents
           </caption>
-          <thead> 
+          <thead>
             {/*Header row one*/}
             {headerGroups.map((headerGroup) => (
               <Fragment key={headerGroup.id}>
@@ -603,25 +601,22 @@ function Table({ data }) {
                     <th
                       {...column.getHeaderProps()}
                       className={styles.tableHeader}
-                      id={`header-${column.id}`}                 
-                    >
+                      id={`header-${column.id}`}>
                       {column.render("Header")}
                     </th>
                   ))}
                 </tr>
-                    {/*Header row two*/}
+                {/*Header row two*/}
                 <tr>
                   {headerGroup.headers.map((column) => (
                     <th
                       {...column.getHeaderProps()}
                       className={styles.filterHeader}
-                      scope="col"
-                    >
+                      scope="col">
                       {column.Header === "Delete?" ? (
                         <div
                           role="presentation"
-                          className={styles.headerDeleteIcon}
-                        >
+                          className={styles.headerDeleteIcon}>
                           {deleteIcon}
                         </div>
                       ) : (
@@ -631,8 +626,7 @@ function Table({ data }) {
                             <button
                               {...column.getSortByToggleProps()}
                               aria-label={`Sort by date`}
-                              className={`${styles.dateSortToggleButtons} ${styles.sortButton}`}
-                            >
+                              className={`${styles.dateSortToggleButtons} ${styles.sortButton}`}>
                               {sortIcon}
                             </button>
                           ) : null}
@@ -649,23 +643,18 @@ function Table({ data }) {
             {page.map((row) => {
               prepareRow(row);
               return (
-                <tr 
-                {...row.getRowProps({ role: "row" })} className={styles.tableRow}>
+                <tr {...row.getRowProps()} className={styles.tableRow}>
                   {row.cells.map((cell) => {
-        
-                    //const headerId = `header-${cell.column.id}`;
+                    // Only refer to header row one
+                    const headerId = `header-${cell.column.id}`;
                     return (
-                      
                       <td
                         {...cell.getCellProps({
-                          //role: cell.column.meta.role,
-                         tabIndex: 0,
-                          //'aria-label': cell.column.meta.ariaLabel, 
-                          //tabIndex: cell.column.meta?.tabIndex !== undefined ? cell.column.meta.tabIndex : 0,
+                          tabIndex: 0,
+                          headers: headerId,
                         })}
                         className={styles.tableCell}
-                       // headers={headerId}
-                       
+                        // headers={headerId}
                       >
                         {cell.render("Cell")}
                       </td>
@@ -679,20 +668,17 @@ function Table({ data }) {
 
         <section
           aria-label="Table Pagination Options"
-          className={styles.pagination}
-        >
+          className={styles.pagination}>
           <label
             htmlFor="table-pagination-select"
-            className={styles.hiddenPaginationSelectLabel}
-          >
+            className={styles.hiddenPaginationSelectLabel}>
             Rows per page:
           </label>
           <select
             id="table-pagination-select"
             className={`${styles.SelectBox} select-box`}
             value={pageSize}
-            onChange={handlePageSizeChange}
-          >
+            onChange={handlePageSizeChange}>
             <option value={""}>Show More Table Rows</option>
             {[5, 10, 20, 50].map((size) => (
               <option key={size} value={size}>
@@ -702,14 +688,12 @@ function Table({ data }) {
           </select>
           <button
             className={`${styles.tablePaginationButton} ${styles.tablePaginationReset} table-pagination-button`}
-            onClick={handleResetClick}
-          >
+            onClick={handleResetClick}>
             {resetIcon} RESET
           </button>
           <span
             className={styles.tablePageNumbering}
-            aria-label="Display current page number out of total pages"
-          >
+            aria-label="Display current page number out of total pages">
             Page{" "}
             <strong>
               {pageIndex + 1} of {pageOptions.length}
@@ -717,8 +701,7 @@ function Table({ data }) {
           </span>
           <span
             className={styles.goToPageText}
-            aria-label="Go to specific page"
-          >
+            aria-label="Go to specific page">
             Go to page:{" "}
             <input
               className={styles.pageInput}
@@ -733,32 +716,28 @@ function Table({ data }) {
             className={`${styles.tablePaginationButton} ${styles.tablePaginationGoToFirst} table-pagination-button`}
             aria-label="Go to first page"
             onClick={goToFirstPage}
-            disabled={!canPreviousPage}
-          >
+            disabled={!canPreviousPage}>
             {backwardsIcon}
           </button>
           <button
             className={`${styles.tablePaginationButton} ${styles.tablePaginationPrevious} table-pagination-button`}
             aria-label="Go to previous page"
             onClick={goToPreviousPage}
-            disabled={!canPreviousPage}
-          >
+            disabled={!canPreviousPage}>
             Previous
           </button>
           <button
             className={`${styles.tablePaginationButton} ${styles.tablePaginationNext} table-pagination-button`}
             aria-label="Go to next page"
             onClick={goToNextPage}
-            disabled={!canNextPage}
-          >
+            disabled={!canNextPage}>
             Next
           </button>
           <button
             className={`${styles.tablePaginationButton} ${styles.tablePaginationGoToLast} table-pagination-button`}
             aria-label="Go to last page"
             onClick={goToLastPage}
-            disabled={!canNextPage}
-          >
+            disabled={!canNextPage}>
             {forwardsIcon}
           </button>
         </section>
