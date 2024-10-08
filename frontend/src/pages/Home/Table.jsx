@@ -299,14 +299,24 @@ function Table({ data }) {
         accessor: "title",
         disableSortBy: true,
         Cell: LinkedCell,
-        meta: { ariaLabel: "Document Titles" },
+        meta: { 
+          ariaLabel: "Document Titles",
+          //  role: "cell",
+          role: "columnheader",
+          taxIndex: 0
+        },
       },
       {
         Header: "Content",
         accessor: "content",
         disableSortBy: true,
         Cell: TextCell,
-        meta: { ariaLabel: "Document Contents" },
+        meta: { 
+          ariaLabel: "Document Contents",
+        //role: "cell",
+        role: "columnheader",
+        taxIndex: 0
+        },
       },
       {
         Header: "Tags",
@@ -317,14 +327,22 @@ function Table({ data }) {
         /* Filter: TagsSelect
         No forwardRef needed, just pass the ref */
         Filter: (props) => <TagsSelect {...props} ref={tagsSelectRef} />,
-        meta: { ariaLabel: "Document tags" },
+        meta: { 
+          ariaLabel: "Document tags",
+          //role: "cell",
+          role: "columnheader",
+          taxIndex: 0 },
       },
       {
         Header: "Created On",
         accessor: "createdAt",
         Cell: ({ value }) => format(new Date(value), "dd/MM/yyyy"),
         filter: filterByDateRange,
-        meta: { ariaLabel: "Date documents created on" },
+        meta: { 
+          ariaLabel: "Date documents created on",
+          //role: "cell",
+          role: "columnheader",
+          taxIndex: 0 },
       },
       {
         Header: "Updated On",
@@ -332,7 +350,11 @@ function Table({ data }) {
         Cell: ({ value }) => {
           return format(new Date(value), "dd/MM/yyyy");
         },
-        meta: { ariaLabel: "Date documents updated on" },
+        meta: { 
+          ariaLabel: "Date documents updated on",
+          //role: "cell",
+          role: "columnheader",
+          taxIndex: 0 },
       },
       {
         Header: "Delete?",
@@ -341,7 +363,11 @@ function Table({ data }) {
         disableFilters: true,
         // TODO refactor into component, pass in, avoid code smell
         Cell: ({ value }) => <DeleteButton _id={value} />,
-        meta: { ariaLabel: "Delete individual documents" },
+        meta: { 
+          ariaLabel: "Delete individual documents",
+          //role: "cell",
+          role: "columnheader",
+          taxIndex: 0 },
       },
     ],
     []
@@ -495,14 +521,14 @@ function Table({ data }) {
     );
   };
 
-  function generateAriaLabelForCell(cell) {
+ /* function generateAriaLabelForCell(cell) {
     if (cell.column.Header === "Content") {
       return `Content: ${cell.value}`;
     } else if (cell.column.Header === "Tags") {
       return `Tags: ${cell.value}`;
     }
     return null;
-  }
+  }*/
 
   // Rendering options before table aims for easy user experience
   return (
@@ -623,16 +649,23 @@ function Table({ data }) {
             {page.map((row) => {
               prepareRow(row);
               return (
-                <tr {...row.getRowProps()} className={styles.tableRow}>
+                <tr 
+                {...row.getRowProps()} className={styles.tableRow}>
                   {row.cells.map((cell) => {
-                    const ariaLabel = generateAriaLabelForCell(cell);
+        
                     const headerId = `header-${cell.column.id}`;
                     return (
+                      
                       <td
-                        {...cell.getCellProps()}
+                        {...cell.getCellProps({
+                          //role: cell.column.meta.role,
+                          //tabIndex: 0,
+                          //'aria-label': cell.column.meta.ariaLabel, 
+                          tabIndex: cell.column.meta?.tabIndex !== undefined ? cell.column.meta.tabIndex : 0,
+                        })}
                         className={styles.tableCell}
                         headers={headerId}
-                        {...(ariaLabel ? { "aria-label": ariaLabel } : {})}
+                       
                       >
                         {cell.render("Cell")}
                       </td>
