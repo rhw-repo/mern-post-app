@@ -303,7 +303,7 @@ function Table({ data }) {
         disableSortBy: true,
         Cell: LinkedCell,
         meta: {
-          ariaLabel: "Document Titles",
+         // ariaLabel: "Document Titles",
           taxIndex: 0,
         },
       },
@@ -313,7 +313,7 @@ function Table({ data }) {
         disableSortBy: true,
         Cell: TextCell,
         meta: {
-          ariaLabel: "Document Contents",
+         // ariaLabel: "Document Contents",
           taxIndex: 0,
         },
       },
@@ -327,7 +327,7 @@ function Table({ data }) {
         No forwardRef needed, just pass the ref */
         Filter: (props) => <TagsSelect {...props} ref={tagsSelectRef} />,
         meta: {
-          ariaLabel: "Document tags",
+         // ariaLabel: "Document tags",
           taxIndex: 0,
         },
       },
@@ -337,7 +337,7 @@ function Table({ data }) {
         Cell: ({ value }) => format(new Date(value), "dd/MM/yyyy"),
         filter: filterByDateRange,
         meta: {
-          ariaLabel: "Date documents created on",
+          //ariaLabel: "Date documents created on",
           taxIndex: 0,
         },
       },
@@ -348,7 +348,7 @@ function Table({ data }) {
           return format(new Date(value), "dd/MM/yyyy");
         },
         meta: {
-          ariaLabel: "Date documents updated on",
+         // ariaLabel: "Date documents updated on",
           taxIndex: 0,
         },
       },

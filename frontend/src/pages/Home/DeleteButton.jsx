@@ -60,7 +60,7 @@ const DeleteButton = ({ _id }) => {
       <button
         className={styles.deleteTableButton}
         onClick={handleDeleteClick}
-        aria-label="Delete button"
+        aria-label="Opens confirm deletion dialog"
       >
         {deleteIcon}
       </button>
