@@ -460,7 +460,7 @@ function Table({ data }) {
   const forwardsIcon = <FontAwesomeIcon icon={faForward} />;
   const backwardsIcon = <FontAwesomeIcon icon={faBackward} />;
 
-  /* Handle navigation to CreateNew.js */
+  /* Handle navigation to CreateNew.jsx */
   const navigate = useNavigate();
 
   const handleNavigation = () => {
@@ -650,21 +650,21 @@ function Table({ data }) {
               prepareRow(row);
               return (
                 <tr 
-                {...row.getRowProps()} className={styles.tableRow}>
+                {...row.getRowProps({ role: "row" })} className={styles.tableRow}>
                   {row.cells.map((cell) => {
         
-                    const headerId = `header-${cell.column.id}`;
+                    //const headerId = `header-${cell.column.id}`;
                     return (
                       
                       <td
                         {...cell.getCellProps({
                           //role: cell.column.meta.role,
-                          //tabIndex: 0,
+                         tabIndex: 0,
                           //'aria-label': cell.column.meta.ariaLabel, 
-                          tabIndex: cell.column.meta?.tabIndex !== undefined ? cell.column.meta.tabIndex : 0,
+                          //tabIndex: cell.column.meta?.tabIndex !== undefined ? cell.column.meta.tabIndex : 0,
                         })}
                         className={styles.tableCell}
-                        headers={headerId}
+                       // headers={headerId}
                        
                       >
                         {cell.render("Cell")}
