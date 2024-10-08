@@ -194,7 +194,6 @@ const TagsSelect = forwardRef(
 for each individual table body cell, creates disorientation */
     return (
       <>
-        <p>Search tags</p>
         <Select
           ref={selectorRef}
           menuPosition="fixed"
@@ -203,7 +202,7 @@ for each individual table body cell, creates disorientation */
           options={selectOptions}
           isMulti
           styles={customStyles}
-          //aria-label="Select tags"
+          aria-label="Tags"
         />
       </>
     );
@@ -358,10 +357,11 @@ function Table({ data }) {
         accessor: "_id",
         disableSortBy: true,
         disableFilters: true,
+        //ariaLabel: "Delete button",
         // TODO refactor into component, pass in, avoid code smell
         Cell: ({ value }) => <DeleteButton _id={value} />,
         meta: {
-          ariaLabel: "Delete individual documents",
+         // ariaLabel: "Delete individual documents",
           taxIndex: 0,
         },
       },
@@ -579,7 +579,8 @@ function Table({ data }) {
             {/*Header row one*/}
             {headerGroups.map((headerGroup) => (
               <Fragment key={headerGroup.id}>
-                <tr {...headerGroup.getHeaderGroupProps()}>
+                <tr key={`${headerGroup.id}-row1`}
+                 {...headerGroup.getHeaderGroupProps()}>
                   {headerGroup.headers.map((column) => (
                     <th
                       {...column.getHeaderProps()}
@@ -590,7 +591,7 @@ function Table({ data }) {
                   ))}
                 </tr>
                 {/*Header row two*/}
-                <tr>
+                <tr key={`${headerGroup.id}-row2`} >
                   {headerGroup.headers.map((column) => (
                     <th
                       {...column.getHeaderProps()}
@@ -607,7 +608,6 @@ function Table({ data }) {
                           {column.canFilter ? column.render("Filter") : null}
                           {column.canSort ? (
                             <>
-                              <p>Sort</p>
                               <button
                                 {...column.getSortByToggleProps()}
                                 // aria-label={`Sort by date`}
@@ -637,7 +637,8 @@ function Table({ data }) {
                       <td
                         {...cell.getCellProps({
                           tabIndex: 0,
-                          headers: headerId,
+                          //headers: headerId,
+                          "aria-labelledby": headerId
                         })}
                         className={styles.tableCell}>
                         {cell.render("Cell")}

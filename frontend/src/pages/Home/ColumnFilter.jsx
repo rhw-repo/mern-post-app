@@ -69,7 +69,7 @@ const ColumnFilter = ({ column }) => {
     /* Accessibility - any input placeholder is announced 
     for every table body cell, creates user disorientation */
     return (
-      <section> <p>Search column</p>
+      <section> 
         <SearchBox>
           {filterIcon}
           <input
