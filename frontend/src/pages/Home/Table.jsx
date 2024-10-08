@@ -190,18 +190,22 @@ const TagsSelect = forwardRef(
       clearTags,
     }));
 
+    /* Accessibiliry note - any placeholder will be announced
+for each individual table body cell, creates disorientation */
     return (
-      <Select
-        ref={selectorRef}
-        q
-        menuPosition="fixed"
-        placeholder="Search by tags"
-        onChange={changeHandler}
-        options={selectOptions}
-        isMulti
-        styles={customStyles}
-        aria-label="Select tags"
-      />
+      <>
+        <p>Search tags</p>
+        <Select
+          ref={selectorRef}
+          menuPosition="fixed"
+          placeholder=""
+          onChange={changeHandler}
+          options={selectOptions}
+          isMulti
+          styles={customStyles}
+          //aria-label="Select tags"
+        />
+      </>
     );
   }
 );
@@ -301,8 +305,6 @@ function Table({ data }) {
         Cell: LinkedCell,
         meta: {
           ariaLabel: "Document Titles",
-          //  role: "cell",
-          //role: "columnheader",
           taxIndex: 0,
         },
       },
@@ -313,8 +315,6 @@ function Table({ data }) {
         Cell: TextCell,
         meta: {
           ariaLabel: "Document Contents",
-          //role: "cell",
-          //role: "columnheader",
           taxIndex: 0,
         },
       },
@@ -329,8 +329,6 @@ function Table({ data }) {
         Filter: (props) => <TagsSelect {...props} ref={tagsSelectRef} />,
         meta: {
           ariaLabel: "Document tags",
-          //role: "cell",
-          //role: "columnheader",
           taxIndex: 0,
         },
       },
@@ -341,8 +339,6 @@ function Table({ data }) {
         filter: filterByDateRange,
         meta: {
           ariaLabel: "Date documents created on",
-          //role: "cell",
-          //role: "columnheader",
           taxIndex: 0,
         },
       },
@@ -354,8 +350,6 @@ function Table({ data }) {
         },
         meta: {
           ariaLabel: "Date documents updated on",
-          //role: "cell",
-          //role: "columnheader",
           taxIndex: 0,
         },
       },
@@ -368,8 +362,6 @@ function Table({ data }) {
         Cell: ({ value }) => <DeleteButton _id={value} />,
         meta: {
           ariaLabel: "Delete individual documents",
-          //role: "cell",
-          //role: "columnheader",
           taxIndex: 0,
         },
       },
@@ -525,15 +517,6 @@ function Table({ data }) {
     );
   };
 
-  /* function generateAriaLabelForCell(cell) {
-    if (cell.column.Header === "Content") {
-      return `Content: ${cell.value}`;
-    } else if (cell.column.Header === "Tags") {
-      return `Tags: ${cell.value}`;
-    }
-    return null;
-  }*/
-
   // Rendering options before table aims for easy user experience
   return (
     <main>
@@ -623,12 +606,15 @@ function Table({ data }) {
                         <div>
                           {column.canFilter ? column.render("Filter") : null}
                           {column.canSort ? (
-                            <button
-                              {...column.getSortByToggleProps()}
-                              aria-label={`Sort by date`}
-                              className={`${styles.dateSortToggleButtons} ${styles.sortButton}`}>
-                              {sortIcon}
-                            </button>
+                            <>
+                              <p>Sort</p>
+                              <button
+                                {...column.getSortByToggleProps()}
+                                // aria-label={`Sort by date`}
+                                className={`${styles.dateSortToggleButtons} ${styles.sortButton}`}>
+                                {sortIcon}
+                              </button>
+                            </>
                           ) : null}
                         </div>
                       )}
@@ -653,9 +639,7 @@ function Table({ data }) {
                           tabIndex: 0,
                           headers: headerId,
                         })}
-                        className={styles.tableCell}
-                        // headers={headerId}
-                      >
+                        className={styles.tableCell}>
                         {cell.render("Cell")}
                       </td>
                     );

@@ -50,7 +50,7 @@ const SearchBox = styled.div`
     }
 `;
 const filterIcon = (
-  <FontAwesomeIcon icon={faFilter} /*size="2xl"*/ className="filter-icon" />
+  <FontAwesomeIcon icon={faFilter} className="filter-icon" />
 );
 
 const ColumnFilter = ({ column }) => {
@@ -66,17 +66,17 @@ const ColumnFilter = ({ column }) => {
     column.Header !== "Updated On" &&
     column.Header !== "Delete"
   ) {
+    /* Accessibility - any input placeholder is announced 
+    for every table body cell, creates user disorientation */
     return (
-      <section>
-        <p aria-hidden="true">Search column</p>
+      <section> <p>Search column</p>
         <SearchBox>
           {filterIcon}
           <input
-           // aria-label={`Search box for ${Header.toLowerCase()} column`}
-            //placeholder={`Filter table by ${Header.toLowerCase()}`}
             type="text"
             value={filterValue || ""}
             onChange={(e) => setFilter(e.target.value)}
+            aria-label={`${Header.toLowerCase()}`}
           />
         </SearchBox>
       </section>
