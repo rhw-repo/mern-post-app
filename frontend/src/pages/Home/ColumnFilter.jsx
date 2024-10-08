@@ -68,6 +68,7 @@ const ColumnFilter = ({ column }) => {
   ) {
     return (
       <section>
+        <p aria-hidden="true">Search column</p>
         <SearchBox>
           {filterIcon}
           <input
