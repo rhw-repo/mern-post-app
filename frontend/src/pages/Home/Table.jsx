@@ -565,7 +565,9 @@ function Table({ data }) {
       <div className={styles.tableContainer}>
         <table {...getTableProps()} className={styles.tableNoGaps}>
           <caption className={styles.tableHiddenCaption}>
-            Saved documents
+            Documents table. Use column header search boxes to filter by text. Use the Tags column header drop
+            down select box to filter the table by tags. Use sort header buttons to sort
+            Created On and Updated On date columns. Use delete button in column 6 to delete a whole row.
           </caption>
           <thead>
             {/*Header row one*/}
@@ -603,7 +605,7 @@ function Table({ data }) {
                             <>
                               <button
                                 {...column.getSortByToggleProps()}
-                                // aria-label={`Sort by date`}
+                                aria-label={`Date`}
                                 className={`${styles.dateSortToggleButtons} ${styles.sortButton}`}>
                                 {sortIcon}
                               </button>
@@ -624,14 +626,13 @@ function Table({ data }) {
               return (
                 <tr {...row.getRowProps()} className={styles.tableRow}>
                   {row.cells.map((cell) => {
-                    // Only refer to header row one
+                    // Only refer to Header row one
                     const headerId = `header-${cell.column.id}`;
                     return (
                       <td
                         {...cell.getCellProps({
                           tabIndex: 0,
                           headers: headerId,
-                          //"aria-labelledby": headerId,
                         })}
                         className={styles.tableCell}>
                         {cell.render("Cell")}
