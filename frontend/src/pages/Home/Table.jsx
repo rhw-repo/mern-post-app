@@ -630,7 +630,7 @@ function Table({ data }) {
                       <td
                         {...cell.getCellProps({
                           tabIndex: 0,
-                          //headers: headerId,
+                          headers: headerId,
                           //"aria-labelledby": headerId,
                         })}
                         className={styles.tableCell}>
