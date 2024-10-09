@@ -631,7 +631,7 @@ function Table({ data }) {
                         {...cell.getCellProps({
                           tabIndex: 0,
                           //headers: headerId,
-                          "aria-labelledby": headerId,
+                          //"aria-labelledby": headerId,
                         })}
                         className={styles.tableCell}>
                         {cell.render("Cell")}
