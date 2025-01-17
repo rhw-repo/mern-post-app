@@ -1,4 +1,4 @@
-// multiple terms, finds match(es) in the 1st applicable column. 
+// Multiple terms, finds match(es) in the 1st applicable column. 
 import { useState, useEffect } from "react";
 import { useAsyncDebounce } from "react-table";
 import styled from "styled-components"
@@ -47,7 +47,7 @@ const SearchBox = styled.div`
 const GlobalFilter = ({ filter, setFilter }) => {
     const [value, setValue] = useState(filter)
 
-    //  synchronise local state with prop to 
+    //  Synchronise local state with prop to 
     // ensure resetTable functions 
     useEffect(() => {
         setValue(filter);

@@ -5,11 +5,9 @@
     align-items: flex-start;
   }
   
-  .globalFilterInput
-  /*.globalFilterSpan */{
+  .globalFilterInput {
     outline: none;
     box-shadow: none;
-    /*width: 20rem;*/
     width: fit-content;
     font-size: 1.25rem;
     margin-left: 0.625rem;

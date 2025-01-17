@@ -40,7 +40,7 @@ function ExperimentalAllTagsSelect({ onTagsChange, id }) {
     console.log("allTags updated:", allTags)
   }, [allTags])
 
-  // to handle onTagsChange whenever selectedTags changes
+  // To handle onTagsChange whenever selectedTags changes
   useEffect(() => {
     if (userInteracted) {
       onTagsChange(selectedTags)
@@ -56,7 +56,7 @@ function ExperimentalAllTagsSelect({ onTagsChange, id }) {
     setUserInteracted(true)
   };
 
-  // update allTags in localStorage to include any new tags created
+  // Update allTags in localStorage to include any new tags created
   useEffect(() => {
     localStorage.setItem("allTags", JSON.stringify(allTags))
   }, [allTags])
@@ -76,7 +76,7 @@ function ExperimentalAllTagsSelect({ onTagsChange, id }) {
   if (loading) {
     return <div>Loading...</div>
   }
-  // error handling
+  // Error handling
   if (!dataLoaded) {
     return <div className="error">
       An error occured: please try refreshing the page.
@@ -84,7 +84,7 @@ function ExperimentalAllTagsSelect({ onTagsChange, id }) {
     </div>
   }
 
-  /* dynamic styling based on component state, replaces default styles */
+  /* Dynamic styling based on component state, replaces default styles */
   const customCreatableStyles = {
     control: (baseStyles, state) => ({
       ...baseStyles,

@@ -1,5 +1,3 @@
-// TODO test error handling
-
 /* Note temporary auth, replace with SSO as local storage inappropriate for user,
  currently instead of server request, update global state and delete token 
 from local storage */

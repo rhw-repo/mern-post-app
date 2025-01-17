@@ -5,7 +5,6 @@ import { useAuthContext } from "../../hooks/useAuthContext";
 import styles from "./Home.module.css";
 
 // components
-// import Table from "../components/Table";
 import Table from "./Table.js";
 import ErrorBoundary from "../../components/ErrorBoundary/ErrorBoundary";
 

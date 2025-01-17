@@ -8,7 +8,7 @@
     text-decoration: none;
   }
 
-/* Stop uncomfortably wide display on wider screens*/
+/* Prevent uncomfortably wide display on wider screens*/
 @media (min-width: 1670px) {
   .home {
     max-width: 80%;

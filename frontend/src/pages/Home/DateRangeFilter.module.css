@@ -18,8 +18,6 @@ z index simple positioning */
 }
 
 /* hides as per client spec */
-/* alternative: display: flexbox; flex-direction: column
-has issues with z-index - larger task */
 @media (max-width: 780px) {
  .modal {
     display: none;

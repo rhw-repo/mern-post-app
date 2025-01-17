@@ -1,4 +1,4 @@
-// user needs a way to abandon action & return to homepage
+// A way to abandon action & return to homepage
 import { useNavigate } from "react-router-dom";
 import styles from "./CancelButton.module.css";
 

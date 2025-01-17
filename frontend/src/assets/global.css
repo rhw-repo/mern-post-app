@@ -1,4 +1,3 @@
-/* TODO: Refactor to make responsive across different devices */
 /* Styling Note - all styles aim to meet Material Design 3 guidelines.*/
 
 @import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@400;500;600;700&family=Open+Sans:wght@300;400&display=swap');
@@ -11,16 +10,6 @@
   --secondary-light: #667B99;
   --secondary-chips: #5C6D84;
 }
-
-/* WIP: testing for New Global color scheme #1
-TODO: dark mode 
-:root {
-  --primary: #023047;
-  --error: #A2262C;
-  --secondary: #054a91;
-  --secondary-light: #667B99;
-  --secondary-chips: #5C6D84;
-}*/
 
 /* Global rules */
 body {
@@ -151,12 +140,6 @@ button: see Navbar css module)*/
   transform: scale(0.97);
 }
 
-/*nav button {
-  border: none;
-  color: #ffffff;
-  background-color: inherit;
-}*/
-
 /* All pages */
 .pages {
   max-width: 100%;
@@ -169,8 +152,6 @@ button: see Navbar css module)*/
 
 h1 {
   color: var(--secondary);
-  /* Testing for New color scheme #1 
-  color: #1178f2;*/
   text-align: center;
   font-family: "Lexend Deca", Helvetica, Arial, sans-serif;
 }
