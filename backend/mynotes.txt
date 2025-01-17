@@ -1,7 +1,5 @@
 server.js 
 
-// continue MERN Stack #2 13.31
-
 // ! MUST add .env file to gitignore before push to github to keep environment details securely hidden
 // to install env package - that loads .env variables into the process.env object, available globally in
 // a node environment - command line: npm install dotenv 
