@@ -1,6 +1,8 @@
 # **Demo App**
 
-This repo contains early experiments using MERN stack, with explanatory comments: concepts for an app designed to help users store and manage online marketing documents. From these early experiments, the project was taken forward to create a custom dashboard style app featuring custom filtering for a marketing team in the financial trading sector (in private repo). This early project allowed for testing of concepts:
+Update: See the subsequent MVP [here](https://frontend-production-d277.up.railway.app). The code for this is in a private repo. 
+
+This mern-post-app repo contains early experiments using MERN stack, with explanatory comments: concepts for an app designed to help users store and manage online marketing documents. From these early experiments, the project was taken forward to create a custom dashboard style app featuring custom filtering for a marketing team in the financial trading sector (in private repo). This early project allowed for testing of concepts:
 
 - React hooks/custom hooks, context
 - react-dom-router
