@@ -37,19 +37,15 @@ This mern-post-app repo contains early experiments using MERN stack, with explan
 
 1) Add frontend and backend input sanitization (validator.js, DOM Purify & express-validator).
 2) Self-host fonts using woff & woff2 files.
-3) Testing and performance audit.
-
-### **Home Page**
-
-1) Add bulk delete feature for table if client requests.
+3) Accessibility and performance audit.
 
 ### **Auth**
 
-1) SSO to replace current development phase JWT email & password system.
+1) Server side session based authentication to replace current development phase JWT email & password system.
 
 ### **Documentation**
 
-1) Review development phase comments for refactor using JSDoc library.
+1) Review development phase comments to remove redundant comments.
 
 ### **Earlier concepts**
 
