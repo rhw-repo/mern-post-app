@@ -2,7 +2,7 @@
 
 Update: See the subsequent live MVP app running [here](https://frontend-production-d277.up.railway.app). The code for that is in a separate private repo. 
 
-This mern-post-app repo contains early experiments using MERN stack, with explanatory comments: concepts for an app designed to help users store and manage online marketing documents. From these early experiments, the project was taken forward to create a custom dashboard style app featuring custom filtering for a marketing team in the financial trading sector (in private repo). This early project allowed for testing of concepts:
+This mern-post-app repo contains early experiments using React.js running in Vite in a MERN stack app, with explanatory comments: concepts for an app designed to help users store and manage online marketing documents. From these early experiments, the project was taken forward to create a custom dashboard style app featuring custom filtering for a marketing team in the financial trading sector (in private repo). This early project allowed for testing of concepts:
 
 - React hooks/custom hooks, context
 - react-dom-router
