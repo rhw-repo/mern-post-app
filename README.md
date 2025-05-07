@@ -2,7 +2,22 @@
 
 Update: See the subsequent live MVP app running [here](https://frontend-production-d277.up.railway.app). The code for that is in a separate private repo. 
 
-This mern-post-app repo contains early experiments using React.js running in Vite in a MERN stack app, with explanatory comments: concepts for an app designed to help users store and manage online marketing documents. From these early experiments, the project was taken forward to create a custom dashboard style app featuring custom filtering for a marketing team in the financial trading sector (in private repo). This early project allowed for testing of concepts:
+This mern-post-app repo contains early experiments using React.js running in Vite in a MERN stack app, with explanatory comments: concepts for an app designed to help users store and manage online marketing documents.
+# **Technologies**
+
+- React.js (in Vite) & React ecosystem library components
+- originally Create React App, later migrated to Vite in a separate branch
+- Node.js
+- MongoDB
+- Mongoose
+- Express
+
+- Testing requests: Postman API Platform
+- Formatting: ESLint & Prettier
+- Accessibility testing: WAVE, NVDA screen reader
+- Original design files: Figma
+
+ From these early experiments, the project was taken forward to create a custom dashboard style app featuring custom filtering for a marketing team in the financial trading sector (in private repo). This early project allowed for testing of concepts:
 
 - React hooks/custom hooks, context
 - react-dom-router
@@ -17,21 +32,7 @@ This mern-post-app repo contains early experiments using React.js running in Vit
 - CRUD functionality for their documents
 - dotenv module and .env file for sensitive data
 
-## **Technologies**
-
-- MongoDB
-- Mongoose
-- Express
-- Node.js
-- React.js
-- originally Create React App, later migrated to Vite in a separate branch
-
-- Testing requests: Postman API Platform
-- Formatting: ESLint & Prettier
-- Accessibility testing: WAVE, NVDA screen reader
-- Original design files: Figma
-
-## **TODOs: completed in the subsequent project**
+## **TODOs: all completed in the subsequent project running [here](https://frontend-production-d277.up.railway.app).**
 
 ### **Globally**
 
