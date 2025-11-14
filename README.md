@@ -1,6 +1,6 @@
 # **Demo App**
 
-Update: See the subsequent live MVP app running [here](https://frontend-production-d277.up.railway.app). The code for that is in a separate private repo. 
+Update: See the subsequent live MVP app running [here](https://frontend-production-32c1.up.railway.app/login). The code for that is in a separate private repo. 
 
 This mern-post-app repo contains early experiments using React.js running in Vite in a MERN stack app, with explanatory comments: concepts for an app designed to help users store and manage online marketing documents.
 # **Technologies**
