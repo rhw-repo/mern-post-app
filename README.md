@@ -31,7 +31,7 @@ This mern-post-app repo contains early experiments using React.js running in Vit
 - CRUD functionality for their documents
 - dotenv module and .env file for sensitive data
 
-## **TODOs: all completed in the subsequent project running [here](https://frontend-production-d277.up.railway.app).**
+## **TODOs: all completed in a subsequent project.**
 
 ### **Globally**
 
